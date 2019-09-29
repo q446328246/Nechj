@@ -1,0 +1,284 @@
+﻿using System;
+using System.Data;
+using ShopNum1.Common;
+using ShopNum1.DataAccess;
+using ShopNum1.Interface;
+using ShopNum1MultiEntity;
+using System.Data.Common;
+
+namespace ShopNum1.BusinessLogic
+{
+    public class ShopNum1_ArticleComment_Action : IShopNum1_ArticleComment_Action
+    {
+        public int Add(ShopNum1_ArticleComment articleComment)
+        {
+            return DatabaseExcetue.RunNonQuery(string.Concat(new object[]
+            {
+                "INSERT INTO ShopNum1_ArticleComment( \tGuid\t, \tArticleGuid\t, \tMemLoginID\t, \tTitle\t, \tContent\t, \tSendTime\t, \tIPAddress\t, \tRank, \tIsReply\t, \tIsAudit\t, \tIsDeleted  ) VALUES (  '"
+                , articleComment.Guid, "',  '", articleComment.ArticleGuid, "',  '",
+                Operator.FilterString(articleComment.MemLoginID), "',  '",
+                Operator.FilterString(articleComment.Title), "',  '", Operator.FilterString(articleComment.Content),
+                "',  '", Convert.ToDateTime(articleComment.SendTime).ToString("yyyy-MM-dd HH:mm:ss"), "',  '",
+                articleComment.IPAddress, "',  ", articleComment.Rank,
+                ",  ", articleComment.IsReply, ",  ", articleComment.IsAudit, ",  ", articleComment.IsDeleted, ")"
+            }));
+        }
+
+        public int Delete(string guids)
+
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+
+            parms[0].ParameterName = "@guids";
+            parms[0].Value = guids;
+            return DatabaseExcetue.RunNonQuery("DELETE FROM ShopNum1_ArticleComment WHERE Guid IN (@guids)",parms);
+        }
+
+        public DataTable GetArticleCommentInfoByGuid(string guid)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+
+            parms[0].ParameterName = "@guid";
+            parms[0].Value = guid;
+            return
+                DatabaseExcetue.ReturnDataTable(
+                    "select MemLoginID,IsAudit from ShopNum1_Shop_NewsComment where Guid IN (@guid)",parms);
+        }
+
+        public DataTable Search(string memLoginID, int isDeleted)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(2);
+
+            parms[0].ParameterName = "@memLoginID";
+            parms[0].Value = Operator.FilterString(memLoginID);
+            parms[1].ParameterName = "@isDeleted";
+            parms[1].Value = isDeleted;
+            string str = string.Empty;
+            str =
+                "SELECT A.Guid,A.ArticleGuid,B.Title As ArticleTitle,A.MemLoginID,A.Title,A.Rank,A.SendTime,A.Content,A.IPAddress,A.ReplyUser,A.ReplyTime,A.ReplyContent,A.IsAudit,A.IsReply,A.IsDeleted  FROM ShopNum1_ArticleComment AS A,ShopNum1_Article AS B    WHERE A.ArticleGuid = B.Guid ";
+            if (Operator.FormatToEmpty(memLoginID) != string.Empty)
+            {
+                str = str + " AND A.MemLoginID LIKE '%@memLoginID%'";
+            }
+            if ((isDeleted == 0) || (isDeleted == 1))
+            {
+                str = string.Concat(new object[] {str, " AND A.IsDeleted=@isDeleted"});
+            }
+            return DatabaseExcetue.ReturnDataTable(str + "Order by A.SendTime Desc",parms);
+        }
+
+        public DataTable Search(string articleGuid, int isReply, int isAudit, int count)
+        {
+            string str = string.Empty;
+            if (count > 0)
+            {
+                str = "SELECT top " + count;
+            }
+            else
+            {
+                str = "SELECT ";
+            }
+            str = str +
+                  "\tGuid\t, \tMemLoginID\t, \tArticleGuid\t, \tTitle\t, \tContent\t, \tSendTime\t, \tReplyUser\t, \tReplyTime\t, \tReplyContent\t, \tIPAddress\t, \tRank\t, \tIsReply\t, \tIsAudit\t, \tIsDeleted   FROM ShopNum1_ArticleComment  WHERE IsDeleted = 0";
+            if (articleGuid != "-1")
+            {
+                str = str + " AND ArticleGuid='" + articleGuid + "' ";
+            }
+            if ((isReply == 0) || (isReply == 1))
+            {
+                str = string.Concat(new object[] {str, " AND IsReply=", isReply, " "});
+            }
+            if ((isAudit == 0) || (isAudit == 1))
+            {
+                str = string.Concat(new object[] {str, " AND IsAudit=", isAudit, " "});
+            }
+            return DatabaseExcetue.ReturnDataTable(str + "ORDER BY SendTime DESC");
+        }
+
+        public DataTable Search(string guid, string articleName, string memLoginID, string title, string sendTime1,
+            string sendTime2, string replyTime1, string replyTime2, int isReply, int isAudit,
+            int isDeleted, string IP)
+        {
+            string str = string.Empty;
+            str =
+                "SELECT A.Guid,A.ArticleGuid,B.Title As ArticleTitle,A.MemLoginID,A.Title,A.Rank,A.SendTime,A.Content,A.IPAddress,A.ReplyUser,A.ReplyTime,A.ReplyContent,A.IsAudit,A.IsReply,A.IsDeleted  FROM ShopNum1_ArticleComment AS A,ShopNum1_Article AS B    WHERE A.ArticleGuid = B.Guid ";
+            if (Operator.FormatToEmpty(articleName) != string.Empty)
+            {
+                str = str + " AND B.Title LIKE '%" + Operator.FilterString(articleName) + "%'";
+            }
+            if (Operator.FormatToEmpty(memLoginID) != string.Empty)
+            {
+                str = str + " AND A.MemLoginID LIKE '%" + Operator.FilterString(memLoginID) + "%'";
+            }
+            if (Operator.FormatToEmpty(title) != string.Empty)
+            {
+                str = str + " AND A.Title LIKE '%" + Operator.FilterString(title) + "%'";
+            }
+            if (Operator.FormatToEmpty(IP) != string.Empty)
+            {
+                str = str + "AND A.IPAddress like'%" + Operator.FilterString(IP) + "%'";
+            }
+            if ((isReply == 0) || (isReply == 1))
+            {
+                str = string.Concat(new object[] {str, " AND A.IsReply=", isReply, " "});
+            }
+            if (isAudit == -2)
+            {
+                str = str + " AND A.IsAudit IN (0,2) ";
+            }
+            else if (((isAudit == 0) || (isAudit == 1)) || (isAudit == 2))
+            {
+                str = string.Concat(new object[] {str, " AND A.IsAudit=", isAudit, " "});
+            }
+            if (Operator.FormatToEmpty(sendTime1) != string.Empty)
+            {
+                str = str + " AND A.SendTime>='" + Operator.FilterString(sendTime1) + "' ";
+            }
+            if (Operator.FormatToEmpty(sendTime2) != string.Empty)
+            {
+                str = str + " AND A.SendTime<='" + Operator.FilterString(sendTime2) + "' ";
+            }
+            if (Operator.FormatToEmpty(replyTime1) != string.Empty)
+            {
+                str = str + " AND A.ReplyTime>='" + Operator.FilterString(replyTime1) + "'";
+            }
+            if (Operator.FormatToEmpty(replyTime2) != string.Empty)
+            {
+                str = str + " AND A.ReplyTime<='" + Operator.FilterString(replyTime2) + "' ";
+            }
+            if ((isDeleted == 0) || (isDeleted == 1))
+            {
+                str = string.Concat(new object[] {str, " AND A.IsDeleted=", isDeleted, " "});
+            }
+            return DatabaseExcetue.ReturnDataTable(str + "Order by A.SendTime Desc");
+        }
+
+        public DataTable SearchArticleCommentInfo(string memberloginid, string commenttitle, string articletitle,
+            string isaudit, string createtime1, string createtime2)
+        {
+            var paraName = new string[6];
+            var paraValue = new string[6];
+            paraName[0] = "@memberloginid";
+            paraValue[0] = memberloginid;
+            paraName[1] = "@commenttitle";
+            paraValue[1] = commenttitle;
+            paraName[2] = "@articletitle";
+            paraValue[2] = articletitle;
+            paraName[3] = "@isaudit";
+            paraValue[3] = isaudit;
+            paraName[4] = "@createtime1";
+            paraValue[4] = createtime1;
+            paraName[5] = "@createtime2";
+            paraValue[5] = createtime2;
+            return DatabaseExcetue.RunProcedureReturnDataTable("Pro_ShopNum1_SearchArticleCommentInfo", paraName,
+                paraValue);
+        }
+
+        public DataTable SearchByGuid(string guid)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+
+            parms[0].ParameterName = "@guid";
+            parms[0].Value = guid;
+            return
+                DatabaseExcetue.ReturnDataTable(
+                    "SELECT A.Guid,A.ArticleGuid,B.Title As ArticleTitle,B.CreateTime,A.MemLoginID,A.Title,A.Rank,A.SendTime,A.Content,A.IPAddress,A.ReplyUser,A.ReplyTime,A.ReplyContent,A.IsAudit,A.IsReply,A.IsDeleted  FROM ShopNum1_ArticleComment AS A,ShopNum1_Article AS B   WHERE A.ArticleGuid = B.Guid  AND A.Guid=@guid",parms);
+        }
+
+        public int Update(ShopNum1_ArticleComment articleComment)
+        {
+            return
+                DatabaseExcetue.RunNonQuery(
+                    string.Concat(new object[]
+                    {
+                        "UPDATE  ShopNum1_ArticleComment SET   ReplyUser\t='", articleComment.ReplyUser,
+                        "', \tReplyTime\t='", articleComment.ReplyTime, "',\tReplyContent\t='",
+                        articleComment.ReplyContent, "',\tIsReply\t=", articleComment.IsReply, "  WHERE Guid='",
+                        articleComment.Guid, "'"
+                    }));
+        }
+
+        public int UpdateAudit(string guids, int isAudit)
+        {
+            return
+                DatabaseExcetue.RunNonQuery(
+                    string.Concat(new object[]
+                    {"UPDATE  ShopNum1_ArticleComment SET  IsAudit\t=", isAudit, " WHERE Guid in (", guids, ")"}));
+        }
+
+        public int UpdateScoreByCommentArticle(string memloginid, string rankscore, string score)
+        {
+            var paraName = new string[3];
+            var paraValue = new string[3];
+            paraName[0] = "@memloginid";
+            paraValue[0] = memloginid;
+            paraName[1] = "@rankscore";
+            paraValue[1] = rankscore;
+            paraName[2] = "@score";
+            paraValue[2] = score;
+            return DatabaseExcetue.RunProcedure("Pro_ShopNum1_UpdateScoreByCommentArticle", paraName, paraValue);
+        }
+
+        public DataTable Search(string guid, string articleName, string memLoginID, string title, string sendTime1,
+            string sendTime2, string replyTime1, string replyTime2, int isReply, int isAudit,
+            int isDeleted, string IP, string ArticleGuid)
+        {
+            string str = string.Empty;
+            str =
+                "SELECT A.Guid,A.ArticleGuid,B.Title As ArticleTitle,A.MemLoginID,A.Title,A.Rank,A.SendTime,A.Content,A.IPAddress,A.ReplyUser,A.ReplyTime,A.ReplyContent,A.IsAudit,A.IsReply,A.IsDeleted  FROM ShopNum1_ArticleComment AS A,ShopNum1_Article AS B    WHERE A.ArticleGuid = B.Guid ";
+            if (Operator.FormatToEmpty(articleName) != string.Empty)
+            {
+                str = str + " AND B.Title LIKE '%" + Operator.FilterString(articleName) + "%'";
+            }
+            if (Operator.FormatToEmpty(memLoginID) != string.Empty)
+            {
+                str = str + " AND A.MemLoginID LIKE '%" + Operator.FilterString(memLoginID) + "%'";
+            }
+            if (Operator.FormatToEmpty(title) != string.Empty)
+            {
+                str = str + " AND A.Title LIKE '%" + Operator.FilterString(title) + "%'";
+            }
+            if (Operator.FormatToEmpty(IP) != string.Empty)
+            {
+                str = str + "AND A.IPAddress like'%" + Operator.FilterString(IP) + "%'";
+            }
+            if ((isReply == 0) || (isReply == 1))
+            {
+                str = string.Concat(new object[] {str, " AND A.IsReply=", isReply, " "});
+            }
+            if (isAudit == -2)
+            {
+                str = str + " AND A.IsAudit IN (0,2) ";
+            }
+            else if (((isAudit == 0) || (isAudit == 1)) || (isAudit == 2))
+            {
+                str = string.Concat(new object[] {str, " AND A.IsAudit=", isAudit, " "});
+            }
+            if (Operator.FormatToEmpty(sendTime1) != string.Empty)
+            {
+                str = str + " AND A.SendTime>='" + Operator.FilterString(sendTime1) + "' ";
+            }
+            if (Operator.FormatToEmpty(sendTime2) != string.Empty)
+            {
+                str = str + " AND A.SendTime<='" + Operator.FilterString(sendTime2) + "' ";
+            }
+            if (Operator.FormatToEmpty(replyTime1) != string.Empty)
+            {
+                str = str + " AND A.ReplyTime>='" + Operator.FilterString(replyTime1) + "'";
+            }
+            if (Operator.FormatToEmpty(replyTime2) != string.Empty)
+            {
+                str = str + " AND A.ReplyTime<='" + Operator.FilterString(replyTime2) + "' ";
+            }
+            if ((isDeleted == 0) || (isDeleted == 1))
+            {
+                str = string.Concat(new object[] {str, " AND A.IsDeleted=", isDeleted, " "});
+            }
+            if (ArticleGuid != "0")
+            {
+                str = str + " AND A.ArticleGuid=" + ArticleGuid + " ";
+            }
+            return DatabaseExcetue.ReturnDataTable(str + "Order by A.SendTime Desc");
+        }
+    }
+}

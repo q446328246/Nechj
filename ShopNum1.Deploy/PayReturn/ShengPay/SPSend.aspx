@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="True" CodeBehind="SPSend.aspx.cs" Inherits="ShopNum1.Deploy.PayReturn.ShengPay.SPSend" %>

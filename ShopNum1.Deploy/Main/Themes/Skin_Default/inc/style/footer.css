@@ -1,0 +1,13 @@
+@charset "utf-8";
+/* CSS Document */
+.wrapBox{
+	width:100%;
+}
+.footer{
+	border-top:1px solid #d2d2d2;
+	text-align:center;
+	padding-top:15px;
+}
+.footer a{
+	padding:0 5px;
+}

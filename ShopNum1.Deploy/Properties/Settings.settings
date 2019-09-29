@@ -1,0 +1,24 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ShopNum1.Deploy.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ShopNum1_Deploy_TJAPI_City" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://tj.qq198198.com:88/WebService/City/server.php</Value>
+    </Setting>
+    <Setting Name="ShopNum1_Deploy_TJAPItwo_P_WebService" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://112.124.124.171:8081/WebService.asmx</Value>
+    </Setting>
+    <Setting Name="ShopNum1_Deploy_TJAPItwo_WebService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://112.124.124.171:8081/WebService.asmx</Value>
+    </Setting>
+    <Setting Name="ShopNum1_Deploy_TJAPIzhuliang_MemberService" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://125.227.91.177:8182/Service/MemberService.asmx</Value>
+    </Setting>
+    <Setting Name="ShopNum1_Deploy_comweb_MobileService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://www.tj88.com:808/Service/MobileService.asmx</Value>
+    </Setting>
+    <Setting Name="ShopNum1_Deploy_Tj88Rank_ServiceSlecetOrder" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://www.tj88.com:808/Service/ServiceSlecetOrder.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

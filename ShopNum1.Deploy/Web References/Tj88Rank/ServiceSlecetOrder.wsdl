@@ -1,0 +1,903 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri1.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri1.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri1.org/">
+      <s:element name="SelecetOrderByTime">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="startTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="orderTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cargthid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="md5" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelecetOrderByTimeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SelecetOrderByTimeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelecetGoodsByCargthID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="startNum" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="overNum" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="cate_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="md5" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelecetGoodsByCargthIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SelecetGoodsByCargthIDResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectImg">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Goos_id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="md5" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectImgResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SelectImgResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelcetOrderById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="goosID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="cate_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="md5" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelcetOrderByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SelcetOrderByIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateMenberRank">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rnkGuid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="menberId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="md5" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateMenberRankResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateMenberRankResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateMemberSuperior">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cmember" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="memLoginID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="md5" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateMemberSuperiorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateMemberSuperiorResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateMemberIdentityCard">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="memLoginNO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IdentityCard" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="md5" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateMemberIdentityCardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateMemberIdentityCardResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateMemberName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="memLoginNO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="md5" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateMemberNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateMemberNameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Select_Q_S_MemloginID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="startTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="orderTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="md5" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Select_Q_S_MemloginIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Select_Q_S_MemloginIDResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateMenberRank_GZ">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rnkGuid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="menberId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="md5" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateMenberRank_GZResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateMenberRank_GZResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SelecetOrderByTimeSoapIn">
+    <wsdl:part name="parameters" element="tns:SelecetOrderByTime" />
+  </wsdl:message>
+  <wsdl:message name="SelecetOrderByTimeSoapOut">
+    <wsdl:part name="parameters" element="tns:SelecetOrderByTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelecetGoodsByCargthIDSoapIn">
+    <wsdl:part name="parameters" element="tns:SelecetGoodsByCargthID" />
+  </wsdl:message>
+  <wsdl:message name="SelecetGoodsByCargthIDSoapOut">
+    <wsdl:part name="parameters" element="tns:SelecetGoodsByCargthIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectImgSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectImg" />
+  </wsdl:message>
+  <wsdl:message name="SelectImgSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectImgResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelcetOrderByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:SelcetOrderById" />
+  </wsdl:message>
+  <wsdl:message name="SelcetOrderByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:SelcetOrderByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMenberRankSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateMenberRank" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMenberRankSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateMenberRankResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMemberSuperiorSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateMemberSuperior" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMemberSuperiorSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateMemberSuperiorResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMemberIdentityCardSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateMemberIdentityCard" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMemberIdentityCardSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateMemberIdentityCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMemberNameSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateMemberName" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMemberNameSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateMemberNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="Select_Q_S_MemloginIDSoapIn">
+    <wsdl:part name="parameters" element="tns:Select_Q_S_MemloginID" />
+  </wsdl:message>
+  <wsdl:message name="Select_Q_S_MemloginIDSoapOut">
+    <wsdl:part name="parameters" element="tns:Select_Q_S_MemloginIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMenberRank_GZSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateMenberRank_GZ" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMenberRank_GZSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateMenberRank_GZResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelecetOrderByTimeHttpGetIn">
+    <wsdl:part name="startTime" type="s:string" />
+    <wsdl:part name="orderTime" type="s:string" />
+    <wsdl:part name="cargthid" type="s:string" />
+    <wsdl:part name="md5" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelecetOrderByTimeHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SelecetGoodsByCargthIDHttpGetIn">
+    <wsdl:part name="startNum" type="s:string" />
+    <wsdl:part name="overNum" type="s:string" />
+    <wsdl:part name="cate_id" type="s:string" />
+    <wsdl:part name="md5" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelecetGoodsByCargthIDHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectImgHttpGetIn">
+    <wsdl:part name="Goos_id" type="s:string" />
+    <wsdl:part name="md5" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectImgHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SelcetOrderByIdHttpGetIn">
+    <wsdl:part name="goosID" type="s:string" />
+    <wsdl:part name="cate_id" type="s:string" />
+    <wsdl:part name="md5" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelcetOrderByIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMenberRankHttpGetIn">
+    <wsdl:part name="rnkGuid" type="s:string" />
+    <wsdl:part name="menberId" type="s:string" />
+    <wsdl:part name="md5" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMenberRankHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMemberSuperiorHttpGetIn">
+    <wsdl:part name="cmember" type="s:string" />
+    <wsdl:part name="memLoginID" type="s:string" />
+    <wsdl:part name="md5" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMemberSuperiorHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMemberIdentityCardHttpGetIn">
+    <wsdl:part name="memLoginNO" type="s:string" />
+    <wsdl:part name="IdentityCard" type="s:string" />
+    <wsdl:part name="md5" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMemberIdentityCardHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMemberNameHttpGetIn">
+    <wsdl:part name="name" type="s:string" />
+    <wsdl:part name="memLoginNO" type="s:string" />
+    <wsdl:part name="md5" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMemberNameHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Select_Q_S_MemloginIDHttpGetIn">
+    <wsdl:part name="startTime" type="s:string" />
+    <wsdl:part name="orderTime" type="s:string" />
+    <wsdl:part name="md5" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Select_Q_S_MemloginIDHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMenberRank_GZHttpGetIn">
+    <wsdl:part name="rnkGuid" type="s:string" />
+    <wsdl:part name="menberId" type="s:string" />
+    <wsdl:part name="md5" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMenberRank_GZHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SelecetOrderByTimeHttpPostIn">
+    <wsdl:part name="startTime" type="s:string" />
+    <wsdl:part name="orderTime" type="s:string" />
+    <wsdl:part name="cargthid" type="s:string" />
+    <wsdl:part name="md5" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelecetOrderByTimeHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SelecetGoodsByCargthIDHttpPostIn">
+    <wsdl:part name="startNum" type="s:string" />
+    <wsdl:part name="overNum" type="s:string" />
+    <wsdl:part name="cate_id" type="s:string" />
+    <wsdl:part name="md5" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelecetGoodsByCargthIDHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectImgHttpPostIn">
+    <wsdl:part name="Goos_id" type="s:string" />
+    <wsdl:part name="md5" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectImgHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SelcetOrderByIdHttpPostIn">
+    <wsdl:part name="goosID" type="s:string" />
+    <wsdl:part name="cate_id" type="s:string" />
+    <wsdl:part name="md5" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelcetOrderByIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMenberRankHttpPostIn">
+    <wsdl:part name="rnkGuid" type="s:string" />
+    <wsdl:part name="menberId" type="s:string" />
+    <wsdl:part name="md5" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMenberRankHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMemberSuperiorHttpPostIn">
+    <wsdl:part name="cmember" type="s:string" />
+    <wsdl:part name="memLoginID" type="s:string" />
+    <wsdl:part name="md5" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMemberSuperiorHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMemberIdentityCardHttpPostIn">
+    <wsdl:part name="memLoginNO" type="s:string" />
+    <wsdl:part name="IdentityCard" type="s:string" />
+    <wsdl:part name="md5" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMemberIdentityCardHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMemberNameHttpPostIn">
+    <wsdl:part name="name" type="s:string" />
+    <wsdl:part name="memLoginNO" type="s:string" />
+    <wsdl:part name="md5" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMemberNameHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Select_Q_S_MemloginIDHttpPostIn">
+    <wsdl:part name="startTime" type="s:string" />
+    <wsdl:part name="orderTime" type="s:string" />
+    <wsdl:part name="md5" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Select_Q_S_MemloginIDHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMenberRank_GZHttpPostIn">
+    <wsdl:part name="rnkGuid" type="s:string" />
+    <wsdl:part name="menberId" type="s:string" />
+    <wsdl:part name="md5" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMenberRank_GZHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="ServiceSlecetOrderSoap">
+    <wsdl:operation name="SelecetOrderByTime">
+      <wsdl:input message="tns:SelecetOrderByTimeSoapIn" />
+      <wsdl:output message="tns:SelecetOrderByTimeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelecetGoodsByCargthID">
+      <wsdl:input message="tns:SelecetGoodsByCargthIDSoapIn" />
+      <wsdl:output message="tns:SelecetGoodsByCargthIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectImg">
+      <wsdl:input message="tns:SelectImgSoapIn" />
+      <wsdl:output message="tns:SelectImgSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelcetOrderById">
+      <wsdl:input message="tns:SelcetOrderByIdSoapIn" />
+      <wsdl:output message="tns:SelcetOrderByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMenberRank">
+      <wsdl:input message="tns:UpdateMenberRankSoapIn" />
+      <wsdl:output message="tns:UpdateMenberRankSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMemberSuperior">
+      <wsdl:input message="tns:UpdateMemberSuperiorSoapIn" />
+      <wsdl:output message="tns:UpdateMemberSuperiorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMemberIdentityCard">
+      <wsdl:input message="tns:UpdateMemberIdentityCardSoapIn" />
+      <wsdl:output message="tns:UpdateMemberIdentityCardSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMemberName">
+      <wsdl:input message="tns:UpdateMemberNameSoapIn" />
+      <wsdl:output message="tns:UpdateMemberNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Select_Q_S_MemloginID">
+      <wsdl:input message="tns:Select_Q_S_MemloginIDSoapIn" />
+      <wsdl:output message="tns:Select_Q_S_MemloginIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMenberRank_GZ">
+      <wsdl:input message="tns:UpdateMenberRank_GZSoapIn" />
+      <wsdl:output message="tns:UpdateMenberRank_GZSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ServiceSlecetOrderHttpGet">
+    <wsdl:operation name="SelecetOrderByTime">
+      <wsdl:input message="tns:SelecetOrderByTimeHttpGetIn" />
+      <wsdl:output message="tns:SelecetOrderByTimeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelecetGoodsByCargthID">
+      <wsdl:input message="tns:SelecetGoodsByCargthIDHttpGetIn" />
+      <wsdl:output message="tns:SelecetGoodsByCargthIDHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectImg">
+      <wsdl:input message="tns:SelectImgHttpGetIn" />
+      <wsdl:output message="tns:SelectImgHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelcetOrderById">
+      <wsdl:input message="tns:SelcetOrderByIdHttpGetIn" />
+      <wsdl:output message="tns:SelcetOrderByIdHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMenberRank">
+      <wsdl:input message="tns:UpdateMenberRankHttpGetIn" />
+      <wsdl:output message="tns:UpdateMenberRankHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMemberSuperior">
+      <wsdl:input message="tns:UpdateMemberSuperiorHttpGetIn" />
+      <wsdl:output message="tns:UpdateMemberSuperiorHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMemberIdentityCard">
+      <wsdl:input message="tns:UpdateMemberIdentityCardHttpGetIn" />
+      <wsdl:output message="tns:UpdateMemberIdentityCardHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMemberName">
+      <wsdl:input message="tns:UpdateMemberNameHttpGetIn" />
+      <wsdl:output message="tns:UpdateMemberNameHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Select_Q_S_MemloginID">
+      <wsdl:input message="tns:Select_Q_S_MemloginIDHttpGetIn" />
+      <wsdl:output message="tns:Select_Q_S_MemloginIDHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMenberRank_GZ">
+      <wsdl:input message="tns:UpdateMenberRank_GZHttpGetIn" />
+      <wsdl:output message="tns:UpdateMenberRank_GZHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ServiceSlecetOrderHttpPost">
+    <wsdl:operation name="SelecetOrderByTime">
+      <wsdl:input message="tns:SelecetOrderByTimeHttpPostIn" />
+      <wsdl:output message="tns:SelecetOrderByTimeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelecetGoodsByCargthID">
+      <wsdl:input message="tns:SelecetGoodsByCargthIDHttpPostIn" />
+      <wsdl:output message="tns:SelecetGoodsByCargthIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectImg">
+      <wsdl:input message="tns:SelectImgHttpPostIn" />
+      <wsdl:output message="tns:SelectImgHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelcetOrderById">
+      <wsdl:input message="tns:SelcetOrderByIdHttpPostIn" />
+      <wsdl:output message="tns:SelcetOrderByIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMenberRank">
+      <wsdl:input message="tns:UpdateMenberRankHttpPostIn" />
+      <wsdl:output message="tns:UpdateMenberRankHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMemberSuperior">
+      <wsdl:input message="tns:UpdateMemberSuperiorHttpPostIn" />
+      <wsdl:output message="tns:UpdateMemberSuperiorHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMemberIdentityCard">
+      <wsdl:input message="tns:UpdateMemberIdentityCardHttpPostIn" />
+      <wsdl:output message="tns:UpdateMemberIdentityCardHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMemberName">
+      <wsdl:input message="tns:UpdateMemberNameHttpPostIn" />
+      <wsdl:output message="tns:UpdateMemberNameHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Select_Q_S_MemloginID">
+      <wsdl:input message="tns:Select_Q_S_MemloginIDHttpPostIn" />
+      <wsdl:output message="tns:Select_Q_S_MemloginIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMenberRank_GZ">
+      <wsdl:input message="tns:UpdateMenberRank_GZHttpPostIn" />
+      <wsdl:output message="tns:UpdateMenberRank_GZHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceSlecetOrderSoap" type="tns:ServiceSlecetOrderSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SelecetOrderByTime">
+      <soap:operation soapAction="http://tempuri1.org/SelecetOrderByTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelecetGoodsByCargthID">
+      <soap:operation soapAction="http://tempuri1.org/SelecetGoodsByCargthID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectImg">
+      <soap:operation soapAction="http://tempuri1.org/SelectImg" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelcetOrderById">
+      <soap:operation soapAction="http://tempuri1.org/SelcetOrderById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMenberRank">
+      <soap:operation soapAction="http://tempuri1.org/UpdateMenberRank" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMemberSuperior">
+      <soap:operation soapAction="http://tempuri1.org/UpdateMemberSuperior" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMemberIdentityCard">
+      <soap:operation soapAction="http://tempuri1.org/UpdateMemberIdentityCard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMemberName">
+      <soap:operation soapAction="http://tempuri1.org/UpdateMemberName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Select_Q_S_MemloginID">
+      <soap:operation soapAction="http://tempuri1.org/Select_Q_S_MemloginID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMenberRank_GZ">
+      <soap:operation soapAction="http://tempuri1.org/UpdateMenberRank_GZ" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceSlecetOrderSoap12" type="tns:ServiceSlecetOrderSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SelecetOrderByTime">
+      <soap12:operation soapAction="http://tempuri1.org/SelecetOrderByTime" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelecetGoodsByCargthID">
+      <soap12:operation soapAction="http://tempuri1.org/SelecetGoodsByCargthID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectImg">
+      <soap12:operation soapAction="http://tempuri1.org/SelectImg" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelcetOrderById">
+      <soap12:operation soapAction="http://tempuri1.org/SelcetOrderById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMenberRank">
+      <soap12:operation soapAction="http://tempuri1.org/UpdateMenberRank" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMemberSuperior">
+      <soap12:operation soapAction="http://tempuri1.org/UpdateMemberSuperior" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMemberIdentityCard">
+      <soap12:operation soapAction="http://tempuri1.org/UpdateMemberIdentityCard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMemberName">
+      <soap12:operation soapAction="http://tempuri1.org/UpdateMemberName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Select_Q_S_MemloginID">
+      <soap12:operation soapAction="http://tempuri1.org/Select_Q_S_MemloginID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMenberRank_GZ">
+      <soap12:operation soapAction="http://tempuri1.org/UpdateMenberRank_GZ" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceSlecetOrderHttpGet" type="tns:ServiceSlecetOrderHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="SelecetOrderByTime">
+      <http:operation location="/SelecetOrderByTime" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelecetGoodsByCargthID">
+      <http:operation location="/SelecetGoodsByCargthID" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectImg">
+      <http:operation location="/SelectImg" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelcetOrderById">
+      <http:operation location="/SelcetOrderById" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMenberRank">
+      <http:operation location="/UpdateMenberRank" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMemberSuperior">
+      <http:operation location="/UpdateMemberSuperior" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMemberIdentityCard">
+      <http:operation location="/UpdateMemberIdentityCard" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMemberName">
+      <http:operation location="/UpdateMemberName" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Select_Q_S_MemloginID">
+      <http:operation location="/Select_Q_S_MemloginID" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMenberRank_GZ">
+      <http:operation location="/UpdateMenberRank_GZ" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceSlecetOrderHttpPost" type="tns:ServiceSlecetOrderHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="SelecetOrderByTime">
+      <http:operation location="/SelecetOrderByTime" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelecetGoodsByCargthID">
+      <http:operation location="/SelecetGoodsByCargthID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectImg">
+      <http:operation location="/SelectImg" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelcetOrderById">
+      <http:operation location="/SelcetOrderById" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMenberRank">
+      <http:operation location="/UpdateMenberRank" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMemberSuperior">
+      <http:operation location="/UpdateMemberSuperior" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMemberIdentityCard">
+      <http:operation location="/UpdateMemberIdentityCard" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMemberName">
+      <http:operation location="/UpdateMemberName" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Select_Q_S_MemloginID">
+      <http:operation location="/Select_Q_S_MemloginID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMenberRank_GZ">
+      <http:operation location="/UpdateMenberRank_GZ" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServiceSlecetOrder">
+    <wsdl:port name="ServiceSlecetOrderSoap" binding="tns:ServiceSlecetOrderSoap">
+      <soap:address location="http://www.tj88.com:808/Service/ServiceSlecetOrder.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceSlecetOrderSoap12" binding="tns:ServiceSlecetOrderSoap12">
+      <soap12:address location="http://www.tj88.com:808/Service/ServiceSlecetOrder.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceSlecetOrderHttpGet" binding="tns:ServiceSlecetOrderHttpGet">
+      <http:address location="http://www.tj88.com:808/Service/ServiceSlecetOrder.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceSlecetOrderHttpPost" binding="tns:ServiceSlecetOrderHttpPost">
+      <http:address location="http://www.tj88.com:808/Service/ServiceSlecetOrder.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.377</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BDA4BD72-59EB-43B4-A7B6-03465BDACEC9}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>ShopNum1.MemberWebControl</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\dll\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Data" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="M_SysMsgDetail.cs" />
+    <Compile Include="M_MemberReport.cs" />
+    <Compile Include="M_ReportDetailed.cs" />
+    <Compile Include="M_MemberComplaints.cs" />
+    <Compile Include="M_RefundManage.cs" />
+    <Compile Include="M_CreditDetails.cs" />
+    <Compile Include="M_MyMessageBoard.cs" />
+    <Compile Include="M_MsgDetail.cs" />
+    <Compile Include="M_ShopCollect.cs" />
+    <Compile Include="M_Comment.cs" />
+    <Compile Include="M_SupplyDemandCommentDetail.cs" />
+    <Compile Include="M_ArticleCommentDetail.cs" />
+    <Compile Include="M_AddProductComment.cs" />
+    <Compile Include="M_RefundGoods.cs" />
+    <Compile Include="M_FeedBack.cs" />
+    <Compile Include="M_Left.cs" />
+    <Compile Include="M_VideoCommentDetail.cs" />
+    <Compile Include="M_OrderDetail.cs" />
+    <Compile Include="M_MySupply.cs" />
+    <Compile Include="M_ShopNewsCommentDetail.cs" />
+    <Compile Include="M_SendMsg.cs" />
+    <Compile Include="M_WelcomeProduct.cs" />
+    <Compile Include="M_MyMessageBoardDetailed.cs" />
+    <Compile Include="M_VideoComment.cs" />
+    <Compile Include="M_SaleOrderList.cs" />
+    <Compile Include="M_Welcome.cs" />
+    <Compile Include="M_SignIn.cs" />
+    <Compile Include="M_Msg.cs" />
+    <Compile Include="M_MemberProductCollect.cs" />
+    <Compile Include="M_PayOp.cs" />
+    <Compile Include="M_LifeOrderList.cs" />
+    <Compile Include="M_ExitGoods.cs" />
+    <Compile Include="M_MyReport.cs" />
+    <Compile Include="M_ArticleComment.cs" />
+    <Compile Include="M_ShopVideoCommentDetail.cs" />
+    <Compile Include="M_ProductComment.cs" />
+    <Compile Include="M_OrderScoreList.cs" />
+    <Compile Include="M_RankScoreModifyLog.cs" />
+    <Compile Include="M_Head.cs" />
+    <Compile Include="M_AddSupply.cs" />
+    <Compile Include="M_SupplyDemandComment.cs" />
+    <Compile Include="M_RecommendUserLink.cs" />
+    <Compile Include="M_ScoreModifyLog.cs" />
+    <Compile Include="M_MyComplaints.cs" />
+    <Compile Include="M_RecommendUser.cs" />
+    <Compile Include="M_ShopNewsComment.cs" />
+    <Compile Include="M_Bottom.cs" />
+    <Compile Include="M_SysMsg.cs" />
+    <Compile Include="M_OrderScoreDetailed.cs" />
+    <Compile Include="M_ComplaintsDetailed.cs" />
+    <Compile Include="M_MyCollect.cs" />
+    <Compile Include="M_ShopVideoComment.cs" />
+    <Compile Include="M_OrderList.cs" />
+    <Compile Include="M_RecommendCommision.cs" />
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ShopNum1.BusinessLogic\ShopNum1.BusinessLogic.csproj">
+      <Project>{090f4879-20c3-431f-a839-d8bcadb27bc1}</Project>
+      <Name>ShopNum1.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.Common\ShopNum1.Common.csproj">
+      <Project>{3f01a9dc-7c89-41fd-a758-453e0b50d278}</Project>
+      <Name>ShopNum1.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.Email\ShopNum1.Email.csproj">
+      <Project>{225E6E14-C543-42A9-87B0-3BC77480560D}</Project>
+      <Name>ShopNum1.Email</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.Factory\ShopNum1.Factory.csproj">
+      <Project>{612ed950-d9cf-498e-882f-ca523da66716}</Project>
+      <Name>ShopNum1.Factory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.Interface\ShopNum1.Interface.csproj">
+      <Project>{637fd586-553b-4f84-8a8e-aa2883deb393}</Project>
+      <Name>ShopNum1.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.KuaiDi\ShopNum1.KuaiDi.csproj">
+      <Project>{325c1b72-8554-4d89-a92a-8787ee996df6}</Project>
+      <Name>ShopNum1.KuaiDi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.MultiBaseWebControl\ShopNum1.MultiBaseWebControl.csproj">
+      <Project>{411e8bd3-cefa-44ce-b7ea-b4bfb8469eca}</Project>
+      <Name>ShopNum1.MultiBaseWebControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.Payment\ShopNum1.Payment.csproj">
+      <Project>{5AC9F7AC-D8AE-471A-A97C-1C7AD251F066}</Project>
+      <Name>ShopNum1.Payment</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.ShopBusinessLogic\ShopNum1.ShopBusinessLogic.csproj">
+      <Project>{d5352277-f1dd-4854-9c4a-c936e63b5e31}</Project>
+      <Name>ShopNum1.ShopBusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.ShopFactory\ShopNum1.ShopFactory.csproj">
+      <Project>{be4b32f3-4ebc-431d-91aa-eda5e71b81c1}</Project>
+      <Name>ShopNum1.ShopFactory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.ShopInterface\ShopNum1.ShopInterface.csproj">
+      <Project>{1df5e363-1167-4275-ab8b-26179f39933e}</Project>
+      <Name>ShopNum1.ShopInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.Standard\ShopNum1.Standard.csproj">
+      <Project>{fbf33d3c-6eb7-4d50-90da-08b352ed8dad}</Project>
+      <Name>ShopNum1.Standard</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1MultiEntity\ShopNum1MultiEntity.csproj">
+      <Project>{c180cc8c-aed3-4536-82de-16b796633249}</Project>
+      <Name>ShopNum1MultiEntity</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

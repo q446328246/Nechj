@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="True" CodeBehind="notify_url.aspx.cs" Inherits="ShopNum1.Deploy.PayReturn.notify_url" %>

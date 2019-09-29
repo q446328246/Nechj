@@ -1,0 +1,66 @@
+﻿using System.Data;
+using ShopNum1.DataAccess;
+using ShopNum1.Interface;
+using ShopNum1MultiEntity;
+
+namespace ShopNum1.BusinessLogic
+{
+    public class ShopNum1_Comment_Action : IShopNum1_Comment_Action
+    {
+        public int AddComment(ShopNum1_Comment comment)
+        {
+            var paraName = new string[9];
+            var paraValue = new string[9];
+            paraName[0] = "@memberone";
+            paraValue[0] = comment.MemberOne;
+            paraName[1] = "@membertwo";
+            paraValue[1] = comment.MemberTwo;
+            paraName[2] = "@commenttype";
+            paraValue[2] = comment.CommentType.ToString();
+            paraName[3] = "@good";
+            paraValue[3] = comment.Good.ToString();
+            paraName[4] = "@middle";
+            paraValue[4] = comment.Middle.ToString();
+            paraName[5] = "@bad";
+            paraValue[5] = comment.Bad.ToString();
+            paraName[6] = "@comment";
+            paraValue[6] = comment.Comment;
+            paraName[7] = "@commenttime";
+            paraValue[7] = comment.CommentTime.ToShortDateString();
+            paraName[8] = "@orderid";
+            paraValue[8] = comment.OrderId;
+            return DatabaseExcetue.RunProcedure("Pro_ShopNum1_AddComment", paraName, paraValue);
+        }
+
+        public DataTable CommentListStatReport(string memberid)
+        {
+            var paraName = new string[1];
+            var paraValue = new string[1];
+            paraName[0] = "@memberid";
+            paraValue[0] = memberid;
+            return DatabaseExcetue.RunProcedureReturnDataTable("Pro_ShopNum1_CommentListStatReport", paraName, paraValue);
+        }
+
+        public int DeleteComment(string guid)
+        {
+            var paraName = new string[1];
+            var paraValue = new string[1];
+            paraName[0] = "@guid";
+            paraValue[0] = guid;
+            return DatabaseExcetue.RunProcedure("Pro_ShopNum1_DeleteComment", paraName, paraValue);
+        }
+
+        public DataTable SearchCommentList(string memberid, string membertype, string commenttype)
+        {
+            var paraName = new string[3];
+            var paraValue = new string[3];
+            paraName[0] = "@memberid";
+            paraValue[0] = memberid;
+            paraName[1] = "@membertype";
+            paraValue[1] = membertype;
+            paraName[2] = "@commenttype";
+            paraValue[2] = commenttype;
+            return DatabaseExcetue.RunProcedureReturnDataTable("Pro_ShopNum1_SearchCommentList", paraName, paraValue);
+        }
+    }
+}

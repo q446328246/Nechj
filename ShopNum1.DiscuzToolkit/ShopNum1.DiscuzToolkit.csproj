@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.377</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C6C631C2-072B-4BE1-A3A9-D2414E4A412B}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>ShopNum1.DiscuzToolkit</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\dll\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dll\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System" />
+    <Reference Include="System.Web" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="Topic.cs" />
+    <Compile Include="ForumTopic.cs" />
+    <Compile Include="Location.cs" />
+    <Compile Include="Forum.cs" />
+    <Compile Include="IndexForum.cs" />
+    <Compile Include="AttachmentInfo.cs" />
+    <Compile Include="Notification.cs" />
+    <Compile Include="PrivateMessage.cs" />
+    <Compile Include="Error.cs" />
+    <Compile Include="SessionWrapper.cs" />
+    <Compile Include="DiscuzException.cs" />
+    <Compile Include="Util.cs" />
+    <Compile Include="Post.cs" />
+    <Compile Include="ErrorDetails.cs" />
+    <Compile Include="Arg.cs" />
+    <Compile Include="TokenInfo.cs" />
+    <Compile Include="SessionInfo.cs" />
+    <Compile Include="RegisterResponse.cs" />
+    <Compile Include="EncodePasswordResponse.cs" />
+    <Compile Include="ChangePasswordResponse.cs" />
+    <Compile Include="UserInfoResponse.cs" />
+    <Compile Include="LoggedInUserResponse.cs" />
+    <Compile Include="GetIDResponse.cs" />
+    <Compile Include="ArgResponse.cs" />
+    <Compile Include="TopicCreateResponse.cs" />
+    <Compile Include="SetInfoResponse.cs" />
+    <Compile Include="SetExtCreditsResponse.cs" />
+    <Compile Include="SendNotificationResponse.cs" />
+    <Compile Include="SendNotificationEmailResponse.cs" />
+    <Compile Include="GetNotiificationResponse.cs" />
+    <Compile Include="GetForumResponse.cs" />
+    <Compile Include="CreateForumResponse.cs" />
+    <Compile Include="TopicReplyResponse.cs" />
+    <Compile Include="TopicGetRencentRepliesResponse.cs" />
+    <Compile Include="TopicGetListResponse.cs" />
+    <Compile Include="TopicEditResponse.cs" />
+    <Compile Include="TopicDeleteResponse.cs" />
+    <Compile Include="TopicGetResponse.cs" />
+    <Compile Include="MessagesSendResponse.cs" />
+    <Compile Include="MessagesGetResponse.cs" />
+    <Compile Include="TopicDeleteRepliesResponse.cs" />
+    <Compile Include="GetIndexListResponse.cs" />
+    <Compile Include="FormatType.cs" />
+    <Compile Include="ErrorType.cs" />
+    <Compile Include="DiscuzSession.cs" />
+    <Compile Include="DiscuzParam.cs" />
+    <Compile Include="Friend.cs" />
+    <Compile Include="User.cs" />
+    <Compile Include="UserForEditing.cs" />
+    <Compile Include="Reply.cs" />
+    <Compile Include="Me.cs" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,132 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+#top{
+	width:100%;
+	height:110px;
+	overflow:hidden;
+	background:#33802d;
+}
+#top .top_box{
+	width:1190px; 
+	height:auto;
+	margin:0 auto;
+	padding-top:20px;
+}
+#top .top_box .logo_login{
+	width:282px;
+	height:71px;
+	overflow:hidden;
+	line-height:9999px;
+	background:url(images/logo_login.png) no-repeat;
+}
+#login_main{
+	width:100%;
+	min-width:980px;
+	height:auto;
+	overflow:hidden;
+	background:#deeff4 url(images/login_bg.png) repeat-x;
+}
+
+.login_style{
+	width:980px;
+	height:auto;
+	margin:0 auto;
+}
+.img_box{
+	width:609px;
+	height:520px;
+	background:url(images/login_img.png) bottom no-repeat;
+	float:left;
+}
+.login{
+	width:270px;
+	height:298px;
+	overflow:hidden;
+	float:right;
+	display:inline;
+	background:url(images/login_box.png) no-repeat;
+	padding:90px 40px 0 40px;
+	margin-top:60px;
+}
+.login p{
+	padding:5px 0 5px 2px;
+	float:left;
+	width:315px;
+}
+.login .text_info{
+	padding:0 0 0 2px;
+	line-height:18px;
+	color:#ff6600;
+}
+.login .text_info span{
+	line-height:18px;
+}
+.login p span{
+	line-height:33px;
+}
+.login input{
+	width:216px;
+	height:33px;
+	line-height:33px;
+	border:1px solid #ddd;
+	color:#666;
+	background:url(images/login_ico.png) no-repeat;
+	padding-left:45px;
+	float:left;
+}
+.login input:hover{
+	border:1px solid #35b02a;
+}
+.login .user{
+	background-position:0 0;
+}
+.login .password{
+	background-position:0 -45px;
+}
+.login .code{
+	width:70px;
+	padding-left:5px;
+	background:none;
+}
+.login .code_img{
+	width:60px;
+	height:25px;
+	display:block;
+	float:left;
+	padding:5px 5px 0 5px;
+}
+.login .bottom{
+	padding:2px 2px 0 2px;
+	width:265px;
+	line-height:18px;
+}
+.login .bottom span{
+	float:left;
+	padding:0 20px;
+}
+.login .blue{
+	color:#00599d;
+}
+.login .red{
+	color:#e40500;
+}
+.login a:hover{
+	color:#ff6600;
+}
+.login .btn_login{
+	width:263px;
+	height:33px;
+	background:url(images/login_ico.png) 0 -134px no-repeat;
+	border:none;
+	cursor:pointer;
+}
+
+.footer{
+	border-top:1px solid #d2d2d2;
+	text-align:center;
+	padding-top:15px;
+}
+.footer a{
+	padding:0 5px;
+}

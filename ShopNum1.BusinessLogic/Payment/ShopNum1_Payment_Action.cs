@@ -1,0 +1,317 @@
+﻿using System.Data;
+using ShopNum1.Common;
+using ShopNum1.DataAccess;
+using ShopNum1.Interface;
+using ShopNum1MultiEntity;
+using System.Data.Common;
+
+namespace ShopNum1.BusinessLogic
+{
+    public class ShopNum1_Payment_Action : IShopNum1_Payment_Action
+    {
+        public int Add(ShopNum1_Payment payment)
+        {
+            return DatabaseExcetue.RunNonQuery(string.Concat(new object[]
+            {
+                "Insert into ShopNum1_Payment( \tGuid\t,\tPaymentType\t,\tName\t,\tMerchantCode\t,\tSecretKey\t,\tSecondKey\t,\tPwd\t,\tPartner\t,\tCharge\t,\tEmail\t,\tIsPercent\t,\tMemo\t,\tIsCOD\t,\tOrderID\t,\tCreateUser\t,\tCreateTime\t,\tModifyUser\t,\tModifyTime\t,\tForAdvancePayment\t,\tIsDeleted   ) VALUES (  '"
+                , payment.Guid, "',  '", Operator.FilterString(payment.PaymentType), "',  '",
+                Operator.FilterString(payment.Name), "',  '", Operator.FilterString(payment.MerchantCode), "',  '",
+                payment.SecretKey, "',  '", payment.SecondKey, "',  '", payment.Pwd, "',  '", payment.Partner,
+                "',  '", payment.Charge, "',  '", payment.Email, "',  ", payment.IsPercent, ",  '", payment.Memo,
+                "',  ", payment.IsCOD, ",  ", payment.OrderID, ",  '", payment.CreateUser, "',  '",
+                payment.CreateTime,
+                "',  '", payment.ModifyUser, "',  '", payment.ModifyTime, "',  ", payment.ForAdvancePayment, ",  ",
+                payment.IsDeleted, " )"
+            }));
+        }
+
+        public int Delete(string guids)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+
+            parms[0].ParameterName = "@guids";
+            parms[0].Value = guids;
+           
+            return DatabaseExcetue.RunNonQuery("Delete from ShopNum1_Payment where guid in (@guids)",parms);
+        }
+
+        public int DeleteMobile(string guids)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+
+            parms[0].ParameterName = "@guids";
+            parms[0].Value = guids;
+            return DatabaseExcetue.RunNonQuery("Delete from ShopNum1_MobilePayment where guid in (@guids)",parms);
+        }
+
+        public DataTable GetPaymentInfoByGuid(string guid)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+
+            parms[0].ParameterName = "@guid";
+            parms[0].Value = guid.Replace("'","");
+            string strSql = string.Empty;
+            strSql =
+                "SELECT  PaymentType ,  Name ,  MerchantCode ,  SecretKey ,  SecondKey ,  Pwd ,  Partner ,  Charge ,  Email ,  IsPercent ,  Memo ,  IsCOD ,  OrderID ,  CreateUser ,  CreateTime ,  ModifyUser ,  ModifyTime ,  IsDeleted    FROM ShopNum1_Payment where 1=1 ";
+            if ((Operator.FormatToEmpty(guid) != string.Empty) && (Operator.FormatToEmpty(guid) != "0"))
+            {
+                strSql = strSql + " and guid=@guid";
+            }
+            return DatabaseExcetue.ReturnDataTable(strSql,parms);
+        }
+
+        public DataTable GetPaymentKey(string paymentType)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+
+            parms[0].ParameterName = "@paymentType";
+            parms[0].Value = paymentType;
+            string str = string.Empty;
+            str =
+                "SELECT  PaymentType ,  Name ,  MerchantCode ,  SecretKey ,  SecondKey ,  Pwd ,  Partner ,  Charge ,  Email ,  IsPercent ,  Memo ,  IsCOD ,  OrderID ,  CreateUser ,  CreateTime ,  ModifyUser ,  ModifyTime ,  IsDeleted    FROM ShopNum1_Payment where 1=1 ";
+            return DatabaseExcetue.ReturnDataTable(str + " and PaymentType=@paymentType",parms);
+        }
+
+        public string GetPaymentType(string guid)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+
+            parms[0].ParameterName = "@guid";
+            parms[0].Value = guid.Replace("'","");
+            return
+                DatabaseExcetue.ReturnDataTable("SELECT Guid, PaymentType  FROM ShopNum1_Payment WHERE Guid=@guid",parms).Rows[0]["PaymentType"].ToString();
+        }
+
+        public string GetShopPayMentByGuid(string guid)
+        {
+            return DatabaseExcetue.ReturnString("SELECT IsPayMentShop from ShopNum1_ShopInfo where guid ='" + guid + "'");
+        }
+
+        public DataTable Search()
+        {
+            string strSql = string.Empty;
+            strSql =
+                "SELECT Guid, Name, PaymentType,  ForAdvancePayment,IsDeleted   FROM ShopNum1_Payment WHERE  IsDeleted=0";
+            return DatabaseExcetue.ReturnDataTable(strSql);
+        }
+        /// <summary>
+        /// VIP,BTC,积分专区不使用第三方支付
+        /// </summary>
+        /// <param name="isDeleted"></param>
+        /// <returns></returns>
+        public DataTable SearchTwo(int isDeleted)
+        {
+            string str = string.Empty;
+            str = "SELECT Guid,Name,Memo,Charge,IsPercent,PaymentType FROM ShopNum1_Payment  WHERE 0 =0 and Name!='线下支付' ";
+            if ((isDeleted == 0) || (isDeleted == 1))
+            {
+                str = string.Concat(new object[] { str, " AND IsDeleted=", isDeleted, " " });
+            }
+            return DatabaseExcetue.ReturnDataTable(str + "Order By OrderID Desc");
+        }
+        public DataTable Search(int isDeleted)
+        {
+            string str = string.Empty;
+            str = "SELECT Guid,Name,Memo,Charge,IsPercent,PaymentType FROM ShopNum1_Payment  WHERE 0 =0 and Name!='线下支付' ";
+            if ((isDeleted == 0) || (isDeleted == 1))
+            {
+                str = string.Concat(new object[] {str, " AND IsDeleted=", isDeleted, " "});
+            }
+            return DatabaseExcetue.ReturnDataTable(str + "Order By OrderID Desc");
+        }
+
+        public DataTable SearchMobile(int isDeleted)
+        {
+            string str = string.Empty;
+            str = "SELECT Guid,Name,Memo,Charge,IsPercent,PaymentType FROM ShopNum1_MobilePayment  WHERE 0 =0 ";
+            if ((isDeleted == 0) || (isDeleted == 1))
+            {
+                str = string.Concat(new object[] {str, " AND IsDeleted=", isDeleted, " "});
+            }
+            return DatabaseExcetue.ReturnDataTable(str + "Order By OrderID Desc");
+        }
+
+        public DataTable SearchPayInfo(string guid, int isdelete)
+        {
+            string strSql = string.Empty;
+            strSql =
+                "SELECT  PaymentType ,  Name ,  MerchantCode ,  SecretKey ,  SecondKey ,  Pwd ,  Partner ,  Charge ,  Email ,  IsPercent ,  Memo ,  IsCOD ,  OrderID ,  CreateUser ,  CreateTime ,  ModifyUser ,  ModifyTime ,  ForAdvancePayment ,  IsDeleted    FROM ShopNum1_Payment where 1=1 ";
+            if ((Operator.FormatToEmpty(guid) != string.Empty) && (Operator.FormatToEmpty(guid) != "0"))
+            {
+                strSql = strSql + " and guid='" + guid + "' ";
+            }
+            if ((isdelete == 0) || (isdelete == 1))
+            {
+                strSql = string.Concat(new object[] {strSql, " AND IsDeleted=", isdelete, " "});
+            }
+            return DatabaseExcetue.ReturnDataTable(strSql);
+        }
+
+        public DataTable SearchPre()
+        {
+            string strSql = string.Empty;
+            strSql =
+                "SELECT Guid, Name, PaymentType, IsDeleted   FROM ShopNum1_Payment WHERE PaymentType ='PreDeposits.aspx'";
+            return DatabaseExcetue.ReturnDataTable(strSql);
+        }
+
+        public int UpdataShopPayMentByGuid(string guid, string IsPayMentShop)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(2);
+
+            parms[0].ParameterName = "@guid";
+            parms[0].Value = guid.Replace("'","");
+            parms[1].ParameterName = "@IsPayMentShop";
+            parms[1].Value = IsPayMentShop;
+            return
+                DatabaseExcetue.RunNonQuery("UPDATE ShopNum1_ShopInfo SET IsPayMentShop=@IsPayMentShop where guid =@guid",parms);
+        }
+
+        public int Update(ShopNum1_Payment payment, string guid, int isDeleted)
+        {
+            return DatabaseExcetue.RunNonQuery(string.Concat(new object[]
+            {
+                "UPDATE  ShopNum1_Payment SET  PaymentType='", payment.PaymentType, "', Name='",
+                Operator.FilterString(payment.Name), "', MerchantCode='",
+                Operator.FilterString(payment.MerchantCode), "', SecretKey='",
+                Operator.FilterString(payment.SecretKey), "', SecondKey='", Operator.FilterString(payment.SecondKey)
+                , "', Pwd='", Operator.FilterString(payment.Pwd), "', Email='", Operator.FilterString(payment.Email)
+                , "', Memo='", Operator.FilterString(payment.Memo),
+                "', IsPercent=", payment.IsPercent, ", Charge='", Operator.FilterString(payment.Charge), "', IsCOD="
+                , payment.IsCOD, ", OrderID=", Operator.FilterString(payment.OrderID), ", ModifyUser='",
+                payment.ModifyUser, "', ModifyTime='", payment.ModifyTime, "', ForAdvancePayment=",
+                payment.ForAdvancePayment, ", IsDeleted=", payment.IsDeleted,
+                " WHERE Guid='", payment.Guid, "'"
+            }));
+        }
+
+        public int UpdateMobile(ShopNum1_Payment payment, string guid, int isDeleted)
+        {
+            return DatabaseExcetue.RunNonQuery(string.Concat(new object[]
+            {
+                "UPDATE  ShopNum1_MobilePayment SET  PaymentType='", payment.PaymentType, "', Name='",
+                Operator.FilterString(payment.Name), "', MerchantCode='",
+                Operator.FilterString(payment.MerchantCode), "', SecretKey='",
+                Operator.FilterString(payment.SecretKey), "', SecondKey='", Operator.FilterString(payment.SecondKey)
+                , "', Pwd='", Operator.FilterString(payment.Pwd), "', Email='", Operator.FilterString(payment.Email)
+                , "', Memo='", Operator.FilterString(payment.Memo),
+                "', IsPercent=", payment.IsPercent, ", Charge='", Operator.FilterString(payment.Charge), "', IsCOD="
+                , payment.IsCOD, ", OrderID=", Operator.FilterString(payment.OrderID), ", ModifyUser='",
+                payment.ModifyUser, "', ModifyTime='", payment.ModifyTime, "', ForAdvancePayment=",
+                payment.ForAdvancePayment, ", IsDeleted=", payment.IsDeleted,
+                " WHERE Guid='", payment.Guid, "'"
+            }));
+        }
+
+        public int AddMobile(ShopNum1_Payment payment)
+        {
+            return DatabaseExcetue.RunNonQuery(string.Concat(new object[]
+            {
+                "Insert into ShopNum1_MobilePayment( \tGuid\t,\tPaymentType\t,\tName\t,\tMerchantCode\t,\tSecretKey\t,\tSecondKey\t,\tPwd\t,\tPartner\t,\tCharge\t,\tEmail\t,\tIsPercent\t,\tMemo\t,\tIsCOD\t,\tOrderID\t,\tCreateUser\t,\tCreateTime\t,\tModifyUser\t,\tModifyTime\t,\tForAdvancePayment\t,\tIsDeleted   ) VALUES (  '"
+                , payment.Guid, "',  '", Operator.FilterString(payment.PaymentType), "',  '",
+                Operator.FilterString(payment.Name), "',  '", Operator.FilterString(payment.MerchantCode), "',  '",
+                payment.SecretKey, "',  '", payment.SecondKey, "',  '", payment.Pwd, "',  '", payment.Partner,
+                "',  '", payment.Charge, "',  '", payment.Email, "',  ", payment.IsPercent, ",  '", payment.Memo,
+                "',  ", payment.IsCOD, ",  ", payment.OrderID, ",  '", payment.CreateUser, "',  '",
+                payment.CreateTime,
+                "',  '", payment.ModifyUser, "',  '", payment.ModifyTime, "',  ", payment.ForAdvancePayment, ",  ",
+                payment.IsDeleted, " )"
+            }));
+        }
+
+        public DataTable PaymentTypeName(string PaymentType)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+
+            parms[0].ParameterName = "@PaymentType";
+            parms[0].Value = PaymentType;
+            
+            string strSql = string.Empty;
+            strSql = "   SELECT * FROM  ShopNum1_PaymentType  WHERE 1=1   ";
+            if (!string.IsNullOrEmpty(PaymentType))
+            {
+                strSql = strSql + "   AND   PaymentType =@PaymentTyp";
+            }
+            return DatabaseExcetue.ReturnDataTable(strSql,parms);
+        }
+
+        public DataTable SearchByShop(int ForAdvancePayment)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+
+            parms[0].ParameterName = "@ForAdvancePayment";
+            parms[0].Value = ForAdvancePayment;
+            string str = string.Empty;
+            str =
+                "SELECT Guid, Name, PaymentType,  ForAdvancePayment,IsDeleted   FROM ShopNum1_Payment WHERE  IsDeleted=0";
+            if ((ForAdvancePayment == 1) || (ForAdvancePayment == 0))
+            {
+                object obj2 = str;
+                str = string.Concat(new[] {obj2, "  AND   ForAdvancePayment =@ForAdvancePayment"});
+            }
+            return DatabaseExcetue.ReturnDataTable(str + "    ORDER  BY   OrderID DESC     ",parms);
+        }
+
+        public DataTable SearchnotPreDeposits()
+        {
+            string strSql = string.Empty;
+            strSql =
+                "SELECT Guid, Name, PaymentType,  ForAdvancePayment,IsDeleted   FROM ShopNum1_Payment WHERE  IsDeleted=0 and paymenttype!='PreDeposits.aspx'";
+            return DatabaseExcetue.ReturnDataTable(strSql);
+        }
+
+        public DataTable SearchPayInfoMobile(string guid, int isdelete)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(2);
+
+            parms[0].ParameterName = "@guid";
+            parms[0].Value = guid.Replace("'","");
+            parms[1].ParameterName = "@isdelete";
+            parms[1].Value = isdelete;
+            string strSql = string.Empty;
+            strSql =
+                "SELECT  PaymentType ,  Name ,  MerchantCode ,  SecretKey ,  SecondKey ,  Pwd ,  Partner ,  Charge ,  Email ,  IsPercent ,  Memo ,  IsCOD ,  OrderID ,  CreateUser ,  CreateTime ,  ModifyUser ,  ModifyTime ,  ForAdvancePayment ,  IsDeleted    FROM ShopNum1_MobilePayment where 1=1 ";
+            if ((Operator.FormatToEmpty(guid) != string.Empty) && (Operator.FormatToEmpty(guid) != "0"))
+            {
+                strSql = strSql + " and guid=@guid";
+            }
+            if ((isdelete == 0) || (isdelete == 1))
+            {
+                strSql = string.Concat(new object[] {strSql, " AND IsDeleted=@isdelete"});
+            }
+            return DatabaseExcetue.ReturnDataTable(strSql,parms);
+        }
+
+        public DataTable SearchType()
+        {
+            string strSql = string.Empty;
+            strSql = "   SELECT * FROM  ShopNum1_PaymentType  WHERE 1=1   ";
+            return DatabaseExcetue.ReturnDataTable(strSql);
+        }
+
+        public DataTable SearchTypeByGuid(string guid)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+
+            parms[0].ParameterName = "@guid";
+            parms[0].Value = guid.Replace("'","");
+            
+            return
+                DatabaseExcetue.ReturnDataTable((string.Empty + "   SELECT * FROM  ShopNum1_PaymentType  WHERE 1=1   ") +
+                                                "   AND  Guid=@guid",parms);
+        }
+
+        public int UpDatePaymentType(ShopNum1_PaymentType PaymentType)
+        {
+            return
+                DatabaseExcetue.RunNonQuery(
+                    string.Concat(new object[]
+                    {
+                        "UPDATE  ShopNum1_PaymentType SET  PaymentType='", PaymentType.PaymentType, "', Name='",
+                        Operator.FilterString(PaymentType.Name), "', BakcImg='", PaymentType.BakcImg, "', Memo='",
+                        Operator.FilterString(PaymentType.Memo), "', OrderID='", PaymentType.OrderID,
+                        "', IsShopUse='", PaymentType.IsShopUse, "' WHERE Guid='", PaymentType.Guid, "'"
+                    }));
+        }
+    }
+}

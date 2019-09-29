@@ -1,0 +1,386 @@
+﻿body {
+    color: #666666;
+    font-family: Arial;
+    font-size: 12px;
+}
+
+.divhead {
+    background-color: #006699;
+    color: White;
+    font-size: 12px;
+    height: 20px;
+    width: 100%;
+}
+
+.divheadTop {
+    margin-left: 2px;
+    margin-top: 3px;
+}
+
+.divBackGround { background-color: #EEEEEE; }
+
+.divhr {
+    background-color: #006699;
+    color: White;
+    height: 20px;
+    width: 100%;
+}
+
+.trleft { text-align: left; }
+
+.trrigth { text-align: right; }
+
+.trcenter { text-align: center; }
+
+.divtitle {
+    background-color: #006699;
+    font-size: 14px;
+    height: 10px;
+    width: 210px;
+}
+
+.divTop {
+    height: 180px;
+    width: 100%;
+}
+
+.menuhead {
+    background-color: #006699;
+    color: White;
+    vertical-align: top;
+    width: 150px;
+}
+
+.menuhr {
+    border-bottom: solid 1px #FFFFFF;
+    height: 1px;
+    width: 150px;
+}
+
+a {
+    color: #656E13;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #993300;
+    text-decoration: none;
+}
+
+.td {
+    color: #666666;
+    font-family: Arial;
+    FONT-SIZE: 12px;
+    line-height: 12pt
+}
+
+input {
+    font-family: Arial;
+    FONT-SIZE: 12px;
+    line-height: 12pt;
+    margin-right: 161px;
+}
+
+textarea {
+    font-family: Arial;
+    FONT-SIZE: 12px;
+    line-height: 12pt
+}
+
+select {
+    font-family: Arial;
+    FONT-SIZE: 12px;
+    line-height: 12pt;
+    margin-left: 0px;
+}
+
+.heading {
+    color: #98C81E;
+    FONT-FAMILY: "Arial", "Helvetica", "sans-serif";
+    FONT-SIZE: 12pt;
+    FONT-WEIGHT: bold;
+    line-height: 13.5pt;
+}
+
+.heading2 {
+    color: #98C81E;
+    font-size: 14px;
+    FONT-WEIGHT: bold;
+}
+
+.heading3 {
+    color: #9A284C;
+    FONT-FAMILY: "Arial", "Helvetica", "sans-serif";
+    FONT-SIZE: 14px;
+    FONT-WEIGHT: bold;
+}
+
+.heading4 {
+    COLOR: #98C81E;
+    font-weight: bold;
+}
+
+.heading5 { FONT-WEIGHT: bold; }
+
+.heading6 {
+    COLOR: #FFFFFF;
+    FONT-WEIGHT: bold;
+}
+
+.white {
+    COLOR: #FFFFFF;
+    FONT-WEIGHT: bold;
+}
+
+.text1 { COLOR: #666666; }
+
+.text12 {
+    COLOR: #666666;
+    TEXT-DECORATION: none
+}
+
+.text2 { COLOR: #000000 }
+
+.text3 {
+    COLOR: #FFFFFF;
+    TEXT-DECORATION: none
+}
+
+.text4 {
+    COLOR: #98C81E;
+    font-weight: bold;
+}
+
+.text5 {
+    COLOR: #9A284C;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.text6 {
+    COLOR: #98C81E;
+    font-weight: bold;
+}
+
+.text7 { COLOR: #98C81E; }
+
+.text8 { COLOR: #FF0000; }
+
+.text_form {
+    FONT-FAMILY: "Arial", "Helvetica", "sans-serif";
+    font-size: 12px;
+}
+
+.textsmall { font-size: 9px; }
+
+.td1 { BACKGROUND-COLOR: #F0F0F0; }
+
+.td2 { BACKGROUND-COLOR: #98C81E; }
+
+.td3 { BACKGROUND-COLOR: #FFFFFF; }
+
+.td4 { BACKGROUND-COLOR: #CCCCCC; }
+
+.td5 { BACKGROUND-COLOR: #FFFFFF; }
+
+.td6 { BACKGROUND-COLOR: #F0F0F0; }
+
+.td7 { BACKGROUND-COLOR: #CCCCCC; }
+
+.td8 { background-color: #F0F7DE; }
+
+.td9 { background-color: #61E2BC; }
+
+.td10 { background-color: #DFFFF1; }
+
+.imageborder { border: 1px solid #000000; }
+
+.li01 { line-height: 20px; }
+
+.topImg { background-image: url("image/photo19.jpg"); }
+
+.divtable { width: 758px; }
+
+.subiFrameWidth { width: 2020%; }
+
+.EmptyData { color: #FFFFFF; }
+
+.TblNewsTitle {
+    background-color: #FFFFFF;
+    border-bottom: solid 1px #CCCCCC;
+    color: White;
+    font-size: 16px;
+    height: 40px;
+}
+
+.NewsBody {
+    background-color: #98C81E;
+    color: White;
+    font-size: 16px;
+    height: 50px;
+}
+
+.ContentBody {
+    background-color: #006699;
+    color: White;
+    font-size: 16px;
+    height: 40px;
+}
+
+.divEmptyHr {
+    border-bottom: solid 1px #FFFFFF;
+    margin-bottom: 6px;
+    margin-top: 2px;
+}
+
+.gvManageRowHidden { display: none; }
+
+.menuBackColor {
+    background-color: #F1F1F1;
+    width: 150px;
+}
+
+.hidden { display: none; }
+
+.tdColor {
+    color: White;
+    font-weight: bold;
+}
+
+.Layer1 {
+    background-color: White;
+    border: 0px;
+    border-color: #98C81E;
+    border-style: solid;
+    height: 50px;
+    left: 419px;
+    position: absolute;
+    top: 190px;
+    width: 50px;
+    z-index: 1;
+}
+
+.Layer2 {
+    background-color: White;
+    border: 0px;
+    border-color: #98C81E;
+    border-style: solid;
+    height: 50px;
+    left: 419px;
+    position: absolute;
+    top: 90px;
+    width: 90px;
+    z-index: 1;
+}
+
+.divIndexBorder {
+    border: 1px;
+    border-color: #98C81E;
+    border-style: solid;
+    border-top: 0px;
+    padding-left: 10px;
+    padding-top: 5px;
+    width: 138px;
+}
+
+.menuIndexStyle {
+    color: White;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.personalmainpage {
+    color: #98C81E;
+    font-size: 12px;
+}
+
+.divBlockTitle { margin-top: 0px; }/*for firefox*/
+
+* html .divBlockTitle { margin-top: -6px; }/*for IE5.5+*/
+
+* + html .divBlockTitle { margin-top: -14px; }/*for IE7.0*/
+
+.menuUnLine:hover { color: White; }
+
+.divHeight { height: 28px; }
+
+.iframeWidth { width: 100%; }
+
+.divheadFont {
+    color: #98C81E;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.divNewsLine { border: border:dashed 1px #666666; }
+
+.td1border {
+    border-left: dashed 2px #666666;
+    border-top: dashed 2px #666666;
+    height: 120px;
+}
+
+.td2border {
+    border-left: dashed 2px #666666;
+    border-right: dashed 2px #666666;
+    border-top: dashed 2px #666666;
+    height: 120px;
+}
+
+.td3border {
+    border-bottom: dashed 2px #666666;
+    border-left: dashed 2px #666666;
+    border-top: dashed 2px #666666;
+    height: 120px;
+}
+
+.td4border {
+    border: dashed 2px #666666;
+    height: 120px;
+}
+
+.btnStyle {
+    BACKGROUND-COLOR: transparent;
+    BORDER-BOTTOM-STYLE: none;
+    BORDER-LEFT-STYLE: none;
+    BORDER-RIGHT-STYLE: none;
+    BORDER-TOP-STYLE: none;
+    color: #98C81E;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.divHrCount {
+    border-bottom: solid 1px #CCCCCC;
+    margin-left: 2px;
+    margin-right: 20px;
+}
+
+.divmargin { margin-left: 8px; }
+
+.divheadFont1 {
+    color: #98C81E;
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 2px;
+    margin-top: 10px;
+}
+
+.divLinehr { border-bottom: solid 1px #C0C0C0; }
+
+.divLength { margin-top: 12px; }
+
+.fontspacing { letter-spacing: 10px; }
+
+.fontlinespacing { line-height: 25pt; }
+
+.divWrap { word-wrap: break-word; }
+
+.divmarginpadding { margin-right: 10px; }
+
+.vote {
+    padding-left: 5px;
+    padding-top: 3px;
+}

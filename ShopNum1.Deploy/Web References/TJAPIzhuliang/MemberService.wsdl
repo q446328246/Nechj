@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://membersystem.com/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://membersystem.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://membersystem.com/">
+      <s:element name="MemberInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Number" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Placement" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Direct" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LevelInt" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Sex" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MobileTele" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PaperNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BankAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BankCard" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BankBook" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RegisterDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MemberOrders" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="md5" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MemberInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MemberInfoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MemberOrder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Number" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OrderID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TotalMoney" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TotalPv" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IsAgain" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OrderType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OrderDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="md5" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MemberOrderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MemberOrderResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MemberOrderBack">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Number" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OrderID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="md5" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MemberOrderBackResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MemberOrderBackResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="MemberInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:MemberInfo" />
+  </wsdl:message>
+  <wsdl:message name="MemberInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:MemberInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="MemberOrderSoapIn">
+    <wsdl:part name="parameters" element="tns:MemberOrder" />
+  </wsdl:message>
+  <wsdl:message name="MemberOrderSoapOut">
+    <wsdl:part name="parameters" element="tns:MemberOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="MemberOrderBackSoapIn">
+    <wsdl:part name="parameters" element="tns:MemberOrderBack" />
+  </wsdl:message>
+  <wsdl:message name="MemberOrderBackSoapOut">
+    <wsdl:part name="parameters" element="tns:MemberOrderBackResponse" />
+  </wsdl:message>
+  <wsdl:portType name="MemberServiceSoap">
+    <wsdl:operation name="MemberInfo">
+      <wsdl:input message="tns:MemberInfoSoapIn" />
+      <wsdl:output message="tns:MemberInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MemberOrder">
+      <wsdl:input message="tns:MemberOrderSoapIn" />
+      <wsdl:output message="tns:MemberOrderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MemberOrderBack">
+      <wsdl:input message="tns:MemberOrderBackSoapIn" />
+      <wsdl:output message="tns:MemberOrderBackSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MemberServiceSoap" type="tns:MemberServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="MemberInfo">
+      <soap:operation soapAction="http://membersystem.com/MemberInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MemberOrder">
+      <soap:operation soapAction="http://membersystem.com/MemberOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MemberOrderBack">
+      <soap:operation soapAction="http://membersystem.com/MemberOrderBack" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MemberServiceSoap12" type="tns:MemberServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="MemberInfo">
+      <soap12:operation soapAction="http://membersystem.com/MemberInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MemberOrder">
+      <soap12:operation soapAction="http://membersystem.com/MemberOrder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MemberOrderBack">
+      <soap12:operation soapAction="http://membersystem.com/MemberOrderBack" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MemberService">
+    <wsdl:port name="MemberServiceSoap" binding="tns:MemberServiceSoap">
+      <soap:address location="http://125.227.91.177:8182/Service/MemberService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MemberServiceSoap12" binding="tns:MemberServiceSoap12">
+      <soap12:address location="http://125.227.91.177:8182/Service/MemberService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

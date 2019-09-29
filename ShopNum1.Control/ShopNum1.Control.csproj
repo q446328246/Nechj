@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.377</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E77F6123-B1F8-4078-B03F-3C0CF043E08D}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>ShopNum1.Control</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\dll\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>ShopNum1.Control</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Design" />
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Configuration" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="AdminImgCode.cs" />
+    <Compile Include="GroupRadioButton.cs" />
+    <Compile Include="IWebControl.cs" />
+    <Compile Include="WebControl.cs" />
+    <Compile Include="ProgressBar.cs" />
+    <Compile Include="UpdatePanel.cs" />
+    <Compile Include="TabControlDesigner.cs" />
+    <Compile Include="Paging.cs" />
+    <Compile Include="Num1GridView.cs" />
+    <Compile Include="Calendar.cs" />
+    <Compile Include="BorderStyleConverter.cs" />
+    <Compile Include="ColorPicker.cs" />
+    <Compile Include="TextBox.cs" />
+    <Compile Include="PasswordTextBox.cs" />
+    <Compile Include="RadioButtonList.cs" />
+    <Compile Include="TabPageCollection.cs" />
+    <Compile Include="Button.cs" />
+    <Compile Include="Hint.cs" />
+    <Compile Include="VerifyCodeColorAdminImg.cs" />
+    <Compile Include="VerifyCodeColorImg.cs" />
+    <Compile Include="TabControl.cs" />
+    <Compile Include="RequiredFieldTypeControlsConverter.cs" />
+    <Compile Include="CanBeNullControlsConverter.cs" />
+    <Compile Include="FormControlsConverter.cs" />
+    <Compile Include="TabPage.cs" />
+    <Compile Include="Num1ColorPicker.cs" />
+    <Compile Include="SpanTimer.cs" />
+    <Compile Include="DropDownList.cs" />
+    <Compile Include="TabEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form0.cs" />
+    <EmbeddedResource Include="TabEditorForm.resources" />
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ShopNum1.Common\ShopNum1.Common.csproj">
+      <Project>{3F01A9DC-7C89-41FD-A758-453E0B50D278}</Project>
+      <Name>ShopNum1.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

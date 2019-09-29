@@ -1,0 +1,9 @@
+﻿@charset "utf-8";
+/* CSS Document */
+.kefu_head{background:url(../images/kefu_2.png) no-repeat;height:39px;}
+.kefu_info {background:url(../images/kefu_3.png) repeat-y;padding: 5px 0 10px;}
+.online{position: absolute;visibility: visible;left:-137px;z-index: 999;top: 140px;margin-left: 4px;}
+.onsever{height: 22px;margin: 0px;text-align:left;}
+.onsvtp{font-size: 12px;padding-right: 8px;padding-left: 10px;color: #621800;}
+.onsever span{padding: 2px 2px 0px 4px;}
+#yinchang{ background:url(../images/menu_top.jpg) no-repeat;width:134px;height:25px;}

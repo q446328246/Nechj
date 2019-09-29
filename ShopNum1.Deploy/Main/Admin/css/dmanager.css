@@ -1,0 +1,199 @@
+﻿/*css document start*/
+
+/*ManagerBody*/
+
+.ManagerForm .Help {
+    padding: 9px;
+    padding-bottom: 0px;
+    text-align: right;
+}
+
+.ManagerForm fieldset {
+    border: 1px solid #ccc;
+    margin-bottom: 8px;
+    padding: 4px 30px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.ManagerForm legend {
+    font-weight: bold;
+    line-height: 45px;
+    padding-left: 60px;
+}
+
+.ManagerForm table {
+    color: #999;
+    font-size: 12px;
+    text-align: left;
+}
+
+.ManagerForm th {
+    line-height: 240%;
+    padding-right: 5px;
+    text-align: right;
+}
+
+.ManagerButton, .TopicButton {
+    background: url(../images/buttonbg.gif) repeat-x left bottom;
+    border: 1px solid #919699;
+    cursor: pointer;
+    line-height: 22px;
+    margin-bottom: 15px;
+    margin-right: 2px;
+    padding: 2px 3px;
+    padding-left: 30px;
+    text-align: center;
+    text-align: left;
+    text-decoration: none;
+    width: 198px;
+}
+
+* html .ManagerButton {
+    padding: 1px 0;
+    padding-left: 30px;
+}
+
+* + html .ManagerButton {
+    padding: 0;
+    padding-left: 30px;
+}
+
+a.ManagerButton {
+    color: #000;
+    display: block;
+    float: left;
+    line-height: 22px;
+    margin-right: 6px;
+    padding: 2px 3px;
+    padding-left: 30px;
+    text-decoration: none;
+}
+
+a.ManagerButton span, a.ManagerButton strong {
+    background: url(../images/submit.gif) no-repeat 2px 50%;
+    display: block;
+    float: left;
+    text-indent: 1.5em;
+}
+
+a.ManagerButton strong {
+    background: url(../images/checkver.gif) no-repeat 5px 50%;
+    text-indent: 1.8em;
+}
+
+a.ManagerButton:hover {
+    color: #000;
+    text-decoration: none;
+}
+
+.ManagerButton img {
+    margin-bottom: -3px;
+    padding-right: 3px;
+}
+
+.TopicButton {
+    line-height: 14px;
+    padding: 1px 2px;
+}
+
+* html .TopicButton {
+    font-size: 12px;
+    margin-right: 2px;
+}
+
+* + html .TopicButton {
+    font-size: 12px;
+    margin-right: 2px;
+}
+
+.TopicButton img {
+    height: 15px;
+    margin-bottom: -3px;
+    padding-right: 2px;
+}
+
+a.TopicButton:link, a.TopicButton:visited {
+    color: #000;
+    text-decoration: none;
+}
+
+a.TopicButton:hover, a.TopicButton:active {
+    color: #000;
+    text-decoration: none;
+}
+/*managerform*/
+
+
+/*inner*/
+
+.item_title {
+    color: #555;
+    font-weight: 700;
+    padding: 10px 0 8px 0;
+}
+
+.rowform {
+    overflow: auto;
+    width: 306px;
+}
+
+.vtop { vertical-align: top; }
+/* form */
+
+.txt, textarea, select {
+    background: #fff;
+    border: 1px solid;
+    border-color: #666 #ccc #ccc #666;
+    color: #333;
+    padding: 2px;
+}
+
+.txt, select { vertical-align: middle; }
+
+.txt_hover, .txt_focus, textarea_hover, textarea_focus {
+    background: #F5F9FD;
+    border: 1px solid;
+    border-color: #09C;
+    padding: 2px;
+}
+
+.txtnobd {
+    background: #FFF;
+    border: 1px solid #FFF;
+    cursor: pointer;
+}
+
+.radio, .checkbox {
+    background: none;
+    border: none;
+    vertical-align: middle;
+}
+
+.checkbox { height: 14px; }
+
+.btn {
+    background: #DDD;
+    border-color: #ddd #666 #666 #ddd;
+    color: #000;
+    cursor: pointer;
+    margin: 3px 0;
+    padding: 2px 5px;
+    *padding: 4px 5px 1px;
+    vertical-align: middle;
+}
+
+.uploadbtn {
+    border-color: #999;
+    width: 250px;
+}
+
+.currentitem { font-weight: bold; }
+
+.preview {
+    border: 1px dashed #707070;
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 580px!important;
+    width: 600px;
+}

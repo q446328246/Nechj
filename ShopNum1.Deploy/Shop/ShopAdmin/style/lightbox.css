@@ -1,0 +1,148 @@
+#lightbox {
+    left: 0;
+    line-height: 0;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    z-index: 100;
+}
+
+#lightbox a img { border: none; }
+
+#outerImageContainer {
+    background-color: #fff;
+    height: 250px;
+    margin: 0 auto;
+    position: relative;
+    width: 250px;
+}
+
+#imageContainer { padding: 10px; }
+
+#loading {
+    height: 25%;
+    left: 0%;
+    line-height: 0;
+    position: absolute;
+    text-align: center;
+    top: 40%;
+    width: 100%;
+}
+
+#hoverNav {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+#imageContainer > #hoverNav { left: 0; }
+
+#hoverNav a { outline: none; }
+
+#prevLink, #nextLink {
+    background: transparent url(../images/blank.gif) no-repeat; /* Trick IE into showing hover */
+    display: block;
+    height: 100%;
+    width: 49%;
+}
+
+#prevLink {
+    float: left;
+    left: 0;
+}
+
+#nextLink {
+    float: right;
+    right: 0;
+}
+
+#prevLink:hover, #prevLink:visited:hover { background: url(../images/prev.gif) left 50% no-repeat; }
+
+#nextLink:hover, #nextLink:visited:hover { background: url(../images/next.gif) right 50% no-repeat; }
+
+/*** START : next / previous text links ***/
+
+#nextLinkText, #prevLinkText {
+    color: #FF9834;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#nextLinkText { padding-left: 20px; }
+
+#prevLinkText { padding-right: 20px; }
+/*** END : next / previous text links ***/
+/*** START : added padding when navbar is on top ***/
+
+.ontop #imageData { padding-top: 5px; }
+
+/*** END : added padding when navbar is on top ***/
+
+#imageDataContainer {
+    background-color: #fff;
+    font: 12px;
+    line-height: 1.4em;
+    margin: 0 auto;
+}
+
+#imageData { padding: 0 10px; }
+
+#imageData #imageDetails {
+    float: left;
+    text-align: left;
+    width: 70%;
+}
+
+#imageData #caption { font-weight: bold; }
+
+#imageData #numberDisplay {
+    clear: left;
+    display: block;
+    padding-bottom: 1.0em;
+}
+
+#imageData #bottomNavClose {
+    float: right;
+    padding-bottom: 0.7em;
+    width: 66px;
+}
+
+#imageData #helpDisplay {
+    clear: left;
+    display: block;
+    float: left;
+}
+
+#overlay {
+    -moz-opacity: 0.6;
+    background-color: #000;
+    display: none;
+    filter: alpha(opacity=60);
+    height: 500px;
+    left: 0;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 90;
+}
+	
+
+.clearfix:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+* html > body .clearfix {
+    display: inline-block;
+    width: 100%;
+}
+
+* html .clearfix { /* Hides from IE-mac \*/height: 1%;
+    /* End hide from IE-mac */ }

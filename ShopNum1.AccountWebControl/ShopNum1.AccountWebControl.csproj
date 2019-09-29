@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.377</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7F85BB37-189F-4237-833C-8B639ECE1433}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>ShopNum1.AccountWebControl</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\dll\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>ShopNum1.AccountWebControl</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Data" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="A_BindMobile.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Global.cs" />
+    <Compile Include="A_Welcome.cs" />
+    <Compile Include="A_CheckMobile.cs" />
+    <Compile Include="A_AddressOpeater.cs" />
+    <Compile Include="A_ShipAddress.cs" />
+    <Compile Include="A_PwdSer.cs" />
+    <Compile Include="A_AdPayRecharge.cs" />
+    <Compile Include="A_Left.cs" />
+    <Compile Include="A_UpPayPwdSucceed.cs" />
+    <Compile Include="A_AdPayDecrease.cs" />
+    <Compile Include="A_AdPayTransfer.cs" />
+    <Compile Include="A_LoadUserPhoto.cs" />
+    <Compile Include="A_UpPwd.cs" />
+    <Compile Include="A_UpPayPwd.cs" />
+    <Compile Include="A_Bottom.cs" />
+    <Compile Include="A_AdPayDetailList.cs" />
+    <Compile Include="A_MemInfo.cs" />
+    <Compile Include="A_Head.cs" />
+    <Compile Include="A_ChangePwdWay.cs" />
+    <Compile Include="A_CheckEmail.cs" />
+    <Compile Include="ZoomImageDemo\CutPhotoHelp.cs" />
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ShopNum1.BusinessLogic\ShopNum1.BusinessLogic.csproj">
+      <Project>{090F4879-20C3-431F-A839-D8BCADB27BC1}</Project>
+      <Name>ShopNum1.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.Common\ShopNum1.Common.csproj">
+      <Project>{3F01A9DC-7C89-41FD-A758-453E0B50D278}</Project>
+      <Name>ShopNum1.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.Factory\ShopNum1.Factory.csproj">
+      <Project>{612ED950-D9CF-498E-882F-CA523DA66716}</Project>
+      <Name>ShopNum1.Factory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.Interface\ShopNum1.Interface.csproj">
+      <Project>{637FD586-553B-4F84-8A8E-AA2883DEB393}</Project>
+      <Name>ShopNum1.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.MultiBaseWebControl\ShopNum1.MultiBaseWebControl.csproj">
+      <Project>{411E8BD3-CEFA-44CE-B7EA-B4BFB8469ECA}</Project>
+      <Name>ShopNum1.MultiBaseWebControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.Payment\ShopNum1.Payment.csproj">
+      <Project>{5AC9F7AC-D8AE-471A-A97C-1C7AD251F066}</Project>
+      <Name>ShopNum1.Payment</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1MultiEntity\ShopNum1MultiEntity.csproj">
+      <Project>{C180CC8C-AED3-4536-82DE-16B796633249}</Project>
+      <Name>ShopNum1MultiEntity</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

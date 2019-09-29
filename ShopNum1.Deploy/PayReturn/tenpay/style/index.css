@@ -1,0 +1,343 @@
+body {
+    color: #222;
+    font-family: "ËÎÌו";
+    font-size: 12px;
+    line-height: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+td {
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+    zoom: 1;
+}
+
+img { border: none; }
+
+.all_head {
+    background: #b10000;
+    border-bottom: 1px #ee6a18 solid;
+    height: 110px;
+}
+
+.all_tops {
+    margin: 0 auto;
+    width: 1000px;
+}
+
+.all_top {
+    float: right;
+    height: 25px;
+    line-height: 25px;
+}
+
+.login {
+    color: #ffd0c0;
+    font-family: "ËÎÌו";
+    font-size: 12px;
+}
+
+.login span {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.login a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.login a:hover {
+    color: #ffd0c0;
+    text-decoration: underline;
+}
+
+.all_top_right { }
+
+.clearfix {
+    clear: both;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+}
+
+.all_top_right ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.all_top_right ul li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.all_top_right ul li {
+    color: #ffd0c0;
+    float: left;
+    font-family: "ËÎÌו";
+    font-size: 12px;
+    margin-left: 8px;
+}
+
+.all_top_right ul li a {
+    color: #ffd0c0;
+    text-decoration: none;
+}
+
+.all_top_right ul li a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.fl { float: left; }
+
+.fr { float: right; }
+
+.all_top_right ul li.cart {
+    background: url(Images/cart_icon.jpg) no-repeat left 3px;
+    padding-left: 20px;
+}
+
+.skin_width {
+    margin: 0 auto;
+    width: 1000px;
+}
+
+.all_logo { padding-top: 7px; }
+
+.all_logo a { display: block; }
+
+.mallSearch {
+    height: 30px;
+    padding-top: 25px;
+    width: 530px;
+}
+
+.FormBox {
+    background: url(../Images/search.jpg) no-repeat left top;
+    height: 30px;
+    width: 530px;
+}
+
+.search_text {
+    background: none;
+    border: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    position: relative;
+    top: 6px\9;
+    *top: 6px;
+    *top: 6px;
+    width: 449px;
+    _top: -6px;
+}
+
+.search_button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    height: 30px;
+    width: 80px;
+}
+
+.all_main {
+    border: 1px solid #dbdbdb;
+    padding: 40px 22px;
+}
+
+.all_dingdan {
+    background: url(../Images/gou.jpg) no-repeat left top;
+    padding: 7px 60px;
+}
+
+.dd1 {
+    color: #666666;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 26px;
+}
+
+.dd1 span {
+    color: #268026;
+    font-family: "Arial";
+    font-size: 18px;
+}
+
+.dd2 {
+    color: #464646;
+    font-size: 14px;
+    line-height: 26px;
+}
+
+.dd2 span {
+    color: #cc0000;
+    font-family: "Arial";
+    font-size: 20px;
+}
+
+.dd2 span.span1 {
+    color: #666666;
+    font-family: "Arial";
+    font-size: 14px;
+}
+
+.dd_but { padding-top: 14px; }
+
+.hdsy {
+    background: none;
+    background: url(../Images/index.jpg) no-repeat left top;
+    border: none;
+    cursor: pointer;
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    overflow: hidden;
+    text-indent: -999px;
+    width: 116px;
+}
+
+.hyzx {
+    background: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    margin-left: 20px;
+    overflow: hidden;
+    text-indent: -999px;
+    width: 133px;
+}
+
+.ad1 { margin-top: 13px; }
+
+#footer {
+    color: #666666;
+    font-size: 12px;
+    margin-top: 6px;
+    padding-top: 16px;
+    text-align: center;
+}
+
+.lmf_all_foot {
+    background: url("../Images/lmf_foot.jpg") repeat-x left top;
+    clear: both;
+    margin-top: 15px;
+}
+
+.warp {
+    margin: 0 auto;
+    width: 1000px;
+}
+
+.floor_load {
+    background: url("../Images/lmf_foot_icon.jpg") no-repeat left top;
+    border: medium none;
+    clear: both;
+    float: left;
+    margin-top: 20px;
+    overflow: hidden;
+    padding: 8px 6px 14px 12px;
+    width: 980px;
+}
+
+#help {
+    clear: both;
+    height: auto;
+    margin-top: 0;
+    margin-top: -13px\9;
+    margin-top: 0;
+    overflow: hidden;
+    width: 100%;
+    _margin-top: 0;
+}
+
+#help dl {
+    margin-bottom: 6px;
+    margin-left: 6px;
+    padding-right: 5px;
+    text-align: left;
+    width: 159px;
+    _margin-left: 10px;
+}
+
+#help dt {
+    color: #504C4D;
+    font-size: 14px;
+    font-weight: bold;
+    height: 28px;
+    text-align: left;
+}
+
+#help .gtotop_title {
+    height: 28px;
+    padding-left: 6px;
+    position: relative;
+    width: auto;
+}
+
+#help dd {
+    color: #717171;
+    margin-left: 0;
+    margin-top: 8px;
+    padding-left: 0;
+    position: relative;
+}
+
+#help dd a {
+    background: url("../Images/lmf_dian.png") no-repeat scroll left top transparent;
+    color: #333333;
+    font-size: 12px;
+    padding-left: 10px;
+    text-decoration: none;
+}
+
+#help dd a:hover { color: #cc0000; }
+
+#footer .rx {
+    color: #666666;
+    margin: 0 0 2px;
+}
+
+#footer .rx span { margin-right: 22px; }
+
+#footer p {
+    height: 14px;
+    line-height: 14px;
+    padding: 5px 0;
+}
+
+#footer .more {
+    color: #020202;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#footer p a {
+    border: 0 none;
+    color: #333333;
+    font-size: 12px;
+    margin-right: 12px;
+    text-decoration: none;
+}
+
+#footer p a:hover { color: #CD0001; }
+
+#footer .rx a { text-decoration: none; }
+
+#footer .rx a span {
+    color: #333333;
+    text-decoration: none;
+}
+
+#footer .rx a:hover span {
+    color: #cc0000;
+    text-decoration: underline;
+}
+
+.floor_load { line-height: 20px; }

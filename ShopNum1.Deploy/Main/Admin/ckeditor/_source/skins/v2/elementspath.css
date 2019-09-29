@@ -1,0 +1,52 @@
+/*
+Copyright (c) 2003-2012, CKSource - Frederico Knabben. All rights reserved.
+For licensing, see LICENSE.html or http://ckeditor.com/license
+*/
+
+@media print {
+    .cke_path { display: none; }
+}
+
+.cke_skin_v2 .cke_path {
+    display: inline-block;
+    float: left;
+    padding: 3px 3px 0 3px;
+}
+
+.cke_skin_v2 .cke_rtl .cke_path { float: right; }
+
+.cke_skin_v2 .cke_path a,
+.cke_skin_v2 .cke_path .cke_empty {
+    background-color: #efefde;
+    border: solid 1px #efefde;
+    cursor: default;
+    display: inline-block;
+    float: left;
+    margin-bottom: 3px;
+    padding-bottom: 1px;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 1px;
+}
+
+.cke_skin_v2 .cke_path .cke_empty { visibility: hidden; }
+
+.cke_skin_v2 .cke_rtl .cke_path a,
+.cke_skin_v2 .cke_rtl .cke_path cke_empty { float: right; }
+
+.cke_skin_v2 .cke_path a:hover,
+.cke_skin_v2 .cke_path a:focus,
+.cke_skin_v2 .cke_path a:active	/* IE */ {
+    background-color: #dff1ff;
+    border: solid 1px #316ac5;
+    outline: none;
+    padding-bottom: 1px;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 1px;
+}
+
+.cke_skin_v2 .cke_browser_ie .cke_rtl .cke_path a,
+.cke_skin_v2 .cke_browser_ie .cke_rtl .cke_path .cke_empty { float: none; }
+
+.cke_skin_v2 .cke_path .cke_label { display: none; }

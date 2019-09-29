@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.377</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1DF5E363-1167-4275-AB8B-26179F39933E}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>ShopNum1.ShopInterface</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\dll\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Compile Include="ShopReportInterface\IShop_Report_Action.cs" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="IShop_Photo_Action.cs" />
+    <Compile Include="IShop_CouponType_Action.cs" />
+    <Compile Include="IShop_Video_Action.cs" />
+    <Compile Include="IShop_Rank_Action.cs" />
+    <Compile Include="IShop_Address_Action.cs" />
+    <Compile Include="IShop_ProductComment_Action.cs" />
+    <Compile Include="IShop_Ensure_Action.cs" />
+    <Compile Include="IShop_VideoCategory_Action.cs" />
+    <Compile Include="IShop_Integral_Action.cs" />
+    <Compile Include="IShop_Integrals_Action.cs" />
+    <Compile Include="IShop_News_Action.cs" />
+    <Compile Include="IShop_UserDefinedColumn_Action.cs" />
+    <Compile Include="IShop_StarGuide_Action.cs" />
+    <Compile Include="IShop_MessageInfo_Action.cs" />
+    <Compile Include="IShop_Friends_Action.cs" />
+    <Compile Include="IShop_ShopInfo_Action.cs" />
+    <Compile Include="IShop_VideoComment_Action.cs" />
+    <Compile Include="IShop_ShopLink_Action.cs" />
+    <Compile Include="IShop_Common_Action.cs" />
+    <Compile Include="IShop_PageInfo_Action.cs" />
+    <Compile Include="IShop_LimtPackages_Action.cs" />
+    <Compile Include="IShop_PackAge_Action.cs" />
+    <Compile Include="IShop_SupplyDemand_Action.cs" />
+    <Compile Include="IShop_SupplyDemandCategory_Action.cs" />
+    <Compile Include="IShop_Page_Action.cs" />
+    <Compile Include="IShop_CategoryInfo_Action.cs" />
+    <Compile Include="IShop_MessageBoard_Action.cs" />
+    <Compile Include="IShop_Image_Action.cs" />
+    <Compile Include="IShop_Product_Action.cs" />
+    <Compile Include="IShop_NewsCategory_Action.cs" />
+    <Compile Include="IShop_ProductConsult_Action.cs" />
+    <Compile Include="IShop_ShopApplyRank_Action.cs" />
+    <Compile Include="IShop_Coupon_Action.cs" />
+    <Compile Include="IShop_OnLineService_Action.cs" />
+    <Compile Include="IShop_LimtProduct_Action.cs" />
+    <Compile Include="IShop_GroupProduct_Action.cs" />
+    <Compile Include="IShop_Collect_Action.cs" />
+    <Compile Include="IShop_Advertisement_Action.cs" />
+    <Compile Include="IShop_OrderInfo_Action.cs" />
+    <Compile Include="IShop_URLManage_Action.cs" />
+    <Compile Include="IShop_ProductCategory_Action.cs" />
+    <Compile Include="IShop_ProductBooking_Action.cs" />
+    <Compile Include="IShop_OrderScore_Action.cs" />
+    <Compile Include="IShop_Reputation_Action.cs" />
+    <Compile Include="IShop_Category_Action.cs" />
+    <Compile Include="IShop_ImageCategory_Action.cs" />
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ShopNum1MultiEntity\ShopNum1MultiEntity.csproj">
+      <Project>{C180CC8C-AED3-4536-82DE-16B796633249}</Project>
+      <Name>ShopNum1MultiEntity</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

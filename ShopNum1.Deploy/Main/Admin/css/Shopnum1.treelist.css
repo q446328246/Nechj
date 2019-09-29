@@ -1,0 +1,129 @@
+﻿.vshow { background: #ebeef5; }
+
+.isshow { cursor: pointer; }
+
+.gridview_m tr td {
+    height: 35px;
+    line-height: 35px;
+}
+
+.gridview_m tr.lmf_hover td { background: #ebeef5; }
+
+.lmf_xuanze {
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.lmf_jia {
+    cursor: pointer;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.lmf_paixu { margin-left: 10px; }
+
+.lmf_paixu input {
+    background: #ffffff;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    width: 30px;
+}
+
+.lmf_titlee { margin-left: 10px; }
+
+.lmf_titlee input {
+    background: #ffffff;
+    border: 1px solid #dcdcdc;
+    color: #333333;
+    font-size: 13px;
+    height: 22px;
+    line-height: 22px;
+    padding-left: 10px;
+    text-align: left;
+    width: 300px;
+}
+
+.sub_lmf tr td {
+    border-bottom: 0;
+    border-left: 1px solid #dcdcdc;
+    border-right: 0;
+    border-top: 1px solid #dcdcdc;
+}
+
+.sublmf_xuanze {
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.sublmf_jia {
+    cursor: pointer;
+    margin-left: 30px;
+    margin-top: 5px;
+}
+
+.sublmf_paixu { margin-left: 10px; }
+
+.sublmf_paixu input {
+    background: #ffffff;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    width: 30px;
+}
+
+.sublmf_titlee { margin-left: 10px; }
+
+.sublmf_titlee input {
+    background: #ffffff;
+    border: 1px solid #e2e3e3;
+    color: #666666;
+    font-size: 13px;
+    height: 22px;
+    line-height: 22px;
+    padding-left: 10px;
+    text-align: left;
+    width: 300px;
+}
+
+.subsub_lmf tr td {
+    border-bottom: 0;
+    border-left: 1px solid #dcdcdc;
+    border-right: 0;
+    border-top: 1px solid #dcdcdc;
+}
+
+.subsublmf_xuanze {
+    margin-left: 88px;
+    margin-top: 5px;
+}
+
+.subsublmf_jia {
+    cursor: pointer;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.subsublmf_paixu { margin-left: 10px; }
+
+.subsublmf_paixu input {
+    background: #ffffff;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    width: 30px;
+}
+
+.subsublmf_titlee { margin-left: 10px; }
+
+.subsublmf_titlee input {
+    background: #ffffff;
+    border: 1px solid #e2e3e3;
+    color: #666666;
+    font-size: 13px;
+    height: 22px;
+    line-height: 22px;
+    padding-left: 10px;
+    text-align: left;
+    width: 300px;
+}

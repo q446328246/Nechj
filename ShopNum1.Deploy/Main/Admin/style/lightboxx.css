@@ -1,0 +1,197 @@
+@charset "utf-8";
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#lightbox, #lightbox-overlay {
+    background: none;
+    border: none;
+    bottom: auto;
+    clear: none;
+    color: #333333;
+	
+    display: block;
+    float: none;
+    height: auto;
+	
+    left: 0px;
+    letter-spacing: normal;
+	
+    line-height: 0;
+    /* stop stupid conflicts */
+    margin: 0px;
+    outline: none;
+    padding: 0px;
+    position: absolute;
+	
+    right: auto;
+    text-align: center;
+    /* general conflict stopper */
+    text-decoration: none;
+    top: 0px;
+    width: 100%;
+    word-spacing: normal;
+    z-index: 100;
+}
+
+#lightbox a, #lightbox a:link, #lightbox a:visited, #lightbox a:hover {
+    color: #999999;
+    text-decoration: underline;
+}
+
+#lightbox-overlay {
+    background-color: #000000;
+    height: 100%;
+    position: fixed;
+    z-index: 90;
+}
+
+#lightbox-overlay-text {
+    color: white;
+    cursor: default;
+    font-size: 12px;
+    line-height: normal;
+    margin-right: 20px;
+    margin-top: 20px;
+    text-align: right;
+}
+
+#lightbox-overlay-text a, #lightbox-overlay-text a:hover, #lightbox-overlay-text a:visited, #lightbox-overlay-text a:link { color: white; }
+
+#lightbox-overlay-text span {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#lightbox img, #lightbox a img, #lightbox a {
+    border: none;
+    outline: none;
+}
+
+#lightbox-imageBox {
+    background-color: white;
+    border: 2px solid #424242;
+    height: 400px;
+    margin: 0 auto;
+    position: relative;
+    width: 400px;
+}
+
+#lightbox-imageContainer { padding: 1px; }
+
+#lightbox-loading {
+    height: 25%;
+    left: 0%;
+    line-height: 0;
+    position: absolute;
+    text-align: center;
+    top: 40%;
+    width: 100%;
+}
+
+#lightbox-nav {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+/* #lightbox-imageBox > #lightbox-nav { left: 0; } 
+#lightbox-nav a { outline: none; }*/
+
+
+#lightbox-nav-btnPrev, #lightbox-nav-btnNext {
+    background: transparent url("../images/blank.gif") no-repeat; /* Trick IE into showing hover */
+    display: block;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+	
+    width: 49%;
+    /* cursor:pointer; */
+    zoom: 1; /* who knows why? */
+}
+
+#lightbox-nav-btnPrev {
+    float: left;
+    left: 0;
+    right: auto;
+}
+
+#lightbox-nav-btnNext {
+    float: right;
+    left: auto;
+    right: 0;
+}
+/*
+.preload_largeLink, #prevLink:hover, #prevLink:visited:hover {
+	background:url("../images/prev.gif") left 45% no-repeat;
+}
+.preload_nextLink, #nextLink:hover, #nextLink:visited:hover {
+	background:url("../images/next.gif") right 45% no-repeat;
+}
+*/
+
+#lightbox-infoBox {
+    background-color: #FFFFFF;
+    font: 12px Verdana, Helvetica, sans-serif;
+    margin: 0 auto;
+    padding: 0px;
+
+    /* width: 100%;
+	padding: 0 10px 0; */
+}
+
+#lightbox-infoContainer {
+    color: #666;
+    line-height: normal;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+	
+    padding-top: 5px;
+    /* height:30px; */
+}
+
+#lightbox-infoHeader {
+    text-align: center;
+    width: 100%;
+}
+
+#lightbox-caption { text-align: justify; }
+
+#lightbox-caption-title { font-weight: bold; }
+
+#lightbox-caption-description { font-weight: normal; }
+
+#lightbox-infoFooter {
+    color: #999999;
+    margin-top: 3px;
+}
+
+#lightbox-currentNumber {
+    display: block;
+    float: left;
+    text-align: left;
+    width: 49%;
+}
+
+#lightbox-close {
+    display: block;
+    float: right;
+    text-align: right;
+    width: 45%;
+}
+
+#lightbox-close-button { padding-left: 30%; }
+
+#lightbox-close-button:hover { color: #666666; }
+
+#lightbox-infoContainer-clear {
+    clear: both;
+    visibility: hidden;
+}

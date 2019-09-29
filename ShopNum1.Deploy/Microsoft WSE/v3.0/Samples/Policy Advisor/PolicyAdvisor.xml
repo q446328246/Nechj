@@ -1,0 +1,1191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet href="PolicyAdvisor.xml" type="text/xsl"?>
+
+<!-- Copyright Microsoft Corporation.  All rights reserved. -->
+<!-- To view Policy Advisor documentation, open PolicyAdvisor.xml using Internet Explorer -->
+<!-- This is the version for WSE 3.0 RTM, November 2005 -->
+
+<xsl:stylesheet version="1.0"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"
+    xmlns:msxsl="urn:schemas-microsoft-com:xslt"
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+    xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+    xmlns:dsig="http://www.w3.org/2000/09/xmldsig#"
+    xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" 
+    xmlns:p="http://schemas.microsoft.com/wse/2005/06/policy"
+    xmlns:ep="http://schemas.microsoft.com/pa/2005/10/endpoints">
+
+  <xsl:output method="xml" encoding="utf-8" indent="yes"/>
+
+  <xsl:template match="/">
+    <xsl:variable name="data">
+      <data>
+        <xsl:for-each select="ep:endpoints/ep:endpoint">
+          <xsl:element name="endpoint">
+            <xsl:variable name="endpoint">
+              <xsl:value-of select="@name"/>
+            </xsl:variable>
+            <xsl:variable name="path">
+              <xsl:value-of select="@path"/>
+            </xsl:variable>
+
+            <xsl:if test="@config">
+              <xsl:variable name="f1" select="concat($path,@config)"/>
+              <xsl:for-each select="document($f1)//microsoft.web.services3">
+                <xsl:element name="microsoft.web.services3">
+                  <xsl:attribute name="endpoint">
+                    <xsl:value-of select="$endpoint"/>
+                  </xsl:attribute>
+                  <xsl:attribute name="file">
+                    <xsl:value-of select="$f1"/>
+                  </xsl:attribute>
+                  <xsl:copy-of select="child::node()"/>
+                </xsl:element>
+              </xsl:for-each>
+            </xsl:if>
+
+
+            <xsl:if test="@policyCache">
+              <xsl:variable name="f2" select="concat($path,@policyCache)"/>
+              <xsl:for-each select="document($f2)//p:policies">
+                <xsl:element name="policies" namespace="http://schemas.microsoft.com/wse/2005/06/policy">
+                  <xsl:attribute name="endpoint">
+                    <xsl:value-of select="$endpoint"/>
+                  </xsl:attribute>
+                  <xsl:attribute name="file">
+                    <xsl:value-of select="$f2"/>
+                  </xsl:attribute>
+                  <xsl:copy-of select="child::node()"/>
+                </xsl:element>
+              </xsl:for-each>
+            </xsl:if>
+
+            <xsl:if test="@input">
+
+              <xsl:variable name="f3" select="concat($path,@input)"/>
+              <xsl:for-each select="document($f3)//inputMessage">
+                <xsl:variable name="envs" select="current()//soap:Envelope"/>
+                <xsl:variable name="wire" select="$envs[1]"/>
+                <xsl:variable name="app" select="$envs[count($envs)]"/>
+
+                <xsl:element name="message">
+                  <xsl:attribute name="endpoint">
+                    <xsl:value-of select="$endpoint"/>
+                  </xsl:attribute>
+                  <xsl:attribute name="file">
+                    <xsl:value-of select ="$f3"/>
+                  </xsl:attribute>
+                  <xsl:attribute name="pos">
+                    <xsl:value-of select="position()"/>
+                  </xsl:attribute>
+                  <xsl:attribute name="direction">
+                    <xsl:text>input</xsl:text>
+                  </xsl:attribute>
+                  <xsl:attribute name="Body">
+                    <xsl:value-of select="name($app//soap:Body/*)"/>
+                  </xsl:attribute>
+                  <xsl:copy-of select="$wire"/>
+                </xsl:element>
+              </xsl:for-each>
+            </xsl:if>
+
+
+            <xsl:if test="@output">
+              <xsl:variable name="f4" select="concat($path,@output)"/>
+              <xsl:for-each select="document($f4)//outputMessage">
+                <xsl:variable name="envs" select="current()//soap:Envelope"/>
+                <xsl:variable name="app" select="$envs[1]"/>
+                <xsl:variable name="wire" select="$envs[count($envs)]"/>
+
+                <xsl:element name="message">
+                  <xsl:attribute name="endpoint">
+                    <xsl:value-of select="$endpoint"/>
+                  </xsl:attribute>
+                  <xsl:attribute name="file">
+                    <xsl:value-of select ="$f4"/>
+                  </xsl:attribute>
+                  <xsl:attribute name="pos">
+                    <xsl:value-of select="position()"/>
+                  </xsl:attribute>
+                  <xsl:attribute name="direction">
+                    <xsl:text>output</xsl:text>
+                  </xsl:attribute>
+                  <xsl:attribute name="Body">
+                    <xsl:value-of select="name($app//soap:Body/*)"/>
+                  </xsl:attribute>
+                  <xsl:copy-of select="$wire"/>
+                </xsl:element>
+              </xsl:for-each>
+            </xsl:if>
+          </xsl:element>
+        </xsl:for-each>
+      </data>
+    </xsl:variable>
+
+    <xsl:variable name="messages">
+      <messages>
+        <xsl:for-each select="msxsl:node-set($data)/data/endpoint/message">
+          <xsl:sort select="soap:Envelope/soap:Header/wsa:MessageID" order="ascending"/>
+          <message>
+            <xsl:copy-of select="@endpoint"/>
+            <xsl:copy-of select="@file"/>
+            <xsl:copy-of select="@pos"/>
+            <xsl:copy-of select="@direction"/>
+            <xsl:copy-of select="@Body"/>
+            <xsl:attribute name="MessageID">
+              <xsl:value-of select="current()/soap:Envelope/soap:Header/wsa:MessageID"/>
+            </xsl:attribute>
+            <xsl:attribute name="To">
+              <xsl:value-of select="current()/soap:Envelope/soap:Header/wsa:To"/>
+            </xsl:attribute>
+            <xsl:attribute name="Action">
+              <xsl:value-of select="current()/soap:Envelope/soap:Header/wsa:Action"/>
+            </xsl:attribute>
+            <xsl:attribute name="Timestamp">
+              <xsl:value-of select="current()/soap:Envelope/soap:Header/wsse:Security/wsu:Timestamp/wsu:Created"/>
+            </xsl:attribute>
+            <xsl:if test="current()/soap:Envelope/soap:Header/wsa:RelatesTo">
+              <xsl:attribute name="RelatesTo">
+                <xsl:value-of select="current()/soap:Envelope/soap:Header/wsa:RelatesTo"/>
+              </xsl:attribute>
+            </xsl:if>
+          </message>
+        </xsl:for-each>
+      </messages>
+    </xsl:variable>
+
+    <xsl:variable name="identifiers">
+      <identifiers>
+        <xsl:for-each select="msxsl:node-set($messages)/messages/message[not(@MessageID=following::message/@MessageID)]">
+          <xsl:sort select="@Timestamp" order="ascending"/>
+          <xsl:sort select="@Pos" order="ascending"/>
+          <identifier>
+            <xsl:attribute name="number">
+              <xsl:value-of select="position()"/>
+            </xsl:attribute>
+            <xsl:copy-of select="@Body"/>
+            <xsl:copy-of select="@To"/>
+            <xsl:copy-of select="@Action"/>
+            <xsl:copy-of select="@Timestamp"/>
+            <xsl:copy-of select="@MessageID"/>
+            <xsl:if test="@RelatesTo">
+              <xsl:copy-of select="@RelatesTo"/>
+            </xsl:if>
+          </identifier>
+        </xsl:for-each>
+      </identifiers>
+    </xsl:variable>
+
+    <xsl:variable name="groups">
+      <groups>
+        <xsl:for-each select="msxsl:node-set($identifiers)/identifiers/identifier">
+          <group>
+            <xsl:copy-of select="@number"/>
+            <xsl:copy-of select="@Body"/>
+            <xsl:copy-of select="@To"/>
+            <xsl:copy-of select="@Action"/>
+            <xsl:copy-of select="@Timestamp"/>
+            <xsl:copy-of select="@MessageID"/>
+            <xsl:if test="@RelatesTo">
+              <xsl:attribute name="RelatesToNumber">
+                <xsl:variable name="r" select="@RelatesTo"/>
+                <xsl:value-of select="msxsl:node-set($identifiers)/identifiers/identifier[@MessageID=$r]/@number"/>
+              </xsl:attribute>
+            </xsl:if>
+
+            <xsl:variable name="id" select="@MessageID"/>
+            <xsl:for-each select="msxsl:node-set($messages)/messages/message[@MessageID=$id]">
+              <xsl:sort select="@direction" order="descending"/>
+              <!-- output before input -->
+              <message>
+                <xsl:copy-of select="@endpoint"/>
+                <xsl:copy-of select="@file"/>
+                <xsl:copy-of select="@pos"/>
+                <xsl:copy-of select="@direction"/>
+              </message>
+            </xsl:for-each>
+          </group>
+        </xsl:for-each>
+      </groups>
+    </xsl:variable>
+
+    <xsl:variable name="advisories">
+      <advisories>
+        <advisory query="q_allow_test_root">
+          <condition>Test root certificates are allowed.</condition>
+          <risk>
+            Any usage of X.509 certificates for signing or
+            encrypting is unsafe.  An active attacker can generate valid test
+            certificates, then for instance use these certificates to sign any
+            message.
+          </risk>
+          <advice>
+            Do not use test keys in production: set the attribute
+            <B>allowTestRoot="false"</B> in the <B>&lt;x509&gt;</B> element of the WSE configuration file.
+          </advice>
+        </advisory>
+
+        <advisory query="q_replay_detection">
+          <condition>
+            Replay detection is not enabled for a SecurityTokenManager of type UsernameToken.
+          </condition>
+          <risk>The same username token may be accepted many times, leading to replay attacks.
+          The risk is mitigated if username tokens are used only to establish security contexts,
+          as the handshake establishing the security context prevents replays.</risk>
+          <advice>
+            Consider enabling the WSE replay detection cache by including an element such as
+            <B>&lt;replayDetection enabled="true" windowInSeconds="300" /&gt;</B>
+            in the <B>&lt;add&gt;</B> element for the SecurityTokenManager.
+            Note that the WSE cache does not detect replays on distinct servers in a server farm.
+          </advice>
+        </advisory>
+
+        <advisory query="q_verify_trust">
+          <condition>Certificates are not verified up to a trusted root authority.</condition>
+          <risk>
+            The policy does not prescribe checking that X.509 certificates have an issuer chain that
+            extends to a trusted root authority; hence any usage of X.509 certificates
+            for signing or encrypting fully trusts the current content of the local certificate store.
+          </risk>
+          <advice>
+            Set the attribute
+            <B>verifyTrust="true"</B> in the <B>&lt;x509&gt;</B> element of the WSE configuration file.
+          </advice>
+        </advisory>
+
+        <advisory query="q_detailedErrors">
+          <condition>Detailed errors are enabled.</condition>
+          <risk>An attacker may intentionally trigger errors to gather information on the endpoint implementation, 
+		  potentially enabling further attacks.</risk>
+          <advice>
+            In production, include the element <B>&lt;detailedErrors enabled="false" /&gt;</B> in the
+            <B>&lt;diagnostics&gt;</B> element of the WSE configuration file.
+          </advice>
+        </advisory>
+
+        <advisory query="q_includes_plaintext_password">
+          <condition>
+            This policy includes a plaintext password.
+          </condition>
+          <risk>The password may be leaked if the source of the policy file is disclosed.</risk>
+          <advice>Use code to discover the password, either from the user, or from some secure store.
+          For further information, see the WSE documentation for the <B>&lt;username&gt;</B> element.
+        </advice>
+        </advisory>
+
+        <advisory query="q_credit_taking_attack_10">
+          <condition>
+            This policy would enable a credit-taking attack. It is disallowed by WSE.
+          </condition>
+          <risk>
+            Messages are encrypted then signed, so an attacker may intercept a message, remove the original signature,
+            and generate a new envelope with the same encrypted body and its own signature. From the receiver's viewpoint,
+            the resulting message is valid, and its body is attributed to the attacker.
+          </risk>
+          <advice>
+            Use either <B>messageProtectionOrder="SignBeforeEncrypt"</B>
+            or <B>messageProtectionOrder="SignBeforeEncryptAndEncryptSignature"</B> with the <b>mutualCertificate10Security</b> assertion.
+          </advice>
+        </advisory>
+        
+        <advisory query="q_credit_taking_attack_11">
+          <condition>
+            This policy enables a credit-taking attack on the encrypted body of a request message.
+          </condition>
+          <risk>
+            Messages are encrypted then signed, so an attacker may intercept a message, remove the original supporting signature,
+            and generate a new envelope with the same encrypted body and its own signature. From the receiver's viewpoint,
+            the resulting message is valid, and its body is attributed to the attacker.
+          </risk>
+          <advice>
+            If the body of the request cannot be guaranteed to identify the holder of the X.509 certificate used to sign the request,
+            use either <B>messageProtectionOrder="SignBeforeEncrypt"</B>
+            or <B>messageProtectionOrder="SignBeforeEncryptAndEncryptSignature"</B> with the <b>mutualCertificate11Security</b> assertion.
+          </advice>
+        </advisory>
+
+        <advisory query="q_dictionary_attack">
+          <condition>
+            This policy enables a dictionary attack on an encrypted request, response, or fault whose message body has low entropy.
+          </condition>
+          <risk>
+            The message body is encrypted, but the cryptographic hash of the plaintext message body is also included
+            in the signature. Hence, an attacker that intercepts the message may obtain this hash and compare it to the hash of
+            a large number of potential message bodies. Once two hashes match, the attacker has broken confidentiality of the message body.
+          </risk>
+          <advice>
+            If the body cannot be guaranteed to have high entropy (that is, if the body does not always include some fresh, secret cryptographic value),
+            use either <B>messageProtectionOrder="EncryptBeforeSign"</B>
+            or <B>messageProtectionOrder="SignBeforeEncryptAndEncryptSignature"</B>.
+          </advice>
+        </advisory>
+
+        <advisory query="q_correlation">
+          <condition>This policy does not guarantee correlation between a request and the corresponding response or fault message.</condition>
+          <risk>
+            The <b>mutualCertificate10Security</b> assertion
+            relies on the unencrypted message identifier for correlation.
+            An attacker may intercept a request, send some other request with the same identifier, obtain a response from the server,
+            and forward that response to the original requester.</risk>
+          <advice>
+            Use <b>
+              establishSecurityContext="true"
+            </b> with <b>mutualCertificate10Security</b>.
+          </advice>
+        </advisory>
+
+        <advisory query="q_enc_req_but_not_res">
+          <condition>
+            This policy encrypts the request body, but does not encrypt the response body.
+          </condition>
+          <risk>
+            Inasmuch as responses depend on requests,
+            an attacker that intercepts the response learns partial information about the request.
+          </risk>
+          <advice>Consider encrypting responses as well as requests.</advice>
+        </advisory>
+
+        <!-- if not q_enc_req_but_not_res -->
+        <advisory query="q_does_not_encrypt_req_res_fault_body">
+          <condition>This policy does not encrypt the request, response, or fault body.</condition>
+          <risk>An attacker that intercepts the message obtains any information included in its body.</risk>
+          <advice>Ensure the message body never contains any confidential information, or encrypt the message body.</advice>
+        </advisory>
+
+        <!-- if not q_enc_req_but_not_res and not q_does_not_encrypt_req_res_fault_body -->
+        <advisory query="q_enc_req_or_res_but_not_fault">
+          <condition>
+            This policy encrypts the request or response body, but does not encrypt the fault body.
+          </condition>
+          <risk>Although useful during test, there is a risk of information disclosure in production.</risk>
+          <advice>In production, consider encrypting faults as well as requests and responses.</advice>
+        </advisory>
+
+        <advisory query="q_unsigned_encrypted_body">
+          <condition>
+            This policy encrypts the request, response, or fault body but does not sign it.
+          </condition>
+          <risk>An attacker may intercept, rewrite, and forward the message to recipients that may misinterpret its content.</risk>
+          <advice>Sign every message body whose integrity is relevant for security.</advice>
+        </advisory>
+
+        <advisory query="q_duplicate_protection">
+          <condition>This policy has two protection elements for the same action.</condition>
+          <risk>The level of protection is ambiguous.</risk>
+          <advice>Select one element, and remove the other.</advice>
+        </advisory>
+        
+        <advisory query="q_no_default_protection">
+          <condition>This policy has no explicit default protection element.</condition>
+          <risk>The WSE default level of protection applies, and may be inappropriate here.</risk>
+          <advice>Consider adding an explicit default protection element.</advice>
+        </advisory>
+
+        <advisory query="q_unsigned_body">
+          <condition>
+            This policy accepts a request, response, or fault with an unauthenticated body.
+          </condition>
+          <risk>An attacker may intercept messages and freely rewrite their bodies.</risk>
+          <advice>Sign the message, or confirm that message integrity is never required for this kind of message.</advice>
+        </advisory>
+        
+        <advisory query="q_unsigned_addressing">
+          <condition>
+            This policy accepts a request, response, or fault with unauthenticated addressing headers.
+          </condition>
+          <risk>The processing of messages usually depends on their addressing headers.
+            An attacker may intercept messages and freely rewrite those headers,
+            thereby causing the message to be accepted and misinterpreted by some unintended recipient.
+          </risk>
+          <advice>
+			  Sign the addressing headers as well as the body, or confirm that the processing
+			  of the message never depends on any addressing header.
+		  </advice>
+        </advisory>
+        <advisory query="q_unsigned_timestamp">
+          <condition>
+            This policy accepts a request, response, or fault with unauthenticated timestamp.
+          </condition>
+          <risk>
+            The attacker may intercept the message and replay it several
+            times with different timestamps, thereby causing the message to be
+            accepted several times if replay protection is based on the timestamp.
+          </risk>
+          <advice>Sign the timestamp if it is used to protect against replays.</advice>
+        </advisory>
+        <advisory query="q_require_action">
+          <condition>This policy does not require compatibility between the SOAPAction HTTP header and the wsa:Action SOAP header.</condition>
+          <risk>
+            There is a risk of redirection attacks on SOAP requests that include an unauthenticated
+            <B>SOAPAction</B> HTTP header, but do not include the WS-Addressing <B>&lt;Action&gt;</B> SOAP header.
+          </risk>
+          <advice>
+            Include <B>&lt;requireActionHeader /&gt;</B> in the policy.
+          </advice>
+        </advisory>
+      </advisories>
+    </xsl:variable>
+
+    <xsl:variable name="instances">
+      <instances>
+        <xsl:for-each select="msxsl:node-set($data)/data/endpoint/microsoft.web.services3">
+          <xsl:variable name="endpoint" select="@endpoint"/>
+          <xsl:variable name="f" select="@file"/>
+
+          <!-- verifyTrust defaults to true -->
+          <xsl:if test="security/x509[@verifyTrust = 'false']">
+            <instance>
+              <xsl:attribute name="endpoint">
+                <xsl:value-of select="$endpoint"/>
+              </xsl:attribute>
+              <xsl:attribute name="file">
+                <xsl:value-of select="$f"/>
+              </xsl:attribute>
+              <xsl:attribute name="query">q_verify_trust</xsl:attribute>
+            </instance>
+          </xsl:if>
+
+          <!-- allowTestRoot only relevant if verifyTrust=true -->
+          <xsl:if test="(security/x509[@allowTestRoot = 'true']) and not (security/x509[@verifyTrust = 'false'])">
+            <instance>
+              <xsl:attribute name="endpoint">
+                <xsl:value-of select="$endpoint"/>
+              </xsl:attribute>
+              <xsl:attribute name="file">
+                <xsl:value-of select="$f"/>
+              </xsl:attribute>
+              <xsl:attribute name="query">q_allow_test_root</xsl:attribute>
+            </instance>
+          </xsl:if>
+
+          <xsl:if test="diagnostics/detailedErrors[@enabled = 'true']">
+            <instance>
+              <xsl:attribute name="endpoint">
+                <xsl:value-of select="$endpoint"/>
+              </xsl:attribute>
+              <xsl:attribute name="file">
+                <xsl:value-of select="$f"/>
+              </xsl:attribute>
+              <xsl:attribute name="query">q_detailedErrors</xsl:attribute>
+            </instance>
+          </xsl:if>
+
+          <xsl:for-each select="security/securityTokenManager/add[@localName = 'UsernameToken']">
+            <xsl:if test="not (replayDetection[@enabled = 'true'])">
+              <instance>
+                <xsl:attribute name="endpoint">
+                  <xsl:value-of select="$endpoint"/>
+                </xsl:attribute>
+                <xsl:attribute name="file">
+                  <xsl:value-of select="$f"/>
+                </xsl:attribute>
+                <xsl:attribute name="query">q_replay_detection</xsl:attribute>
+              </instance>
+            </xsl:if>
+          </xsl:for-each>
+        </xsl:for-each>
+
+        <xsl:for-each select="msxsl:node-set($data)/data/endpoint/p:policies">
+          <xsl:variable name="endpoint" select="@endpoint"/>
+          <xsl:variable name="f" select="@file"/>
+          <xsl:for-each select="p:policy">
+            <xsl:variable name="policy" select="@name"/>
+            <xsl:variable name="requireAction">
+              <xsl:choose>
+                <xsl:when test="p:requireActionHeader">true</xsl:when>
+                <xsl:otherwise>false</xsl:otherwise>
+              </xsl:choose>
+            </xsl:variable>
+
+            <xsl:if test="$requireAction = 'false'">
+              <instance>
+                <xsl:attribute name="endpoint">
+                  <xsl:value-of select="$endpoint"/>
+                </xsl:attribute>
+                <xsl:attribute name="file">
+                  <xsl:value-of select="$f"/>
+                </xsl:attribute>
+                <xsl:attribute name="policy">
+                  <xsl:value-of select="$policy"/>
+                </xsl:attribute>
+                <xsl:attribute name="query">q_require_action</xsl:attribute>
+              </instance>
+            </xsl:if>
+
+            <!-- these do not apply to p:usernameOverTransportSecurity -->
+            <xsl:for-each select="p:usernameForCertificateSecurity|
+                                  p:mutualCertificate10Security|
+                                  p:mutualCertificate11Security|
+                                  p:anonymousForCertificateSecurity|
+                                  p:kerberosSecurity">
+              <xsl:variable name="assertion">
+                <xsl:value-of select="local-name(current())"/>
+              </xsl:variable>
+
+              <xsl:variable name="messageProtectionOrder">
+                <xsl:choose>
+                  <xsl:when test="not(@messageProtectionOrder)">
+                    <xsl:text>SignBeforeEncrypt</xsl:text>
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:value-of select="@messageProtectionOrder"/>
+                  </xsl:otherwise>
+                </xsl:choose>
+              </xsl:variable>
+
+              <xsl:variable name="establishSecurityContext">
+                <xsl:choose>
+                  <xsl:when test="not(@establishSecurityContext)">
+                    <xsl:text>false</xsl:text>
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:value-of select="@establishSecurityContext"/>
+                  </xsl:otherwise>
+                </xsl:choose>
+              </xsl:variable>
+
+              <!-- EncryptBeforeSign is not supported by mutualCertificate10Security -->
+              <xsl:if test="($assertion='mutualCertificate10Security') and
+                            ($messageProtectionOrder='EncryptBeforeSign')">
+                <instance>
+                  <xsl:attribute name="endpoint">
+                    <xsl:value-of select="$endpoint"/>
+                  </xsl:attribute>
+                  <xsl:attribute name="file">
+                    <xsl:value-of select="$f"/>
+                  </xsl:attribute>
+                  <xsl:attribute name="policy">
+                    <xsl:value-of select="$policy"/>
+                  </xsl:attribute>
+                  <xsl:attribute name="query">q_credit_taking_attack_10</xsl:attribute>
+                </instance>
+              </xsl:if>
+
+              <xsl:if test="($assertion='mutualCertificate10Security') and
+                            (($messageProtectionOrder='SignBeforeEncrypt') or ($messageProtectionOrder='SignBeforeEncryptAndEncryptSignature')) and
+                            ($establishSecurityContext='false')">
+                <instance>
+                  <xsl:attribute name="endpoint">
+                    <xsl:value-of select="$endpoint"/>
+                  </xsl:attribute>
+                  <xsl:attribute name="file">
+                    <xsl:value-of select="$f"/>
+                  </xsl:attribute>
+                  <xsl:attribute name="policy">
+                    <xsl:value-of select="$policy"/>
+                  </xsl:attribute>
+                  <xsl:attribute name="query">q_correlation</xsl:attribute>
+                </instance>
+              </xsl:if>
+
+              <!-- There may be zero or more protection elements -->
+              <xsl:if test="(count(p:protection[not(@requestAction)]) = 0)">
+                <instance>
+                  <xsl:attribute name="endpoint">
+                    <xsl:value-of select="$endpoint"/>
+                  </xsl:attribute>
+                  <xsl:attribute name="file">
+                    <xsl:value-of select="$f"/>
+                  </xsl:attribute>
+                  <xsl:attribute name="policy">
+                    <xsl:value-of select="$policy"/>
+                  </xsl:attribute>
+                  <xsl:attribute name="query">q_no_default_protection</xsl:attribute>
+                </instance>
+              </xsl:if>
+
+              <xsl:for-each select="p:protection">
+                <xsl:sort select="@requestAction" order="ascending"/>
+                <xsl:if test="(not(position()=last())) and
+                              ((@requestAction and following::p:protection/@requestAction and             
+                                (current()[@requestAction = following::p:protection/@requestAction]))
+                               or
+                               ((not(@requestAction)) and not(following::p:protection/@requestAction)))">
+                  <instance>
+                    <xsl:attribute name="endpoint">
+                      <xsl:value-of select="$endpoint"/>
+                    </xsl:attribute>
+                    <xsl:attribute name="file">
+                      <xsl:value-of select="$f"/>
+                    </xsl:attribute>
+                    <xsl:attribute name="policy">
+                      <xsl:value-of select="$policy"/>
+                    </xsl:attribute>
+                    <xsl:copy-of select="@requestAction"/>
+                    <xsl:attribute name="query">q_duplicate_protection</xsl:attribute>
+                  </instance>
+                </xsl:if>
+
+                <xsl:choose>
+                  <xsl:when test="(p:request[@encryptBody='true']) and (p:response[@encryptBody='false'])">
+                    <instance>
+                      <xsl:attribute name="endpoint">
+                        <xsl:value-of select="$endpoint"/>
+                      </xsl:attribute>
+                      <xsl:attribute name="file">
+                        <xsl:value-of select="$f"/>
+                      </xsl:attribute>
+                      <xsl:attribute name="policy">
+                        <xsl:value-of select="$policy"/>
+                      </xsl:attribute>
+                      <xsl:attribute name="query">q_enc_req_but_not_res</xsl:attribute>
+                    </instance>
+                  </xsl:when>
+
+                  <xsl:when test="((p:request[@encryptBody='true']) or
+                                  (p:response[@encryptBody='true'])) and
+                                  (p:fault[@encryptBody='false'])">
+                    <instance>
+                      <xsl:attribute name="endpoint">
+                        <xsl:value-of select="$endpoint"/>
+                      </xsl:attribute>
+                      <xsl:attribute name="file">
+                        <xsl:value-of select="$f"/>
+                      </xsl:attribute>
+                      <xsl:attribute name="policy">
+                        <xsl:value-of select="$policy"/>
+                      </xsl:attribute>
+                      <xsl:attribute name="query">q_enc_req_or_res_but_not_fault</xsl:attribute>
+                    </instance>
+                  </xsl:when>
+
+                  <xsl:otherwise>
+                    <xsl:for-each select="p:request | p:response | p:fault">
+                      <xsl:if test="@encryptBody='false'">
+                        <instance>
+                          <xsl:attribute name="endpoint">
+                            <xsl:value-of select="$endpoint"/>
+                          </xsl:attribute>
+                          <xsl:attribute name="file">
+                            <xsl:value-of select="$f"/>
+                          </xsl:attribute>
+                          <xsl:attribute name="policy">
+                            <xsl:value-of select="$policy"/>
+                          </xsl:attribute>
+                          <xsl:attribute name="SOAP">
+                            <xsl:value-of select="local-name(current())"/>
+                          </xsl:attribute>
+                          <xsl:attribute name="query">q_does_not_encrypt_req_res_fault_body</xsl:attribute>
+                        </instance>
+                      </xsl:if>
+                    </xsl:for-each>
+                  </xsl:otherwise>
+                </xsl:choose>
+
+                <xsl:if test="($assertion='mutualCertificate11Security') and
+                                (p:request[@encryptBody='true']) and
+                                ($messageProtectionOrder='EncryptBeforeSign')">
+                  <instance>
+                    <xsl:attribute name="endpoint">
+                      <xsl:value-of select="$endpoint"/>
+                    </xsl:attribute>
+                    <xsl:attribute name="file">
+                      <xsl:value-of select="$f"/>
+                    </xsl:attribute>
+                    <xsl:attribute name="policy">
+                      <xsl:value-of select="$policy"/>
+                    </xsl:attribute>
+                    <xsl:attribute name="query">q_credit_taking_attack_11</xsl:attribute>
+                  </instance>
+                </xsl:if>
+
+                <xsl:for-each select="p:request | p:response | p:fault">
+                  <xsl:if test="(@encryptBody='true') and ($messageProtectionOrder='SignBeforeEncrypt')">
+                    <instance>
+                      <xsl:attribute name="endpoint">
+                        <xsl:value-of select="$endpoint"/>
+                      </xsl:attribute>
+                      <xsl:attribute name="file">
+                        <xsl:value-of select="$f"/>
+                      </xsl:attribute>
+                      <xsl:attribute name="policy">
+                        <xsl:value-of select="$policy"/>
+                      </xsl:attribute>
+                      <xsl:attribute name="SOAP">
+                        <xsl:value-of select="local-name(current())"/>
+                      </xsl:attribute>
+                      <xsl:attribute name="query">q_dictionary_attack</xsl:attribute>
+                    </instance>
+                  </xsl:if>
+
+                  <xsl:if test="@encryptBody='true' and not (contains(@signatureOptions,'IncludeSoapBody'))">
+                    <instance>
+                      <xsl:attribute name="endpoint">
+                        <xsl:value-of select="$endpoint"/>
+                      </xsl:attribute>
+                      <xsl:attribute name="file">
+                        <xsl:value-of select="$f"/>
+                      </xsl:attribute>
+                      <xsl:attribute name="policy">
+                        <xsl:value-of select="$policy"/>
+                      </xsl:attribute>
+                      <xsl:attribute name="SOAP">
+                        <xsl:value-of select="local-name(current())"/>
+                      </xsl:attribute>
+                      <xsl:attribute name="query">q_unsigned_encrypted_body</xsl:attribute>
+                    </instance>
+                  </xsl:if>
+
+                  <xsl:if test="@encryptBody='false' and not (contains(@signatureOptions,'IncludeSoapBody'))">
+                    <instance>
+                      <xsl:attribute name="endpoint">
+                        <xsl:value-of select="$endpoint"/>
+                      </xsl:attribute>
+                      <xsl:attribute name="file">
+                        <xsl:value-of select="$f"/>
+                      </xsl:attribute>
+                      <xsl:attribute name="policy">
+                        <xsl:value-of select="$policy"/>
+                      </xsl:attribute>
+                      <xsl:attribute name="SOAP">
+                        <xsl:value-of select="local-name(current())"/>
+                      </xsl:attribute>
+                      <xsl:attribute name="query">q_unsigned_body</xsl:attribute>
+                    </instance>
+                  </xsl:if>
+
+                  <!-- this test ignores the other options, which might include addressing headers -->
+                  <xsl:if test="not (contains(@signatureOptions,'IncludeAddressing'))">
+                    <instance>
+                      <xsl:attribute name="endpoint">
+                        <xsl:value-of select="$endpoint"/>
+                      </xsl:attribute>
+                      <xsl:attribute name="file">
+                        <xsl:value-of select="$f"/>
+                      </xsl:attribute>
+                      <xsl:attribute name="policy">
+                        <xsl:value-of select="$policy"/>
+                      </xsl:attribute>
+                      <xsl:attribute name="SOAP">
+                        <xsl:value-of select="local-name(current())"/>
+                      </xsl:attribute>
+                      <xsl:attribute name="query">q_unsigned_addressing</xsl:attribute>
+                    </instance>
+                  </xsl:if>
+
+                  <xsl:if test="not (contains(@signatureOptions,'IncludeTimestamp'))">
+                    <instance>
+                      <xsl:attribute name="endpoint">
+                        <xsl:value-of select="$endpoint"/>
+                      </xsl:attribute>
+                      <xsl:attribute name="file">
+                        <xsl:value-of select="$f"/>
+                      </xsl:attribute>
+                      <xsl:attribute name="policy">
+                        <xsl:value-of select="$policy"/>
+                      </xsl:attribute>
+                      <xsl:attribute name="SOAP">
+                        <xsl:value-of select="local-name(current())"/>
+                      </xsl:attribute>
+                      <xsl:attribute name="query">q_unsigned_timestamp</xsl:attribute>
+                    </instance>
+                  </xsl:if>
+                </xsl:for-each>
+              </xsl:for-each>
+
+              <xsl:if test="p:clientToken/p:username[@password]">
+                <instance>
+                  <xsl:attribute name="endpoint">
+                    <xsl:value-of select="$endpoint"/>
+                  </xsl:attribute>
+                  <xsl:attribute name="file">
+                    <xsl:value-of select="$f"/>
+                  </xsl:attribute>
+                  <xsl:attribute name="policy">
+                    <xsl:value-of select="$policy"/>
+                  </xsl:attribute>
+                  <xsl:attribute name="query">q_includes_plaintext_password</xsl:attribute>
+                </instance>
+              </xsl:if>
+
+            </xsl:for-each>
+          </xsl:for-each>
+        </xsl:for-each>
+      </instances>
+    </xsl:variable>
+
+    <xsl:variable name="html">
+
+      <html xmlns="http://www.w3.org/1999/xhtml">
+        <head>
+          <title>Policy Advisor for WSE 3.0</title>
+          <style>
+            BODY { FONT-SIZE: 10pt; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif }
+            PRE { BACKGROUND-COLOR: #c0c0c0 }
+          </style>
+        </head>
+
+        <body>
+          <H1>Policy Advisor for WSE 3.0</H1>
+          <xsl:choose>
+            <xsl:when test="ep:endpoints/ep:endpoint">
+
+              <h2>Endpoints</h2>
+              <ul>
+                <xsl:for-each select="ep:endpoints/ep:endpoint">
+                  <li>
+                    <i>
+                      <xsl:value-of select="@name"/>
+                    </i>
+
+                    <font size="1">
+                      <xsl:text> [</xsl:text>
+                      <xsl:if test="@config">
+                        <xsl:text> </xsl:text>
+                        <a>
+                          <xsl:attribute name="href">
+                            <xsl:value-of select="concat(@path,@config)"/>
+                          </xsl:attribute>
+                          <xsl:attribute name="target">_blank</xsl:attribute>
+                          <xsl:text>config</xsl:text>
+                        </a>
+                      </xsl:if>
+                      <xsl:if test="@policyCache">
+                        <xsl:text> </xsl:text>
+                        <a>
+                          <xsl:attribute name="href">
+                            <xsl:value-of select="concat(@path,@policyCache)"/>
+                          </xsl:attribute>
+                          <xsl:attribute name="target">_blank</xsl:attribute>
+                          <xsl:text>policyCache</xsl:text>
+                        </a>
+                      </xsl:if>
+                      <xsl:if test="@input">
+                        <xsl:text> </xsl:text>
+                        <a>
+                          <xsl:attribute name="href">
+                            <xsl:value-of select="concat(@path,@input)"/>
+                          </xsl:attribute>
+                          <xsl:attribute name="target">_blank</xsl:attribute>
+                          <xsl:text>input</xsl:text>
+                        </a>
+                      </xsl:if>
+                      <xsl:if test="@output">
+                        <xsl:text> </xsl:text>
+                        <a>
+                          <xsl:attribute name="href">
+                            <xsl:value-of select="concat(@path,@output)"/>
+                          </xsl:attribute>
+                          <xsl:attribute name="target">_blank</xsl:attribute>
+                          <xsl:text>output</xsl:text>
+                        </a>
+                      </xsl:if>
+                      <xsl:text> ]</xsl:text>
+                    </font>
+                  </li>
+                </xsl:for-each>
+              </ul>
+              
+              <xsl:if test="msxsl:node-set($groups)/groups/group">
+                <h2>Messages</h2>
+                <xsl:for-each select="msxsl:node-set($groups)/groups/group">
+                  <xsl:element name="a">
+                    <xsl:attribute name="title">
+                      <xsl:value-of select="@Action"/>
+                      <xsl:text> @ </xsl:text>
+                      <xsl:value-of select="@To"/>
+                      <xsl:text> </xsl:text>
+                      <xsl:value-of select="@Timestamp"/>
+                    </xsl:attribute>
+                    <xsl:text>Message </xsl:text>
+                    <xsl:value-of select="@number"/>
+                    <xsl:text> </xsl:text>
+                  </xsl:element>
+
+                  <xsl:for-each select="current()/message">
+                    <xsl:text>[</xsl:text>
+                    <xsl:element name="a">
+                      <xsl:attribute name="href">
+                        <xsl:value-of select="@file"/>
+                      </xsl:attribute>
+                      <xsl:attribute name="target">_blank</xsl:attribute>
+                      <xsl:attribute name="title">
+                        <xsl:text>Envelope </xsl:text>
+                        <xsl:value-of select="@pos"/>
+                        <xsl:text> in file </xsl:text>
+                        <xsl:value-of select="@file"/>
+                      </xsl:attribute>
+                      <xsl:if test="@direction='input'">
+                        <xsl:text>></xsl:text>
+                        <i>
+                          <xsl:value-of select="@endpoint"/>
+                        </i>
+                      </xsl:if>
+                      <xsl:if test="@direction='output'">
+                        <i>
+                          <xsl:value-of select="@endpoint"/>
+                        </i>
+                        <xsl:text>></xsl:text>
+                      </xsl:if>
+                    </xsl:element>
+                    <xsl:text>] </xsl:text>
+                  </xsl:for-each>
+
+                  <xsl:value-of select="@Body"/>
+
+                  <xsl:if test="@RelatesToNumber">
+                    <xsl:text> (relates to Message </xsl:text>
+                    <xsl:value-of select="@RelatesToNumber"/>
+                    <xsl:text>)</xsl:text>
+                  </xsl:if>
+                  <br/>
+                </xsl:for-each>
+              </xsl:if>  
+              
+              <h2>Advisories</h2>
+              <xsl:for-each select="msxsl:node-set($advisories)/advisories/advisory">
+                <xsl:variable name="a">
+                  <xsl:copy-of select="self::advisory"/>
+                </xsl:variable>
+                <xsl:variable name="q">
+                  <xsl:value-of select="@query"/>
+                </xsl:variable>
+                <xsl:variable name="iq">
+                  <xsl:copy-of select="msxsl:node-set($instances)/instances/instance[@query=$q]"/>
+                </xsl:variable>
+                <xsl:if test="msxsl:node-set($iq)/instance">
+                  <hr></hr>
+                  <xsl:copy-of select="$iq"/>
+                  <font COLOR="#0000FF">
+                    <xsl:value-of select="msxsl:node-set($a)/advisory/condition"/>
+                  </font>
+                  <p>
+                    <ul>
+                      <xsl:for-each select="msxsl:node-set($iq)/instance">
+                        <li>
+                          <i>
+                            <xsl:value-of select="@endpoint"/>
+                          </i>
+                          <xsl:if test="@policy">
+                            <xsl:text> (policy: </xsl:text>
+                            <i>
+                              <xsl:value-of select="@policy"/>
+                            </i>
+                            <xsl:text>)</xsl:text>
+                          </xsl:if>
+                          <xsl:if test="@SOAP">
+                            <xsl:text> (SOAP: </xsl:text>
+                            <i>
+                              <xsl:value-of select="@SOAP"/>
+                            </i>
+                            <xsl:text>)</xsl:text>
+                          </xsl:if>
+                          <xsl:if test="@requestAction">
+                            <xsl:text> (action: </xsl:text>
+                            <i>
+                              <xsl:value-of select="@requestAction"/>
+                            </i>
+                            <xsl:text>)</xsl:text>
+                          </xsl:if>
+
+                          <font size="1">
+                            <xsl:text> [</xsl:text>
+                            <a>
+                              <xsl:attribute name="href">
+                                <xsl:value-of select="@file"/>
+                              </xsl:attribute>
+                              <xsl:attribute name="target">_blank</xsl:attribute>
+                              <xsl:choose>
+                                <xsl:when test="@policy">
+                                  <xsl:text>policyCache</xsl:text>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                  <xsl:text>config</xsl:text>
+                                </xsl:otherwise>
+                              </xsl:choose>
+                            </a>
+                            <xsl:text>]</xsl:text>
+                          </font>
+                        </li>
+                      </xsl:for-each>
+                    </ul>
+                  </p>
+                  <p>
+                    <B>Risk: </B>
+                    <xsl:copy-of select="msxsl:node-set($a)/advisory/risk/child::node()"/>
+                  </p>
+                  <p>
+                    <B>Advice: </B>
+                    <xsl:copy-of select="msxsl:node-set($a)/advisory/advice/child::node()"/>
+                  </p>
+
+                </xsl:if>
+              </xsl:for-each>
+            </xsl:when>
+            <xsl:otherwise>
+              <P>
+                Policy Advisor is a security tool for Web Services Enhancements 3.0 for Microsoft .NET (WSE).
+
+                It examines the configuration and policy files for one or more WSE endpoints,
+                highlights typical security risks, and provides some remedial advice.
+                Moreover, it summarizes the associated trace files (when present),
+				showing message flows between endpoints.
+              </P>
+              <P>
+                Policy Advisor can be used for reviewing the security of WSE installations.
+                It generates a report that describes errors such as weak or apparently inconsistent security
+                properties, highlights settings that are useful during test but inappropriate in production,
+                and raises some questions to be determined during security reviews.
+                The absence of warnings does not in itself provide strong security guarantees;
+                nonetheless, Policy Advisor can find issues that may otherwise be missed.
+              </P>
+
+              <P>
+                This version of Policy Advisor is specific to WSE 3.0; it has the following new features:
+                <ul>
+                  <li>It supports the new Turnkey Security Assertions.</li>
+                  <li>It summarizes message flows between multiple endpoints.</li>
+                  <li>It analyzes multiple configuration, policy, and trace files, as
+                    listed in an endpoint file.
+                  </li>
+                  <li>It groups advice by query (instead of policy) to provide a
+                    compact report even if many policies are analyzed at once.
+                  </li>
+                  <li>It needs no installation; <b>PolicyAdvisor.xml</b> is simply an XSL stylesheet for
+				    viewing endpoint files.
+                  </li>
+                </ul>
+              </P>
+
+			<P>
+				Updates to Policy Advisor may be released; check the 
+				<a href="http://research.microsoft.com/projects/Samoa" target="_blank">Microsoft Research website</a>
+				for announcements.
+				This website provides additional resources on Web Services security, including a paper that describes
+				a previous version of WSE Policy Advisor for WSE 2.0.
+				</P>
+
+              <h2>Using Policy Advisor</h2>
+
+				<p>
+					To analyze the files associated with one or more endpoints,
+					create an endpoint file with a text editor, save it in the
+					same directory as <b>PolicyAdvisor.xml</b>, and open it with Internet Explorer.
+					
+					See for example this <a href="WSE Sample Endpoints.xml" target="_blank">WSE Sample Endpoints file</a>.
+				</p>
+
+				<p>
+					To view this documentation, open <b>PolicyAdvisor.xml</b> itself with Internet Explorer.
+				</p>
+
+				<h2>WSE Endpoint Files</h2>
+				<p>
+					Policy Advisor is an XSL stylesheet for viewing endpoint files.
+					An <b>endpoint file</b> is an XML document holding a sequence of <B>&lt;ep:endpoint&gt;</B> elements,
+					grouped as a single <B>&lt;ep:endpoints&gt;</B> element, where <B>ep</B>
+					is the namespace <B>http://schemas.microsoft.com/pa/2005/10/endpoints</B>.
+				</p>
+				<p>
+					Each endpoint file should include the XML directive
+					<b>&lt;?xml-stylesheet href="PolicyAdvisor.xml" type="text/xsl"?&gt;</b> so that opening the file with Internet Explorer
+					generates a report by calling the <b>PolicyAdvisor.xml</b> stylesheet.
+				</p>
+
+				<p>	
+					Each <B>&lt;ep:endpoint&gt;</B> element describes a single WSE endpoint, such as a client or server project.
+					The element may have the following attributes, each of which is optional.
+				</p>
+
+				<ul>
+					<li>
+						<B>name</B>: A name for identifying the endpoint in the report generated by Policy Advisor.
+					</li>
+					<li>
+						<B>path</B>: A base path for the following attributes.
+					</li>
+					<li>
+						<B>config</B>: The configuration file for this endpoint.
+						The concatenation of <B>path</B> and <B>config</B> is the path to the configuration file.
+					</li>
+					<li>
+						<B>policyCache</B>: The policy file for this endpoint. 
+						The concatenation of <B>path</B> and <B>policyCache</B> is the path to the policy file.
+					</li>
+					<li>
+						<B>input</B>: An existing trace of input messages for this endpoint, 
+						used (when present) to illustrate its message flow. 
+						The concatenation of <B>path</B> and <B>input</B> is the path to the trace file.
+					</li>
+					<li>
+						<B>output</B>: An existing trace of output messages for this endpoint, used (when present)
+						to illustrate its message flow.
+						The concatenation of <B>path</B> and <B>output</B> is the path to the trace file.
+					</li>
+				</ul>
+				<p>
+					Caution: if any of these paths cannot be resolved to a file, the browser will fail to generate a report
+				    and display instead an error message such as <b>the system cannot locate the resource specified</b>.
+					Relative paths are resolved with respect to the directory holding the endpoint file.
+				</p>
+				
+				<h2>Limitations</h2>
+              <ul>
+                <li>Some elements and attributes assume default values when absent; Policy Advisor may not always correctly determine these defaults.</li>
+                <li>In message flows, responses may sometimes precede requests in the message listing, 
+				as messages are sorted by timestamp with a one-second granularity.</li>
+              </ul>
+              
+              <HR></HR>
+              <h2>Appendix</h2>
+
+              <P>
+                Policy Advisor performs a series of queries that may trigger
+                specific advice, listed below.
+              </P>
+
+              <OL>
+                <xsl:for-each select="//advisories/advisory">
+
+                  <LI>
+                    <A>
+                      <xsl:attribute name="href">
+                        <xsl:text>#</xsl:text>
+                        <xsl:value-of select="@query"/>
+                      </xsl:attribute>
+                      <xsl:copy-of select="condition/child::node()"/>
+                    </A>
+                  </LI>
+
+                </xsl:for-each>
+              </OL>
+
+              <P>
+                For each query, we give the triggering condition, a
+                description of the risk, and some remedial advice.
+              </P>
+
+              <OL>
+                <xsl:for-each select="//advisories/advisory">
+                  <LI>
+                    <A>
+                      <xsl:attribute name="name">
+                        <xsl:value-of select="@query"/>
+                      </xsl:attribute>
+
+                      <FONT COLOR="#0000FF">
+                        <xsl:copy-of select="condition/child::node()"/>
+                      </FONT>
+                    </A>
+                    <p>
+                      <B>Risk: </B>
+                      <xsl:copy-of select="risk/child::node()"/>
+                    </p>
+                    <p>
+                      <B>Advice: </B>
+                      <xsl:copy-of select="advice/child::node()"/>
+                    </p>
+                  </LI>
+                </xsl:for-each>
+              </OL>
+            </xsl:otherwise>
+          </xsl:choose>
+        </body>
+      </html>
+    </xsl:variable>
+
+    <xsl:copy-of select="msxsl:node-set($html)"/>
+  </xsl:template>
+</xsl:stylesheet>

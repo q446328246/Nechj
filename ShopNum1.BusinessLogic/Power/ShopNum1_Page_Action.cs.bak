@@ -1,0 +1,267 @@
+﻿using System.Data;
+using ShopNum1.Common;
+using ShopNum1.DataAccess;
+using ShopNum1.Interface;
+using ShopNum1MultiEntity;
+using System.Data.Common;
+
+namespace ShopNum1.BusinessLogic
+{
+    public class ShopNum1_Page_Action : IShopNum1_Page_Action
+    {
+        public int Add(ShopNum1_Page page)
+        {
+            return DatabaseExcetue.RunNonQuery(string.Concat(new object[]
+            {
+                "INSERT INTO ShopNum1_Page( Guid, \tName\t,\tOrderID\t,\tOneID\t,\tTwoID\t,\tThreeID\t,\tDescription\t,\tPageType\t,\tPagePath\t,\tCreateUser\t,\tCreateTime\t,\tModifyUser\t,\tModifyTime\t,\tIsDeleted ) VALUES (  '"
+                , page.Guid, "',  '", Operator.FilterString(page.Name), "',  ", page.OrderID, ",  ", page.OneID,
+                ",  ", page.TwoID, ",  ", page.ThreeID, ",  '", Operator.FilterString(page.Description), "',  ",
+                page.PageType,
+                ",  '", Operator.FilterString(page.PagePath), "',  '", page.CreateUser, "', '", page.CreateTime,
+                "',  '", page.ModifyUser, "' , '", page.ModifyTime, "',  ", page.IsDeleted, ")"
+            }));
+        }
+
+        public int DelPageBySuper(string pageguid)
+        {
+            var paraName = new string[1];
+            var paraValue = new string[1];
+            paraName[0] = "@pageguid";
+            paraValue[0] = pageguid;
+            return DatabaseExcetue.RunProcedure("Pro_ShopNum1_PageDelBySuper", paraName, paraValue);
+        }
+
+        public DataTable GetOnePage(int isDeleted)
+        {
+            string str = string.Empty;
+            str =
+                "SELECT Guid, Name, OrderID,OneID,TwoID,ThreeID,Description,PagePath, CreateUser, CreateTime, ModifyUser, ModifyTime, IsDeleted FROM ShopNum1_Page WHERE 0=0 AND TwoID=0 AND ThreeID=0 AND PageType=0";
+            if ((isDeleted == 0) || (isDeleted == 1))
+            {
+                str = string.Concat(new object[] { str, " AND IsDeleted=", isDeleted, " " });
+            }
+            return DatabaseExcetue.ReturnDataTable(str + " ORDER BY OrderID Desc");
+        }
+
+        public DataTable GetOnePage(string guid, int isDeleted)
+        {
+            return
+                DatabaseExcetue.ReturnDataTable(
+                    string.Concat(new object[]
+                    {
+                        "select D.PageGuid,E.Guid AS Guid,E.Name AS Name,E.PagePath AS PagePath,E.OneID AS OneID,E.TwoID AS TwoID,E.Description AS Description FROM   ( Select distinct PageGuid From   (  Select distinct A.* from ShopNum1_GroupPage AS A,(select GroupGuid From ShopNum1_GroupUser  where UserGuid ='"
+                        , guid,
+                        "') as B  Where A.GroupGuid = B.GroupGuid  )AS C)AS D, ShopNum1_Page AS E WHERE D.PageGuid = E.Guid AND E.TwoID=0 AND E.ThreeID=0 AND E.PageType=0 And E.IsDeleted="
+                        , isDeleted
+                    }) + " ORDER BY E.OrderID Desc");
+        }
+
+        public DataTable GetOnePageBySuper(int isDeleted)
+        {
+            string str = string.Empty;
+            str = "SELECT Guid, Name,OneID  FROM ShopNum1_Page WHERE 0=0 AND TwoID=0 AND ThreeID=0 AND PageType=0";
+            if ((isDeleted == 0) || (isDeleted == 1))
+            {
+                str = string.Concat(new object[] { str, " AND IsDeleted=", isDeleted, " " });
+            }
+            return DatabaseExcetue.ReturnDataTable(str + " ORDER BY OrderID Desc");
+        }
+
+        public DataTable GetTopPage(int isDeleted)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+
+            parms[0].ParameterName = "@isDeleted";
+            parms[0].Value = isDeleted;
+            string str = string.Empty;
+            str =
+                "SELECT Guid, Name, OrderID,OneID,TwoID,ThreeID,Description,PagePath, IsDeleted FROM ShopNum1_Page WHERE 0=0 AND TwoID=0 AND ThreeID=0 AND PageType=3";
+            if ((isDeleted == 0) || (isDeleted == 1))
+            {
+                str = string.Concat(new object[] { str, " AND IsDeleted=@isDeleted" });
+            }
+            return DatabaseExcetue.ReturnDataTable(str + " ORDER BY OrderID Desc", parms);
+        }
+
+        public DataTable GetTwopage(int oneID, int isDeleted)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(2);
+
+            parms[0].ParameterName = "@isDeleted";
+            parms[0].Value = isDeleted;
+            parms[1].ParameterName = "@oneID";
+            parms[1].Value = oneID;
+            string strSql = string.Empty;
+            strSql =
+                "SELECT Guid, Name, OrderID,OneID,TwoID,ThreeID,Description,PagePath, CreateUser, CreateTime, ModifyUser, ModifyTime, IsDeleted FROM ShopNum1_Page WHERE 0=0 AND TwoID!=0 AND PageType=0";
+            if (oneID > 0)
+            {
+                strSql = string.Concat(new object[] { strSql, " AND OneID=@oneID" });
+            }
+            if ((isDeleted == 0) || (isDeleted == 1))
+            {
+                strSql = string.Concat(new object[] { strSql, " AND IsDeleted=@isDeleted" });
+            }
+            return DatabaseExcetue.ReturnDataTable(strSql, parms);
+        }
+
+        public DataTable GetTwopage(string guid, int oneID, int isDeleted)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(3);
+
+            parms[0].ParameterName = "@guid";
+            parms[0].Value = guid;
+            parms[1].ParameterName = "@oneID";
+            parms[1].Value = oneID;
+            parms[2].ParameterName = "@isDeleted";
+            parms[2].Value = isDeleted;
+            return
+                DatabaseExcetue.ReturnDataTable(
+                    string.Concat(new object[]
+                    {
+                        "select D.PageGuid,E.Guid AS Guid,E.Name AS Name,E.PagePath AS PagePath,E.OneID AS OneID,E.TwoID AS TwoID,E.Description AS Description FROM   ( Select distinct PageGuid From   (  Select distinct A.* from ShopNum1_GroupPage AS A,(select GroupGuid From ShopNum1_GroupUser  where UserGuid =@guid) as B  Where A.GroupGuid = B.GroupGuid  )AS C)AS D, ShopNum1_Page AS E WHERE D.PageGuid = E.Guid AND E.TwoID!=0 AND E.PageType=0  AND E.OneID =@oneID And E.IsDeleted=@isDeleted"
+                    }) + " ORDER BY E.OrderID Desc",parms);
+        }
+
+        public DataTable GetTwopageBySupper(int oneID, int isDeleted)
+        {
+             DbParameter[] parms = DatabaseExcetue.CreateParameter(2);
+
+            parms[0].ParameterName = "@oneID";
+            parms[0].Value = oneID;
+            parms[1].ParameterName = "@isDeleted";
+            parms[1].Value = isDeleted;
+            
+            string strSql = string.Empty;
+            strSql =
+                "SELECT Guid, Name,OneID,TwoID,PagePath,OrderID FROM ShopNum1_Page WHERE 0=0 AND TwoID!=0 AND PageType=0";
+            if (oneID > 0)
+            {
+                strSql = string.Concat(new object[] { strSql, " AND OneID=@oneID" });
+            }
+            if ((isDeleted == 0) || (isDeleted == 1))
+            {
+                strSql = string.Concat(new object[] { strSql, " AND IsDeleted=@isDeleted" });
+            }
+            return DatabaseExcetue.ReturnDataTable(strSql,parms);
+        }
+
+        public int RetrunMaxThreeID(int oneID, int twoID)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(2);
+
+            parms[0].ParameterName = "@oneID";
+            parms[0].Value = oneID;
+            parms[1].ParameterName = "@twoID";
+            parms[1].Value = twoID;
+            DataTable table =
+                DatabaseExcetue.ReturnDataTable(
+                    string.Concat(new object[] { "SELECT max(ThreeID) FROM ShopNum1_Page  WHERE OneID=@oneID AND  TwoID=@twoID" }),parms);
+            if ((table.Rows.Count >= 1) && (table.Rows[0][0].ToString() != ""))
+            {
+                return int.Parse(table.Rows[0][0].ToString());
+            }
+            return 0;
+        }
+
+        public int RetrunMaxTwoID(int oneID)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+
+            parms[0].ParameterName = "@oneID";
+            parms[0].Value = oneID;
+            DataTable table =
+                DatabaseExcetue.ReturnDataTable("SELECT max(TwoID) FROM ShopNum1_Page  WHERE OneID=@oneID",parms);
+            if ((table.Rows.Count >= 1) && (table.Rows[0][0].ToString() != ""))
+            {
+                return int.Parse(table.Rows[0][0].ToString());
+            }
+            return 0;
+        }
+
+        public DataTable Search(int isDeleted)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+
+            parms[0].ParameterName = "@isDeleted";
+            parms[0].Value = isDeleted;
+            string strSql = string.Empty;
+            strSql =
+                "SELECT Guid, Name, OrderID,OneID,TwoID,ThreeID,Description,PagePath, CreateUser, CreateTime, ModifyUser, ModifyTime, IsDeleted FROM ShopNum1_Page WHERE 0=0";
+            if ((isDeleted == 0) || (isDeleted == 1))
+            {
+                strSql = string.Concat(new object[] { strSql, " AND IsDeleted=@isDeleted" });
+            }
+            return DatabaseExcetue.ReturnDataTable(strSql,parms);
+        }
+
+        public DataTable Search(string guid, int isDeleted)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(2);
+
+            parms[0].ParameterName = "@guid";
+            parms[0].Value = Operator.FilterString(guid);
+            parms[1].ParameterName = "@isDeleted";
+            parms[1].Value = isDeleted;
+                
+            string strSql = string.Empty;
+            strSql =
+                "SELECT  Guid, \tName\t,\tOrderID\t,\tOneID\t,\tTwoID\t,\tThreeID\t,\tDescription\t,\tPageType\t,\tPagePath\t,\tCreateUser\t,\tCreateTime\t,\tModifyUser\t,\tModifyTime\t,\tIsDeleted FROM ShopNum1_Page  WHERE 0=0 ";
+            if (Operator.FormatToEmpty(guid) != string.Empty)
+            {
+                strSql = strSql + " AND Guid=@guid";
+            }
+            if ((isDeleted == 0) || (isDeleted == 1))
+            {
+                strSql = string.Concat(new object[] { strSql, " AND IsDeleted=@isDeleted" });
+            }
+            return DatabaseExcetue.ReturnDataTable(strSql,parms);
+        }
+
+        public DataTable Search(int oneID, int twoID, int pageType, string name, string pagePath, int isDeleted)
+        {
+            string strSql = string.Empty;
+            strSql =
+                "SELECT  Guid, \tName\t,\tOrderID\t,\tOneID\t,\tTwoID\t,\tThreeID\t,\tDescription\t,\tPageType\t,\tPagePath\t,\tCreateUser\t,\tCreateTime\t,\tModifyUser\t,\tModifyTime\t,\tIsDeleted FROM ShopNum1_Page  WHERE 0=0 ";
+            if (oneID >= 0)
+            {
+                strSql = string.Concat(new object[] { strSql, " AND OneID=", oneID, " " });
+            }
+            if (twoID >= 0)
+            {
+                strSql = string.Concat(new object[] { strSql, " AND TwoID=", twoID, " " });
+            }
+            if (pageType >= 0)
+            {
+                strSql = strSql + " AND PageType=" + pageType;
+            }
+            if (Operator.FormatToEmpty(name) != string.Empty)
+            {
+                strSql = strSql + " AND Name='" + Operator.FilterString(name) + "'";
+            }
+            if (Operator.FormatToEmpty(pagePath) != string.Empty)
+            {
+                strSql = strSql + " AND PagePath='" + Operator.FilterString(pagePath) + "'";
+            }
+            if ((isDeleted == 0) || (isDeleted == 1))
+            {
+                strSql = string.Concat(new object[] { strSql, " AND IsDeleted=", isDeleted, " " });
+            }
+            return DatabaseExcetue.ReturnDataTable(strSql);
+        }
+
+        public int Update(ShopNum1_Page page)
+        {
+            string format =
+                " UPDATE shopnum1_page SET Name='{0}',OneID={1},TwoID={2},ThreeID={3},Description='{4}',PageType={5},PagePath='{6}',ModifyTime='{7}',ModifyUser='{8}',IsDeleted=0 where Guid='{9}'";
+            return
+                DatabaseExcetue.RunNonQuery(string.Format(format,
+                    new object[]
+                    {
+                        page.Name, page.OneID, page.TwoID, page.ThreeID,
+                        page.Description, page.PageType, page.PagePath,
+                        page.ModifyTime, page.ModifyUser, page.Guid
+                    }));
+        }
+    }
+}

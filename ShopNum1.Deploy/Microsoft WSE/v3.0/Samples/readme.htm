@@ -1,0 +1,559 @@
+﻿<HTML>
+<HEAD>
+    <TITLE>Web Services Enhancements 3.0 for Microsoft .NET - QuickStart Samples</TITLE>
+</HEAD>
+<style>
+ BODY { FONT-SIZE: 10pt; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif } PRE { BACKGROUND-COLOR: #c0c0c0 } 
+div.Section1
+	{page:Section1;}
+</style>
+
+<H1>Web Services Enhancements 3.0 for Microsoft .NET - QuickStart Samples</H1>
+
+<H2>Introduction</H2>
+
+<p class="bodyText">
+The WSE 3.0&nbsp;QuickStart samples are all simple, mainly command-line driven 
+applications that demonstrate the essential features of WSE. Each sample typically
+consists of a client application in the form of an executable file and a 
+corresponding Web service built with either an ASP.NET Web service
+or the WSE messaging classes.
+</p>
+<p class="bodyText">
+To run these samples you need a copy of Visual Studio 2005.
+You can use just the .NET v2.0 SDK, but you will have to build the solutions
+with the command line tools. Command line make files are not included with these samples.</p>
+<p class="bodyText">
+The layout of the samples is:
+</p>
+<P class="bodyText">
+For C# projects - <EM>WSE3 Installation directory\</EM>Samples\CS\QuickStart\<EM>SampleFolder</EM>
+</P>
+<P class="bodyText">
+For VB.NET - <EM>WSE3 Installation directory\</EM>Samples\VB\QuickStart\<EM>SampleFolder</EM>
+</P>
+<p class="bodyText">
+
+<P class="bodyText">
+Additionally, there is a common library project that all of the samples use 
+called <EM>SampleBase</EM>. This project contains common code, such as classes for XML 
+serialized documents and configuration for client proxies.
+</P>
+
+
+<P class="bodyText">
+For many of the samples, there is a version that uses declarative policy files and a version that 
+uses code to illustrate the features for that sample. Each sample folder 
+also contains a single solution with multiple projects -- the server and the client 
+for the sample. For those samples that require virtual directories within IIS, 
+there is a script file called <i>CreateSampleVdir.bat</i> to create the virtual 
+directory. To remove the virtual directory, use the <i>DeleteSampleVdir.bat</i> file.
+</p>
+
+
+For more information and updates, visit the WSE home site on
+<a href="http://msdn.microsoft.com/webservices/webservices/building/wse/default.aspx">MSDN</a>.
+</P>
+
+
+
+<H2 class="bodyText">Samples List</H2>
+<P class="bodyText">
+This is the list of the WSE 3.0 QuickStart samples:
+</P>
+
+<P class="bodyText">Advanced -
+These samples demonstrate advanced features of the policy framework.</P>
+<UL>
+    <LI>
+        <DIV class="bodyText">
+            <b>CustomSecurityPolicyAssertion</b> - Demonstrates how to 
+	     set a custom security policy 
+             assertion at the service. This custom policy assertion
+             provides a "choice" between the built in security assertion. i.e. A message
+             can arrive at the service which can be secured with any one of the turnkey
+             security assertions (e.g. UsernameForCertificate, AnonymousForCertificate
+             or Kerberos) and the service will choose the correct one.
+	     This allows a service to select the security depending on 
+             how the client secures the message initially.</DIV>
+    </LI>
+    <LI>
+        <DIV class="bodyText">
+            <b>PolicyOnRequestBody</b> - Demonstrates how the security requirements 
+	      for each message on an endpoint can have different message protection
+ 	      requirements (e.g. what headers are signed, whether the body is encrypted or not)
+	      based on the message contents. In this case the first child of the SOAP:body
+	      envelope is used instead of the WS-Addressing wsa:Action element.</DIV>
+    </LI>
+</UL>
+
+<P class="bodyText">Basic - 
+These samples demonstrate the fundamental features of WSE 3.0</P>
+</P>
+<UL>
+    <LI>
+        <DIV class="bodyText">
+            <b>AsyncStockService</b> - Demonstrates the minimal WSE project with 
+			Addressing and Security headers in SOAP messages using asynchronous 
+			requests from the client to the service.</DIV>
+    </LI>
+    <LI>
+        <DIV class="bodyText">
+            <b>BaseStockService</b> - Demonstrates the minimal WSE project with 
+			Addressing and Security headers in SOAP messages.</DIV>
+    </LI>
+    <LI>
+        <DIV class="bodyText">
+            <b>BinaryDataMTOM</b> - Demonstrates sending binary data via the W3C 
+			MTOM specification.</DIV>
+    </LI>
+    <LI>
+        <DIV class="bodyText">
+            <b>CustomPolicyTraceAssertion</b> - Demonstrates creating a custom 
+			tracing policy assertion that can be plugged into the WSE policy 
+			pipeline.
+        </DIV>
+    </LI>
+</UL>
+
+<P class="bodyText">Hosting -
+These samples demonstrate how to host Web Services other than by using IIS. e.g. As Windows services
+or as console applications.</P>
+<UL>
+    <LI>
+        <DIV class="bodyText">
+            <b>ConsoleService</b> - Demonstrates calling ASP.NET Web Services 
+			hosted in both IIS and a console application with the same client 
+			proxy.</DIV>
+    </LI>
+    <LI>
+        <DIV class="bodyText">
+            <b>WindowsService</b> - Demonstrates hosting an ASP.NET Web Service in a 
+		Windows service.</DIV>
+    </LI>
+</UL>
+
+<P class="bodyText">Messaging -
+These samples demonstrate the alternative WSE messaging APIs that were introduced in the WSE 2.0
+release. These enabled Web services to be hosted outside of IIS, have alternative transports (e.g. TCP)
+and different any messaging pattern other than request/response. In WSE 3.0 these scenarios can now be achieved with 
+the ASP.NET programming model as the preferred approach. However these samples show how
+the WSE messaging classes can be used.</P>
+<UL>
+    <LI>
+        <DIV class="bodyText">
+            <b>HttpSyncStockService</b> - Demonstrates using the SoapClient and SoapService classes
+ 		as an alternative messaging API to the ASP.NET WebClient/WebService classes
+		calling over HTTP.</DIV>
+    </LI>
+    <LI>
+        <DIV class="bodyText">
+            <b>TcpStockSoapReceiver</b> - Demonstrates using the SoapReceiver and SoapSender classes
+		as an alternative low level messaging API calling over TCP.</DIV>
+    </LI>
+    <LI>
+        <DIV class="bodyText">
+            <b>TcpSyncStockService</b> - Demonstrates using the SoapClient and SoapService classes
+ 		as an alternative messaging API to the ASP.NET WebClient/WebService classes
+		calling over TCP.</DIV>
+    </LI>
+</UL>
+
+<P class="bodyText">Routing - WSE has a built in router class that acts as an intermediary, called 
+the SoapHttpRouter. These samples show how the router can be used in different configurations such
+as forward to based on content or applying security to incoming and outgoing messages. The ability
+to apply security policy files to the router is enabled in WSE 3.0
+</P>
+<UL>
+    <LI>
+        <DIV class="bodyText">
+            <b>BasicRouting</b> - Demonstrates the SoapHttpRouter as a forwarding 
+			message router with a routing referral cache and no security.</DIV>
+    </LI>
+    <LI>
+        <DIV class="bodyText">
+            <b>SecureRouting</b> - Demonstrates the SoapHttpRouter as a forwarding 
+	  message router with a routing referral cache. Security policy is used between the
+	  client and the router. There is no security between the router and the Web Service.</DIV>
+    </LI>
+    <LI>
+        <DIV class="bodyText">
+           <b>SecureRoutingToUltimateReceiver</b> - Demonstrates the SoapHttpRouter as a forwarding 
+	  message router with a routing referral cache. Security policy is used between the
+	 client and the ultimate service.
+	 There is also security between the router and the Web Service. This results in two 
+	 security headers being consumed at the service, one from the client and one from the
+	 router.</DIV>
+    </LI>
+</UL>
+
+<P class="bodyText">Security - These samples show how to use each of the turnkey security scenarios.
+The turnkey security assertions provide easy to use security scenarios that reflect best practices
+for message level security. The WSE Security wizard integrated into Visual Studio 2005
+provides an easy way to generate a WSE security policy file depending upon your application 
+deployment and security needs.
+</P>
+<UL>
+    <LI>
+        <DIV class="bodyText">
+            <b>SecureConversation</b> - Demonstrates the use of WS-SecureConversation 
+		with UsernameForCertificateSecurity assertion.</DIV>
+    </LI>
+    <LI>
+        <DIV class="bodyText">
+            <font face="Verdana" size="2">
+			<span style="font-size: 10pt; font-family: MS Shell Dlg; font-weight: 700">
+			WSSecurityAnonymous</span><span style="FONT-SIZE: 10pt; FONT-FAMILY: 'MS Shell Dlg'">
+			</span></font><font face="Verdana">-</font> Demonstrates an 
+			application that uses WS-Security with no client authentication and 
+			requires server authentication and protection using the server&#39;s 
+			X.509v3 certificate. Uses the anonymousForCertificateSecurity 
+			assertion.</DIV>
+    </LI>
+    <LI>
+        <DIV class="bodyText">
+            <b>WSSecurityCertificate</b> - Demonstrates an application that uses 
+			WS-Security with X.509v3 certificate for authentication and 
+			protection from the client and requires the server&#39;s X.509v3 
+			certificate for authentication and protection. Uses the 
+			mutualCertificate11Security assertion.</DIV>
+    </LI>
+    <LI>
+        <DIV class="bodyText">
+            <b>WSSecurityKerberos</b> - Demonstrates an application that 
+			uses Windows Kerberos authentication. Uses the 
+			kerberosSecurity assertion.</DIV>
+    </LI>
+    <LI>
+        <DIV class="bodyText">
+            <b>WSSecurityUsername</b> - Demonstrates an application that uses 
+			WS-Security with username authentication for the client and requires 
+			server authentication and protection using the server&#39;s X.509v3 
+			certificate. Uses the usernameForCertificateSecurity assertion.</DIV>
+    </LI>
+</UL>
+
+
+
+<H2>Steps for Working with the Samples</H2>
+<ol>
+
+    <li>
+        <p class="bodyText">
+	Run the <b>Setup.bat</b> file which can be found in the 
+	<EM>WSE3 Installation directory\</EM>Samples folder. This sets the correct access
+	permissions on the sample directories depending on the Windows OS version that 
+	you are running. This needed so that diagnostics files can be successfully written
+	for debugging purposes. This batch file then generates WSE test
+	certificates and installs them in the correct certificate stores. 
+	Alternatively you could generate and install test certificates manually as described in the
+	<b>Steps for Manually Installing X.509 Certificate</b> section of this document.
+	 </P>
+    <li>
+        <p class="bodyText">
+	Read the <b>readme.htm</b> file associated with the sample for additional information.</P>
+    <li>
+        <p class="bodyText">
+        Create the virtual directories either manually or with the script files, by running <b>CreateSampleVdir.bat</b>.
+        </p>
+    <li>
+        <p class="bodyText">
+        Open the solution file and build the service and the client projects.
+        </p>
+    <li>
+        <p class="bodyText">
+        Invoke the client from the Visual Studio 2005 debugger or the command line.
+        </p>
+    </li>
+</ol>
+
+<h3>Virtual Directory Creation for the QuickStart Web Services</h3>
+<P class="bodyText">
+You must add a new virtual directory to your installation to run the server 
+portions of the QuickStart samples for each sample that requires a virtual 
+directory. The virtual directory alias should be added to the root of your Web 
+site. The script files can be used to create or delete these virtual directories.
+</P>
+<P>
+In order to use the QuickStart clients, you must make sure that the virtual 
+directories you create have anonymous access enabled. If you do not, then 
+modifications must be made to the clients to include appropriate credentials in 
+the <STRONG>Credentials</STRONG> property of the various proxies. By default all proxies 
+generated with <i>Add Web Reference</i> automatically have the default credentials set (see the generated 
+Reference.cs file) 
+</P>
+
+<h3>Permissions for the Routing QuickStart Web Services Samples</h3>
+<P class="bodyText">
+In order to run the routing samples in the \Routing directory you must
+modify the file permissions for the &quot;referralCache.config&quot; files
+so that the ASP.NET process has WRITE access. On Windows 2000 and
+Windows XP, WRITE permission must be granted to the ASPNET user on the local machine.
+On Windows 2003, WRITE permission must be granted to NETWORK SERVICE on the local machine as
+shown in the screen shot below.
+NETWORK SERVICE is the default identity for Web sites created in IIS 6.0.
+
+<P class="bodyText">
+<IMG alt="" src="networkservice.gif" align="top" width="464" height="247">
+<P class="bodyText">
+
+<p>The file access permissions are also set by running the <b>Setup.bat</b> file in 
+the <EM>WSE3 Installation directory\</EM>Samples folder
+</p>
+
+
+<h3>Steps for Installing the Sample X.509 Certificates</h3>
+<blockquote>
+		<div style="border-style: dotted; border-width: 1px; padding: 4px">
+			<b>Performance Note</b>: Certain security operations may run slow 
+			using MakeCert generated certificates. Certificates issued from a 
+			true Certificate Authority do not have this problem. This is a known 
+			issue.</div>
+		</blockquote>
+<p>Included with WSE 3.0 are three certificates generated by the 
+MakeCert.exe tool provided in the Microsoft .NET Software Development Kit. The 
+following table describes the certificates and their store locations:</p>
+<table border="1" width="100%" id="table1" bordercolorlight="#C0C0C0" cellspacing="0">
+	<tr>
+		<td><b>Subject Name</b></td>
+		<td><b>Key</b></td>
+		<td><b>Store Location</b></td>
+		<td><b>Store Name</b></td>
+	</tr>
+	<tr>
+		<td>CN=WSE2QuickStartClient</td>
+		<td>Private</td>
+		<td>Current User</td>
+		<td>Personal</td>
+	</tr>
+	<tr>
+		<td>CN=WSE2QuickStartServer</td>
+		<td>Private</td>
+		<td>Local Machine</td>
+		<td>Personal</td>
+	</tr>
+	<tr>
+		<td>CN=WSE2QuickStartServer</td>
+		<td>Public</td>
+		<td>Current User</td>
+		<td>Other People (also known as AddressBook)</td>
+	</tr>
+	<tr>
+		<td>CN=WSEQuickStartRouter</td>
+		<td>Private</td>
+		<td>Local Machine</td>
+		<td>Personal</td>
+	</tr>
+</table>
+
+<p>To install these certificates:</p>
+<ol>
+	<ul>Run the <b>Setup.bat</b> file. This batch file generates the certificates named
+	above and installs them on the local machine into the corresponding stores. It
+	also correctly sets the access permissions on the certificates such that the 
+	running process (NETWORK SERVICE on Windows Server 2003 or ASPNET on Window XP)
+	can access the certificate.<br>
+</ol>
+
+<p>
+Two certificates generated by the MakeCert tool provided in the Microsoft 
+Platform SDK are provided as a convenience to those who do not wish to request 
+certificates from a certificate authority. These certificates are for testing 
+purposes only. As with all certificates signed by the test root agency, 
+applications which use these sample certificates must ensure that the <b>allowTestRoot</b> 
+attribute is set to <b>true</b> for the <b>&lt;x509&gt;</b> configuration 
+element. See the documentation for this configuration element for further 
+details.
+
+
+<h3><a name="certInstall"></a>Steps for Manually Installing X.509 Certificates</h3>
+<P class="bodyText">
+Many of the turnkey security samples require that certificates be installed on your 
+computer. This also applies to any certificate that you purchase
+You can do this manually by using the Certificate Manager for these operations as described below.
+</P>
+<OL>
+    <LI>
+        <DIV class="bodyText">
+            Click <STRONG>Start</STRONG>, click <STRONG>Run</STRONG>, type <STRONG>mmc</STRONG>, 
+            and then click <STRONG>OK</STRONG>.
+        </DIV>
+    <LI>
+        <DIV class="bodyText">
+            On the <STRONG>File</STRONG> menu, click <STRONG>Add/Remove Snap-in</STRONG>, 
+            and then click <STRONG>Add</STRONG>.
+        </DIV>
+    <LI>
+        Under <STRONG>Snap-in</STRONG>,&nbsp;double-click&nbsp;<STRONG>Certificates</STRONG>.
+    <LI>
+        <DIV class="bodyText">
+            Click <STRONG>My user account</STRONG> to add the certificates for the current 
+            user.
+        </DIV>
+        <DIV class="bodyText">
+            -or-
+        </DIV>
+        <DIV class="bodyText">
+            Click&nbsp;<STRONG>Computer account</STRONG> for the local machines certificates.
+        </DIV>
+    <LI>
+        <DIV class="bodyText">
+            Click <STRONG>Finish</STRONG>, and then close the dialog boxes.
+        </DIV>
+    </LI>
+</OL>
+<P class="bodyText">
+You will now have a management console that looks like the following:
+</P>
+<P class="bodyText">
+<IMG alt="" src="cert_setup.JPG" align="top" width="369" height="303">
+</P>
+<P class="bodyText">
+For the samples that require an X.509 certificate for signing, you will need an 
+X.509 certificate installed into your Personal user store within the certificate 
+manager. To install a certificate, you will need to request a new certificate 
+from a certificate authority. The Security sample's server will also 
+attempt to encrypt responses with this certificate so ensure that this 
+certificate is capable of data encryption as well as producing digital 
+signatures.
+</P>
+<P class="bodyText">
+<a name="x509encryptionSteps"></a>For the samples that require an X.509 
+certificate for encryption, you will need an X.509 certificate installed in the&nbsp;Personal 
+folder of the Local Computer store. This is the service's certificate. It will 
+be used to decrypt the request message. This certificate also must be exported (without 
+the private key) and imported into the Personal folder of the client's Current 
+User "Address Book" (sometimes called "Other People") certificate store. This 
+certificate is used by the client portion of the QuickStart to encrypt the 
+message for the server.
+<P class="bodyText">
+
+In the policy projects the name of the certificate is used to identify it in the 
+relevant store. For example the following &lt;x509> element definition finds 
+the certificate called &quot;WSE2QuickStartServer&quot; in the CurrentUser&#39;s AddressBook 
+store.
+
+<pre>&lt;x509 storeLocation=&quot;CurrentUser&quot;
+ storeName=&quot;AddressBook&quot;
+ findValue=&quot;CN=WSE2QuickStartServer&quot;
+ findType=&quot;FindBySubjectDistinguishedName&quot;/&gt;</pre>
+
+
+<h4><a name="certInstall"></a>AppBase.cs in SampleBase project</h4>
+
+In the code projects the AppBase.cs (or AppBase.vb) file in the SampleBase project contains examples
+of the subject key identifiers (SKI) for certificates. <P class="bodyText">
+<p class="bodyText">Once you have installed the 
+certificates, you may choose instead to use SKI values in the code. 
+You can do this with the X.509 Certificate Tool. This tool allows you to 
+load an X.509 Certificate from either the Current User or Local Machine 
+certificate store, and obtain the Base64 value of the subject key identifier for 
+it.
+
+<P class="bodyText">
+<IMG alt="" src="certTool.gif" align="top" width="552" height="537">
+<P class="bodyText">
+
+<b>IMPORTANT NOTE</b>: WSE must have permission to obtain X.509 certificates from the Local 
+Computer certificate store. Please read the documentation under the topic <A href="ms-help://MS.WSE30.1033/WSE3.0/html/e426098f-30e6-42b1-84bd-0e4769d2f505.htm">
+"Managing X.509 Certificates"</A> for information on how to do this.
+
+
+<P>
+All of the sample applications which use these certificates are pre-configured 
+to work with these sample certificates. <a href="Sample%20Test%20Certificates/readme.htm">Detailed 
+instructions</a> are provided for the installation of these sample certificates. 
+You will need to modify the sample code and/or policy if you use different 
+certificates.
+
+<h3>Configuring the Client Applications</h3> 
+
+<h5>Microsoft.Web.Services3</h5>
+<p class="bodyText">
+Client application configuration files (app.config) can contain a <STRONG>&lt;microsoft.web.services3&gt;</STRONG> 
+configuration section similar to the section found in ASP.NET web.config files. 
+Of note are the tracing facilities available to the client application.
+</p>
+<p class="bodyText">
+To trace the input and output from a client application, put the following text 
+into the application's configuration file:
+</p>
+<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;configuration&gt;
+	&lt;configSections&gt;
+		&lt;section name=&quot;microsoft.web.services3&quot; type=&quot;Microsoft.Web.Services3.Configuration.WebServicesConfiguration, Microsoft.Web.Services3, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35&quot; /&gt;
+	&lt;/configSections&gt;
+	&lt;microsoft.web.services3&gt;
+		&lt;diagnostics&gt;
+			&lt;trace enabled=&quot;true&quot; input=&quot;c:\traces\InputTrace.webinfo&quot; output=&quot;c:\traces\OutputTrace.webinfo&quot; /&gt;
+			&lt;detailedErrors enabled=&quot;true&quot; /&gt;
+		&lt;/diagnostics&gt;
+		&lt;security&gt;
+			&lt;x509 allowTestRoot=&quot;true&quot; /&gt;
+		&lt;/security&gt;
+	&lt;/microsoft.web.services3&gt;
+&lt;/configuration&gt;</pre>
+<p class="bodyText">
+Note that if you use the example entry above, the directory c:\traces must exist, 
+and you must have the proper permissions to create writable files in that 
+directory.
+</p>
+<h5>appSettings</h5>
+<p class="bodyText">
+Client executables can be configured to point at external servers that have the 
+Web Services Enhancements for Microsoft .NET installed via an entry in the <STRONG>&lt;appSettings&gt;</STRONG> 
+configuration section of the client's configuration file.
+</p>
+<p class="bodyText">
+For example if you want the BaseStockService client to work against an 
+installation of the QuickStart samples on server "server.example.com", add a new 
+config file in the QuickStart\BaseStockService\StockServiceClient directory 
+named app.config to the BaseService client's project in Visual Studio with the 
+following contents:
+</p>
+<pre>&lt;?xml version="1.0" ?&gt;
+&lt;configuration&gt;
+    &lt;appSettings&gt;
+        &lt;add key="remoteHost" value="http://server.example.com/" /&gt;
+    &lt;/appSettings&gt;
+&lt;/configuration&gt;</pre>
+<p class="bodyText">
+
+<h3>Running the Messaging and Hosting Samples</h3>
+<P class="bodyText">
+The messaging samples such as <b>TcpStockService</b> require the service portions 
+are running before the client portion. If you wish to run the samples from Visual Studio directly, set the 
+service portion of the sample as the Startup Project and press F5 to launch the 
+service in the debugger. When the service console appears, select the client 
+project in the Solution Explorer. Bring up the context menu for the project and 
+select the Debug sub-menu. From this sub-menu, select &quot;Start new instance.&quot; 
+By following these steps you will have both the client and service processes 
+attached to your Visual Studio environment for debugging.</p>
+
+<p>The <b>Windows Service Hosting</b> sample has a setup project that builds an MSI that you can use
+to install the service. Remember to stop this service when running the other
+TCP samples otherwise there will be a clash to register the same TCP port.
+Alternatively change the Windows Service Hosting sample to listen on a port other than 
+the default 8081 port.
+</P>
+
+<h3>Running the Kerberos Sample - <b>WSSecurityKerberos</b> </h3>
+<P class="bodyText">
+On Microsoft&reg; Windows&reg;&nbsp;XP and Microsoft&reg; Windows&reg;&nbsp;2000&nbsp;Server, 
+the Kerberos Security sample (WSSecurityKerberos) requires additional higher privilege settings for the ASPNET 
+account.  There are several ways to enable this.  One is to give ASPNET account 
+"Act as part of Operating System" privilege using Local Security Setting, and 
+then reboot the system.  Another alternative is to modify machine.config by 
+setting the username attribute equal to "system" in the ProcessModel element, 
+and then reset IIS. 
+</P>
+
+<P class="bodyText">
+By default the policy version of the WSSecurityKerberos does not work and throws an exception. This
+is because the machine name where the service is running needs to be updated in
+the wse3policyCache.config in the WSSecurityKerberosPolicyClient project 
+to the machine where the service is installed.
+</P>
+
+</HTML>
+ 

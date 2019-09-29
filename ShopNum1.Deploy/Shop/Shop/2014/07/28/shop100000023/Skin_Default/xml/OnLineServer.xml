@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Servers>
+  <server id="1" Name="QQ" Type="1" IsShow="1">
+  </server>
+  <server id="2" Name="WW" Type="1" IsShow="1">
+  </server>
+  <server id="3" Name="PH" Type="1" IsShow="0">
+  </server>
+  <server id="4" Name="WX" Type="1" IsShow="0">
+  </server>
+  <server id="5" Name="Baidu" Type="1" IsShow="1">
+  </server>
+  <server id="6" Name="全部" Type="1" IsShow="0">
+  </server>
+</Servers>

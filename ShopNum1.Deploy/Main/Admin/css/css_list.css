@@ -1,0 +1,133 @@
+﻿.title {
+    color: #666666;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    text-align: right;
+    width: 150px;
+}
+
+.item {
+    color: #666666;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    text-align: left;
+    width: 650px;
+}
+
+.listborder tr td { border-bottom: 1px #cccccc solid; }
+
+.listnavi {
+    background: url(../images/labelbg.gif);
+    height: 36px;
+}
+
+.listnavi div {
+    color: #000000;
+    float: left;
+    padding: 10px 10px 11px;
+    text-align: center;
+}
+
+.listnavititle {
+    color: #000000;
+    float: left;
+    font-weight: bolder;
+    padding: 10px 20px;
+}
+
+#listnaviselect { background: url(../images/select1A.gif); }
+
+#listnaviselect a {
+    background: url("../images/select1A.gif") no-repeat left top;
+    float: left;
+    margin: 0;
+    padding: 0 0 0 4px;
+    text-decoration: none;
+}
+
+#listnaviselect a b {
+    background: url("../images/select1A.gif") no-repeat right top;
+    color: #006699;
+    display: block;
+    float: left;
+    padding: 5px 16px 4px 10px;
+}
+
+#listsearch {
+    background: #f1f1f1;
+    border-bottom: 4px #F7F7F7 solid;
+    color: #4B6888;
+    font-weight: bolder;
+    padding: 20px;
+}
+
+.listnavibg {
+    background: url(../images/listbg.gif);
+    border-bottom: 1px #CCCCCC solid;
+    border-top: 1px #CCCCCC solid;
+    height: 21px;
+}
+
+.listnavibg table tr td {
+    border-left: 1px #FFFFFF solid;
+    border-right: 1px #CCCCCC solid;
+    color: #000000;
+    font-weight: bolder;
+}
+
+.listoperat {
+    border-bottom: 1px #CCCCCC solid;
+    color: #4B6888;
+    padding: 3px 25px;
+}
+
+.listbar {
+    background: #F7F7F7;
+    border-bottom: 1px #CCCCCC solid;
+    border-top: 1px #CCCCCC solid;
+    height: 24px;
+}
+
+.listborder {
+    border-bottom: 3px #f7f7f7 solid;
+    border-top: 1px #CCCCCC solid;
+}
+
+.listborder table tbody tr th {
+    border-bottom: 1px #cccccc solid;
+    border-left: 1px #FFFFFF solid;
+    border-right: 1px #CCCCCC solid;
+    height: 28px;
+    text-align: left;
+}
+
+.listborder table tbody tr td {
+    border-bottom: 1px #cccccc solid;
+    height: 22px;
+    padding: 3px 0;
+}
+
+
+.listborder div table tbody tr th {
+    border-bottom: 1px #cccccc solid;
+    border-left: 1px #FFFFFF solid;
+    border-right: 1px #CCCCCC solid;
+    height: 28px;
+    text-align: left;
+}
+
+.listborder div table tbody tr td {
+    border-bottom: 1px #cccccc solid;
+    height: 22px;
+    padding: 3px 0;
+}
+
+
+
+.listpage {
+    color: #000000;
+    padding: 10px 10px 30px;
+    text-align: right;
+}
+
+#searchmore div { padding: 2px; }

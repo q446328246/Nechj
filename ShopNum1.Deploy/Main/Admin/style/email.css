@@ -1,0 +1,55 @@
+blockquote, pre {
+    background: url("http://www.css88.com/wp-content/themes/thunder/images/quotebg.gif") no-repeat scroll 10px 10px #F7F7F7;
+    border: 1px solid #EBEBEB;
+    color: #E94D00;
+    font-size: 12px;
+    margin: 10px 0;
+    padding: 5px 10px 5px 40px;
+}
+
+.mailListBox {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    display: none;
+    position: absolute;
+    z-index: 9999;
+}
+
+.mailListBox ul {
+    margin: 0;
+    padding: 0;
+}
+
+.mailListBox li {
+    border-top: 1px solid #e0e0e0;
+    color: #999999;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    line-height: 24px;
+    list-style: none;
+    margin: 0;
+    overflow: hidden;
+    padding: 0 3px;
+    zoom: 1;
+}
+
+.mailListBox li.hover {
+    background-color: #e0e0e0;
+    color: #035cc1;
+}
+
+.mailListBox li.current {
+    background-color: #C1D5EB;
+    color: #035cc1;
+}
+
+input {
+    border: 1px solid #C1D5EB;
+    border-radius: 3px;
+    font-family: Arial, Helvetica, sans-serif;
+    ime-mode: disabled;
+    padding: 2px;
+}
+
+input:focus { box-shadow: 0 0 3px #C1D5EB; }

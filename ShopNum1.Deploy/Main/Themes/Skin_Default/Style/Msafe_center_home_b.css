@@ -1,0 +1,51 @@
+﻿/* 在safecenter.css基础上 修改*/
+.ps-home-notify .notify-correct{margin:15px 48px; line-height:20px; text-align:left;}
+.ps-home-notify .notify-correct .secure-level{margin-bottom:0;}
+.secure-level .secure-level-i{margin-right:15px!important;margin-top:8px!important;height:18px!important;}
+.secure-level .secure-level-i-line{height:18px!important;background:url(/passport/images/account/safecenter/home_b/secure-level-line.png) repeat-x!important;}
+.secure-level .secure-level-i-highlight{height:18px!important;line-height:18px!important;;}
+.secure-level-weak .secure-level-i-line{background-position:0 0!important;}
+.secure-level-medium .secure-level-i-line{background-position:0 -18px!important;}
+.secure-level-strong .secure-level-i-line{background-position:0 -36px!important;}
+.secure-level .secure-label{color:#000;font-size:12px;font-weight:400;line-height:39px;vertical-align:middle;}
+.secure-level s{display:inline-block;width:39px;height:39px;line-height:39px;background: url(/passport/images/account/safecenter/home_b/level.png) 0 0 no-repeat;vertical-align:middle;}
+.secure-level-weak s{background-position:-0 0;}
+.secure-level-medium s{background-position:-39px 0;}
+.secure-level-strong s{background-position:-78px 0;}
+.secure-home-alert{display:block;padding:7px 0 10px 120px;margin-top:20px;background: url(/passport/images/account/safecenter/home_b/secure-alert.png) 0 0 no-repeat;color:#000;line-height:26px;}
+.secure-home-alert strong{display:block;color:#f60;font-weight:600;font-size:16px;line-height:2em;}
+.secure-home-alert b{font-weight:600;}
+.secure-home-alert .btn{margin-left:5px;}
+
+/* 新增 */
+.ps-home-state-container{margin-top:20px;font-family:"arial";}
+.ps-home-state-box{float:left;display:block;width:23.05%;margin-right:2.6%;margin-bottom:18px;}
+.ps-home-state-box-last{margin-right:0;}
+.ps-home-state-box .boxin{position:relative;border:1px solid #c3e687;background:#efffd6;padding:15px 0 5px;height:156px;overflow:hidden;}
+.ps-home-state-box .state-name{display:block;padding:5px 0 12px;text-align:center;font-size:14px;font-weight:600;color:#000;}
+.ps-home-state-box .state-info{display:block;margin:0 3px;line-height:1.6em;color:#5d5d5d;text-align:center;}
+.ps-home-state-box .not_set{position:absolute;top:-1px;left:-1px;display:block;width:78px;height:46px;overflow:hidden;text-indent:-999px;background: url(/passport/images/account/safecenter/home_b/not_set.png) no-repeat;}
+.ps-home-state-box .ico{display:block;width:100px;height:70px;margin:0 auto;background: url(/passport/images/account/safecenter/home_b/ico-state.png) no-repeat;}
+.ps-home-state-box .ico-phone{background-position:0 0;}
+.ps-home-state-box .ico-email{background-position:0 -70px;}
+.ps-home-state-box .ico-account{background-position:0 -140px;}
+.ps-home-state-box .ico-password{background-position:0 -210px;}
+.ps-home-state-box .ico-question{background-position:0 -280px;}
+.ps-home-state-box .ico-realname{background-position:0 -350px;}
+.ps-home-state-box .ico-openid{background-position:0 -420px;}
+.ps-home-state-box .ico-msgnotice{background-position:0 -490px;}
+.ps-home-state-box .state-option{display:none;}
+.ps-home-state-box .state-option span.bg{display:block;position:absolute;top:0;left:0;z-index:3;width:101%;height:176px;background:#000;}
+.ps-home-state-box .state-option span.text{display:block;position:absolute;top:0;left:0;z-index:4;width:101%;height:100px;padding:78px 0 0; text-align:center;}
+.ps-home-state-box .state-optionhover{display:block;}
+.ps-home-state-box .btn{-webkit-box-shadow:2px 2px 2px #43473b; -moz-box-shadow:2px 2px 2px #43473b; box-shadow:2px 2px 2px #43473b; -webkit-border-radius:0; -moz-border-radius:0; border-radius:0; line-height:33px;height:33px;padding:0 23px;background:#f80;}
+.ps-home-state-box .btn:hover{background:#f90;}
+
+/* 手机注册用户的绑定邮箱 */
+.ps-home-state-box .not_set_bind{background-image: url(/passport/images/account/safecenter/home_b/not_set_bind.png);}/*need .ps-home-state-box .not_set*/
+.popover_emailsave{width:410px;}
+.popover_emailsave .form_top{margin-top:35px;padding-bottom:25px;}
+.popover_emailsave .form_row{padding:1px 0;}
+.popover_emailsave .form_left{width:132px; margin-right: 0;}
+.popover_emailsave .form_right{width: 275px;}
+.popover_emailsave .intext{width: 150px;}

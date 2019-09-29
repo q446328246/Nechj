@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<pages>
+  <page guid="ebeb99c7-d5ea-4d00-848d-5c2e804a4ab3" pagename="优惠卷页面" filename="CouponsList.aspx" divid="ad7" height="600" width="400" imgsrc="" content="优惠卷页面" />
+  <page guid="ebeb99c7-d5ea-4d00-848d-5c2e804a4ab5" pagename="红包页面" filename="Integral.aspx" divid="ad8" height="600" width="400" imgsrc="" content="红包页面" />
+  <page guid="ebeb99c7-d5ea-4d00-848d-5c2e804a4ab6" pagename="抢购页面" filename="PanicBuyList.aspx" divid="ad9" height="600" width="400" imgsrc="" content="抢购页面" />
+</pages>

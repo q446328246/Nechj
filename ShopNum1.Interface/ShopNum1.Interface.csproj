@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.377</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{637FD586-553B-4F84-8A8E-AA2883DEB393}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>ShopNum1.Interface</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\dll\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Compile Include="Ad\IShopNum1_CategoryAdID_Action.cs" />
+    <Compile Include="Ad\IShopNum1_CategoryAdPayMent_Action.cs" />
+    <Compile Include="Ad\IShopNum1_CategoryAdvertisement_Action.cs" />
+    <Compile Include="Article\IShopNum1_ArticleCategory_Action.cs" />
+    <Compile Include="Article\IShopNum1_ArticleComment_Action.cs" />
+    <Compile Include="Article\IShopNum1_Article_Action.cs" />
+    <Compile Include="AttachMent\IShopNum1_AttachMentCategory_Action.cs" />
+    <Compile Include="AttachMent\IShopNum1_AttachMent_Action.cs" />
+    <Compile Include="Dispatch\IShopNum1_DispatchRegion_Action.cs" />
+    <Compile Include="Extend\IShopNum1_CollectionBillInfo_Action.cs" />
+    <Compile Include="Extend\IShopNum1_Consult_Action.cs" />
+    <Compile Include="Extend\IShopNum1_ExtendOrderStatistics_Action.cs" />
+    <Compile Include="Extend\IShopNum1_ExtendPageAddress_Action.cs" />
+    <Compile Include="Extend\IShopNum1_ExtendQutation_Action.cs" />
+    <Compile Include="Extend\IShopNum1_ExtendReport_Action.cs" />
+    <Compile Include="Extend\IShopNum1_ExtendSiteMapXml_Action.cs" />
+    <Compile Include="Extend\IShopNum1_ExtendSiteMota_Action.cs" />
+    <Compile Include="Extend\IShopNum1_RefundBillInfo_Action.cs" />
+    <Compile Include="Extend\IShopNum1_ReturnGoodsBillInfo_Action.cs" />
+    <Compile Include="Extend\IShopNum1_ReturnGoodsInfo_Action.cs" />
+    <Compile Include="Extend\IShopNum1_ShippingBillInfo_Action.cs" />
+    <Compile Include="Extend\IShopNum1_ShopProductPropValue_Action.cs" />
+    <Compile Include="Extend\IShopNum1_ShopProductProp_Action.cs" />
+    <Compile Include="Extend\IShopNum1_ShopProductRelationProp_Action.cs" />
+    <Compile Include="Extend\IShopNum1_ShopProRelateProp_Action.cs" />
+    <Compile Include="Extend\IShopNum1_SpecificationProductImage_Action.cs" />
+    <Compile Include="Extend\IShopNum1_SpecificationProudctCategory_Action.cs" />
+    <Compile Include="Extend\IShopNum1_SpecProudctDetail_Action.cs" />
+    <Compile Include="Extend\IShopNum1_SpecProudct_Action.cs" />
+    <Compile Include="Extend\IShopNum1_Spec_Action.cs" />
+    <Compile Include="IShopNum1_MemberRank_LinkCategory_Action.cs" />
+    <Compile Include="IShopNum1_CustomerCategory_Action.cs" />
+    <Compile Include="IShopNum1_Shop_Product_Action.cs" />
+    <Compile Include="Member\IShopNum1_Address_Action.cs" />
+    <Compile Include="Member\IShopNum1_AdvancePaymentApplyLog_Action.cs" />
+    <Compile Include="Member\IShopNum1_AdvancePaymentFreezeLog_Action.cs" />
+    <Compile Include="Member\IShopNum1_AdvancePaymentModifyLog_Action.cs" />
+    <Compile Include="Member\IShopNum1_Collect_Action.cs" />
+    <Compile Include="Member\IShopNum1_MemberActivate_Action.cs" />
+    <Compile Include="Member\IShopNum1_MemberCenter_Action.cs" />
+    <Compile Include="Member\IShopNum1_MemberEmailExec_Action.cs" />
+    <Compile Include="Member\IShopNum1_MemberProfitBonusLog_Action.cs" />
+    <Compile Include="Member\IShopNum1_MemberPwd_Action.cs" />
+    <Compile Include="Member\IShopNum1_MemberRank_Action.cs" />
+    <Compile Include="Member\IShopNum1_MemberReport_Action.cs" />
+    <Compile Include="Member\IShopNum1_MemberShip_Action.cs" />
+    <Compile Include="Member\IShopNum1_Member_Action.cs" />
+    <Compile Include="Member\IShopNum1_MessageBoard_Action.cs" />
+    <Compile Include="Member\IShopNum1_OrderComplaintsReplyList_Action.cs" />
+    <Compile Include="Member\IShopNum1_Referral_Action.cs" />
+    <Compile Include="Member\IShopNum1_ShopProduct_Browse_Action.cs" />
+    <Compile Include="Member\IShopNum1_ShopUserRecommend_Action.cs" />
+    <Compile Include="Message\IShopNum1_MemberMessage_Action.cs" />
+    <Compile Include="Message\IShopNum1_MessageInfo_Action.cs" />
+    <Compile Include="Mobile\IShopNum1_MobileService_Action.cs" />
+    <Compile Include="Order\IShopNum1_Cart_Action.cs" />
+    <Compile Include="Order\IShopNum1_OrderInfo_Action.cs" />
+    <Compile Include="Order\IShopNum1_OrderOperateLog_Action.cs" />
+    <Compile Include="Order\IShopNum1_OrderPrint_Action.cs" />
+    <Compile Include="Order\IShopNum1_OrderProduct_Action.cs" />
+    <Compile Include="Order\IShopNum1_OrderRefund_Action.cs" />
+    <Compile Include="Order\IShopNum1_Order_Refuse_Action.cs" />
+    <Compile Include="Order\IShopNum1_Refund_Action.cs" />
+    <Compile Include="Payment\IShopNum1_Payment_Action.cs" />
+    <Compile Include="Payment\IShopNum1_PreTransfer_Action.cs" />
+    <Compile Include="Payment\IShopNum1_ShopPayment_Action.cs" />
+    <Compile Include="Power\IShopNum1_Dept_Action.cs" />
+    <Compile Include="Power\IShopNum1_Group_Action.cs" />
+    <Compile Include="Power\IShopNum1_PageWebControl_Action.cs" />
+    <Compile Include="Power\IShopNum1_Page_Action.cs" />
+    <Compile Include="Power\IShopNum1_User_Action.cs" />
+    <Compile Include="Report\IShopNum1_Report_Action.cs" />
+    <Compile Include="Score\IShopNum1_FreezeRelease_Action.cs" />
+    <Compile Include="Score\IShopNum1_PostageSettings_Action.cs" />
+    <Compile Include="Score\IShopNum1_RankScoreModifyLog_Action.cs" />
+    <Compile Include="Score\IShopNum1_ScoreModifyLog_Action.cs" />
+    <Compile Include="Score\IShopNum1_ScoreOrderInfo_Action.cs" />
+    <Compile Include="Score\IShopNum1_ScoreProductCategory_Action.cs" />
+    <Compile Include="Score\IShopNum1_Shop_ScoreProduct_Action.cs" />
+    <Compile Include="ShopNum1_ShopInfo.cs" />
+    <Compile Include="SMS\IShopNum1_MMSGroupSend_Action.cs" />
+    <Compile Include="SMS\IShopNum1_MMSType_Action.cs" />
+    <Compile Include="SMS\IShopNum1_MMS_Action.cs" />
+    <Compile Include="Tb\IShopNum1_TbAddress_Action.cs" />
+    <Compile Include="Tb\IShopNum1_TbItemImg_Action.cs" />
+    <Compile Include="Tb\IShopNum1_TbItem_Action.cs" />
+    <Compile Include="Tb\IShopNum1_TbSellCat_Action.cs" />
+    <Compile Include="Tb\IShopNum1_TbSku_Action.cs" />
+    <Compile Include="Tb\IShopNum1_TbSystem_Action.cs" />
+    <Compile Include="Tb\IShopNum1_TbTopKey_Action.cs" />
+    <Compile Include="Video\IShopNum1_VideoCategory_Action.cs" />
+    <Compile Include="Video\IShopNum1_VideoComment_Action.cs" />
+    <Compile Include="Video\IShopNum1_Video_Action.cs" />
+    <Compile Include="Ztc\IShopNum1_ZtcApply_Action.cs" />
+    <Compile Include="Ztc\IShopNum1_ZtcGoods_Action.cs" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="IShopNum1_SurveyOption_Action.cs" />
+    <Compile Include="IShopNum1_Help_Action.cs" />
+    <Compile Include="IShopNum1_Advertisement_Action.cs" />
+    <Compile Include="IShopNum1_ShopURLManage_Action.cs" />
+    <Compile Include="IShopNum1_Reputation_Action.cs" />
+    <Compile Include="IShopNum1_PageAddress_Action.cs" />
+    <Compile Include="IShopNum1_ImageCategory_Action.cs" />
+    <Compile Include="IShopNum1_ControlData_Action.cs" />
+    <Compile Include="IShopNum1_PageAdID_Action.cs" />
+    <Compile Include="IShopNum1_CouponType_Action.cs" />
+    <Compile Include="IShopNum1_Vedio_List_Action.cs" />
+    <Compile Include="IShopNum1_OperateLog_Action.cs" />
+    <Compile Include="IShopNum1_SurveyTheme_Action.cs" />
+    <Compile Include="IShopNum1_ShopInfoList_Action.cs" />
+    <Compile Include="IShopNum1_Menu_Action.cs" />
+    <Compile Include="IShopNum1_Logistic_Action.cs" />
+    <Compile Include="IShopNum1_SiteMap_Action.cs" />
+    <Compile Include="IShopNum1_BadWord_Action.cs" />
+    <Compile Include="IShopNum1_UserDefinedColumn_Action.cs" />
+    <Compile Include="IShopNum1_SupplyDemandCategory_Action.cs" />
+    <Compile Include="IShopNum1_WebSite_Action.cs" />
+    <Compile Include="IShopNum1_PageInfo_Action.cs" />
+    <Compile Include="IShopNum1_ShopArticleComment_Action.cs" />
+    <Compile Include="IShopNum1_ArticleCheck_Action.cs" />
+    <Compile Include="IShopNum1_Coupon_Action.cs" />
+    <Compile Include="IShopNum1_Image_Action.cs" />
+    <Compile Include="IShopNum1_HelpType_Action.cs" />
+    <Compile Include="IShopNum1_ProuductChecked_Action.cs" />
+    <Compile Include="IShopNum1_Comment_Action.cs" />
+    <Compile Include="IShopNum1_City_Action.cs" />
+    <Compile Include="IShopNum1_Brand_Action.cs" />
+    <Compile Include="IShopNum1_ProductComment_Action.cs" />
+    <Compile Include="IShopNum1_ComplaintsManagement_Action.cs" />
+    <Compile Include="IShopNum1_VedioCommentChecked_Action.cs" />
+    <Compile Include="IShopNum1_Control_Action.cs" />
+    <Compile Include="IShopNum1_GroupProduct_Action.cs" />
+    <Compile Include="IShopNum1_CategoryType_Action.cs" />
+    <Compile Include="IShopNum1_ShopCategory_Action.cs" />
+    <Compile Include="IShopNum1_Activity_Action.cs" />
+    <Compile Include="IShopNum1_CategoryChecked_Action.cs" />
+    <Compile Include="IShopNum1_SupplyDemandComment_Action.cs" />
+    <Compile Include="IShopNum1_Ensure_Action.cs" />
+    <Compile Include="IShopNum1_Announcement_Action.cs" />
+    <Compile Include="IShopNum1_ProductCategory_Action.cs" />
+    <Compile Include="IShopNum1_ShopTemplate_Action.cs" />
+    <Compile Include="IShopNum1_AnnouncementCategory_Action.cs" />
+    <Compile Include="IShopNum1_DefaultAdImg_Action.cs" />
+    <Compile Include="IShopNum1_Link_Action.cs" />
+    <Compile Include="IShopNum1_Email_Action.cs" />
+    <Compile Include="IShopNum1_Image_Type_Action.cs" />
+    <Compile Include="IShopNum1_Order_Action.cs" />
+    <Compile Include="IShopNum1_OrdeComplaints_Action.cs" />
+    <Compile Include="IShopNum1_KeyWords_Action.cs" />
+    <Compile Include="IShopNum1_SupplyDemandCheck_Action.cs" />
+    <Compile Include="IShopNum1_Region_Action.cs" />
+    <Compile Include="IShopNum1_OnLineService_Action.cs" />
+    <Compile Include="IShopNum1_Common_Action.cs" />
+    <Compile Include="IShopNum1_CategoryComment_Action.cs" />
+    <Compile Include="IShopNum1_PreventIp_Action.cs" />
+    <Compile Include="IShopNum1_AdminWelcome_Action.cs" />
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ShopNum1.TbLinq\ShopNum1.TbLinq.csproj">
+      <Project>{CEB1A80C-2B59-4135-AD74-364981C0B637}</Project>
+      <Name>ShopNum1.TbLinq</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1MultiEntity\ShopNum1MultiEntity.csproj">
+      <Project>{C180CC8C-AED3-4536-82DE-16B796633249}</Project>
+      <Name>ShopNum1MultiEntity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+</Project>

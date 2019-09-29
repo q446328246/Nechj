@@ -1,0 +1,511 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ShopSetting>
+  <!--  商城名称 -->
+  <Name>商城</Name>
+  <!--  商城标题-->
+  <Title>商城</Title>
+  <!--  商城描述-->
+  <Description>商城</Description>
+  <!--  商城关键字-->
+  <KeyWords>商城</KeyWords>
+  <!--  网站版权-->
+  <Copyright>Copyright (C) 千里行 2018-2019, All Rights Reserved   |   渝ICP备18006669号</Copyright>
+  <!--  网站版权链接-->
+  <CopyrightLink>http://www.t.com</CopyrightLink>
+  <ShopGodds_one>http://shop100000027.tj88.com/ProductDetail/8E2BFB4C-5A3B-4756-A9E6-B3658CC89D58.aspx?category=2</ShopGodds_one>
+  <ShopGodds_two>http://shop100000027.tj88.com/ProductDetail/0B72F2CA-39AC-4938-864E-B4FEBD8ED526.aspx?category=2</ShopGodds_two>
+  <ShopGodds_free>http://shop100000027.tj88.com/ProductDetail/75F6F362-495E-4E81-972B-356D0805C550.aspx?category=2</ShopGodds_free>
+
+  <ShopGodds_five>http://shop100000027.tj88.com/ProductDetail/ac2c3402-bbf3-45aa-8ab6-3061047bb280.aspx?category=1</ShopGodds_five>
+  <ShopGodds_six>http://shop100000027.tj88.com/ProductDetail/261cadef-05b7-44ac-a8ca-a695fbe41031.aspx?category=1</ShopGodds_six>
+  <ShopGodds_seven>http://shop100000027.tj88.com/ProductDetail/d06ed899-cfdc-4100-808c-adfc088216a9.aspx?category=1</ShopGodds_seven>
+  <shop2007>http://shop100000027.tj88.com/?category=1</shop2007>
+  <!--  商城Logo-->
+  <Logo>Themes/Skin_Default/Images/logo.png</Logo>
+  <!--  Logo的链接地址-->
+  <Link>http://www.t.com</Link>
+  <!--店铺域名个性设置-->
+  <PersonShopUrl>shop</PersonShopUrl>
+  <!--  用户注册协议-->
+  <RegProtocol>&lt;h1&gt;用户服务协议&lt;/h1&gt;                 &lt;h2&gt;2009-04-19 14:34&lt;/h2&gt;                 &lt;div class="default"&gt;                                         &lt;p&gt;特别提醒用户认真阅读本《用户服务协议》(下称《协议》) 中各条款。除非您接受本《协议》条款，否则您无权使用本网站提供的相关服务。您的使用行为将视为对本《协议》的接受，并同意接受本《协议》各项条款的约束。 &lt;br /&gt; &lt;br /&gt; &lt;strong&gt;一、定义&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt; &lt;ol&gt; &lt;li&gt;"用户"指符合本协议所规定的条件，同意遵守本网站各种规则、条款（包括但不限于本协议），并使用本网站的个人或机构。&lt;/li&gt; &lt;li&gt;"卖家"是指在本网站上出售物品的用户。"买家"是指在本网站购买物品的用户。&lt;/li&gt; &lt;li&gt;"成交"指买家根据卖家所刊登的交易要求，在特定时间内提出最优的交易条件，因而取得依其提出的条件购买该交易物品的权利。&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;&lt;br /&gt; &lt;br /&gt; &lt;strong&gt;二、用户资格&lt;/strong&gt;&lt;br /&gt; &lt;br /&gt; 只有符合下列条件之一的人员或实体才能申请成为本网站用户，可以使用本网站的服务。&lt;/p&gt; &lt;ol&gt; &lt;li&gt;年满十八岁，并具有民事权利能力和民事行为能力的自然人；&lt;/li&gt; &lt;li&gt;未满十八岁，但监护人（包括但不仅限于父母）予以书面同意的自然人；&lt;/li&gt; &lt;li&gt;根据中国法律或设立地法律、法规和/或规章成立并合法存在的公司、企事业单位、社团组织和其他组织。&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;&lt;br /&gt; 无民事行为能力人、限制民事行为能力人以及无经营或特定经营资格的组织不当注册为本网站用户或超过其民事权利或行为能力范围从事交易的，其与本网站之间的协议自始无效，本网站一经发现，有权立即注销该用户，并追究其使用本网站"服务"的一切法律责任。&lt;br /&gt; &lt;br /&gt; &lt;strong&gt;三.用户的权利和义务&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt; &lt;ol&gt; &lt;li&gt;用户有权根据本协议的规定及本网站发布的相关规则，利用本网站网上交易平台登录物品、发布交易信息、查询物品信息、购买物品、与其他用户订立物品买卖合同、在本网站社区发帖、参加本网站的有关活动及有权享受本网站提供的其他的有关资讯及信息服务。&lt;/li&gt; &lt;li&gt;用户有权根据需要更改密码和交易密码。用户应对以该用户名进行的所有活动和事件负全部责任。&lt;/li&gt; &lt;li&gt;用户有义务确保向本网站提供的任何资料、注册信息真实准确，包括但不限于真实姓名、身份证号、联系电话、地址、邮政编码等。保证本网站及其他用户可以通过上述联系方式与自己进行联系。同时，用户也有义务在相关资料实际变更时及时更新有关注册资料。&lt;/li&gt; &lt;li&gt;用户不得以任何形式擅自转让或授权他人使用自己在本网站的用户帐号。&lt;/li&gt; &lt;li&gt;用户有义务确保在本网站网上交易平台上登录物品、发布的交易信息真实、准确，无误导性。&lt;/li&gt; &lt;li&gt;用户不得在本网站网上交易平台买卖国家禁止销售的或限制销售的物品、不得买卖侵犯他人知识产权或其他合法权益的物品，也不得买卖违背社会公共利益或公共道德的物品。&lt;/li&gt; &lt;li&gt;用户不得在本网站发布各类违法或违规信息。包括但不限于物品信息、交易信息、社区帖子、物品留言，店铺留言，评价内容等。&lt;/li&gt; &lt;li&gt;用户在本网站交易中应当遵守诚实信用原则，不得以干预或操纵物品价格等不正当竞争方式扰乱网上交易秩序，不得从事与网上交易无关的不当行为，不得在交易平台上发布任何违法信息。&lt;/li&gt; &lt;li&gt;用户不应采取不正当手段（包括但不限于虚假交易、互换好评等方式）提高自身或他人信用度，或采用不正当手段恶意评价其他用户，降低其他用户信用度。&lt;/li&gt; &lt;li&gt;用户承诺自己在使用本网站网上交易平台实施的所有行为遵守国家法律、法规和本网站的相关规定以及各种社会公共利益或公共道德。对于任何法律后果的发生，用户将以自己的名义独立承担所有相应的法律责任。&lt;/li&gt; &lt;li&gt;用户在本网站网上交易过程中如与其他用户因交易产生纠纷，可以请求本网站从中予以协调。用户如发现其他用户有违法或违反本协议的行为，可以向本网站举报。如用户因网上交易与其他用户产生诉讼的，用户有权通过司法部门要求本网站提供相关资料。&lt;/li&gt; &lt;li&gt;用户应自行承担因交易产生的相关费用，并依法纳税。&lt;/li&gt; &lt;li&gt;未经本网站书面允许，用户不得将本网站资料以及在交易平台上所展示的任何信息以复制、修改、翻译等形式制作衍生作品、分发或公开展示。&lt;/li&gt; &lt;li&gt;用户同意接收来自本网站的信息，包括但不限于活动信息、交易信息、促销信息等。&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;&lt;br /&gt; &lt;br /&gt; &lt;strong&gt;四、 本网站的权利和义务&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt; &lt;ol&gt; &lt;li&gt;本网站不是传统意义上的"拍卖商"，仅为用户提供一个信息交流、进行物品买卖的平台，充当买卖双方之间的交流媒介，而非买主或卖主的代理商、合伙  人、雇员或雇主等经营关系人。公布在本网站上的交易物品是用户自行上传进行交易的物品，并非本网站所有。对于用户刊登物品、提供的信息或参与竞标的过程，  本网站均不加以监视或控制，亦不介入物品的交易过程，包括运送、付款、退款、瑕疵担保及其它交易事项，且不承担因交易物品存在品质、权利上的瑕疵以及交易  方履行交易协议的能力而产生的任何责任，对于出现在拍卖上的物品品质、安全性或合法性，本网站均不予保证。&lt;/li&gt; &lt;li&gt;本网站有义务在现有技术水平的基础上努力确保整个网上交易平台的正常运行，尽力避免服务中断或将中断时间限制在最短时间内，保证用户网上交易活动的顺利进行。&lt;/li&gt; &lt;li&gt;本网站有义务对用户在注册使用本网站网上交易平台中所遇到的问题及反映的情况及时作出回复。 &lt;/li&gt; &lt;li&gt;本网站有权对用户的注册资料进行查阅，对存在任何问题或怀疑的注册资料，本网站有权发出通知询问用户并要求用户做出解释、改正，或直接做出处罚、删除等处理。&lt;/li&gt; &lt;li&gt;用  户因在本网站网上交易与其他用户产生纠纷的，用户通过司法部门或行政部门依照法定程序要求本网站提供相关资料，本网站将积极配合并提供有关资料；用户将纠  纷告知本网站，或本网站知悉纠纷情况的，经审核后，本网站有权通过电子邮件及电话联系向纠纷双方了解纠纷情况，并将所了解的情况通过电子邮件互相通知对  方。 &lt;/li&gt; &lt;li&gt;因网上交易平台的特殊性，本网站没有义务对所有用户的注册资料、所有的交易行为以及与交易有关的其他事项进行事先审查，但如发生以下情形，本网站有权限制用户的活动、向用户核实有关资料、发出警告通知、暂时中止、无限期地中止及拒绝向该用户提供服务：         &lt;ul&gt; &lt;li&gt;用户违反本协议或因被提及而纳入本协议的文件；&lt;/li&gt; &lt;li&gt;存在用户或其他第三方通知本网站，认为某个用户或具体交易事项存在违法或不当行为，并提供相关证据，而本网站无法联系到该用户核证或验证该用户向本网站提供的任何资料；&lt;/li&gt; &lt;li&gt;存在用户或其他第三方通知本网站，认为某个用户或具体交易事项存在违法或不当行为，并提供相关证据。本网站以普通非专业交易者的知识水平标准对相关内容进行判别，可以明显认为这些内容或行为可能对本网站用户或本网站造成财务损失或法律责任。 &lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;在反网络欺诈行动中，本着保护广大用户利益的原则，当用户举报自己交易可能存在欺诈而产生交易争议时，本网站有权通过表面判断暂时冻结相关用户账号，并有权核对当事人身份资料及要求提供交易相关证明材料。&lt;/li&gt; &lt;li&gt;根据国家法律法规、本协议的内容和本网站所掌握的事实依据，可以认定用户存在违法或违反本协议行为以及在本网站交易平台上的其他不当行为，本网站有权在本网站交易平台及所在网站上以网络发布形式公布用户的违法行为，并有权随时作出删除相关信息，而无须征得用户的同意。&lt;/li&gt; &lt;li&gt;本  网站有权在不通知用户的前提下删除或采取其他限制性措施处理下列信息：包括但不限于以规避费用为目的；以炒作信用为目的；存在欺诈等恶意或虚假内容；与网  上交易无关或不是以交易为目的；存在恶意竞价或其他试图扰乱正常交易秩序因素；该信息违反公共利益或可能严重损害本网站和其他用户合法利益的。&lt;/li&gt; &lt;li&gt;用  户授予本网站独家的、全球通用的、永久的、免费的信息许可使用权利，本网站有权对该权利进行再授权，依此授权本网站有权(全部或部份地)  使用、复制、修订、改写、发布、翻译、分发、执行和展示用户公示于网站的各类信息或制作其派生作品，以现在已知或日后开发的任何形式、媒体或技术，将上述  信息纳入其他作品内。&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;&lt;br /&gt; &lt;br /&gt; &lt;strong&gt;五、服务的中断和终止&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt; &lt;ol&gt; &lt;li&gt;在  本网站未向用户收取相关服务费用的情况下，本网站可自行全权决定以任何理由  (包括但不限于本网站认为用户已违反本协议的字面意义和精神，或用户在超过180天内未登录本网站等)  终止对用户的服务，并不再保存用户在本网站的全部资料（包括但不限于用户信息、商品信息、交易信息等）。同时本网站可自行全权决定，在发出通知或不发出通  知的情况下，随时停止提供全部或部分服务。服务终止后，本网站没有义务为用户保留原用户资料或与之相关的任何信息，或转发任何未曾阅读或发送的信息给用户  或第三方。此外，本网站不就终止对用户的服务而对用户或任何第三方承担任何责任。 &lt;/li&gt; &lt;li&gt;如用户向本网站提出注销本网站注册用户身份，需经本网站审核同意，由本网站注销该注册用户，用户即解除与本网站的协议关系，但本网站仍保留下列权利：         &lt;ul&gt; &lt;li&gt;用户注销后，本网站有权保留该用户的资料,包括但不限于以前的用户资料、店铺资料、商品资料和交易记录等。 &lt;/li&gt; &lt;li&gt;用户注销后，如用户在注销前在本网站交易平台上存在违法行为或违反本协议的行为，本网站仍可行使本协议所规定的权利。 &lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;如存在下列情况，本网站可以通过注销用户的方式终止服务：         &lt;ul&gt; &lt;li&gt;在用户违反本协议相关规定时，本网站有权终止向该用户提供服务。本网站将在中断服务时通知用户。但如该用户在被本网站终止提供服务后，再一次直接或间接或以他人名义注册为本网站用户的，本网站有权再次单方面终止为该用户提供服务；&lt;/li&gt; &lt;li&gt;一旦本网站发现用户注册资料中主要内容是虚假的，本网站有权随时终止为该用户提供服务； &lt;/li&gt; &lt;li&gt;本协议终止或更新时，用户未确认新的协议的。 &lt;/li&gt; &lt;li&gt;其它本网站认为需终止服务的情况。 &lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;因用户违反相关法律法规或者违反本协议规定等原因而致使本网站中断、终止对用户服务的，对于服务中断、终止之前用户交易行为依下列原则处理：         &lt;ul&gt; &lt;li&gt;本网站有权决定是否在中断、终止对用户服务前将用户被中断或终止服务的情况和原因通知用户交易关系方，包括但不限于对该交易有意向但尚未达成交易的用户,参与该交易竞价的用户，已达成交易要约用户。&lt;/li&gt; &lt;li&gt;服务中断、终止之前，用户已经上传至本网站的物品尚未交易或交易尚未完成的，本网站有权在中断、终止服务的同时删除此项物品的相关信息。 &lt;/li&gt; &lt;li&gt;服务中断、终止之前，用户已经就其他用户出售的具体物品作出要约，但交易尚未结束，本网站有权在中断或终止服务的同时删除该用户的相关要约和信息。&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;本网站若因用户的行为（包括但不限于刊登的商品、在本网站社区发帖等）侵害了第三方的权利或违反了相关规定，而受到第三方的追偿或受到主管机关的处分时，用户应赔偿本网站因此所产生的一切损失及费用。&lt;/li&gt; &lt;li&gt;对违反相关法律法规或者违反本协议规定，且情节严重的用户，本网站有权终止该用户的其它服务。&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;&lt;br /&gt; &lt;br /&gt; &lt;strong&gt;六、协议的修订&lt;/strong&gt;&lt;br /&gt; &lt;br /&gt; 本协议可由本网站随时修订，并将修订后的协议公告于本网站之上，修订后的条款内容自公告时起生效，并成为本协议的一部分。用户若在本协议修改之后，仍继续使用本网站，则视为用户接受和自愿遵守修订后的协议。本网站行使修改或中断服务时，不需对任何第三方负责。&lt;br /&gt; &lt;br /&gt; &lt;strong&gt;七、 本网站的责任范围 &lt;/strong&gt;&lt;br /&gt; &lt;br /&gt; 当用户接受该协议时，用户应明确了解并同意∶&lt;/p&gt; &lt;ol&gt; &lt;li&gt;是否经由本网站下载或取得任何资料，由用户自行考虑、衡量并且自负风险，因下载任何资料而导致用户电脑系统的任何损坏或资料流失，用户应负完全责任。&lt;/li&gt; &lt;li&gt;用户经由本网站取得的建议和资讯，无论其形式或表现，绝不构成本协议未明示规定的任何保证。&lt;/li&gt; &lt;li&gt;基于以下原因而造成的利润、商誉、使用、资料损失或其它无形损失，本网站不承担任何直接、间接、附带、特别、衍生性或惩罚性赔偿（即使本网站已被告知前款赔偿的可能性）：         &lt;ul&gt; &lt;li&gt;本网站的使用或无法使用。&lt;/li&gt; &lt;li&gt;经由或通过本网站购买或取得的任何物品，或接收之信息，或进行交易所随之产生的替代物品及服务的购买成本。&lt;/li&gt; &lt;li&gt;用户的传输或资料遭到未获授权的存取或变更。&lt;/li&gt; &lt;li&gt;本网站中任何第三方之声明或行为。&lt;/li&gt; &lt;li&gt;本网站其它相关事宜。&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;本网站只是为用户提供一个交易的平台，对于用户所刊登的交易物品的合法性、真实性及其品质，以及用户履行交易的能力等，本网站一律不负任何担保责任。用户如果因使用本网站，或因购买刊登于本网站的任何物品，而受有损害时，本网站不负任何补偿或赔偿责任。&lt;/li&gt; &lt;li&gt;本  网站提供与其它互联网上的网站或资源的链接，用户可能会因此连结至其它运营商经营的网站，但不表示本网站与这些运营商有任何关系。其它运营商经营的网站均  由各经营者自行负责，不属于本网站控制及负责范围之内。对于存在或来源于此类网站或资源的任何内容、广告、产品或其它资料，本网站亦不予保证或负责。因使  用或依赖任何此类网站或资源发布的或经由此类网站或资源获得的任何内容、物品或服务所产生的任何损害或损失，本网站不负任何直接或间接的责任。&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;&lt;br /&gt; &lt;br /&gt; &lt;strong&gt;八.、不可抗力&lt;/strong&gt;&lt;br /&gt; &lt;br /&gt; 因不可抗力或者其他意外事件，使得本协议的履行不可能、不必要或者无意义的，双方均不承担责任。本合同所称之不可抗力意指不能预见、不能避免并不能克服的  客观情况，包括但不限于战争、台风、水灾、火灾、雷击或地震、罢工、暴动、法定疾病、黑客攻击、网络病毒、电信部门技术管制、政府行为或任何其它自然或人  为造成的灾难等客观情况。&lt;br /&gt; &lt;br /&gt; &lt;strong&gt;九、争议解决方式&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt; &lt;ol&gt; &lt;li&gt;本协议及其修订本的有效性、履行和与本协议及其修订本效力有关的所有事宜，将受中华人民共和国法律管辖，任何争议仅适用中华人民共和国法律。&lt;/li&gt; &lt;li&gt;因  使用本网站服务所引起与本网站的任何争议，均应提交深圳仲裁委员会按照该会届时有效的仲裁规则进行仲裁。相关争议应单独仲裁，不得与任何其它方的争议在任  何仲裁中合并处理，该仲裁裁决是终局，对各方均有约束力。如果所涉及的争议不适于仲裁解决，用户同意一切争议由人民法院管辖。&lt;/li&gt; &lt;/ol&gt;</RegProtocol>
+  <ShopRegProtocol>&lt;p&gt;	&lt;br /&gt;&lt;/p&gt;&lt;div style="color:#666666;font-size:13px;" class="all_title"&gt;	一、 本站服务条款的确认和接纳本站的各项电子服务的所有权和运作权归本站。本站提供的服务将完全按照其发布的服务条款和操作规则严格执行。用户必须完全同意所 有服务条款并完成注册程序，才能成为本站的正式用户。用户确认：本协议条款是处理双方权利义务的当然约定依据，除非违反国家强制性法律，否则始终有效。在 下订单的同时，您也同时承认了您拥有购买这些产品的权利能力和行为能力，并且将您对您在订单中提供的所有信息的真实性负责。&lt;/div&gt;&lt;div style="color:#666666;font-size:13px;" class="all_title"&gt;	二、服务简介本站运用自己的操 作系统通过国际互联网络为用户提供网络服务。&lt;/div&gt;&lt;div style="color:#666666;font-size:13px;" class="all_text"&gt;	同时，用户必须：&lt;br /&gt;	&lt;p&gt;		(1)自行配备上网的所需设备，包括个人电脑、调制解调器或其它必备上网装置。	&lt;/p&gt;	&lt;p&gt;		(2)自行负 担个人上网所支付的与此服务有关的电话费用、网络费用。基于本站所提供的网络服务的重要性，用户应同意：(1)提供详尽、准确的个人资料。(2)不断更新 注册资料，符合及时、详尽、准确的要求。本站不公开用户的姓名、地址、电子邮箱和笔名， 除以下情况外：(1)用户授权本站透露这些信息。(2)相应的法律及程序要求本站提供用户的个人资料。如果用户提供的资料包含有不正确的信息，本站保留结 束用户使用网络服务资格的权利。	&lt;/p&gt;&lt;/div&gt;&lt;div style="color:#666666;font-size:13px;" class="all_title"&gt;	三、价格和数量本站将尽最大努力保证您所购商品与网站上公布的价格一致，但价目表和声明并不构成要约。本站有权在发现了其 网站上显现的产品及订单的明显错误或缺货的情况下，单方面撤回任何承诺。同时，本站保留对产品订购的数量的限制权。产品的价格和可获性都在本站上指明。这 类信息将随时更改且不发任何通知。商品的价格都包含了增值税。如果发生了意外情况，在确认了您的订单后，由于供应商提价，税额变化引起的价格变化，或是由 于网站的错误等造成商品价格变化，您有权取消您的订单，并希望您能及时通过电子邮件或电话通知本站客户服务部。您所订购的商品，如果发生缺货，您有权取消 定单。&lt;/div&gt;&lt;div style="color:#666666;font-size:13px;" class="all_title"&gt;	四、送货及费用本站将会把产品送到您所指定的送货地址。所有在本站上列出的送货时间为参考时间，参考时间的计算是根据库存状况、正常的处理过程和送 货时间、送货地点的基础上估计得出的。送货费用根据您选择的配送方式的不同而异。请清楚准确地填写您的真实姓名、送货地址及联系方式。&lt;/div&gt;&lt;div style="color:#666666;font-size:13px;" class="all_text"&gt;	因如下情况造成订单 延迟或无法配送等，本站将不承担责任：&lt;br /&gt;	&lt;p&gt;		(1)客户提供错误信息和不详细的地址；	&lt;/p&gt;	&lt;p&gt;		(2)货物送达无人签收，由此造成的重复配送所产生的费用及相关的后果。	&lt;/p&gt;	&lt;p&gt;		(3)不可抗力，例如：自然灾害、交通戒严、突发战争等。	&lt;/p&gt;&lt;/div&gt;&lt;div style="color:#666666;font-size:13px;" class="all_title"&gt;	五、服务条款的修改本站将可能不定期的修改本用户协议的有关条款，一旦条款及服务内容产生变动， 本站将会在重要页面上提示修改内容。如果不同意本站对条款内容所做的修改，用户可以主动取消获得的网络服务。如果用户继续使用本站的服务，则视为接受服务 条款的变动。本站保留随时修改或中断服务而不需告知用户的权利。本站行使修改或中断服务的权利，不需对用户或第三方负责。&lt;/div&gt;&lt;div style="color:#666666;font-size:13px;" class="all_title"&gt;	六、用户隐私制度尊重用户个人隐 私是本站的一项基本政策。所以，作为对以上第二点人注册资料分析的补充，本站一定不会在未经合法用户授权时公开、编辑或透露其注册资料及保存在本站中的非 公开内容，除非有法律许可要求或本站在诚信的基础上认为透露这些信件在以下四种情况是必要的：&lt;/div&gt;&lt;div style="color:#666666;font-size:13px;" class="all_text"&gt;	&lt;p&gt;		(1)遵守有关法律规定，遵从本站合法服务程序。	&lt;/p&gt;	&lt;p&gt;		(2)保持 维护本站的商标所有权。	&lt;/p&gt;	&lt;p&gt;		(3)在紧急情况下竭力维护用户个人和社会大众的隐私安全。	&lt;/p&gt;	&lt;p&gt;		(4)符合其它相关的要求。	&lt;/p&gt;&lt;/div&gt;&lt;div style="color:#666666;font-size:13px;" class="all_title"&gt;	七.用户的帐号，密码和安全性用户一旦注册 成功，成为本站的合法用户，将得到一个密码和用户名。您可随时根据指示改变您的密码。用户将对用户名和密码安全负全部责任。另外，每个用户都要对以其用户 名进行的所有活动和事件负全责。用户若发现任何非法使用用户帐号或存在安全漏洞的情况，请立即通告本站。&lt;/div&gt;&lt;div style="color:#666666;font-size:13px;" class="all_title"&gt;	八、拒绝提供担保用户个人对网络服务的使用承担风 险。本站对此不作任何类型的担保，不论是明确的或隐含的，但是不对商业性的隐含担保、特定目的和不违反规定的适当担保作限制。本站不担保服务一定能满足用 户的要求，也不担保服务不会受中断，对服务的及时性，安全性，出错发生都不作担保。本站对在本站上得到的任何商品购物服务或交易进程，不作担保。&lt;/div&gt;&lt;div style="color:#666666;font-size:13px;" class="all_title"&gt;	九、有限 责任本站对任何直接、间接、偶然、特殊及继起的损害不负责任，这些损害可能来自：不正当使用网络服务，在网上购买商品或进行同类型服务，在网上进行交易， 非法使用网络服务或用户传送的信息有所变动。这些行为都有可能会导致本站的形象受损，所以本站事先提出这种损害的可能性。&lt;/div&gt;&lt;div style="color:#666666;font-size:13px;" class="all_title"&gt;	十、对用户信息的存储和限制本站 不对用户所发布信息的删除或储存失败负责。本站有判定用户的行为是否符合本站服务条款的要求和精神的保留权利，如果用户违背了服务条款的规定，本站有中断 对其提供网络服务的权利。&lt;/div&gt;&lt;div style="color:#666666;font-size:13px;" class="all_title"&gt;	十一、用户管理用户单独承担发布内容的责任。用户对服务的使用是根据所有适用于本站的国家法律、地方法律和国际法律标准的。&lt;/div&gt;&lt;div style="color:#666666;font-size:13px;" class="all_text"&gt;	用户 必须遵循：	&lt;p&gt;		(1)从中国境内向外传输技术性资料时必须符合中国有关法规。	&lt;/p&gt;	&lt;p&gt;		(2)使用网络服务不作非法用途。	&lt;/p&gt;	&lt;p&gt;		(3)不干扰或混乱网络服务。	&lt;/p&gt;	&lt;p&gt;		(4)遵守所有使 用网络服务的网络协议、规定、程序和惯例。用户须承诺不传输任何非法的、骚扰性的、中伤他人的、辱骂性的、恐性的、伤害性的、庸俗的，淫秽等信息资料。	&lt;/p&gt;	&lt;div class="all_text1"&gt;		另 外，用户也不能传输何教唆他人构成犯罪行为的资料；不能传输助长国内不利条件和涉及国家安全的资料；不能传输任何不符合当地法规、国家法律和国际法律的资 料。未经许可而非法进入其它电脑系统是禁止的。若用户的行为不符合以上提到的服务条款，本站将作出独立判断立即取消用户服务帐号。用户需对自己在网上的行 为承担法律责任。用户若在本站上散布和传播反动、色情或其它违反国家法律的信息，本站的系统记录有可能作为用户违反法律的证据。	&lt;/div&gt;&lt;/div&gt;&lt;div style="color:#666666;font-size:13px;" class="all_title"&gt;	十二、保障用户同意保障和 维护本站全体成员的利益，负责支付由用户使用超出业务范围引起的律师费用，违反服务条款的损害补偿费用等。&lt;/div&gt;&lt;div style="color:#666666;font-size:13px;" class="all_title"&gt;	十三、结束服务用户或本站可随时根据实际情况中 断一项或多项网络服务。本站不需对任何个人或第三方负责而随时中断服务。&lt;/div&gt;&lt;div style="color:#666666;font-size:13px;" class="all_text"&gt;	用户对后来的条款修改有 异议，或对本站的服务不满，可以行使如下权利：	&lt;p&gt;		(1)停止使用本站的网络服务。	&lt;/p&gt;	&lt;p&gt;		(2)通告本站停止对该用户的服务。结束用户服务后，用户使用网络服务的权 利马上中止。从那时起，用户有权利，本站也没有义务传送任何未处理的信息或未完成的服务给户或第三方。	&lt;/p&gt;&lt;/div&gt;&lt;div style="color:#666666;font-size:13px;" class="all_title"&gt;	十四、通告所有发给用户的通告都可通过重要页面的公 告或电子邮件或常规的信件传送。用户协议条款的修改、服务变更、或其它重要事件的通告都会以此形式进行。&lt;/div&gt;&lt;div style="color:#666666;font-size:13px;" class="all_title"&gt;	十五、参与广告策划用户在他们发表的信息中加入宣 传资料或参与广告策划，在本站的免费服务上展示他们的产品，任何这类促销方法，包括运输货物、付款、服务、商业条件、担保及与广告有关的描述都只是在相应 的用户和广告销售商之间发生。本站不承担任何责任，本站没有义务为这类广告销售负任何一部分的责任。&lt;/div&gt;&lt;div style="color:#666666;font-size:13px;" class="all_title"&gt;	十六、网络服务内容的所有权本站定义的网络服务内容包 括：文字、软件、声音、图片、录象、图表、广告中的全部内容；电子邮件的全部内容；本站为用户提供的其它信息。所有这些内容受版权、商标、标签和其它财产 所有权法律的保护。所以，用户只能在本站和广告商授权下才能使用这些内容，而不能擅自复制、再造这些内容、或创造与内容有关的派生产品。本站所有的资讯版 权归原文作者和本站共同所有，任何人需要转载本站的资讯，必须征得原文作者或本站授权。&lt;/div&gt;&lt;div style="color:#666666;font-size:13px;" class="all_title"&gt;	十七、责任限制如因不可抗力或其它本站无法控制的原因使本站销售系 统崩溃或无法正常使用导致网上交易无法完成或丢失有关的信息、记录等，本站不承担责任。但是本站会尽可能合理地协助处理善后事宜，并努力使客户免受经济损 失。除了本站的使用条件中规定的其它限制和除外情况之外，在中国法律法规所允许的限度内，对于因交易而引起的或与之有关的任何直接的、间接的、特殊的、附 带的、后果性的或惩罚性的损害，或任何其它性质的损害，本站、本站的董事、管理人员、雇员、代理或其它代表在任何情况下都不承担责任。本站的全部责任，不 论是合同、保证、侵权(包括过失)项下的还是其它的责任，均不超过您所购买的与该索赔有关的商品价值额。&lt;/div&gt;&lt;div style="color:#666666;font-size:13px;" class="all_title"&gt;	十八、法律管辖和适用本协议的订立、执行和解释及 争议的解决均应适用中国法律。如发生本站服务条款与中国法律相抵触时，则这些条款将完全按法律规定重新解释，而其它合法条款则依旧保持对用户产生法律效力 和影响。本协议的规定是可分割的，如本协议任何规定被裁定为无效或不可执行，该规定可被删除而其余条款应予以执行。如双方就本协议内容或其执行发生任何争 议，双方应尽力友好协商解决；协商不成时，任何一方均可向本站所在地的人民法院提起诉讼。&lt;/div&gt;&lt;p&gt;	&lt;br /&gt;&lt;/p&gt;</ShopRegProtocol>
+  <!--  是否关闭网站-->
+  <IsCloseSite>1</IsCloseSite>
+  <!--  是否关闭注册-->
+  <IsCloseReg>1</IsCloseReg>
+  <!-- 用户协议-->
+  <UserAgreement>&lt;h1&gt;用户服务协议&lt;/h1&gt;                 &lt;h2&gt;2009-04-19 14:34&lt;/h2&gt;                 &lt;div class="default"&gt;                                         &lt;p&gt;特别提醒用户认真阅读本《用户服务协议》(下称《协议》) 中各条款。除非您接受本《协议》条款，否则您无权使用本网站提供的相关服务。您的使用行为将视为对本《协议》的接受，并同意接受本《协议》各项条款的约束。 &lt;br /&gt; &lt;br /&gt; &lt;strong&gt;一、定义&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt; &lt;ol&gt; &lt;li&gt;"用户"指符合本协议所规定的条件，同意遵守本网站各种规则、条款（包括但不限于本协议），并使用本网站的个人或机构。&lt;/li&gt; &lt;li&gt;"卖家"是指在本网站上出售物品的用户。"买家"是指在本网站购买物品的用户。&lt;/li&gt; &lt;li&gt;"成交"指买家根据卖家所刊登的交易要求，在特定时间内提出最优的交易条件，因而取得依其提出的条件购买该交易物品的权利。&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;&lt;br /&gt; &lt;br /&gt; &lt;strong&gt;二、用户资格&lt;/strong&gt;&lt;br /&gt; &lt;br /&gt; 只有符合下列条件之一的人员或实体才能申请成为本网站用户，可以使用本网站的服务。&lt;/p&gt; &lt;ol&gt; &lt;li&gt;年满十八岁，并具有民事权利能力和民事行为能力的自然人；&lt;/li&gt; &lt;li&gt;未满十八岁，但监护人（包括但不仅限于父母）予以书面同意的自然人；&lt;/li&gt; &lt;li&gt;根据中国法律或设立地法律、法规和/或规章成立并合法存在的公司、企事业单位、社团组织和其他组织。&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;&lt;br /&gt; 无民事行为能力人、限制民事行为能力人以及无经营或特定经营资格的组织不当注册为本网站用户或超过其民事权利或行为能力范围从事交易的，其与本网站之间的协议自始无效，本网站一经发现，有权立即注销该用户，并追究其使用本网站"服务"的一切法律责任。&lt;br /&gt; &lt;br /&gt; &lt;strong&gt;三.用户的权利和义务&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt; &lt;ol&gt; &lt;li&gt;用户有权根据本协议的规定及本网站发布的相关规则，利用本网站网上交易平台登录物品、发布交易信息、查询物品信息、购买物品、与其他用户订立物品买卖合同、在本网站社区发帖、参加本网站的有关活动及有权享受本网站提供的其他的有关资讯及信息服务。&lt;/li&gt; &lt;li&gt;用户有权根据需要更改密码和交易密码。用户应对以该用户名进行的所有活动和事件负全部责任。&lt;/li&gt; &lt;li&gt;用户有义务确保向本网站提供的任何资料、注册信息真实准确，包括但不限于真实姓名、身份证号、联系电话、地址、邮政编码等。保证本网站及其他用户可以通过上述联系方式与自己进行联系。同时，用户也有义务在相关资料实际变更时及时更新有关注册资料。&lt;/li&gt; &lt;li&gt;用户不得以任何形式擅自转让或授权他人使用自己在本网站的用户帐号。&lt;/li&gt; &lt;li&gt;用户有义务确保在本网站网上交易平台上登录物品、发布的交易信息真实、准确，无误导性。&lt;/li&gt; &lt;li&gt;用户不得在本网站网上交易平台买卖国家禁止销售的或限制销售的物品、不得买卖侵犯他人知识产权或其他合法权益的物品，也不得买卖违背社会公共利益或公共道德的物品。&lt;/li&gt; &lt;li&gt;用户不得在本网站发布各类违法或违规信息。包括但不限于物品信息、交易信息、社区帖子、物品留言，店铺留言，评价内容等。&lt;/li&gt; &lt;li&gt;用户在本网站交易中应当遵守诚实信用原则，不得以干预或操纵物品价格等不正当竞争方式扰乱网上交易秩序，不得从事与网上交易无关的不当行为，不得在交易平台上发布任何违法信息。&lt;/li&gt; &lt;li&gt;用户不应采取不正当手段（包括但不限于虚假交易、互换好评等方式）提高自身或他人信用度，或采用不正当手段恶意评价其他用户，降低其他用户信用度。&lt;/li&gt; &lt;li&gt;用户承诺自己在使用本网站网上交易平台实施的所有行为遵守国家法律、法规和本网站的相关规定以及各种社会公共利益或公共道德。对于任何法律后果的发生，用户将以自己的名义独立承担所有相应的法律责任。&lt;/li&gt; &lt;li&gt;用户在本网站网上交易过程中如与其他用户因交易产生纠纷，可以请求本网站从中予以协调。用户如发现其他用户有违法或违反本协议的行为，可以向本网站举报。如用户因网上交易与其他用户产生诉讼的，用户有权通过司法部门要求本网站提供相关资料。&lt;/li&gt; &lt;li&gt;用户应自行承担因交易产生的相关费用，并依法纳税。&lt;/li&gt; &lt;li&gt;未经本网站书面允许，用户不得将本网站资料以及在交易平台上所展示的任何信息以复制、修改、翻译等形式制作衍生作品、分发或公开展示。&lt;/li&gt; &lt;li&gt;用户同意接收来自本网站的信息，包括但不限于活动信息、交易信息、促销信息等。&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;&lt;br /&gt; &lt;br /&gt; &lt;strong&gt;四、 本网站的权利和义务&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt; &lt;ol&gt; &lt;li&gt;本网站不是传统意义上的"拍卖商"，仅为用户提供一个信息交流、进行物品买卖的平台，充当买卖双方之间的交流媒介，而非买主或卖主的代理商、合伙  人、雇员或雇主等经营关系人。公布在本网站上的交易物品是用户自行上传进行交易的物品，并非本网站所有。对于用户刊登物品、提供的信息或参与竞标的过程，  本网站均不加以监视或控制，亦不介入物品的交易过程，包括运送、付款、退款、瑕疵担保及其它交易事项，且不承担因交易物品存在品质、权利上的瑕疵以及交易  方履行交易协议的能力而产生的任何责任，对于出现在拍卖上的物品品质、安全性或合法性，本网站均不予保证。&lt;/li&gt; &lt;li&gt;本网站有义务在现有技术水平的基础上努力确保整个网上交易平台的正常运行，尽力避免服务中断或将中断时间限制在最短时间内，保证用户网上交易活动的顺利进行。&lt;/li&gt; &lt;li&gt;本网站有义务对用户在注册使用本网站网上交易平台中所遇到的问题及反映的情况及时作出回复。 &lt;/li&gt; &lt;li&gt;本网站有权对用户的注册资料进行查阅，对存在任何问题或怀疑的注册资料，本网站有权发出通知询问用户并要求用户做出解释、改正，或直接做出处罚、删除等处理。&lt;/li&gt; &lt;li&gt;用  户因在本网站网上交易与其他用户产生纠纷的，用户通过司法部门或行政部门依照法定程序要求本网站提供相关资料，本网站将积极配合并提供有关资料；用户将纠  纷告知本网站，或本网站知悉纠纷情况的，经审核后，本网站有权通过电子邮件及电话联系向纠纷双方了解纠纷情况，并将所了解的情况通过电子邮件互相通知对  方。 &lt;/li&gt; &lt;li&gt;因网上交易平台的特殊性，本网站没有义务对所有用户的注册资料、所有的交易行为以及与交易有关的其他事项进行事先审查，但如发生以下情形，本网站有权限制用户的活动、向用户核实有关资料、发出警告通知、暂时中止、无限期地中止及拒绝向该用户提供服务：         &lt;ul&gt; &lt;li&gt;用户违反本协议或因被提及而纳入本协议的文件；&lt;/li&gt; &lt;li&gt;存在用户或其他第三方通知本网站，认为某个用户或具体交易事项存在违法或不当行为，并提供相关证据，而本网站无法联系到该用户核证或验证该用户向本网站提供的任何资料；&lt;/li&gt; &lt;li&gt;存在用户或其他第三方通知本网站，认为某个用户或具体交易事项存在违法或不当行为，并提供相关证据。本网站以普通非专业交易者的知识水平标准对相关内容进行判别，可以明显认为这些内容或行为可能对本网站用户或本网站造成财务损失或法律责任。 &lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;在反网络欺诈行动中，本着保护广大用户利益的原则，当用户举报自己交易可能存在欺诈而产生交易争议时，本网站有权通过表面判断暂时冻结相关用户账号，并有权核对当事人身份资料及要求提供交易相关证明材料。&lt;/li&gt; &lt;li&gt;根据国家法律法规、本协议的内容和本网站所掌握的事实依据，可以认定用户存在违法或违反本协议行为以及在本网站交易平台上的其他不当行为，本网站有权在本网站交易平台及所在网站上以网络发布形式公布用户的违法行为，并有权随时作出删除相关信息，而无须征得用户的同意。&lt;/li&gt; &lt;li&gt;本  网站有权在不通知用户的前提下删除或采取其他限制性措施处理下列信息：包括但不限于以规避费用为目的；以炒作信用为目的；存在欺诈等恶意或虚假内容；与网  上交易无关或不是以交易为目的；存在恶意竞价或其他试图扰乱正常交易秩序因素；该信息违反公共利益或可能严重损害本网站和其他用户合法利益的。&lt;/li&gt; &lt;li&gt;用  户授予本网站独家的、全球通用的、永久的、免费的信息许可使用权利，本网站有权对该权利进行再授权，依此授权本网站有权(全部或部份地)  使用、复制、修订、改写、发布、翻译、分发、执行和展示用户公示于网站的各类信息或制作其派生作品，以现在已知或日后开发的任何形式、媒体或技术，将上述  信息纳入其他作品内。&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;&lt;br /&gt; &lt;br /&gt; &lt;strong&gt;五、服务的中断和终止&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt; &lt;ol&gt; &lt;li&gt;在  本网站未向用户收取相关服务费用的情况下，本网站可自行全权决定以任何理由  (包括但不限于本网站认为用户已违反本协议的字面意义和精神，或用户在超过180天内未登录本网站等)  终止对用户的服务，并不再保存用户在本网站的全部资料（包括但不限于用户信息、商品信息、交易信息等）。同时本网站可自行全权决定，在发出通知或不发出通  知的情况下，随时停止提供全部或部分服务。服务终止后，本网站没有义务为用户保留原用户资料或与之相关的任何信息，或转发任何未曾阅读或发送的信息给用户  或第三方。此外，本网站不就终止对用户的服务而对用户或任何第三方承担任何责任。 &lt;/li&gt; &lt;li&gt;如用户向本网站提出注销本网站注册用户身份，需经本网站审核同意，由本网站注销该注册用户，用户即解除与本网站的协议关系，但本网站仍保留下列权利：         &lt;ul&gt; &lt;li&gt;用户注销后，本网站有权保留该用户的资料,包括但不限于以前的用户资料、店铺资料、商品资料和交易记录等。 &lt;/li&gt; &lt;li&gt;用户注销后，如用户在注销前在本网站交易平台上存在违法行为或违反本协议的行为，本网站仍可行使本协议所规定的权利。 &lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;如存在下列情况，本网站可以通过注销用户的方式终止服务：         &lt;ul&gt; &lt;li&gt;在用户违反本协议相关规定时，本网站有权终止向该用户提供服务。本网站将在中断服务时通知用户。但如该用户在被本网站终止提供服务后，再一次直接或间接或以他人名义注册为本网站用户的，本网站有权再次单方面终止为该用户提供服务；&lt;/li&gt; &lt;li&gt;一旦本网站发现用户注册资料中主要内容是虚假的，本网站有权随时终止为该用户提供服务； &lt;/li&gt; &lt;li&gt;本协议终止或更新时，用户未确认新的协议的。 &lt;/li&gt; &lt;li&gt;其它本网站认为需终止服务的情况。 &lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;因用户违反相关法律法规或者违反本协议规定等原因而致使本网站中断、终止对用户服务的，对于服务中断、终止之前用户交易行为依下列原则处理：         &lt;ul&gt; &lt;li&gt;本网站有权决定是否在中断、终止对用户服务前将用户被中断或终止服务的情况和原因通知用户交易关系方，包括但不限于对该交易有意向但尚未达成交易的用户,参与该交易竞价的用户，已达成交易要约用户。&lt;/li&gt; &lt;li&gt;服务中断、终止之前，用户已经上传至本网站的物品尚未交易或交易尚未完成的，本网站有权在中断、终止服务的同时删除此项物品的相关信息。 &lt;/li&gt; &lt;li&gt;服务中断、终止之前，用户已经就其他用户出售的具体物品作出要约，但交易尚未结束，本网站有权在中断或终止服务的同时删除该用户的相关要约和信息。&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;本网站若因用户的行为（包括但不限于刊登的商品、在本网站社区发帖等）侵害了第三方的权利或违反了相关规定，而受到第三方的追偿或受到主管机关的处分时，用户应赔偿本网站因此所产生的一切损失及费用。&lt;/li&gt; &lt;li&gt;对违反相关法律法规或者违反本协议规定，且情节严重的用户，本网站有权终止该用户的其它服务。&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;&lt;br /&gt; &lt;br /&gt; &lt;strong&gt;六、协议的修订&lt;/strong&gt;&lt;br /&gt; &lt;br /&gt; 本协议可由本网站随时修订，并将修订后的协议公告于本网站之上，修订后的条款内容自公告时起生效，并成为本协议的一部分。用户若在本协议修改之后，仍继续使用本网站，则视为用户接受和自愿遵守修订后的协议。本网站行使修改或中断服务时，不需对任何第三方负责。&lt;br /&gt; &lt;br /&gt; &lt;strong&gt;七、 本网站的责任范围 &lt;/strong&gt;&lt;br /&gt; &lt;br /&gt; 当用户接受该协议时，用户应明确了解并同意∶&lt;/p&gt; &lt;ol&gt; &lt;li&gt;是否经由本网站下载或取得任何资料，由用户自行考虑、衡量并且自负风险，因下载任何资料而导致用户电脑系统的任何损坏或资料流失，用户应负完全责任。&lt;/li&gt; &lt;li&gt;用户经由本网站取得的建议和资讯，无论其形式或表现，绝不构成本协议未明示规定的任何保证。&lt;/li&gt; &lt;li&gt;基于以下原因而造成的利润、商誉、使用、资料损失或其它无形损失，本网站不承担任何直接、间接、附带、特别、衍生性或惩罚性赔偿（即使本网站已被告知前款赔偿的可能性）：         &lt;ul&gt; &lt;li&gt;本网站的使用或无法使用。&lt;/li&gt; &lt;li&gt;经由或通过本网站购买或取得的任何物品，或接收之信息，或进行交易所随之产生的替代物品及服务的购买成本。&lt;/li&gt; &lt;li&gt;用户的传输或资料遭到未获授权的存取或变更。&lt;/li&gt; &lt;li&gt;本网站中任何第三方之声明或行为。&lt;/li&gt; &lt;li&gt;本网站其它相关事宜。&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;本网站只是为用户提供一个交易的平台，对于用户所刊登的交易物品的合法性、真实性及其品质，以及用户履行交易的能力等，本网站一律不负任何担保责任。用户如果因使用本网站，或因购买刊登于本网站的任何物品，而受有损害时，本网站不负任何补偿或赔偿责任。&lt;/li&gt; &lt;li&gt;本  网站提供与其它互联网上的网站或资源的链接，用户可能会因此连结至其它运营商经营的网站，但不表示本网站与这些运营商有任何关系。其它运营商经营的网站均  由各经营者自行负责，不属于本网站控制及负责范围之内。对于存在或来源于此类网站或资源的任何内容、广告、产品或其它资料，本网站亦不予保证或负责。因使  用或依赖任何此类网站或资源发布的或经由此类网站或资源获得的任何内容、物品或服务所产生的任何损害或损失，本网站不负任何直接或间接的责任。&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;&lt;br /&gt; &lt;br /&gt; &lt;strong&gt;八.、不可抗力&lt;/strong&gt;&lt;br /&gt; &lt;br /&gt; 因不可抗力或者其他意外事件，使得本协议的履行不可能、不必要或者无意义的，双方均不承担责任。本合同所称之不可抗力意指不能预见、不能避免并不能克服的  客观情况，包括但不限于战争、台风、水灾、火灾、雷击或地震、罢工、暴动、法定疾病、黑客攻击、网络病毒、电信部门技术管制、政府行为或任何其它自然或人  为造成的灾难等客观情况。&lt;br /&gt; &lt;br /&gt; &lt;strong&gt;九、争议解决方式&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt; &lt;ol&gt; &lt;li&gt;本协议及其修订本的有效性、履行和与本协议及其修订本效力有关的所有事宜，将受中华人民共和国法律管辖，任何争议仅适用中华人民共和国法律。&lt;/li&gt; &lt;li&gt;因  使用本网站服务所引起与本网站的任何争议，均应提交深圳仲裁委员会按照该会届时有效的仲裁规则进行仲裁。相关争议应单独仲裁，不得与任何其它方的争议在任  何仲裁中合并处理，该仲裁裁决是终局，对各方均有约束力。如果所涉及的争议不适于仲裁解决，用户同意一切争议由人民法院管辖。&lt;/li&gt; &lt;/ol&gt;</UserAgreement>
+  <!--关键字显示个数-->
+  <KeywordsCount>20</KeywordsCount>
+  <!--是否启用重写-->
+  <OverrideUrl>true</OverrideUrl>
+  <!--重写后缀名-->
+  <OverrideUrlName>.aspx</OverrideUrlName>
+  <!--不重写域名-->
+  <OverrideDomain>www</OverrideDomain>
+  <!--店铺ID初始值-->
+  <InitialShopID>100000000</InitialShopID>
+  <!--默认收货天数-->
+  <DefaultReceivedDays>10</DefaultReceivedDays>
+  <!--默认取消订单天数-->
+  <DefaultCancelOrderDays>3</DefaultCancelOrderDays>
+  <!--支付类型-->
+  <PayMentType>0</PayMentType>
+  <!--是否启用托管-->
+  <IsManagerShop>0</IsManagerShop>
+  <!--退款申请后相隔多少天可以由平台介入-->
+  <RefundIsAdmin>6</RefundIsAdmin>
+  <!-- ICP证书或ICP备案证书号-->
+  <ICPNum>渝ICP备18006669号</ICPNum>
+  <!-- ICP 备案证书文件-->
+  <ICPFile>渝ICP备18006669号</ICPFile>
+  <!--邮件服务 0-JMail,1-.NET自带组件-->
+  <EmailServer>ASP.NET邮件发送组件</EmailServer>
+  <!--发送邮件服务哭地址(SMTP)-->
+  <SMTP>smtp.126.com</SMTP>
+  <!--服务器端口-->
+  <ServerPort>25</ServerPort>
+  <!--邮件发送账号-->
+  <EmailAccount>tangjiangguoji@126.com</EmailAccount>
+  <!--账号密码-->
+  <EmailPassword>B80D8043F28C05D1F759FB4D312D360C</EmailPassword>
+  <!--邮件回复地址-->
+  <RestoreEmail>tangjiangguoji@126.com</RestoreEmail>
+  <!--邮件编码 0-国际化编码（utf8）,1-简体中文,2-繁体中文 -->
+  <EmailCode>
+  </EmailCode>
+  <!-- 货币符号-->
+  <MoneySymbol>￥</MoneySymbol>
+  <!--红包换算比例-->
+  <ScoreConversionProportion>10</ScoreConversionProportion>
+  <!--红包支付比例-->
+  <ScorePaymentProportion>10</ScorePaymentProportion>
+  <!--支付是否需要短信确认码,0表示不需要，1表示需要-->
+  <IsMobileCheckPay>0</IsMobileCheckPay>
+  <!--添加优惠券是否需要审核,0表示不需要审核，1表示需要审核-->
+  <AddCouponIsAudit>1</AddCouponIsAudit>
+  <!--添加普通商品是否需要审核,0表示不需要审核，1表示需要审核-->
+  <AddProductIsAudit>1</AddProductIsAudit>
+  <!--添加拼购商品是否需要审核,0表示不需要审核，1表示需要审核-->
+  <AddSpellBuyProductIsAudit>1</AddSpellBuyProductIsAudit>
+  <!--添加抢购商品是否需要审核,0表示不需要审核，1表示需要审核-->
+  <AddPanicBuyProductIsAudit>1</AddPanicBuyProductIsAudit>
+  <!--商品评论是否需要审核,0表示不需要审核，1表示需要审核-->
+  <ProductCommentISAudit>0</ProductCommentISAudit>
+  <!--分类信息评论是否需要审核,0表示不需要审核，1表示需要审核-->
+  <CategoryInfoCommentISAudit>0</CategoryInfoCommentISAudit>
+  <!--供求评论是否需要审核,0表示不需要审核，1表示需要审核-->
+  <SupplyDemandCommentISAudit>0</SupplyDemandCommentISAudit>
+  <!--商品资讯是否需要回复,0表示不需要回复，1表示需要回复-->
+  <ProductConsultIsReply>0</ProductConsultIsReply>
+  <!--资讯评论否需要审核,0表示不需要审核，1表示需要审核-->
+  <ArticleCommentISAudit>0</ArticleCommentISAudit>
+  <!--店铺资讯评论否需要审核,0表示不需要审核，1表示需要审核-->
+  <ShopArticleCommentISAudit>0</ShopArticleCommentISAudit>
+  <!--平台留言是否需要审核,0表示不需要审核，1表示需要审核-->
+  <MessageCommentISAudit>0</MessageCommentISAudit>
+  <!--店铺留言是否需要审核,0表示不需要审核，1表示需要审核-->
+  <ShopMessageCommentISAudit>0</ShopMessageCommentISAudit>
+  <!--视频评论是否需要审核,0表示不需要审核，1表示需要审核-->
+  <VideoCommentISAudit>0</VideoCommentISAudit>
+  <!--会员发布分类信息是否需要审核,0表示不需要审核，1表示需要审核-->
+  <CategoryInfoISAudit>0</CategoryInfoISAudit>
+  <!--会员发布供求是否需要审核,0表示不需要审核，1表示需要审核-->
+  <SupplyDemandIsAudit>0</SupplyDemandIsAudit>
+  <!--注册赠送的消费红包-->
+  <RegPresentScore>10</RegPresentScore>
+  <!--注册赠送的等级红包-->
+  <RegPresentRankScore>10</RegPresentRankScore>
+  <!--商品评论是否需要验证码，0不需要验证码，1需要验证码-->
+  <ProductCommentVerifyCode>1</ProductCommentVerifyCode>
+  <!--供求评论是否需要验证码，0不需要验证码，1需要验证码-->
+  <SupplyDemandCommentVerifyCode>1</SupplyDemandCommentVerifyCode>
+  <!--分类信息评论是否需要验证码，0不需要验证码，1需要验证码-->
+  <CategoryInfoCommentVerifyCode>1</CategoryInfoCommentVerifyCode>
+  <!--商品资讯是否需要验证码，0不需要验证码，1需要验证码-->
+  <ProductConsultVerifyCode>0</ProductConsultVerifyCode>
+  <!--购买商品是否需要验证码，0不需要验证码，1需要验证码-->
+  <ProductBuyVerifyCode>1</ProductBuyVerifyCode>
+  <!--资讯评论是否需要验证码，0不需要验证码，1需要验证码-->
+  <AriticleCommentVerifyCode>1</AriticleCommentVerifyCode>
+  <!--店铺资讯评论是否需要验证码，0不需要验证码，1需要验证码-->
+  <ShopAriticleCommentVerifyCode>1</ShopAriticleCommentVerifyCode>
+  <!--视频评论是否需要验证码，0不需要验证码，1需要验证码-->
+  <VideoCommentVerifyCode>1</VideoCommentVerifyCode>
+  <!--平台留言是否需要验证码，0不需要验证码，1需要验证码-->
+  <MessageVerifyCode>1</MessageVerifyCode>
+  <!--店铺留言是否需要验证码，0不需要验证码，1需要验证码-->
+  <ShopMessageVerifyCode>1</ShopMessageVerifyCode>
+  <!--前台会员注册是否需要验证码，0不需要验证码，1需要验证码-->
+  <RegVerifyCode>1</RegVerifyCode>
+  <!--会员登录是否需要验证码，0不需要验证码，1需要验证码-->
+  <MemLoginVerifyCode>1</MemLoginVerifyCode>
+  <!--商品评论的条件,0所有用户,1仅登录用户,2有过一次购买行为的用户，3仅购买过该商品的用户-->
+  <ProductCommentCondition>1</ProductCommentCondition>
+  <!--平台资讯评论的条件,0所有用户,1仅登录用户-->
+  <ArticleCommentCondition>0</ArticleCommentCondition>
+  <!--店铺资讯评论的条件,0所有用户,1仅登录用户-->
+  <ShopArticleCommentCondition>0</ShopArticleCommentCondition>
+  <!--视频评论的条件,0所有用户,1仅登录用户-->
+  <VideoCommentCondition>0</VideoCommentCondition>
+  <!--平台发表留言的条件,0所有用户,1仅登录用户-->
+  <MessageCondition>1</MessageCondition>
+  <!--店铺发表留言的条件,0所有用户,1仅登录用户-->
+  <ShopMessageCondition>0</ShopMessageCondition>
+  <!--供求评论的条件,0所有用户,1仅登录用户-->
+  <SupplyDemandCommentCondition>1</SupplyDemandCommentCondition>
+  <!--分类信息发表留言的条件,0所有用户,1仅登录用户-->
+  <CategoryInfoCommentCondition>0</CategoryInfoCommentCondition>
+  <!--是否使用缺货处理,0不使用缺货处理,1使用缺货处理-->
+  <IsOutOfStock>0</IsOutOfStock>
+  <!--是否允许未登录用户购物,0不允许未登录用户购物，1允许未登录用户购物-->
+  <IsLoginBuy>0</IsLoginBuy>
+  <!--发票类型及税率,|号左边的是发票类型，右边的为税率，注意税率要保留两个小数-->
+  <InvoiceType>
+    <InvoiceType1>类型1|20.00</InvoiceType1>
+    <InvoiceType2>类型2|55.00</InvoiceType2>
+    <InvoiceType3>类型3|11.00</InvoiceType3>
+  </InvoiceType>
+  <!--减库存的时机,0 下订单时,1发货时-->
+  <DecreaseRepertory>0</DecreaseRepertory>
+  <!--付款时,-->
+  <PayIsEmail>0</PayIsEmail>
+  <!--发货时-->
+  <ShipmentIsEmail>0</ShipmentIsEmail>
+  <!--确认收货时-->
+  <ShipmentOKIsEmail>0</ShipmentOKIsEmail>
+  <!--取消订单时-->
+  <CancelOrderIsEmail>0</CancelOrderIsEmail>
+  <!--  注册是否发送邮件-->
+  <RegIsEmail>0</RegIsEmail>
+  <!--  注册是否发送激活邮件-->
+  <RegIsActivationEmail>0</RegIsActivationEmail>
+  <!--下订单时是否给客户发邮件-->
+  <OrderIsEmail>1</OrderIsEmail>
+  <!--下订单时是否给商家发邮件-->
+  <OrderToShopIsEmail>1</OrderToShopIsEmail>
+  <!--会员提交店铺申请是否发送邮件-->
+  <ApplyOpenShopIsEmail>0</ApplyOpenShopIsEmail>
+  <!--申请店铺状态有更新是否发送邮件-->
+  <AuditOpenShopIsEmail>1</AuditOpenShopIsEmail>
+  <!--确认订单时,是否发送短信-->
+  <!--<SubmitOrderIsMMS>0</SubmitOrderIsMMS>-->
+  <!--付款时,-->
+  <PayIsMMS>1</PayIsMMS>
+  <!--发货时是否发送短信-->
+  <ShipmentIsMMS>1</ShipmentIsMMS>
+  <!--确认收货时是否发送短信-->
+  <ShipmentOKIsMMS>1</ShipmentOKIsMMS>
+  <!--取消订单时是否发送短信-->
+  <CancelOrderIsMMS>1</CancelOrderIsMMS>
+  <!--把订单设为无效时是否发送短信-->
+  <!--<InvalidOrderIsMMS>0</InvalidOrderIsMMS>-->
+  <!--下订单时是否给客户发短信-->
+  <OrderIsMMS>1</OrderIsMMS>
+  <!--下订单时是否给商家发短信-->
+  <OrderToShopIsMMS>1</OrderToShopIsMMS>
+  <!--注册时是否发送短信-->
+  <RegistOrderIsMMS>1</RegistOrderIsMMS>
+  <!--会员提交店铺申请是否发送短信-->
+  <ApplyOpenShopIsMMS>1</ApplyOpenShopIsMMS>
+  <!--申请店铺状态有更新是否发送短信-->
+  <AuditOpenShopIsMMS>1</AuditOpenShopIsMMS>
+  <!--发布平台留言赠送的等级红包是-->
+  <MyMessageRankSorce>11</MyMessageRankSorce>
+  <!--发布平台留言赠送的消费红包是-->
+  <MyMessageSorce>12</MyMessageSorce>
+  <!--发布店铺留言赠送的等级红包是-->
+  <MyShopMessageRankSorce>13</MyShopMessageRankSorce>
+  <!--发布店铺留言赠送的消费红包是-->
+  <MyShopMessageSorce>14</MyShopMessageSorce>
+  <!--购买商品赠送的等级红包-->
+  <BuyProductRankScore>15</BuyProductRankScore>
+  <!--购买商品赠送的消费红包-->
+  <BuyProductScore>16</BuyProductScore>
+  <!--发布商品评论赠送的等级红包是-->
+  <MyProductCommentRankSorce>17</MyProductCommentRankSorce>
+  <!--发布商品评论赠送的消费红包是-->
+  <MyProductCommentSorce>18</MyProductCommentSorce>
+  <!--卖家回评赠送会员的等级红包是-->
+  <SellerCommentRankSorce>17</SellerCommentRankSorce>
+  <!--卖家回评赠送会员的消费红包是-->
+  <SellerCommentSorce>18</SellerCommentSorce>
+  <!--发布供求信息赠送的等级红包是-->
+  <MySupplyDemandCommentRankSorce>23</MySupplyDemandCommentRankSorce>
+  <!--发布供求信息赠送的消费红包是-->
+  <MySupplyDemandCommentSorce>24</MySupplyDemandCommentSorce>
+  <!--发布分类信息赠送的等级红包是-->
+  <MyCategoryInfoCommentRankSorce>25</MyCategoryInfoCommentRankSorce>
+  <!--发布分类信息赠送的消费红包是-->
+  <MyCategoryInfoCommentSorce>26</MyCategoryInfoCommentSorce>
+  <!--发布平台资讯评论赠送的等级红包是-->
+  <ArticleCommentRankSorce>19</ArticleCommentRankSorce>
+  <!--发布平台资讯评论赠送的消费红包是-->
+  <ArticleCommentSorce>20</ArticleCommentSorce>
+  <!--发布店铺资讯评论赠送的等级红包是-->
+  <ShopArticleCommentRankSorce>21</ShopArticleCommentRankSorce>
+  <!--发布店铺资讯评论赠送的消费红包是-->
+  <ShopArticleCommentSorce>22</ShopArticleCommentSorce>
+  <!--发布视频评论赠送的等级红包是-->
+  <VideoCommentRankSorce>27</VideoCommentRankSorce>
+  <!--发布视频评论赠送的消费红包是-->
+  <VideoCommentSorce>28</VideoCommentSorce>
+  <!--实名认证赠送的消费红包是-->
+  <RealNameRankSorce>10</RealNameRankSorce>
+  <!--店铺好评赠送的等级红包是-->
+  <GoodAppraiseRankSorce>10</GoodAppraiseRankSorce>
+  <!--店铺中评赠送的等级红包是-->
+  <StandardAppraiseRankSorce>10</StandardAppraiseRankSorce>
+  <!--店铺差评扣除的等级红包是-->
+  <BadAppraiseRankSorce>10</BadAppraiseRankSorce>
+  <!--店铺担保赠送的等级红包是-->
+  <ShopEnsureRankSorce>10</ShopEnsureRankSorce>
+  <!--店铺好评赠送的信用等级-->
+  <GoodAppraiseReputation>29</GoodAppraiseReputation>
+  <!--店铺中评赠送的信用等级-->
+  <StandardAppraiseReputation>30</StandardAppraiseReputation>
+  <!--店铺差评扣除的信用等级-->
+  <BadAppraiseReputation>31</BadAppraiseReputation>
+  <!--允许店铺添加拼购商品数量为-->
+  <AddSpellBuyProductCount>10</AddSpellBuyProductCount>
+  <!--允许店铺添加抢购商品数量为-->
+  <AddPanicBuyProductCount>10</AddPanicBuyProductCount>
+  <!--最小购物金额购物-->
+  <BuyAmount>10</BuyAmount>
+  <!--统计代码-->
+  <StatisticsCode>10</StatisticsCode>
+  <!--商品重量-->
+  <ProductWeight>10</ProductWeight>
+  <!--是否删除图片-->
+  <DeleteImage>1</DeleteImage>
+  <!--是否备份模板-->
+  <SkinBackup>1</SkinBackup>
+  <!--导入商品市场价比例-->
+  <UpLoadProductMarketPrice>10</UpLoadProductMarketPrice>
+  <!--导入商品本店售价比例-->
+  <UpLoadProductShopPrice>10</UpLoadProductShopPrice>
+  <!--默认店铺商有效期-->
+  <ShopDefaultValidTime>10</ShopDefaultValidTime>
+  <!--视频评论每页显示的数量-->
+  <VideoCommentCount>10</VideoCommentCount>
+  <!--销量排行显示数量-->
+  <SellOrderCount>11</SellOrderCount>
+  <!--浏览历史显示数量-->
+  <ClickHistoryCount>10</ClickHistoryCount>
+  <!--商品相关商品显示数量-->
+  <ProductRelatedProductCount>10</ProductRelatedProductCount>
+  <!--商品评论显示的总数量-->
+  <ProductCommentCount>12</ProductCommentCount>
+  <!--商品评论每页显示数量-->
+  <ProductCommentPageCount>13</ProductCommentPageCount>t
+
+  <!--用户留言显示的总数量-->
+  <MemberCommentCount>14</MemberCommentCount>
+  <!--用户留言每页显示数量-->
+  <MemberCommentPageCount>15</MemberCommentPageCount>
+  <!--资讯评论显示的总数量-->
+  <ArticleCommentCount>18</ArticleCommentCount>
+  <!--资讯评论每页显示数量-->
+  <ArticleCommentPageCount>19</ArticleCommentPageCount>
+  <!--供求评论每页显示数量-->
+  <SupplyDemandCommentPageCount>16</SupplyDemandCommentPageCount>
+  <!--分类评论每页显示数量-->
+  <CategoryCommentPageCount>17</CategoryCommentPageCount>
+  <!--商品分类页列表的数量-->
+  <ProductCatogaryListCount>20</ProductCatogaryListCount>
+  <!--导购员列表显示的数量-->
+  <GuideBuyListCount>21</GuideBuyListCount>
+  <!--新品商品显示数量-->
+  <ProductListNewCount>14</ProductListNewCount>
+  <!--精品商品显示数量-->
+  <ProductListBestCount>14</ProductListBestCount>
+  <!--热销商品显示数量-->
+  <ProductListHotCount>14</ProductListHotCount>
+  <!--推荐商品显示数量-->
+  <ProductListRecommandCount>14</ProductListRecommandCount>
+  <!--资讯相关商品显示数量-->
+  <ArticleRelatedProductListCount>10</ArticleRelatedProductListCount>
+  <!--资讯相关资讯显示数量-->
+  <ArticleRelatedArticleListCount>10</ArticleRelatedArticleListCount>
+  <!--会员订单页面每页显示订单数-->
+  <MOrderCount>11</MOrderCount>
+  <!--会员留言页面每页显示留言数-->
+  <MMessageBoardCount>12</MMessageBoardCount>
+  <!--会员缺货登记页每页面显示缺货登记记录数-->
+  <MOutOfStockCount>13</MOutOfStockCount>
+  <!--会员商品评论页面每页显示商品评论数-->
+  <MProductCommentCount>14</MProductCommentCount>
+  <!--会员收货地址页面每页显示收货地址数-->
+  <MReceiveAddressCount>15</MReceiveAddressCount>
+  <!--会员收藏页面每页显示收藏数-->
+  <MCollectCount>16</MCollectCount>
+  <!--会员红包页面每页显示红包记录数-->
+  <MScoreRecordCount>17</MScoreRecordCount>
+  <!--会员金币（BV）页面每页显示红包记录数-->
+  <MAdvancePaymentCount>18</MAdvancePaymentCount>
+  <!--会员发件箱页面每页显示发件记录数-->
+  <MSendMessageCount>19</MSendMessageCount>
+  <!--会员收件箱页面每页显示收件记录数-->
+  <MReceiveMessageCount>20</MReceiveMessageCount>
+  <!--会员中心资讯评论页每页显示数-->
+  <MArticleCommentCount>21</MArticleCommentCount>
+  <!--会员中心分类信息评论页每页显示数-->
+  <MCategoryCommentCount>22</MCategoryCommentCount>
+  <!--会员中心供求评论页每页显示数-->
+  <MSupplyDemandCommentCount>23</MSupplyDemandCommentCount>
+  <!--会员中心金币（BV）变更记录的每页显示数量-->
+  <MChangeAdvancePaymentCount>10</MChangeAdvancePaymentCount>
+  <!--会员中心金币（BV）冻结记录的每页显示数量-->
+  <MFreezeAdvancePaymentCount>10</MFreezeAdvancePaymentCount>
+  <!--会员中心提现申请记录每页显示数量-->
+  <MAdvancePaymentApplyLogCount>10</MAdvancePaymentApplyLogCount>
+  <!--商城资讯模块显示总数量-->
+  <ModuleArticleListCount>30</ModuleArticleListCount>
+  <!--商城资讯模块每页显示数量-->
+  <ModuleArticleListPageCount>8</ModuleArticleListPageCount>
+  <!--在线调查进度条的高度-->
+  <SurveyBarHeight>8</SurveyBarHeight>
+  <!--在线调查进度条的颜色-->
+  <SurveyBarColor>red</SurveyBarColor>
+  <!--短信类型-->
+  <MMSType>3</MMSType>
+  <!--企业代码-->
+  <Ecode></Ecode>
+  <!--短信用户名-->
+  <UserName>3SDK-EMY-0130-NJWON</UserName>
+  <!--短信密码-->
+  <PassWord>88100F239D21A09953</PassWord>
+  <!--短信宝-->
+  <SmsbaoUser>tj88</SmsbaoUser><SmsbaoPass>tj88</SmsbaoPass><SMSSpeedu>tj88</SMSSpeedu><SMSSpeedp>tj88</SMSSpeedp>
+  <!--  短信王短信接口-->
+  <SMSUser>tj88</SMSUser><SMSPass>tj88</SMSPass>
+  <!--最新资讯显示数量-->
+  <NewArticleListCount>6</NewArticleListCount>
+  <!--商品公告显示数量-->
+  <ArticleListCount>6</ArticleListCount>
+  <!--店铺Logo-->
+  <ShopLogo>~/Main/2011090809191711.gif</ShopLogo>
+  <!--会员中心Logo-->
+  <MemberLogo>~/Main/Member/images/logo.png</MemberLogo>
+  <!--店铺后台底部版权-->
+  <CopyrightShop>千里行新能源汽车商城系统店铺后台</CopyrightShop>
+  <!--会员中心底部版权-->
+  <CopyrightMember>唐江国际商城系统会员中心.</CopyrightMember>
+  <!--ShopNum1版本号-->
+  <ShopNum1Version>唐江国际 V6</ShopNum1Version>
+  <!--店铺主营宝贝（商品）的数量-->
+  <ShopMainProductCount>5</ShopMainProductCount>
+  <!--店铺公告需要展现的条数-->
+  <ShopAnnouncementCount>8</ShopAnnouncementCount>
+  <!--店铺商品分成比率-->
+  <ShopProductFcRate>0</ShopProductFcRate>
+  <!--主站最新公告的数量-->
+  <DefaultAnnouncementNewCount>8</DefaultAnnouncementNewCount>
+  <!--主站自定义栏的资讯显示数量-->
+  <DefaultDefinedCount>6</DefaultDefinedCount>
+  <!--主站推荐品牌的显示数量-->
+  <DefaultRecommendBrandCount>9</DefaultRecommendBrandCount>
+  <!--主站四大分类店铺的显示数量-->
+  <DefaultCategoryShopCount>6</DefaultCategoryShopCount>
+  <!--开启水印设置(0-不开启水印,1-开启文字水印,2-开启图片水印)-->
+  <IfSetWaterMark>0</IfSetWaterMark>
+  <!--水印图片-->
+  <WaterMarkOriginalImge>/ImgUpload/Main/2013_09/img_201309150114177.jpg</WaterMarkOriginalImge>
+  <!--图片水印位置(TOP_LEFT_左上角,TOP_RIGHT右上角,BOTTOM_LEFT左下角,BOTTOM_RIGHT右下角-->
+  <WaterMarkImagePosition>9</WaterMarkImagePosition>
+  <!--图片水印透明度-->
+  <ImageWaterMarkClarity>12</ImageWaterMarkClarity>
+  <!--水印文字-->
+  <WaterMarkWords>一起飞</WaterMarkWords>
+  <!--水印文字字体-->
+  <WaterMarkWordsFont>Arial</WaterMarkWordsFont>
+  <!--水印文字字体大小-->
+  <WaterMarkWordsFontSize>16</WaterMarkWordsFontSize>
+  <!--水印文字字体颜色-->
+  <WaterMarkWordsColor>#EE33EE</WaterMarkWordsColor>
+  <!--文字水印位置-->
+  <WordsWaterMarkPosition>2</WordsWaterMarkPosition>
+  <!--店铺商品平台提成比例开关-->
+  <IsShopProductFcRate>true</IsShopProductFcRate>
+  <!--店铺销售产品以后分给管理员的比例-->
+  <AdminProductFcRate>0</AdminProductFcRate>
+  <!--店铺商品共赢价格开关-->
+  <IsAdminProductFcCount>true</IsAdminProductFcCount>
+  <!--店铺商品共赢价格-->
+  <AdminProductFcCount>10</AdminProductFcCount>
+  <!--店铺订单提成开关-->
+  <IsOrderCommission>true</IsOrderCommission>
+  <!--店铺订单提成比例-->
+  <OrderCommission>1</OrderCommission><ShowCustomer>0</ShowCustomer>
+  <!--客服工作时间-->
+  <WorkTime>1aaa</WorkTime>
+  <!--全国订购热线-->
+  <NationalOrderHotline>55555</NationalOrderHotline>
+  <!--网站邮箱-->
+  <CompanyEmail>raaa</CompanyEmail>
+  <!--底部网站名称-->
+  <BottomWebsiteName>1</BottomWebsiteName>
+  <!--数据库名称-->
+  <DatabaseName>ShopNum1MallMainAdmin</DatabaseName>
+  <!--每次兑换红包商品最大数量-->
+  <MaxScroeProductCount>1</MaxScroeProductCount>
+  <!--直通车默认价格-->
+  <ZtcMoney>10.00</ZtcMoney>
+  <!--数据库名称-->
+  <ConnectionMasterString>Data Source=localhost;Initial Catalog=master;User Id=sa;Password=sa;Connect TimeOut=6000;Persist Security Info=True;</ConnectionMasterString>
+  <!--限时折扣套餐价格--><Limit_Money>0</Limit_Money>
+  <!--限时折扣最多发布活动数量--><Limit_ActivityCount>0</Limit_ActivityCount>
+  <!--限时折扣最多发布商品数量--><Limit_GoodsCount>0</Limit_GoodsCount>
+  <!--是否签到送红包--><SignOrSendScore>1</SignOrSendScore>
+  <!--签到送红包--><SignScore>10</SignScore>
+  <!--签到送等级红包--><SignRankScore>15</SignRankScore>
+  <!--推荐会员提成是否开启--><IsRecommendCommisionOpen>false</IsRecommendCommisionOpen>
+  <!--推荐提成比例--><RecommendCommision>10</RecommendCommision>
+  <!-->是否开启平台服务电话--><IsOpenPhone>1</IsOpenPhone>
+  <!--平台服务电话--><ServerPhone>022-24784231</ServerPhone>
+  <!--网站底部信息-->
+  <ButtomInfo>
+    &lt;div id="footer" &gt;
+    &lt;div class="J_DcFt" &gt;
+    &lt;dl class="text_1" &gt;
+    &lt;dd &gt;
+    &lt;p class="ccc" &gt;购物保障 &lt;/p &gt;
+    &lt;p class="t" &gt;非质量问题的退货，请在收到宝贝后七天内联系客服，如属质量问题本商城承担运费。 &lt;/p &gt;
+    &lt;/dd &gt;
+    &lt;/dl &gt;
+    &lt;dl class="text_2" &gt;
+    &lt;dd &gt;
+    &lt;p class="ccc" &gt;关于快递 &lt;/p &gt;
+    &lt;p class="t" &gt;我们默认使用普通快递，如发其它快递、EMS，请联系我们在线客服！ &lt;/p &gt;
+    &lt;/dd &gt;
+    &lt;/dl &gt;
+    &lt;dl class="text_3" &gt;
+
+    &lt;dd &gt;
+    &lt;p class="ccc" &gt;关于发货 &lt;/p &gt;
+    &lt;p class="t" &gt;每日16：00以前的订单，次日发货；16：00以后付款的订单，第三天发货；周末不发货。 &lt;/p &gt;
+    &lt;/dd &gt;
+    &lt;/dl &gt;
+    &lt;dl class="text_4" &gt;
+    &lt;dd &gt;
+    &lt;p class="ccc" &gt;色差说明 &lt;/p &gt;
+    &lt;p class="t" &gt;本商城所有商品均属实物拍摄，尽最大可能接近实物色彩，色彩偏差异较严格者仔细考量！ &lt;/p &gt;
+    &lt;/dd &gt;
+    &lt;/dl &gt;
+    &lt;/div &gt;
+    &lt;div class="footer_copyright" &gt;
+    &lt;div class="comwidth" &gt;  &lt;span &gt;Copyright (C) 千里行 2018-2019, All Rights Reserved   |   渝ICP备18006669号 &lt;/span &gt;  &lt;/div &gt;
+    &lt;/div &gt;
+    
+    &lt;/div &gt;
+  </ButtomInfo>
+  <!--手机二维码--><PhoneEWM>/ImgUpload/Main/2013_07/201307100728267.png</PhoneEWM>
+  <!--微信二维码--><MicroEWM>/ImgUpload/Main/2013_09/201309050724527.jpg</MicroEWM>
+  <!--默认头像图片-->
+  <MemberImage>../images/noImage.gif</MemberImage>
+  <KeyWordCheck>0</KeyWordCheck>
+  <WxPayMoney>12</WxPayMoney>
+  <Power>shopnum12</Power>
+  <SuperPWD>#$%D#$@!%%FSVB8</SuperPWD>
+
+</ShopSetting>

@@ -1,0 +1,396 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.377</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9460A0BD-51FE-400E-B9E4-5A6931E16063}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>ShopNum1.WebControl</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\dll\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Compile Include="AriticleCategory.cs" />
+    <Compile Include="AriticleCategorySub.cs" />
+    <Compile Include="AriticleChrildCategory.cs" />
+    <Compile Include="AriticleIsHotorIsRecommend.cs" />
+    <Compile Include="AriticlekeyWords.cs" />
+    <Compile Include="ArticleByCategoryIdInOrder.cs" />
+    <Compile Include="ArticleCategoryArticle.cs" />
+    <Compile Include="ArticleCommentAdd.cs" />
+    <Compile Include="ArticleCommentList.cs" />
+    <Compile Include="ArticleCommentLists.cs" />
+    <Compile Include="ArticleDetail.cs" />
+    <Compile Include="ArticleList.cs" />
+    <Compile Include="ArticleListSearch.cs" />
+    <Compile Include="ArticleNewList.cs" />
+    <Compile Include="ArticleRelatedArticle.cs" />
+    <Compile Include="ArticleRelatedProduct.cs" />
+    <Compile Include="ArticleSearch.cs" />
+    <Compile Include="ArticleSearchNofind.cs" />
+    <Compile Include="DeArticleCategoryDetail.cs" />
+    <Compile Include="Coupons.cs" />
+    <Compile Include="CouponSaleList.cs" />
+    <Compile Include="CouponsIsHelp.cs" />
+    <Compile Include="CouponsIsHot.cs" />
+    <Compile Include="CouponsList.cs" />
+    <Compile Include="DeBrandList.cs" />
+    <Compile Include="DeCategoryDetail.cs" />
+    <Compile Include="DeCategoryInfoCategory.cs" />
+    <Compile Include="DefaultAdminCheck.cs" />
+    <Compile Include="DefaultAdvertisement.cs" />
+    <Compile Include="DefaultAdvertisementFlash.cs" />
+    <Compile Include="DeProductCategory.cs" />
+    <Compile Include="DeProductOrder.cs" />
+    <Compile Include="DeShopCategory.cs" />
+    <Compile Include="DeShopEspecial.cs" />
+    <Compile Include="DeShopEspecialSearch.cs" />
+    <Compile Include="DeShopIsNew.cs" />
+    <Compile Include="DeSupplyDemandCategory.cs" />
+    <Compile Include="DeSupplyDemandDetail.cs" />
+    <Compile Include="DeSupplyDemandMessage.cs" />
+    <Compile Include="DIV.cs" />
+    <Compile Include="DomainCopyright.cs" />
+    <Compile Include="EmailVerification.cs" />
+    <Compile Include="EmailVerificationSuccess.cs" />
+    <Compile Include="Bazs.cs" />
+    <Compile Include="FindBackPasswordEmail.cs" />
+    <Compile Include="FindBackPasswordTel.cs" />
+    <Compile Include="FindPasswordSuccess.cs" />
+    <Compile Include="HelpCategory.cs" />
+    <Compile Include="HelpDetail.cs" />
+    <Compile Include="HelpList.cs" />
+    <Compile Include="HelpListButtom.cs" />
+    <Compile Include="HelpListIndex.cs" />
+    <Compile Include="ImgCode.cs" />
+    <Compile Include="IntegralLogin.cs" />
+    <Compile Include="IntegralPhb.cs" />
+    <Compile Include="IntegralProductlist.cs" />
+    <Compile Include="KeyWords.cs" />
+    <Compile Include="KeyWordSearch.cs" />
+    <Compile Include="Search_productlist9.cs" />
+    <Compile Include="ShopNum1_KuaiDiRequest.cs" />
+    <Compile Include="LifeOrder.cs" />
+    <Compile Include="LinkApply.cs" />
+    <Compile Include="LinkList.cs" />
+    <Compile Include="LinkListImage.cs" />
+    <Compile Include="Login.cs" />
+    <Compile Include="Logo.cs" />
+    <Compile Include="MemberCategoryCommentList.cs" />
+    <Compile Include="MemberRegister.cs" />
+    <Compile Include="MemberRegisterSuccess.cs" />
+    <Compile Include="MemberRegisterToMail.cs" />
+    <Compile Include="MemberRegisterWelcome.cs" />
+    <Compile Include="MemberRegProtocol.cs" />
+    <Compile Include="MemberShopCommentList.cs" />
+    <Compile Include="MessageBoardAdd.cs" />
+    <Compile Include="MessageBoardList.cs" />
+    <Compile Include="AnnouncementMeto.cs" />
+    <Compile Include="ArticleMeto.cs" />
+    <Compile Include="BrandMeto.cs" />
+    <Compile Include="CategoryInfoMeto.cs" />
+    <Compile Include="HelpMeto.cs" />
+    <Compile Include="Meto.cs" />
+    <Compile Include="ProductCategoryMeto.cs" />
+    <Compile Include="ShopCategoryMeto.cs" />
+    <Compile Include="SupplyDemandMeto.cs" />
+    <Compile Include="MiddleNavigation.cs" />
+    <Compile Include="MiddleNavigationArticle.cs" />
+    <Compile Include="NewSaleOrder.cs" />
+    <Compile Include="nofindsearch.cs" />
+    <Compile Include="OnLineFootService.cs" />
+    <Compile Include="OnLineService.cs" />
+    <Compile Include="ConfirmOrder.cs" />
+    <Compile Include="OrderStatus.cs" />
+    <Compile Include="PreDeposits.cs" />
+    <Compile Include="ShoppingCart1.cs" />
+    <Compile Include="ShoppingCart2_New.cs" />
+    <Compile Include="ShoppingCart3.cs" />
+    <Compile Include="ShoppingCartShow.cs" />
+    <Compile Include="PageAddressAideo.cs" />
+    <Compile Include="PageAddressAideoCategory.cs" />
+    <Compile Include="PageAddressArticle.cs" />
+    <Compile Include="PageAddressArticleCategory.cs" />
+    <Compile Include="PageAddressHelp.cs" />
+    <Compile Include="PageAddressProduct.cs" />
+    <Compile Include="PageAddressProductCategory.cs" />
+    <Compile Include="PanicBuyListNew.cs" />
+    <Compile Include="PanicBuyNews.cs" />
+    <Compile Include="PasswordReminderUrl.cs" />
+    <Compile Include="PasswordReset.cs" />
+    <Compile Include="PasswordToEmail.cs" />
+    <Compile Include="PasswordToTel.cs" />
+    <Compile Include="PasswordToTelErr.cs" />
+    <Compile Include="PhoneMicroEWM.cs" />
+    <Compile Include="poplogin.cs" />
+    <Compile Include="ProductAllCategory.cs" />
+    <Compile Include="ProductAttribute.cs" />
+    <Compile Include="ProductBrandCategorySearch.cs" />
+    <Compile Include="ProductCategory.cs" />
+    <Compile Include="ProductCategoryAd.cs" />
+    <Compile Include="ProductEspecialSeach.cs" />
+    <Compile Include="ProductIsCategoryShow.cs" />
+    <Compile Include="ProductIsCategoryShowDiff.cs" />
+    <Compile Include="ProductIsPanicBuy.cs" />
+    <Compile Include="ProductIsSpellBuy.cs" />
+    <Compile Include="ProductListForCategory.cs" />
+    <Compile Include="ProductOneTwoCategory.cs" />
+    <Compile Include="ProductPanicBuyV82.cs" />
+    <Compile Include="ProductSearch.cs" />
+    <Compile Include="ProductSearch3.cs" />
+    <Compile Include="ProductSearchNofind.cs" />
+    <Compile Include="ProductSubCategory.cs" />
+    <Compile Include="ProductThreeCategory.cs" />
+    <Compile Include="ProductThreeCategory2.cs" />
+    <Compile Include="ProductThreeCategory2_V8_2.cs" />
+    <Compile Include="ProductThreeCategoryDefault.cs" />
+    <Compile Include="ProductTwoCategory.cs" />
+    <Compile Include="RankingSellHot.cs" />
+    <Compile Include="Search.cs" />
+    <Compile Include="Search_helplist.cs" />
+    <Compile Include="Search_productlist.cs" />
+    <Compile Include="Search_productlistNew.cs" />
+    <Compile Include="Search_productlistNew_V8_2.cs" />
+    <Compile Include="SecondLogin.cs" />
+    <Compile Include="SecondUserBind.cs" />
+    <Compile Include="SellOrder.cs" />
+    <Compile Include="ShopAnnouncement.cs" />
+    <Compile Include="ShopArticleComment.cs" />
+    <Compile Include="ShopCategory.cs" />
+    <Compile Include="ShopCategoryAd.cs" />
+    <Compile Include="ShopCategoryCount.cs" />
+    <Compile Include="ShopCategoryCountV82.cs" />
+    <Compile Include="ShopCopyright.cs" />
+    <Compile Include="ShopEspecialSeach.cs" />
+    <Compile Include="ShopIsCategoryShow.cs" />
+    <Compile Include="ShopIsCategoryShowDiff.cs" />
+    <Compile Include="ShopIsNew.cs" />
+    <Compile Include="ShopIsNewShow.cs" />
+    <Compile Include="ShopIsNewShowDiff.cs" />
+    <Compile Include="ShopListSearch.cs" />
+    <Compile Include="ShopNum1SiteMap.cs" />
+    <Compile Include="ShopProductShowV82.cs" />
+    <Compile Include="ShopRegProtocol.cs" />
+    <Compile Include="ShopSearch.cs" />
+    <Compile Include="ShopSearch1.cs" />
+    <Compile Include="ShopSearchNofind.cs" />
+    <Compile Include="ShopShowRecommendCategory.cs" />
+    <Compile Include="ShopThreeCategory.cs" />
+    <Compile Include="ShopThreeRecommend.cs" />
+    <Compile Include="SpellBuyList.cs" />
+    <Compile Include="SpellBuyListNofind.cs" />
+    <Compile Include="SupplyDemandAds.cs" />
+    <Compile Include="SupplyDemandAllCategory.cs" />
+    <Compile Include="SupplyDemandCategory.cs" />
+    <Compile Include="SupplyDemandCategoryAd.cs" />
+    <Compile Include="SupplyDemandCommentAdd.cs" />
+    <Compile Include="SupplyDemandCommentList.cs" />
+    <Compile Include="SupplyDemandDetail.cs" />
+    <Compile Include="SupplyDemandList.cs" />
+    <Compile Include="SupplyDemandListByType.cs" />
+    <Compile Include="SupplyDemandListSearch.cs" />
+    <Compile Include="SupplyDemandNewList.cs" />
+    <Compile Include="SupplyDemandNofind.cs" />
+    <Compile Include="SupplyDemandRecommendList.cs" />
+    <Compile Include="SupplyListByCategory.cs" />
+    <Compile Include="SupplyUnderArticle.cs" />
+    <Compile Include="SurveyThemeDetail.cs" />
+    <Compile Include="TelRegister.cs" />
+    <Compile Include="ThemesProduct.cs" />
+    <Compile Include="ThreeLogin.cs" />
+    <Compile Include="TopNavigation.cs" />
+    <Compile Include="TopSearch.cs" />
+    <Compile Include="VerifyImageCode.cs" />
+    <Compile Include="VideoCategory.cs" />
+    <Compile Include="VideoCommentAdd.cs" />
+    <Compile Include="VideoCommentList.cs" />
+    <Compile Include="VideoDetail.cs" />
+    <Compile Include="VideoIsHotList.cs" />
+    <Compile Include="VideoIsRecommendList.cs" />
+    <Compile Include="VideoIsRecommendOrNewsList.cs" />
+    <Compile Include="VideoList.cs" />
+    <Compile Include="VideoRelativelyList.cs" />
+    <Compile Include="WeiXinUserListV82.cs" />
+    <Compile Include="Welcome.cs" />
+    <Compile Include="ZtcGoods.cs" />
+    <Compile Include="ZtcGoodsMoreList.cs" />
+    <Reference Include="ShopNum1.UcenterOperate, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dll\ShopNum1.UcenterOperate.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Data" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Compile Include="AdSimpleImage.cs" />
+    <Compile Include="AdSimpleImageTitle.cs" />
+    <Compile Include="Advertisement.cs" />
+    <Compile Include="AdvertisementPage.cs" />
+    <Compile Include="AdvertisementPPT.cs" />
+    <Compile Include="AdvertisementPPTStyle.cs" />
+    <Compile Include="AgentCountOfArea.cs" />
+    <Compile Include="AgentListOfArea.cs" />
+    <Compile Include="AnnouncementDetail.cs" />
+    <Compile Include="AnnouncementMoreList.cs" />
+    <Compile Include="AnnouncementNewList.cs" />
+    <Compile Include="AnnouncementNewList1.cs" />
+    <Compile Include="ArticleCategoryAd.cs" />
+    <Compile Include="ArticleCategoryList.cs" />
+    <Compile Include="ArticleComment.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Bottom.cs" />
+    <Compile Include="Brand.cs" />
+    <Compile Include="BrandAd.cs" />
+    <Compile Include="BrandAllCategory.cs" />
+    <Compile Include="BrandAllList.cs" />
+    <Compile Include="BrandCategoryDetail.cs" />
+    <Compile Include="BrandDetail.cs" />
+    <Compile Include="BrandFlagShipStoreV82.cs" />
+    <Compile Include="BrandList.cs" />
+    <Compile Include="BrandListRecommend.cs" />
+    <Compile Include="BrandMore.cs" />
+    <Compile Include="BrandMoreCategory.cs" />
+    <Compile Include="BrandShowOrder.cs" />
+    <Compile Include="ButtomNavigation.cs" />
+    <Compile Include="CategoryAllCategory.cs" />
+    <Compile Include="CategoryCommentAdd.cs" />
+    <Compile Include="CategoryCommentList.cs" />
+    <Compile Include="CategoryInfoAd.cs" />
+    <Compile Include="CategoryInfoByType.cs" />
+    <Compile Include="CategoryInfoCategory.cs" />
+    <Compile Include="CategoryInfoDetail.cs" />
+    <Compile Include="CategoryInfoDetailMain.cs" />
+    <Compile Include="CategoryInfoList.cs" />
+    <Compile Include="CategoryInfoOperate.cs" />
+    <Compile Include="CategoryListByCategory.cs" />
+    <Compile Include="CategoryListNew.cs" />
+    <Compile Include="CategoryListSearch.cs" />
+    <Compile Include="CategoryListSearch1.cs" />
+    <Compile Include="CategoryNewList.cs" />
+    <Compile Include="CategoryUnderArticle.cs" />
+    <Compile Include="City.cs" />
+    <Compile Include="ComplaintsReplyDetail.cs" />
+    <Compile Include="CouponListSearch.cs" />
+    <Compile Include="Global.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ShopNum1.AdXml\ShopNum1.AdXml.csproj">
+      <Project>{cb491670-ed73-4670-bc4d-c4afddcf5d10}</Project>
+      <Name>ShopNum1.AdXml</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.BusinessLogic\ShopNum1.BusinessLogic.csproj">
+      <Project>{090f4879-20c3-431f-a839-d8bcadb27bc1}</Project>
+      <Name>ShopNum1.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.Common\ShopNum1.Common.csproj">
+      <Project>{3f01a9dc-7c89-41fd-a758-453e0b50d278}</Project>
+      <Name>ShopNum1.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.DiscuzHelper\ShopNum1.DiscuzHelper.csproj">
+      <Project>{274fea5d-4e12-4686-9e75-32951f50a5fe}</Project>
+      <Name>ShopNum1.DiscuzHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.DiscuzToolkit\ShopNum1.DiscuzToolkit.csproj">
+      <Project>{c6c631c2-072b-4be1-a3a9-d2414e4a412b}</Project>
+      <Name>ShopNum1.DiscuzToolkit</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.Email\ShopNum1.Email.csproj">
+      <Project>{225e6e14-c543-42a9-87b0-3bc77480560d}</Project>
+      <Name>ShopNum1.Email</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.Factory\ShopNum1.Factory.csproj">
+      <Project>{612ed950-d9cf-498e-882f-ca523da66716}</Project>
+      <Name>ShopNum1.Factory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.Interface\ShopNum1.Interface.csproj">
+      <Project>{637fd586-553b-4f84-8a8e-aa2883deb393}</Project>
+      <Name>ShopNum1.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.MultiBaseWebControl\ShopNum1.MultiBaseWebControl.csproj">
+      <Project>{411e8bd3-cefa-44ce-b7ea-b4bfb8469eca}</Project>
+      <Name>ShopNum1.MultiBaseWebControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.Payment\ShopNum1.Payment.csproj">
+      <Project>{5ac9f7ac-d8ae-471a-a97c-1c7ad251f066}</Project>
+      <Name>ShopNum1.Payment</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.SecondBussinesslogic\ShopNum1.SecondBussinesslogic.csproj">
+      <Project>{6456776b-1ec1-4460-944b-4e7eb9a1139f}</Project>
+      <Name>ShopNum1.SecondBussinesslogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.SecondEntity\ShopNum1.SecondEntity.csproj">
+      <Project>{85d5abc9-5c7a-4782-9b98-8184e6198ea3}</Project>
+      <Name>ShopNum1.SecondEntity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.SecondRequestCommon\ShopNum1.SecondRequestCommon.csproj">
+      <Project>{8c0732d4-8236-4941-ae86-d054092b2637}</Project>
+      <Name>ShopNum1.SecondRequestCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.SecondResponseCommon\ShopNum1.SecondResponseCommon.csproj">
+      <Project>{aed959dd-0cd3-4d11-8217-d2e2dd18f1e0}</Project>
+      <Name>ShopNum1.SecondResponseCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.ShopBusinessLogic\ShopNum1.ShopBusinessLogic.csproj">
+      <Project>{D5352277-F1DD-4854-9C4A-C936E63B5E31}</Project>
+      <Name>ShopNum1.ShopBusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.ShopFactory\ShopNum1.ShopFactory.csproj">
+      <Project>{be4b32f3-4ebc-431d-91aa-eda5e71b81c1}</Project>
+      <Name>ShopNum1.ShopFactory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.ShopFeeTemplate\ShopNum1.ShopFeeTemplate.csproj">
+      <Project>{90C7BB13-3801-4543-8CC8-496C7879096D}</Project>
+      <Name>ShopNum1.ShopFeeTemplate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.ShopInterface\ShopNum1.ShopInterface.csproj">
+      <Project>{1df5e363-1167-4275-ab8b-26179f39933e}</Project>
+      <Name>ShopNum1.ShopInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.Standard\ShopNum1.Standard.csproj">
+      <Project>{FBF33D3C-6EB7-4D50-90DA-08B352ED8DAD}</Project>
+      <Name>ShopNum1.Standard</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.WeiXinBusinessLogic\ShopNum1.WeiXinBusinessLogic.csproj">
+      <Project>{680387dd-1451-4782-a45e-d8fe45bcf756}</Project>
+      <Name>ShopNum1.WeiXinBusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.WeiXinInterface\ShopNum1.WeiXinInterface.csproj">
+      <Project>{f5f84579-7974-4e23-89f6-c02a47ddbdaf}</Project>
+      <Name>ShopNum1.WeiXinInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1MultiEntity\ShopNum1MultiEntity.csproj">
+      <Project>{c180cc8c-aed3-4536-82de-16b796633249}</Project>
+      <Name>ShopNum1MultiEntity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+</Project>

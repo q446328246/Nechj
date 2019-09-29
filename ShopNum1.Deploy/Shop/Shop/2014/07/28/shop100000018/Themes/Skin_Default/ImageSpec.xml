@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ImageSpec>
+  <image guid="b0f6e545-cd10-4e83-8c96-2c1e143e4941" name="Product" description="商品图片" width="300" height="300" />
+  <image guid="b0f6e545-cd10-4e83-8c96-2c1e143e4942" name="Brand" description="品牌图片" width="150" height="55" />
+  <image guid="b0f6e545-cd10-4e83-8c96-2c1e143e4943" name="GuidBuy" description="导购图片" width="152" height="152" />
+  <!--<image guid="b0f6e545-cd10-4e83-8c96-2c1e143e4944" name="Pack" description="包装图片" width="52" height="52" />-->
+  <!--<image guid="b0f6e545-cd10-4e83-8c96-2c1e143e4945" name="BlessCard" description="贺卡图片" width="52" height="52" />-->
+  <!--<image guid="b0f6e545-cd10-4e83-8c96-2c1e143e4946" name="Supplier" description="供应商图片" width="150" height="55" />-->
+  <image guid="b0f6e545-cd10-4e83-8c96-2c1e143e4947" name="Logo" description="Logo图片" width="144" height="40" />
+  <image guid="b0f6e545-cd10-4e83-8c96-2c1e143e4948" name="Article" description="资讯图片" width="230" height="230" />
+   <!--<image guid="b0f6e545-cd10-4e83-8c96-2c1e143e4949" name="BBS" description="论坛图片" width="52" height="52" />-->
+  <image guid="b0f6e545-cd10-4e83-8c96-2c1e143e4950" name="Control" description="控件图片" width="52" height="52" />
+  <image guid="b0f6e545-cd10-4e83-8c96-2c1e143e4951" name="Video" description="视频图片" width="120" height="75" />
+  <image guid="b0f6e545-cd10-4e83-8c96-2c1e143e4952" name="Advertisement" description="广告图片" width="-" height="-" />
+  <image guid="b0f6e545-cd10-4e83-8c96-2c1e143e4953" name="Icon" description="小图标" width="-" height="-" />
+</ImageSpec>
+
+

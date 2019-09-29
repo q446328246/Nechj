@@ -1,0 +1,660 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Drawing;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
+using ShopNum1.Common;
+using ShopNum1.MultiBaseWebControl;
+using ShopNum1.ShopBusinessLogic;
+using ShopNum1.ShopFactory;
+using ShopNum1MultiEntity;
+
+namespace ShopNum1.ShopAdminWebControl
+{
+    [ParseChildren(true)]
+    public class S_Import : BaseShopWebControl, IPostBackEventHandler
+    {
+        private static MatchEvaluator matchEvaluator_0;
+
+        private readonly Shop_Common_Action shop_Common_Action_0 =
+            ((Shop_Common_Action) LogicFactory.CreateShop_Common_Action());
+
+        private readonly Shop_ShopInfo_Action shop_ShopInfo_Action_0 =
+            ((Shop_ShopInfo_Action) LogicFactory.CreateShop_ShopInfo_Action());
+
+        private DataTable dt = new DataTable();
+        private HtmlInputHidden hidLoginId;
+        private HtmlInputHidden hidatype;
+        private HtmlInputHidden hidbtype;
+        private HtmlInputHidden hidctype;
+        private HtmlInputHidden hidpath;
+        private HtmlInputHidden hidptype;
+        private HtmlInputHidden hidsell;
+        private HtmlInputHidden hidstype;
+        private Label lblMsg;
+
+        private string skinFilename = "S_Import.ascx";
+        private string string_1 = string.Empty;
+
+        public S_Import()
+        {
+            if (base.SkinFilename == null)
+            {
+                base.SkinFilename = skinFilename;
+            }
+        }
+
+        private string imgUploadPath { get; set; }
+
+        private string ShopImgUpload { get; set; }
+
+        private string ShopRank { get; set; }
+
+        private string Temppath { get; set; }
+
+        public void RaisePostBackEvent(string eventArgument)
+        {
+            Func<string, bool> func = null;
+            try
+            {
+                string str = Page.Request.Form["__EVENTTARGET"];
+                if (func == null)
+                {
+                    func = method_2;
+                }
+                Func<string, bool> func2 = func;
+                func2(str);
+            }
+            catch (Exception exception)
+            {
+                Page.Response.Write(exception.Message);
+            }
+        }
+
+        public void AddImageSizeToXML(string filepath)
+        {
+            string str = filepath.Substring(filepath.LastIndexOf('/') + 1);
+            string str2 = filepath.Substring(0, filepath.LastIndexOf('/') + 1);
+            string str3 = "s_" + str;
+            string path = str2 + str3;
+            string str5 = Page.Server.MapPath(filepath);
+            string str6 = Page.Server.MapPath(path);
+            if (File.Exists(str5) && File.Exists(str6))
+            {
+                var info = new FileInfo(str5);
+                var info2 = new FileInfo(str6);
+                var action = (Shop_ShopInfo_Action) LogicFactory.CreateShop_ShopInfo_Action();
+                string str7 =
+                    DateTime.Parse(action.GetMemLoginInfo(base.MemLoginID).Rows[0]["OpenTime"].ToString())
+                        .ToString("yyyy-MM-dd");
+                new XmlDataSource();
+                string str8 = "~/Shop/Shop/" + str7.Replace("-", "/") + "/shop" + string_1 + "/Site_Settings.xml";
+                var set = new DataSet();
+                set.ReadXml(Page.Server.MapPath(str8));
+                DataRow row = set.Tables["Setting"].Rows[0];
+                row["UserImageSpace"] =
+                    ((Convert.ToInt64(row["UserImageSpace"]) + info.Length) + info2.Length).ToString();
+                set.AcceptChanges();
+                set.WriteXml(Page.Server.MapPath(str8));
+            }
+        }
+
+        public void AddImageToDataBase(string imagePath)
+        {
+            var image = new ShopNum1_Shop_Image();
+            var action = (Shop_Image_Action) LogicFactory.CreateShop_Image_Action();
+            image.CreateTime = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+            image.CreateUser = base.MemLoginID;
+            image.ImageCategoryID = Convert.ToInt32(hidatype.Value.Split(new[] {'|'})[0]);
+            image.ImagePath = imagePath;
+            image.ImageType = ".jpg";
+            image.Name = "tb_" + DateTime.Now.Month + DateTime.Now.Day +
+                         DateTime.Now.Hour + DateTime.Now.Minute +
+                         DateTime.Now.Millisecond;
+            image.UseTimes = 0;
+            action.Insert(image);
+        }
+
+        protected string GetShopName()
+        {
+            return shop_ShopInfo_Action_0.GetMemLoginInfo(base.MemLoginID).Rows[0]["ShopName"].ToString();
+        }
+
+        protected bool ImportCSV(string strPath)
+        {
+            bool flag;
+            try
+            {
+                string str;
+                ShopNum1UnZipClass.UnZip(strPath, strPath.Replace(".zip", "") + @"\", null);
+                Thread.Sleep(20);
+                File.Delete(strPath);
+                string[] files = Directory.GetFiles(strPath.Replace(".zip", ""));
+                string[] directories = Directory.GetDirectories(strPath.Replace(".zip", ""));
+                if ((directories.Length == 1) && (files.Length == 0))
+                {
+                    string[] strArray3 = Directory.GetDirectories(directories[0]);
+                    str = Directory.GetFiles(directories[0])[0];
+                    imgUploadPath = strArray3[0];
+                    dt = read_csv(str);
+                    if ((dt != null) && (dt.Rows.Count > 0))
+                    {
+                        return true;
+                    }
+                    lblMsg.Text = "没有导入任何数据!";
+                    return false;
+                }
+                if ((directories.Length == 1) && (files.Length == 1))
+                {
+                    str = files[0];
+                    imgUploadPath = directories[0];
+                    dt = read_csv(str);
+                    if ((dt != null) && (dt.Rows.Count > 0))
+                    {
+                        return true;
+                    }
+                    lblMsg.Text = "没有导入任何数据!";
+                    return false;
+                }
+                lblMsg.Text = "导入数据包格式不正确!";
+                flag = false;
+            }
+            catch (Exception)
+            {
+                lblMsg.Text = "导入的文件的格式不对!请上传正确的ZIP压缩文件!";
+                flag = false;
+            }
+            finally
+            {
+                try
+                {
+                    File.Delete(strPath);
+                }
+                catch
+                {
+                }
+            }
+            return flag;
+        }
+
+        protected override void InitializeSkin(Control skin)
+        {
+            hidctype = (HtmlInputHidden) skin.FindControl("hidctype");
+            hidptype = (HtmlInputHidden) skin.FindControl("hidptype");
+            hidstype = (HtmlInputHidden) skin.FindControl("hidstype");
+            hidbtype = (HtmlInputHidden) skin.FindControl("hidbtype");
+            hidatype = (HtmlInputHidden) skin.FindControl("hidatype");
+            hidsell = (HtmlInputHidden) skin.FindControl("hidsell");
+            hidpath = (HtmlInputHidden) skin.FindControl("hidpath");
+            hidLoginId = (HtmlInputHidden) skin.FindControl("hidLoginId");
+            lblMsg = (Label) skin.FindControl("lblMsg");
+            hidLoginId.Value = base.MemLoginID;
+            if (Page.Request.Cookies["MemberLoginCookie"] != null)
+            {
+                HttpCookie cookie = Page.Request.Cookies["MemberLoginCookie"];
+                HttpCookie cookie2 = HttpSecureCookie.Decode(cookie);
+                ShopRank = cookie2.Values["ShopRank"];
+            }
+            Page.RegisterRequiresRaiseEvent(this);
+        }
+
+        protected void BindData()
+        {
+            Themes.DeleteFolder(Temppath);
+        }
+
+        private string method_1(string string_6, string string_7)
+        {
+            string[] strArray = string_6.Split(new[] {';'});
+            string str = string_7;
+            foreach (string str6 in strArray)
+            {
+                if (str6 != strArray[0])
+                {
+                    string[] strArray3 = str6.Split(new[] {':'});
+                    if ((strArray3.Length != 4) && (strArray3.Length == 5))
+                    {
+                        try
+                        {
+                            var info = new FileInfo(imgUploadPath + @"\" + strArray3[0] + ".tbi");
+                            string str3 = DateTime.Now.ToString("yyyyMMddHHmmss");
+                            lock (str3)
+                            {
+                                Thread.Sleep(1);
+                            }
+                            string str5 = str3 + new Random().Next(0x3e8);
+                            info.CopyTo(Page.Server.MapPath(ShopImgUpload + str5 + ".jpg"));
+                            ImageOperator.CreateThumbnailAuto(Page.Server.MapPath(ShopImgUpload + str5 + ".jpg"),
+                                Page.Server.MapPath(ShopImgUpload + "s_" + str5 + ".jpg"),
+                                300, 300);
+                            AddImageSizeToXML(ShopImgUpload + str5 + ".jpg");
+                            AddImageToDataBase(ShopImgUpload + str5 + ".jpg");
+                            if (str != string.Empty)
+                            {
+                                str = str + "," + ShopImgUpload + "s_" + str5 + ".jpg";
+                            }
+                            else
+                            {
+                                str = string_7 + "," + ShopImgUpload + "s_" + str5 + ".jpg";
+                            }
+                        }
+                        catch
+                        {
+                        }
+                    }
+                }
+            }
+            return str;
+        }
+
+
+        private bool method_2(string string_6)
+        {
+            string str = string_6;
+            if ((str != null) && (str == "btnOk"))
+            {
+                OpImport();
+            }
+            return true;
+        }
+
+        protected bool OpImport()
+        {
+            Exception exception;
+            try
+            {
+                int num = 0;
+                string strPath = Page.Server.MapPath(hidpath.Value);
+                if (ImportCSV(strPath))
+                {
+                    DataTable memLoginInfo = shop_ShopInfo_Action_0.GetMemLoginInfo(base.MemLoginID);
+                    string_1 = memLoginInfo.Rows[0]["ShopID"].ToString();
+                    DateTime.Parse(memLoginInfo.Rows[0]["OpenTime"].ToString()).ToString("MM_dd");
+                    ShopImgUpload = "/ImgUpload/shopImage/" + DateTime.Now.ToString("yyyy") + "/shop" + string_1 + "/";
+                    var action = (Shop_ShopInfo_Action) LogicFactory.CreateShop_ShopInfo_Action();
+                    var action2 = (Shop_Product_Action) LogicFactory.CreateShop_Product_Action();
+                    string str2 = action.IsAllowToAddProduct(base.MemLoginID, ShopRank, "1");
+                    int num2 = Convert.ToInt32(str2);
+                    if (Convert.ToInt32(str2) < dt.Rows.Count)
+                    {
+                        num2 = 0;
+                        lblMsg.Text = "添加的商品已超过权限最大值!";
+                        return false;
+                    }
+                    var product = new ShopNum1_Shop_Product
+                    {
+                        Score = 0,
+                        IsReal = 1,
+                        IsSell = Convert.ToInt32(hidsell.Value),
+                        UnitName = "",
+                        CreateTime = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")),
+                        IsNew = 0,
+                        IsHot = 0,
+                        IsPromotion = 0
+                    };
+                    if (ShopSettings.GetValue("AddProductIsAudit") == "0")
+                    {
+                        product.IsAudit = 1;
+                    }
+                    else
+                    {
+                        product.IsAudit = 0;
+                    }
+                    product.MemLoginID = base.MemLoginID;
+                    product.ShopName = GetShopName();
+                    product.ProductCategoryCode = hidptype.Value.Split(new[] {'|'})[0];
+                    product.ProductCategoryName = hidptype.Value.Split(new[] {'|'})[1];
+                    product.ProductSeriesCode = hidstype.Value.Split(new[] {'|'})[0];
+                    product.ProductSeriesName = hidstype.Value.Split(new[] {'|'})[1];
+                    if (hidbtype.Value.Split(new[] {'|'})[0].Length > 30)
+                    {
+                        product.BrandGuid = new Guid(hidbtype.Value.Split(new[] {'|'})[0]);
+                        product.BrandName = hidbtype.Value.Split(new[] {'|'})[1];
+                    }
+                    else
+                    {
+                        product.BrandGuid = new Guid("00000000-0000-0000-0000-000000000000");
+                        product.BrandName = "其它";
+                    }
+                    int num3 = 0;
+                    while (true)
+                    {
+                        if ((num3 >= dt.Rows.Count) || (num2 <= 0))
+                        {
+                            break;
+                        }
+                        try
+                        {
+                            product.Guid = Guid.NewGuid();
+                            product.Name = dt.Rows[num3]["宝贝名称"].ToString();
+                            if (dt.Rows[num3]["省"].ToString() != "")
+                            {
+                                product.AddressCode = "00";
+                                product.AddressValue = dt.Rows[num3]["省"].ToString();
+                                if (dt.Rows[num3]["城市"].ToString() != "")
+                                {
+                                    product.AddressCode = "00,00";
+                                    product.AddressValue = dt.Rows[num3]["省"] + "," +
+                                                           dt.Rows[num3]["城市"];
+                                }
+                            }
+                            product.Name = dt.Rows[num3]["宝贝名称"].ToString();
+                            product.ProductNum = dt.Rows[num3]["商家编码"].ToString();
+                            product.OrderID = shop_Common_Action_0.ReturnMaxID("OrderID", "ShopNum1_Shop_Product") + 1;
+                            //product.ShopPrice = Convert.ToDecimal(dt.Rows[num3]["宝贝价格"].ToString().Trim());
+                            //product.MarketPrice = Convert.ToDecimal(dt.Rows[num3]["宝贝价格"].ToString().Trim());
+                            product.RepertoryCount = Convert.ToInt32(dt.Rows[num3]["宝贝数量"].ToString());
+
+                            ShopNum1_Shop_Product_Price priceCTC = new ShopNum1_Shop_Product_Price();
+                            priceCTC.marketPrice = Convert.ToDecimal(dt.Rows[num3]["宝贝价格"].ToString().Trim());
+                            priceCTC.Shop_category_id = 9;
+                            priceCTC.shopPrice = Convert.ToDecimal(dt.Rows[num3]["宝贝价格"].ToString().Trim());
+                            priceCTC.Score_Score_max_hvc = 0;
+                            priceCTC.score_cv = 0;
+
+                            priceCTC.Score_Score_hv = 0;
+
+                            priceCTC.Score_Score_Pv_a = 0;
+                            priceCTC.Score_Score_dv = 0;
+                            priceCTC.scroce_pv_cv = 0;
+                            priceCTC.Score_Score_Pv_b = 0;
+                            product.MaxNumber_one = 10000;
+                            
+
+                            product.Prices.Add(priceCTC);
+                            if (dt.Rows[num3]["运费承担"].ToString() == "0")
+                            {
+                                product.FeeType = 0;
+                                product.Post_fee = Convert.ToDecimal("0.00");
+                                product.Express_fee = Convert.ToDecimal("0.00");
+                                product.Ems_fee = Convert.ToDecimal("0.00");
+                            }
+                            else
+                            {
+                                product.FeeType = 1;
+                                product.Post_fee = Convert.ToDecimal(dt.Rows[num3]["平邮"]);
+                                product.Express_fee = Convert.ToDecimal(dt.Rows[num3]["快递"]);
+                                product.Ems_fee = Convert.ToDecimal(dt.Rows[num3]["EMS"]);
+                            }
+                            if (matchEvaluator_0 == null)
+                            {
+                                matchEvaluator_0 = smethod_0;
+                            }
+                            product.Detail =
+                                Regex.Replace(HttpUtility.HtmlDecode(dt.Rows[num3]["宝贝描述"].ToString()),
+                                    "=\"\"[\\w](.*?)\"\"", matchEvaluator_0);
+                            product.Instruction = dt.Rows[num3]["宝贝名称"].ToString();
+                            string path = "";
+                            string str10 = "";
+                            string str7 = "";
+                            if (dt.Rows[num3]["新图片"].ToString() != string.Empty)
+                            {
+                                try
+                                {
+                                    var strArray = new[] {":0:0:|;"};
+                                    string[] strArray2 = dt.Rows[num3]["新图片"].ToString().Split(new[] {':'});
+                                    var info = new FileInfo(imgUploadPath + @"\" + strArray2[0] + ".tbi");
+                                    string str4 = DateTime.Now.ToString("yyyyMMddHHmmss");
+                                    lock (str4)
+                                    {
+                                        Thread.Sleep(1);
+                                    }
+                                    string str6 = str4 + new Random().Next(0x3e8);
+                                    str7 = ShopImgUpload + str6 + ".jpg";
+                                    if (!Directory.Exists(Page.Server.MapPath(ShopImgUpload)))
+                                    {
+                                        Directory.CreateDirectory(Page.Server.MapPath(ShopImgUpload));
+                                    }
+                                    info.CopyTo(Page.Server.MapPath(str7));
+                                    string str8 = str7 + "_25x25.jpg";
+                                    string str9 = str7 + "_60x60.jpg";
+                                    str10 = str7 + "_100x100.jpg";
+                                    string str11 = str7 + "_160x160.jpg";
+                                    path = str7 + "_300x300.jpg";
+                                    ImageOperator.CreateThumbnailAuto(HttpContext.Current.Server.MapPath(str7),
+                                        HttpContext.Current.Server.MapPath(str8), 0x19,
+                                        0x19);
+                                    ImageOperator.CreateThumbnailAuto(HttpContext.Current.Server.MapPath(str7),
+                                        HttpContext.Current.Server.MapPath(str9), 60, 60);
+                                    ImageOperator.CreateThumbnailAuto(HttpContext.Current.Server.MapPath(str7),
+                                        HttpContext.Current.Server.MapPath(str10), 100,
+                                        100);
+                                    ImageOperator.CreateThumbnailAuto(HttpContext.Current.Server.MapPath(str7),
+                                        HttpContext.Current.Server.MapPath(str11), 160,
+                                        160);
+                                    ImageOperator.CreateThumbnailAuto(HttpContext.Current.Server.MapPath(str7),
+                                        HttpContext.Current.Server.MapPath(path), 300, 300);
+                                    product.OriginalImage = str7;
+                                    AddImageSizeToXML(str7);
+                                    AddImageToDataBase(str7);
+                                }
+                                catch (Exception exception1)
+                                {
+                                    exception = exception1;
+                                }
+                            }
+                            product.AddressValue = dt.Rows[num3]["省"].ToString();
+                            product.MultiImages = str7;
+                            product.OriginalImage = str7;
+                            product.ThumbImage = str7;
+                            product.SmallImage = str7;
+                            product.Ctype = Convert.ToInt32(hidctype.Value.Split(new[] {'|'})[0]);
+                            product.ModifyTime = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                            product.CreateTime = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                            product.StartTime = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                            product.Description = dt.Rows[num3]["宝贝名称"].ToString();
+                            product.Keywords = dt.Rows[num3]["宝贝名称"].ToString();
+                            product.Wap_desc = "";
+                            product.ProductState = 0;
+                            product.Color = "无";
+                            product.Size = "无";
+                            product.textWeight = 0;
+                            product.SaleNumber = 0;
+                            if (action2.AddShopProduct(product) > 0)
+                            {
+                                num++;
+                                num2--;
+                            }
+                        }
+                        catch (Exception exception2)
+                        {
+                            exception = exception2;
+                        }
+                        num3++;
+                    }
+                    BindData();
+                    if (num > 0)
+                    {
+                        lblMsg.Text = string.Format("您成功导入了{0}条商品数据!", num);
+                        lblMsg.ForeColor = Color.Green;
+                        return true;
+                    }
+                    return false;
+                }
+                return false;
+            }
+            catch (Exception exception3)
+            {
+                exception = exception3;
+                Page.Response.Write(exception.Message + "|" + exception.Source + "|" + exception.StackTrace);
+                return false;
+            }
+        }
+
+        public static DataTable read_csv(string filepath)
+        {
+            int num;
+            string str = File.ReadAllText(filepath, Encoding.GetEncoding("gbk")).Replace("\t", ",");
+            if (str == null)
+            {
+                return null;
+            }
+            var list = new List<string[]>();
+            var list2 = new List<string>();
+            var builder = new StringBuilder();
+            bool flag3 = false;
+            bool flag2 = true;
+            for (num = 0; num < str.Length; num++)
+            {
+                char ch = str[num];
+                if (flag3)
+                {
+                    if (ch == '"')
+                    {
+                        if ((num < (str.Length - 1)) && (str[num + 1] == '"'))
+                        {
+                            builder.Append('"');
+                            num++;
+                        }
+                        else
+                        {
+                            flag3 = false;
+                        }
+                    }
+                    else
+                    {
+                        builder.Append(ch);
+                    }
+                    continue;
+                }
+                char ch2 = ch;
+                if (ch2 <= '\r')
+                {
+                    if (ch2 != '\n')
+                    {
+                        if (ch2 != '\r')
+                        {
+                            goto lblMsg1B0;
+                        }
+                        if ((builder.Length > 0) || flag2)
+                        {
+                            list2.Add(builder.ToString());
+                            builder.Remove(0, builder.Length);
+                        }
+                        list.Add(list2.ToArray());
+                        list2.Clear();
+                        flag2 = true;
+                        if ((num < (str.Length - 1)) && (str[num + 1] == '\n'))
+                        {
+                            num++;
+                        }
+                    }
+                    else
+                    {
+                        if ((builder.Length > 0) || flag2)
+                        {
+                            list2.Add(builder.ToString());
+                            builder.Remove(0, builder.Length);
+                        }
+                        list.Add(list2.ToArray());
+                        list2.Clear();
+                        flag2 = true;
+                    }
+                    continue;
+                }
+                switch (ch2)
+                {
+                    case '"':
+                    {
+                        if (flag2)
+                        {
+                            flag3 = true;
+                        }
+                        else
+                        {
+                            builder.Append(ch);
+                        }
+                        continue;
+                    }
+                    case ',':
+                    {
+                        list2.Add(builder.ToString());
+                        builder.Remove(0, builder.Length);
+                        flag2 = true;
+                        continue;
+                    }
+                }
+                lblMsg1B0:
+                flag2 = false;
+                builder.Append(ch);
+            }
+            if ((builder.Length > 10) || flag2)
+            {
+                list2.Add(builder.ToString());
+            }
+            if (list2.Count > 0)
+            {
+                list.Add(list2.ToArray());
+            }
+            bool flag = false;
+            var table2 = new DataTable();
+            for (num = 0; num < list.Count; num++)
+            {
+                if (list[0].Length < 20)
+                {
+                    list.Remove(list[0]);
+                    list.Remove(list[0]);
+                    break;
+                }
+            }
+            for (num = 0; num < list.Count; num++)
+            {
+                if (list[num].Length > 10)
+                {
+                    int num2;
+                    if (num == 0)
+                    {
+                        for (num2 = 0; num2 < list[0].Length; num2++)
+                        {
+                            if (!string.IsNullOrEmpty(list[0][num2]))
+                            {
+                                var column = new DataColumn
+                                {
+                                    ColumnName = list[0][num2]
+                                };
+                                table2.Columns.Add(column);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        DataRow row = table2.NewRow();
+                        for (num2 = 0; num2 < list[num].Length; num2++)
+                        {
+                            try
+                            {
+                                if (!string.IsNullOrEmpty(list[0][num2]))
+                                {
+                                    row[num2] = list[num][num2];
+                                }
+                            }
+                            catch
+                            {
+                            }
+                        }
+                        if (flag)
+                        {
+                            flag = false;
+                            return table2;
+                        }
+                        table2.Rows.Add(row);
+                    }
+                }
+            }
+            return table2;
+        }
+
+
+        private static string smethod_0(Match match_0)
+        {
+            return match_0.ToString().Replace("\"\"", "\"");
+        }
+    }
+}

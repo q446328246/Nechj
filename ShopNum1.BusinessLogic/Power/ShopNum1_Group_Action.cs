@@ -1,0 +1,526 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using ShopNum1.Common;
+using ShopNum1.DataAccess;
+using ShopNum1.Interface;
+using ShopNum1MultiEntity;
+using System.Data.Common;
+
+namespace ShopNum1.BusinessLogic
+{
+    public class ShopNum1_Group_Action : IShopNum1_Group_Action
+    {
+        public int Add(ShopNum1_Group group)
+        {
+            string strSql = string.Concat(new object[]
+            {
+                "INSERT INTO ShopNum1_Group( Guid,  Name,  ShortName, CreateUser, CreateTime, ModifyUser, ModifyTime, IsDeleted,  Remarks ) VALUES (  '"
+                , group.Guid, "',  '", Operator.FilterString(group.Name), "',  '",
+                Operator.FilterString(group.ShortName), "',  '", group.CreateUser, "', '", group.CreateTime, "',  '"
+                , group.ModifyUser, "' , '", group.ModifyTime, "',  '", group.IsDeleted,
+                "',  '", group.Remarks, "')"
+            });
+            try
+            {
+                DatabaseExcetue.RunNonQuery(strSql);
+                return 1;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
+        public int Add(List<ShopNum1_GroupPage> strPagelList)
+        {
+            var sqlList = new List<string>();
+            string item = string.Empty;
+            item = "DELETE FROM ShopNum1_GroupPage WHERE GroupGuid IN ('" + strPagelList[0].GroupGuid + "')";
+            sqlList.Add(item);
+            for (int i = 0; i < strPagelList.Count; i++)
+            {
+                item =
+                    string.Concat(new object[]
+                    {
+                        "INSERT INTO ShopNum1_GroupPage( GroupGuid,  PageGuid,  CreateUser, CreateTime, ModifyUser, ModifyTime,  IsDeleted ) VALUES (  '"
+                        , strPagelList[i].GroupGuid, "',  '", strPagelList[i].PageGuid, "',  '",
+                        strPagelList[i].CreateUser, "',  '", strPagelList[i].CreateTime, "', '",
+                        strPagelList[i].ModifyUser, "',  '", strPagelList[i].ModifyTime, "' , ",
+                        strPagelList[i].IsDeleted, ")"
+                    });
+                sqlList.Add(item);
+            }
+            item =
+                string.Concat(new object[]
+                {
+                    "INSERT INTO ShopNum1_GroupPage( GroupGuid,  PageGuid,  CreateUser, CreateTime, ModifyUser, ModifyTime,  IsDeleted ) VALUES (  '"
+                    , strPagelList[0].GroupGuid, "',  '79B714FE-3DF9-4C90-A5A2-7331CC1E7316',  '",
+                    strPagelList[0].CreateUser, "',  '", strPagelList[0].CreateTime, "', '",
+                    strPagelList[0].ModifyUser, "',  '", strPagelList[0].ModifyTime, "' , ",
+                    strPagelList[0].IsDeleted, ")"
+                });
+            sqlList.Add(item);
+            item =
+                string.Concat(new object[]
+                {
+                    "INSERT INTO ShopNum1_GroupPage( GroupGuid,  PageGuid,  CreateUser, CreateTime, ModifyUser, ModifyTime,  IsDeleted ) VALUES (  '"
+                    , strPagelList[0].GroupGuid, "',  '59BDE821-3AF5-48B8-8948-8D7BF92C34F7',  '",
+                    strPagelList[0].CreateUser, "',  '", strPagelList[0].CreateTime, "', '",
+                    strPagelList[0].ModifyUser, "',  '", strPagelList[0].ModifyTime, "' , ",
+                    strPagelList[0].IsDeleted, ")"
+                });
+            sqlList.Add(item);
+            item =
+                string.Concat(new object[]
+                {
+                    "INSERT INTO ShopNum1_GroupPage( GroupGuid,  PageGuid,  CreateUser, CreateTime, ModifyUser, ModifyTime,  IsDeleted ) VALUES (  '"
+                    , strPagelList[0].GroupGuid, "',  '8460586B-3351-4413-9F4B-31CD1070EEDA',  '",
+                    strPagelList[0].CreateUser, "',  '", strPagelList[0].CreateTime, "', '",
+                    strPagelList[0].ModifyUser, "',  '", strPagelList[0].ModifyTime, "' , ",
+                    strPagelList[0].IsDeleted, ")"
+                });
+            sqlList.Add(item);
+            item =
+                string.Concat(new object[]
+                {
+                    "INSERT INTO ShopNum1_GroupPage( GroupGuid,  PageGuid,  CreateUser, CreateTime, ModifyUser, ModifyTime,  IsDeleted ) VALUES (  '"
+                    , strPagelList[0].GroupGuid, "',  'F9936372-1807-45C4-B23A-2EB57AE894EA',  '",
+                    strPagelList[0].CreateUser, "',  '", strPagelList[0].CreateTime, "', '",
+                    strPagelList[0].ModifyUser, "',  '", strPagelList[0].ModifyTime, "' , ",
+                    strPagelList[0].IsDeleted, ")"
+                });
+            sqlList.Add(item);
+            item =
+                string.Concat(new object[]
+                {
+                    "INSERT INTO ShopNum1_GroupPage( GroupGuid,  PageGuid,  CreateUser, CreateTime, ModifyUser, ModifyTime,  IsDeleted ) VALUES (  '"
+                    , strPagelList[0].GroupGuid, "',  'EE13DE9F-2095-495B-8C9D-60770902F8E9',  '",
+                    strPagelList[0].CreateUser, "',  '", strPagelList[0].CreateTime, "', '",
+                    strPagelList[0].ModifyUser, "',  '", strPagelList[0].ModifyTime, "' , ",
+                    strPagelList[0].IsDeleted, ")"
+                });
+            sqlList.Add(item);
+            item =
+                string.Concat(new object[]
+                {
+                    "INSERT INTO ShopNum1_GroupPage( GroupGuid,  PageGuid,  CreateUser, CreateTime, ModifyUser, ModifyTime,  IsDeleted ) VALUES (  '"
+                    , strPagelList[0].GroupGuid, "',  '5AA848FA-607D-4D66-8AE1-555245FED6FD',  '",
+                    strPagelList[0].CreateUser, "',  '", strPagelList[0].CreateTime, "', '",
+                    strPagelList[0].ModifyUser, "',  '", strPagelList[0].ModifyTime, "' , ",
+                    strPagelList[0].IsDeleted, ")"
+                });
+            sqlList.Add(item);
+            item =
+                string.Concat(new object[]
+                {
+                    "INSERT INTO ShopNum1_GroupPage( GroupGuid,  PageGuid,  CreateUser, CreateTime, ModifyUser, ModifyTime,  IsDeleted ) VALUES (  '"
+                    , strPagelList[0].GroupGuid, "',  '3394BDAB-89E9-4F5C-A82C-44D759662390',  '",
+                    strPagelList[0].CreateUser, "',  '", strPagelList[0].CreateTime, "', '",
+                    strPagelList[0].ModifyUser, "',  '", strPagelList[0].ModifyTime, "' , ",
+                    strPagelList[0].IsDeleted, ")"
+                });
+            sqlList.Add(item);
+            try
+            {
+                DatabaseExcetue.RunTransactionSql(sqlList);
+                return 1;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
+        public int Add(ShopNum1_Group group, List<string> pageList, List<string> userList,
+            List<ShopNum1_GroupPageWebControl> groupPageWebControlList)
+        {
+            int num;
+            string str3;
+            var sqlList = new List<string>();
+            string item = string.Concat(new object[]
+            {
+                "INSERT INTO ShopNum1_Group( Guid,  Name,  ShortName, CreateUser, CreateTime, ModifyUser, ModifyTime, IsDeleted,  Remarks ) VALUES (  '"
+                , group.Guid, "',  '", Operator.FilterString(group.Name), "',  '",
+                Operator.FilterString(group.ShortName), "',  '", group.CreateUser, "', '", group.CreateTime, "',  '"
+                , group.ModifyUser, "' , '", group.ModifyTime, "',  '", group.IsDeleted,
+                "',  ", group.Remarks, ")"
+            });
+            sqlList.Add(item);
+            if (pageList.Count > 0)
+            {
+                for (num = 0; num < pageList.Count; num++)
+                {
+                    str3 = string.Concat(new object[]
+                    {
+                        "INSERT INTO ShopNum1_GroupPage( GroupGuid,  PageGuid, CreateUser, CreateTime, ModifyUser, ModifyTime, IsDeleted,  Remarks ) VALUES (  '"
+                        , group.Guid, "',  '", Operator.FilterString(pageList[num]), "',  '", group.CreateUser,
+                        "', '", group.CreateTime, "',  '", group.ModifyUser, "' , '", group.ModifyTime, "',  '",
+                        group.IsDeleted, "',  ", group.Remarks,
+                        ")"
+                    });
+                    sqlList.Add(str3);
+                    if (groupPageWebControlList.Count > 0)
+                    {
+                        for (int i = 0; i < groupPageWebControlList.Count; i++)
+                        {
+                            if (string.Equals(groupPageWebControlList[i].PageGuid.ToString(), pageList[num]))
+                            {
+                                string str2 = string.Concat(new object[]
+                                {
+                                    "INSERT INTO ShopNum1_GroupPageWebControl( Guid, PageWebControlGuid,  PageGuid,  GroupGuid,  IsUse,  IsShow,  ControlID,  ControlType, CreateUser, CreateTime, ModifyUser, ModifyTime,  IsDeleted ) VALUES (  '"
+                                    , Guid.NewGuid(), "',  '", groupPageWebControlList[i].Guid, "',  '",
+                                    groupPageWebControlList[i].PageGuid, "',  '", group.Guid, "',  ",
+                                    groupPageWebControlList[i].IsUse, ", ", groupPageWebControlList[i].IsShow, ", '"
+                                    , groupPageWebControlList[i].ControlID, "',  '",
+                                    groupPageWebControlList[i].ControlType,
+                                    "',  '", group.CreateUser, "', '", group.CreateTime, "',  '", group.ModifyUser,
+                                    "' , '", group.ModifyTime, "',  ", group.IsDeleted, ")"
+                                });
+                                sqlList.Add(str2);
+                            }
+                        }
+                    }
+                }
+            }
+            if (userList.Count > 0)
+            {
+                for (num = 0; num < userList.Count; num++)
+                {
+                    str3 = string.Concat(new object[]
+                    {
+                        "INSERT INTO ShopNum1_GroupUser( GroupGuid,  UserGuid, CreateUser, CreateTime, ModifyUser, ModifyTime, IsDeleted,  Remarks ) VALUES (  '"
+                        , group.Guid, "',  '", Operator.FilterString(userList[num]), "',  '", group.CreateUser,
+                        "', '", group.CreateTime, "',  '", group.ModifyUser, "' , '", group.ModifyTime, "',  '",
+                        group.IsDeleted, "',  ", group.Remarks,
+                        ")"
+                    });
+                    sqlList.Add(str3);
+                }
+            }
+            try
+            {
+                DatabaseExcetue.RunTransactionSql(sqlList);
+                return 1;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
+        public int CheckOperatePage(string userGuid, string pageName)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(2);
+
+            parms[0].ParameterName = "@userGuid";
+            parms[0].Value = userGuid;
+            parms[1].ParameterName = "@pageName";
+            parms[1].Value = pageName;
+            return
+                Convert.ToInt32(
+                    DatabaseExcetue.ReturnDataTable(
+                        "Select Count(*) AS Count From ShopNum1_GroupPage Where GroupGuid In  (  Select GroupGuid From ShopNum1_GroupUser       Where UserGuid=@userGuid  )  AND   PageGuid In   (   Select convert(nvarchar(200),Guid) From ShopNum1_Page      Where  PagePath =@pageName  )",parms).Rows[0]["Count"].ToString());
+        }
+
+        public int CheckShotName(string shortName)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+
+            parms[0].ParameterName = "@shortName";
+            parms[0].Value = Operator.FilterString(shortName);
+            
+            return
+                DatabaseExcetue.ReturnDataTable("SELECT Guid, ShortName FROM ShopNum1_Group WHERE ShortName=@shortName",parms).Rows.Count;
+        }
+
+        public int Delete(string guids)
+        {
+            string item = string.Empty;
+            var sqlList = new List<string>();
+            item = "DELETE FROM ShopNum1_Group WHERE Guid IN (" + guids + ")";
+            sqlList.Add(item);
+            item = "DELETE FROM ShopNum1_GroupUser WHERE GroupGuid IN (" + guids + ")";
+            sqlList.Add(item);
+            item = "DELETE FROM ShopNum1_GroupPage WHERE GroupGuid IN (" + guids + ")";
+            sqlList.Add(item);
+            item = "DELETE FROM ShopNum1_GroupPageWebControl WHERE GroupGuid IN (" + guids + ")";
+            sqlList.Add(item);
+            try
+            {
+                DatabaseExcetue.RunTransactionSql(sqlList);
+                return 1;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
+        public DataTable GetGroupByGuid(string GroupGuid)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+
+            parms[0].ParameterName = "@GroupGuid";
+            parms[0].Value = GroupGuid;
+            string strSql = string.Empty;
+            strSql =
+                "SELECT  GroupGuid,PageGuid, CreateUser, CreateTime, ModifyUser, ModifyTime,IsDeleted FROM ShopNum1_GroupPage WHERE 0=0";
+            if (GroupGuid != string.Empty)
+            {
+                strSql = strSql + " AND GroupGuid=@GroupGuid";
+            }
+            return DatabaseExcetue.ReturnDataTable(strSql,parms);
+        }
+
+        public DataTable GetGroupByGuid(string groupGuid, int IsDeleted)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(2);
+
+            parms[0].ParameterName = "@groupGuid";
+            parms[0].Value = groupGuid;
+            parms[1].ParameterName = "@IsDeleted";
+            parms[1].Value = IsDeleted;
+            string strSql = string.Empty;
+            strSql = "SELECT  Guid, ShortName, Name, IsDeleted, Remarks FROM ShopNum1_Group WHERE 0=0";
+            if (groupGuid != string.Empty)
+            {
+                strSql = strSql + " AND Guid=@groupGuid";
+            }
+            if ((IsDeleted == 0) || (IsDeleted == 1))
+            {
+                strSql = string.Concat(new object[] {strSql, " AND IsDeleted=@IsDeleted"});
+            }
+            return DatabaseExcetue.ReturnDataTable(strSql,parms);
+        }
+
+        public DataTable GetOperateControl(string userGuid, string pageName)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(2);
+
+            parms[0].ParameterName = "@userGuid";
+            parms[0].Value = userGuid;
+            parms[1].ParameterName = "@pageName";
+            parms[1].Value = Operator.FilterString(pageName);
+            return
+                DatabaseExcetue.ReturnDataTable(
+                    "Select * From ShopNum1_GroupPageWebControl Where GroupGuid In  (  Select GroupGuid From ShopNum1_GroupUser       Where UserGuid=@userGuid  )  AND   PageGuid In   (   Select Guid From ShopNum1_Page      Where  PagePath =@pageName  )",parms);
+        }
+
+        public DataTable GetPageByGroupGuid(string groupGuid, int IsDeleted)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(2);
+
+            parms[0].ParameterName = "@groupGuid";
+            parms[0].Value = groupGuid;
+            parms[1].ParameterName = "@IsDeleted";
+            parms[1].Value = IsDeleted;
+            string strSql = string.Empty;
+            strSql =
+                "SELECT  A.GroupGuid, A.PageGuid, A.IsDeleted,B.Guid,B.Name FROM ShopNum1_GroupPage AS A LEFT JOIN ShopNum1_Page AS B ON A.PageGuid=B.Guid WHERE 0=0";
+            if (groupGuid != string.Empty)
+            {
+                strSql = strSql + "AND  A.GroupGuid=@groupGuid";
+            }
+            if ((IsDeleted == 0) || (IsDeleted == 1))
+            {
+                strSql = string.Concat(new object[] {strSql, "AND  A.IsDeleted=@IsDeleted"});
+            }
+            return DatabaseExcetue.ReturnDataTable(strSql,parms);
+        }
+
+        public DataTable GetPageWebControlByGroupGuidPageGuid(string groupGuid, string pageGuid, int isDeleted)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(3);
+
+            parms[0].ParameterName = "@groupGuid";
+            parms[0].Value = groupGuid;
+            parms[1].ParameterName = "@pageGuid";
+            parms[1].Value = pageGuid;
+            parms[2].ParameterName = "@isDeleted";
+            parms[2].Value = isDeleted;
+            string strSql = string.Empty;
+            strSql =
+                "SELECT Guid, PageWebControlGuid, GroupGuid, IsUse, IsShow, PageGuid, ControlID, ControlType,  CreateUser,  CreateTime,  ModifyUser,  ModifyTime,  IsDeleted FROM ShopNum1_GroupPageWebControl WHERE 0=0 ";
+            if (pageGuid != string.Empty)
+            {
+                strSql = strSql + "AND PageGuid=@pageGuid";
+            }
+            if (groupGuid != string.Empty)
+            {
+                strSql = strSql + "AND GroupGuid=@groupGuid";
+            }
+            if ((isDeleted == 0) || (isDeleted == 1))
+            {
+                strSql = string.Concat(new object[] {strSql, " AND IsDeleted=@isDeleted"});
+            }
+            return DatabaseExcetue.ReturnDataTable(strSql,parms);
+        }
+
+        public DataTable GetPageWebControlByGuid(string guid, int isDeleted)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(2);
+
+            parms[0].ParameterName = "@guid";
+            parms[0].Value = guid.Replace("'","");
+            parms[1].ParameterName = "@isDeleted";
+            parms[1].Value = isDeleted;
+            string strSql = string.Empty;
+            strSql =
+                "SELECT Guid, PageGuid, Name, ControlID, ControlType, Description FROM ShopNum1_PageWebControl WHERE 0=0 ";
+            if (guid != string.Empty)
+            {
+                strSql = strSql + "AND Guid=@guid";
+            }
+            if ((isDeleted == 0) || (isDeleted == 1))
+            {
+                strSql = string.Concat(new object[] {strSql, " AND IsDeleted=@isDeleted"});
+            }
+            return DatabaseExcetue.ReturnDataTable(strSql,parms);
+        }
+
+        public DataTable GetPageWebControlByPageGuid(string pageGuid, int isDeleted)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(2);
+
+            parms[0].ParameterName = "@pageGuid";
+            parms[0].Value = pageGuid;
+            parms[1].ParameterName = "@isDeleted";
+            parms[1].Value = isDeleted;
+            string strSql = string.Empty;
+            strSql =
+                "SELECT Guid, PageGuid, Name, ControlID, ControlType, Description FROM ShopNum1_PageWebControl WHERE 0=0 ";
+            if (pageGuid != string.Empty)
+            {
+                strSql = strSql + "AND PageGuid=@pageGuid";
+            }
+            if ((isDeleted == 0) || (isDeleted == 1))
+            {
+                strSql = string.Concat(new object[] {strSql, " AND IsDeleted=@isDeleted"});
+            }
+            return DatabaseExcetue.ReturnDataTable(strSql,parms);
+        }
+
+        public DataTable GetUserByGroupGuid(string groupGuid, int IsDeleted)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(2);
+
+            parms[0].ParameterName = "@groupGuid";
+            parms[0].Value = groupGuid;
+            parms[1].ParameterName = "@IsDeleted";
+            parms[1].Value = IsDeleted;
+            string strSql = string.Empty;
+            strSql =
+                "SELECT  A.GroupGuid, A.UserGuid, B.LoginID,B.RealName,B.IsDeleted FROM ShopNum1_GroupUser AS A LEFT JOIN ShopNum1_User AS B ON A.UserGuid=B.Guid WHERE 0=0";
+            if (groupGuid != string.Empty)
+            {
+                strSql = strSql + "AND  A.GroupGuid=@groupGuid";
+            }
+            if ((IsDeleted == 0) || (IsDeleted == 1))
+            {
+                strSql = string.Concat(new object[] {strSql, "AND  A.IsDeleted=@IsDeleted"});
+            }
+            return DatabaseExcetue.ReturnDataTable(strSql,parms);
+        }
+
+        public DataTable Search(int IsDeleted)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+
+            parms[0].ParameterName = "@IsDeleted";
+            parms[0].Value = IsDeleted;
+            
+            string str = string.Empty;
+            str =
+                "SELECT Guid, Name, ShortName, CreateUser, CreateTime, ModifyUser, ModifyTime, IsDeleted,Remarks FROM ShopNum1_Group WHERE 0=0";
+            if ((IsDeleted == 0) || (IsDeleted == 1))
+            {
+                str = string.Concat(new object[] {str, " AND IsDeleted=@IsDeleted"});
+            }
+            return DatabaseExcetue.ReturnDataTable(str + " Order by CreateTime Desc",parms);
+        }
+
+        public int Update(ShopNum1_Group group, List<string> pageList, List<string> userList,
+            List<ShopNum1_GroupPageWebControl> groupPageWebControlList)
+        {
+            int num;
+            string str2;
+            string item = string.Empty;
+            var sqlList = new List<string>();
+            item =
+                string.Concat(new object[]
+                {
+                    "UPDATE  ShopNum1_Group SET  Name='", Operator.FilterString(group.Name), "', ShortName='",
+                    Operator.FilterString(group.ShortName), "', ModifyUser='", group.ModifyUser, "', Remarks='",
+                    group.Remarks, "', ModifyTime='", group.ModifyTime, "' WHERE Guid='", group.Guid, "'"
+                });
+            sqlList.Add(item);
+            item = "DELETE FROM ShopNum1_GroupUser WHERE GroupGuid IN ('" + group.Guid + "')";
+            sqlList.Add(item);
+            if (userList.Count > 0)
+            {
+                for (num = 0; num < userList.Count; num++)
+                {
+                    str2 =
+                        string.Concat(new object[]
+                        {
+                            "INSERT INTO ShopNum1_GroupUser( GroupGuid,  UserGuid, CreateUser, CreateTime, ModifyUser, ModifyTime,  IsDeleted ) VALUES (  '"
+                            , group.Guid, "',  '", Operator.FilterString(userList[num]), "',  '", group.CreateUser,
+                            "', '", group.CreateTime, "',  '", group.ModifyUser, "' , '", group.ModifyTime, "',  ",
+                            group.IsDeleted, ")"
+                        });
+                    sqlList.Add(str2);
+                }
+            }
+            item = "DELETE FROM ShopNum1_GroupPage WHERE GroupGuid IN ('" + group.Guid + "')";
+            sqlList.Add(item);
+            item = "DELETE FROM ShopNum1_GroupPageWebControl WHERE GroupGuid IN ('" + group.Guid + "')";
+            sqlList.Add(item);
+            if (pageList.Count > 0)
+            {
+                for (num = 0; num < pageList.Count; num++)
+                {
+                    str2 =
+                        string.Concat(new object[]
+                        {
+                            "INSERT INTO ShopNum1_GroupPage( GroupGuid,  PageGuid, CreateUser, CreateTime, ModifyUser, ModifyTime,  IsDeleted ) VALUES (  '"
+                            , group.Guid, "',  '", Operator.FilterString(pageList[num]), "',  '", group.CreateUser,
+                            "', '", group.CreateTime, "',  '", group.ModifyUser, "' , '", group.ModifyTime, "',  ",
+                            group.IsDeleted, ")"
+                        });
+                    sqlList.Add(str2);
+                    if (groupPageWebControlList.Count > 0)
+                    {
+                        for (int i = 0; i < groupPageWebControlList.Count; i++)
+                        {
+                            if (string.Equals(groupPageWebControlList[i].PageGuid.ToString(), pageList[num]))
+                            {
+                                string str3 = string.Concat(new object[]
+                                {
+                                    "INSERT INTO ShopNum1_GroupPageWebControl( Guid, PageWebControlGuid,  PageGuid,  GroupGuid,  IsUse,  IsShow,  ControlID,  ControlType, CreateUser, CreateTime, ModifyUser, ModifyTime,  IsDeleted ) VALUES (  '"
+                                    , Guid.NewGuid(), "',  '", groupPageWebControlList[i].Guid, "',  '",
+                                    groupPageWebControlList[i].PageGuid, "',  '", group.Guid, "',  ",
+                                    groupPageWebControlList[i].IsUse, ", ", groupPageWebControlList[i].IsShow, ", '"
+                                    , groupPageWebControlList[i].ControlID, "',  '",
+                                    groupPageWebControlList[i].ControlType,
+                                    "',  '", group.CreateUser, "', '", group.CreateTime, "',  '", group.ModifyUser,
+                                    "' , '", group.ModifyTime, "',  ", group.IsDeleted, ")"
+                                });
+                                sqlList.Add(str3);
+                            }
+                        }
+                    }
+                }
+            }
+            try
+            {
+                DatabaseExcetue.RunTransactionSql(sqlList);
+                return 1;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+    }
+}

@@ -1,0 +1,42 @@
+/* login */
+.bgf5{width: 100%;height: 100%; /* background: url(..jquery/images/login_bg2.png) 0 0 no-repeat /100% 100%;*/ background-color:#1e1e5b; }
+.header_back {position: absolute;top: 25px;left: 10px;}
+.header_back img{position: absolute;
+    width: 15px;
+    height: 15px;
+    top: 24px;
+    left:10px;}
+.login-container{width: 100%;padding-bottom: 1rem;}
+.language{width: 100%;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-pack: end;-ms-flex-pack: end;justify-content: flex-end;padding: .5rem .3rem}
+.yuyan{font-size: .32rem;color: #b5c3b7;display: flex;align-items: center;}
+.yuyan select{font-size: .32rem;background: none;border: none;color: #b5c3b7;outline: none;} 
+.yuyan option{color: #48b1a4;}
+.logo{ width:100%; text-align: center;position: relative;top: -0.95rem}
+.logo img{ width: 1.9rem;border:.1rem solid #018df9; border-radius:50%; -webkit-border-radius:50%; -moz-border-radius:50%; -ms-border-radius:50%; -o-border-radius:50%; }
+.formbox{ width: 80%; margin: 0 auto; margin-top: 1rem; text-align: center;box-shadow:0 3px 40px rgba(0, 0, 0,.3);border-radius:8px; -webkit-border-radius:8px; -moz-border-radius:8px; -ms-border-radius:8px; -o-border-radius:8px; }
+.formlogin{width:100%;margin: 0 auto;color: #fff;font-size: .28rem;position: relative;top: -0.55rem;}
+.input_box{width: 100%;margin-top: .5rem; border: 1px solid #ffffff; border-radius: 20px; }
+.input_box input{BACKGROUND-COLOR: transparent; width: 75%; padding: .2rem 0;font-size:12px; color: #ffffff; font-weight: bold; text-align: left;  border-radius: .4rem;-webkit-border-radius: .4rem; -moz-border-radius: .4rem; -ms-border-radius: .4rem; -o-border-radius: .4rem; }
+.inde-btn button{background: url(..main/jquery/images/login_btn.png) 0 0 no-repeat /100% 100%; margin:1rem 0;width: 80%; padding: .2rem 0;color: #ffffff; border-radius:.4rem; -webkit-border-radius:.4rem; -moz-border-radius:.4rem; -ms-border-radius:.4rem; -o-border-radius:.4rem;}
+.extra_btn{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between; margin-top: 50px;}
+.extra_btn a{padding: .2rem .4rem;border-radius: .4rem;color: #ffffff; font-size: 14px; }
+/* register */
+.bgf6{width: 100%;height: 100%; background: url(..jquery/images/register_bg.png) 0 0 no-repeat /100% 100%;}
+.register-title{color: #fff;font-size: .5rem;text-align: center;padding: .5rem 0;letter-spacing: .1rem;text-indent: .1rem;}
+.formrgister{width: 100%;margin:0 auto;padding-top: .2rem;font-size: .28rem;}
+.register-container .formbox{margin-top: 0;}
+.formrgister .input_box{margin-top:10px;}
+.formrgister .input_box p{color: #C6AF7B;}
+.formrgister .input_box .icon{ width: 25px; height: 25px;}
+.formrgister .inde-btn button{margin: .5rem 0;}
+.register-container .extra_btn{-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;margin: .5rem 0 1rem 0;}
+.input_box .input-code{display:-webkit-box;display:-ms-flexbox;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;-webkit-box-align: center;-ms-flex-align: center;align-items: center;}
+.input_box .input-code input{width: 60%;margin: 0;}
+.input_box .input-code img{ width: 55%;height: .66rem; border-radius:.4rem; -webkit-border-radius:.4rem; -moz-border-radius:.4rem; -ms-border-radius:.4rem; -o-border-radius:.4rem; }
+.input_box .phone-code{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
+.input_box .phone-code input{height:0.72rem;border-radius:0;border-top-left-radius:.4rem;border-bottom-left-radius:.4rem;}
+.input_box .phone-code a{width: 50%;height:0.72rem; display: block;color:#ffffff;padding: .2rem 0;background: #5d97f2;font-size:.28rem;border-top-right-radius:.4rem;border-bottom-right-radius:.4rem;}
+/* getpsw */
+.formgetpsw .input_box p{color: #C6AF7B}
+.formgetpsw .input_box {margin-top: .5rem;}
+.getpwd-title{padding-top:1rem}

@@ -1,0 +1,417 @@
+﻿using System;
+using System.Collections;
+using System.Configuration;
+using System.Data;
+using System.Linq;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Xml.Linq;
+using System.Collections.Generic;
+using ShopNum1.BusinessEntity;
+using ShopNum1.TbTopCommon;
+using ShopNum1.BusinessLogic;
+using ShopNum1.Factory;
+using ShopNum1.Common;
+using System.Data.OleDb;
+using System.IO;
+using System.Text;
+
+public partial class Admin_TbTop_test : System.Web.UI.Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+     //  base.CheckLogin();
+    }
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+       
+       
+        Page.Response.Write(GetNewTbItemPageCount().ToString()+"\r\n");
+      
+       //string strXml = TopAPI.Post("taobao.items.onsale.get", TopClient.AdminSession, param);
+       string strXml = string.Empty;
+       //param.Add("page_no", "5");
+       //param.Add("page_size", "200");
+       //strXml= TopAPI.Post("taobao.items.onsale.get", TopClient.AdminSession, param);
+       //Page.Response.Write(strXml);
+       //return;
+            
+
+        int pageCount = GetNewTbItemPageCount();
+        Page.Response.Write("我的"+pageCount.ToString() + "\r\n");
+
+         
+        for (int j = 0; j < 6; j++)
+        {
+            Dictionary<string, string> param = new Dictionary<string, string>();//定义 API应用级输入参数
+            param.Add("fields", "approve_status,num_iid,title,nick,type,cid,pic_url");
+            param.Add("page_no", j.ToString());
+            param.Add("page_size", "200");
+            strXml = strXml+TopAPI.Post("taobao.items.onsale.get", TopClient.AdminSession, param);
+
+            File.AppendAllText(@"c:\log.txt", strXml.Length + "j" + j + "\r\n");
+
+
+         // strXml =strXml+TopAPI.Post("taobao.items.onsale.get", TopClient.AdminSession, param);
+         // Page.Response.Write(strXml);
+        }
+        File.AppendAllText(@"c:\log.txt", strXml + "\r\n");
+       // Page.Response.Write(strXml);
+        return;
+
+        ShopNum1_Specification_Action specificationAction = (ShopNum1_Specification_Action)LogicFactory.CreateShopNum1_Specification_Action();
+        List<ShopNum1_SpecificationDetails> details = new List<ShopNum1_SpecificationDetails>();
+        List<ShopNum1_TbPropValue> propvalues = GetPropValues("20506", "50011127");
+        MessageBox.Show(propvalues.Count.ToString());
+        foreach (ShopNum1_TbPropValue propvalue in propvalues)
+        {
+            ShopNum1_SpecificationDetails detail = new ShopNum1_SpecificationDetails();
+            detail.SpecificationGuid = 7;
+            detail.Name = propvalue.name;
+            detail.Image = "";
+            detail.isImage = false;
+            detail.tbPropValue = propvalue.pid.ToString() + ":" + propvalue.vid.ToString();
+            details.Add(detail);
+        }
+        specificationAction.AddValue(details);
+    
+    }
+
+
+
+    /// <summary>
+    /// 获取属性值
+    /// </summary>
+    /// <param name="cid"></param>
+    /// <param name="pid"></param>
+    /// <returns></returns>
+    private List<ShopNum1_TbPropValue> GetPropValues(string pid,string cid )
+    {
+        Dictionary<string, string> param = new Dictionary<string, string>();
+        param.Add("fields", "cid,pid,parent_pid,prop_name,sort_order,is_parent,vid,name,name_alias,status,parent_vid");
+        //param.Add("cid", ViewState["cid"].ToString());
+        param.Add("cid", cid);
+
+        param.Add("pvs", pid);
+        string strXml = TopAPI.Post("taobao.itempropvalues.get", TopClient.AdminSession, param);
+        List<ShopNum1_TbPropValue> propValues = new List<ShopNum1_TbPropValue>();
+        ErrorRsp err = new ErrorRsp();
+        new Parser().XmlToObject2<ShopNum1_TbPropValue>(strXml, "itempropvalues_get", "prop_values/prop_value", propValues, err);
+        if (err.IsError == true)//判断是否更新过程中发生错误
+        {
+            //string dddfdfdfdf = dtAllNumIID.Rows[j]["num_iid"].ToString();
+            // ScriptManager.RegisterClientScriptBlock(Page, typeof(Page), "error", string.Format("alert(\"{4}获取属性值出错！错误代码：{0}\\r错误原因：{1}\\r错误描述：{2}-{3}\");", err.code, err.msg, err.sub_code, err.sub_msg,pid.ToString()), true);
+            return null;
+        }
+        foreach (ShopNum1_TbPropValue propvalue in propValues)
+        {
+            propvalue.pvs = pid + ":" + propvalue.vid;
+        }
+        return propValues;
+
+    }
+
+    /// <summary>
+    /// 获取销售属性组 并判断是否具有销售属性组
+    /// </summary>
+    /// <param name="dt"></param>
+    /// <param name="tbSaleProp"></param>
+    /// <returns></returns>
+    public bool GetTbSaleProp(DataRow dr, out string tbSaleProp)
+    { 
+         tbSaleProp = string.Empty;
+        if (dr == null )
+        {
+            return false;
+        }
+        if (dr["销售属性组合"] == null || dr["销售属性组合"] == DBNull.Value)
+        {
+            return false;
+        }
+
+        tbSaleProp = dr["销售属性组合"].ToString();
+        if (tbSaleProp == string.Empty)
+            return false;
+        return true;
+
+    }
+
+
+  
+
+
+   /// <summary>
+   /// 根据销售属性获取  规格产品关系数组
+   /// </summary>
+   /// <param name="proptest"></param>
+   /// <returns></returns>
+    public List<ShopNum1_SpecificationProudct>  OperateTbSaleProp(string proptb)
+    {
+        List<ShopNum1_SpecificationProudct> sproducts = new List<ShopNum1_SpecificationProudct>();
+        ///淘宝详细值
+        string tbdetail = string.Empty;
+        //本地详细值
+        string detail = string.Empty;
+        proptb = proptb.Substring(0, proptb.Length - 1);
+        //淘宝销售属性值 的数据包 属性值是以; 和:分割的
+        //数据包销售属性值 199.000000:20:1M4920301225:1627207:28326;21921:670;199.000000:20:1M4920301230:1627207:28326;21921:671;
+        string[] props = proptb.Split(';');
+        int len = props.Length;
+        //当销售属性组 只有一个（例如只有颜色）
+        if (len == 1 || props[1].Split(':').Length != 2)
+        {
+            for (int i = 0; i < len; i ++)
+            {
+                ShopNum1_SpecificationProudct sproduct = new ShopNum1_SpecificationProudct();
+                try
+                {
+                    string pz = props[i];
+                    string[] pzs = pz.Split(':');
+                    //淘宝属性组
+                     tbdetail = pzs[pzs.Length - 2] + ":" + pzs[pzs.Length - 1];
+                    //规格属性组
+                     detail = GetSpecDetailByTbProp(tbdetail);
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                    continue;
+                }
+              // MessageBox.Show(tbdetail+"xxx"+detail);
+                
+
+            }
+        }
+         ///销售属性组 属性值有一组时
+        else
+        {
+            for (int i = 0; i < len; i += 2)
+            {
+                ShopNum1_SpecificationProudct sproduct = new ShopNum1_SpecificationProudct();
+                try
+                {
+                    string pz = props[i];
+                    string[] pzs = pz.Split(':');
+                    string prop2 = props[i + 1];
+                    string prop1 = pzs[3] + ":" + pzs[4];
+                    //淘宝属性组
+                     tbdetail = prop1 + ";" + prop2;
+                    //规格属性组
+                    string spvalue1 = GetSpecDetailByTbProp(prop1);
+                    string spvalue2 = GetSpecDetailByTbProp(prop2);
+                     detail = spvalue1 + ";" + spvalue2;
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                    continue;
+                }
+               // MessageBox.Show(tbdetail + "xxx" + detail);
+
+            }
+        }
+
+        return sproducts;
+
+    }
+
+    /// <summary>
+    /// 根据淘宝的属性获取规格值
+    /// </summary>
+    /// <param name="tbPropvalue"></param>
+    /// <returns></returns>
+    public string GetSpecDetailByTbProp(string tbPropvalue)
+    {
+
+        ShopNum1_Specification_Action specificationOperate = (ShopNum1_Specification_Action)LogicFactory.CreateShopNum1_Specification_Action();
+        DataTable dt = specificationOperate.SpecificationDetailsGetByTbPropValue(tbPropvalue);
+        string specvalue = dt.Rows[0]["SpecificationGuid"].ToString() + ":" + dt.Rows[0]["Guid"].ToString();
+        return specvalue;
+
+    }
+
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+        return;
+        DataTable dnew = read_csv(Server.MapPath("~/upload/(淘宝)361度2011年春夏男鞋20110303(527).csv"));
+
+        //淘宝商品销售属性
+        string tbSaleProp = string.Empty;
+        ///遍历每条商品数据
+        foreach (DataRow dr in dnew.Rows)
+        {
+            if (!GetTbSaleProp(dr,out tbSaleProp))
+            {
+                continue;
+            }
+           // MessageBox.Show(tbSaleProp);
+           OperateTbSaleProp(tbSaleProp);
+        
+        }
+
+      //  OperateTbSaleProp("199.000000:20:1M4920301225:1627207:28326;21921:670;199.000000:20:1M4920301230:1627207:28326;21921:671;199.000000:20:1M4920301245:1627207:28326;21921:672;199.000000:20:1M4920101240:1627207:28341;21921:28388;199.000000:20:1M4920101235:1627207:28341;21921:29542;199.000000:20:1M4920101220:1627207:28341;21921:30106;199.000000:20:1M4920101225:1627207:28341;21921:670;199.000000:20:1M4920101230:1627207:28341;21921:671;199.000000:20:1M4920101245:1627207:28341;21921:672;199.000000:20:1M4920801240:1627207:3232480;21921:28388;199.000000:20:1M4920801235:1627207:3232480;21921:29542;199.000000:20:1M4920801225:1627207:3232480;21921:30106;199.000000:20:1M4920801225:1627207:3232480;21921:670;199.000000:20:1M4920801230:1627207:3232480;21921:671;199.000000:20:1M4920801245:1627207:3232480;21921:672;");
+    }
+
+     /// <summary>
+     /// 读取csv生成DataTable
+     /// </summary>
+     /// <param name="filepath"></param>
+     /// <returns></returns>
+    public static DataTable read_csv(string filepath)
+    {
+        string text = File.ReadAllText(filepath,Encoding.GetEncoding("gbk"));
+        if (text == null)
+            return null;
+        var text_array = new List<string[]>();
+        var line = new List<string>();
+        var field = new StringBuilder();
+        //是否在双引号内
+        bool in_quata = false;
+        //字段是否开始
+        bool field_start = true;
+        for (int i = 0; i < text.Length; i++)
+        {
+            char ch = text[i];
+            if (in_quata)
+            {
+                //如果已经处于双引号范围内
+                if (ch == '\"')
+                {
+                    //如果是两个引号，则当成一个普通的引号处理
+                    if (i < text.Length - 1 && text[i + 1] == '\"')
+                    {
+                        field.Append('\"');
+                        i++;
+                    }
+                    else
+                        //否则退出引号范围
+                        in_quata = false;
+                }
+                else //双引号范围内的任何字符（除了双引号）都当成普通字符
+                {
+                    field.Append(ch);
+                }
+            }
+            else
+            {
+                switch (ch)
+                {
+                    case ',': //新的字段开始
+                        line.Add(field.ToString());
+                        field.Remove(0, field.Length);
+                        field_start = true;
+                        break;
+                    case '\"'://引号的处理
+                        if (field_start)
+                            in_quata = true;
+                        else
+                            field.Append(ch);
+                        break;
+                    case '\r': //新的记录行开始
+                        if (field.Length > 0 || field_start)
+                        {
+                            line.Add(field.ToString());
+                            field.Remove(0, field.Length);
+                        }
+                        text_array.Add(line.ToArray());
+                        line.Clear();
+                        field_start = true;
+                        //在 window 环境下，\r\n通常是成对出现，所以要跳过
+                        if (i < text.Length - 1 && text[i + 1] == '\n')
+                            i++;
+                        break;
+                    default:
+                        field_start = false;
+                        field.Append(ch);
+                        break;
+                }
+            }
+        }
+        //文件结束
+        if (field.Length > 0 || field_start)
+            line.Add(field.ToString());
+        if (line.Count > 0)
+            text_array.Add(line.ToArray());
+        ///生成datatable 
+        DataTable dt = new DataTable();
+        for (int i = 0; i < text_array.Count; i++)
+        {
+            ///第一行(头标签)
+            if (i == 0)
+            {
+                //遍历头标签
+                for (int j = 0; j < text_array[0].Length; j++)
+                {
+                    DataColumn column = new DataColumn();
+                    column.ColumnName = text_array[0][j];
+                    dt.Columns.Add(column);
+                }
+            }
+            else
+            {
+                DataRow dr = dt.NewRow();
+                ///遍历每列的内容
+                for (int j = 0; j < text_array[i].Length; j++)
+                {
+
+                    dr[j] = text_array[i][j];
+                }
+                ///添加一行
+                dt.Rows.Add(dr);
+            }
+
+        }
+        return dt;
+       
+    }
+
+
+
+    /// <summary>
+    /// 获取下载所有商品的分页数量
+    /// </summary>
+    /// <returns></returns>
+    private int GetDownAllTbItemPageCount()
+    {
+        Dictionary<string, string> param = new Dictionary<string, string>();//定义 API应用级输入参数
+        param.Add("fields", "num_iid");
+        string strXml = TopAPI.Post("taobao.items.all.get", TopClient.AdminSession, param);
+        Parser parser = new Parser();
+
+        int allCount = parser.XmlToTotalResults(strXml, "taobao.items.all.get");
+        try
+        {
+            return (int)Math.Ceiling((double)(allCount / 200));
+        }
+        catch
+        {
+            return 1;
+        }
+    }
+
+    /// <summary>
+    /// 获取新品上架的分页数量
+    /// </summary>
+    /// <returns></returns>
+    private int GetNewTbItemPageCount()
+    {
+        Dictionary<string, string> param = new Dictionary<string, string>();//定义 API应用级输入参数
+        param.Add("fields", "approve_status,num_iid,title,nick,type,cid,pic_url");
+        string strXml = TopAPI.Post("taobao.items.onsale.get", TopClient.AdminSession, param);
+        Parser parser = new Parser();
+
+        int allCount = parser.XmlToTotalResults(strXml, "items_onsale_get");
+        try
+        {
+            return (int)Math.Ceiling((double)(allCount / 200));
+        }
+        catch
+        {
+            return 1;
+        }
+    }
+}

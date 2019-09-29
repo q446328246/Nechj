@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="PolicyAdvisor.xml" type="text/xsl"?>
+<endpoints xmlns="http://schemas.microsoft.com/pa/2005/10/endpoints">
+  <endpoint name="Stock Service client"
+            path="..\CS\QuickStart\Basic\BaseStockService\StockServiceClient\" 
+            config="app.config"/>
+
+  <endpoint name="Stock Service service"
+            path="..\CS\QuickStart\Basic\BaseStockService\StockService\" 
+            config="Web.config"/>
+
+  <endpoint name="SC client"
+           path="..\CS\QuickStart\Security\SecureConversation\Policy\SecureConversationPolicyClient\" 
+           config="app.config"
+           policyCache="wse3policyCache.config"/>
+  
+  <endpoint name="SC server"
+            path="..\CS\QuickStart\Security\SecureConversation\Policy\SecureConversationPolicyService\" 
+            config="Web.config"
+            policyCache="wse3policyCache.config"/>
+
+  <endpoint name="WSS anonymous client"
+            path="..\CS\QuickStart\Security\WSSecurityAnonymous\Policy\WSSecurityAnonymousPolicyClient\"
+            policyCache="wse3policyCache.config"
+            config="app.config"/>
+
+  <endpoint name="WSS anonymous service"
+            path="..\CS\QuickStart\Security\WSSecurityAnonymous\Policy\WSSecurityAnonymousPolicyService\" 
+            policyCache="wse3policyCache.config"
+            config="Web.config"/>
+
+  <endpoint name="WSS certificate client"
+            path="..\CS\QuickStart\Security\WSSecurityCertificate\Policy\WSSecurityCertificatePolicyClient\"
+            policyCache="wse3policyCache.config"
+            config="app.config"/>
+
+  <endpoint name="WSS certificate service"
+              path="..\CS\QuickStart\Security\WSSecurityCertificate\Policy\WSSecurityCertificatePolicyService\"
+              policyCache="wse3policyCache.config"
+              config="Web.config"/>
+
+  <endpoint name="WSS Kerberos client"
+            path="..\CS\QuickStart\Security\WSSecurityKerberos\Policy\WSSecurityKerberosPolicyClient\"
+            policyCache="wse3policyCache.config"
+            config="app.config"/>
+
+  <endpoint name="WSS Kerberos service"
+              path="..\CS\QuickStart\Security\WSSecurityKerberos\Policy\WSSecurityKerberosPolicyService\"
+              policyCache="wse3policyCache.config"
+              config="Web.config"/>
+
+  <endpoint name="WSS username client"
+            path="..\CS\QuickStart\Security\WSSecurityUsername\Policy\WSSecurityUsernamePolicyClient\"
+            policyCache="wse3policyCache.config"
+            config="app.config"/>
+
+  <endpoint name="WSS username service"
+              path="..\CS\QuickStart\Security\WSSecurityUsername\Policy\WSSecurityUsernamePolicyService\"
+              policyCache="wse3policyCache.config"
+              config="Web.config"/>
+</endpoints>

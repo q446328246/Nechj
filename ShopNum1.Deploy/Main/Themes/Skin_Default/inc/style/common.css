@@ -1,0 +1,122 @@
+/*-------------------------------- CSS 页面布局开始-------------------------------- */
+
+d@charset "utf-8";
+/* 
+CSS Document 
+Author: mahongying
+*/
+
+
+/*------------------------------------------------------ common began -------------------------------------------------*/
+*{	margin:0;
+	padding:0;
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td, iframe {
+	margin:0;
+	padding:0;
+}
+input, textarea{
+	font:12px/20px Arial, "Microsoft YaHei", "宋体", sans-serif;
+}
+
+body {
+	font:12px/24px Arial, "Microsoft YaHei", "宋体", sans-serif;
+	color:#333;
+	padding:0;
+	margin:0;
+	height:auto;
+	background:#fff;
+}
+a {
+	color:#000;
+	text-decoration:none;
+	cursor:pointer;
+ blr:expression(this.onFocus=this.blur());
+	outline: none;
+	font-size:12px;
+}
+a:hover {
+	color:#ff6600;
+}
+h1, h2, h3, h4, h5, h6 {
+	font:400 16px "Microsoft YaHei", "宋体", Arial,Tahoma,sans-serif;
+}
+font {
+	font-size:12px;
+}
+p {
+	line-height:24px;
+}
+ul, ol {
+	list-style: none outside none;
+}
+img {
+	/*	display:block;*/
+	border:0;
+}
+table {
+	/*border-collapse: collapse;*/
+	clear:both;
+}
+.noBorder {
+	border:none !important;
+}
+.nohandle { /*-- 去除链接小手指针 --*/
+	cursor:default;
+}
+.floatLeft {
+	float:left !important;
+}
+.floatRight {
+	float:right !important;
+}
+.setCenter { /*-- 设置元素居中对齐 --*/
+	clear: both;
+	float: none !important;
+	text-align: center;
+}
+.clear { /*-- 清除样式position: fix浮动 --*/
+	clear:both;
+}
+.clearfloat { /*-- 清除样式浮动 --*/
+	clear:both;
+	display:inline-block;
+}
+.clear:after {
+	clear: both;
+	content: " ";
+	display: block;
+	height: 0;
+	visibility: hidden;
+}
+.js_hidden { /*-- 供Javascript 隐藏层 --*/
+	display:none !important;
+}
+
+
+#wrapper{
+    width:950px;
+	height:auto;
+	overflow:hidden;
+	margin:0 auto;
+}
+#header{
+    width:100%;
+	height:auto;
+	overflow:hidden;
+	margin:0 auto;
+}
+#container{
+    width:1200px;
+	height:auto;
+	overflow:hidden;
+	margin:0 auto;
+}
+#footer{
+    width:100%;
+	height:auto;
+	overflow:hidden;
+	padding-top:20px;
+}
+
+/*-------------------------------- CSS 页面布局结束 --------------------------------*/

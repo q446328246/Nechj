@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://tj.qq198198.com:88/City/" name="City" targetNamespace="http://tj.qq198198.com:88/City/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tj.qq198198.com:88/City/">
+      <xsd:element name="AddUser">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="no" type="xsd:string" />
+            <xsd:element name="name" type="xsd:string" />
+            <xsd:element name="nickname" type="xsd:string" />
+            <xsd:element name="mobile" type="xsd:string" />
+            <xsd:element name="id_card" type="xsd:string" />
+            <xsd:element name="intro_no" type="xsd:string" />
+            <xsd:element name="up_no" type="xsd:string" />
+            <xsd:element name="remark" type="xsd:string" />
+            <xsd:element name="password" type="xsd:string" />
+            <xsd:element name="bank" type="xsd:string" />
+            <xsd:element name="bank_address" type="xsd:string" />
+            <xsd:element name="account_no" type="xsd:string" />
+            <xsd:element name="account_name" type="xsd:string" />
+            <xsd:element name="add_date" type="xsd:date" />
+            <xsd:element name="cert" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddUserResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="code" type="xsd:int" />
+            <xsd:element name="message" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Auth">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="user_no" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="password" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="cert" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AuthResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddOrder">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="no" type="xsd:string" />
+            <xsd:element name="user_no" type="xsd:string" />
+            <xsd:element name="order_date" type="xsd:dateTime" />
+            <xsd:element name="total" type="xsd:decimal" />
+            <xsd:element name="pv" type="xsd:decimal" />
+            <xsd:element name="prv" type="xsd:string" />
+            <xsd:element name="city" type="xsd:string" />
+            <xsd:element name="country" type="xsd:string" />
+            <xsd:element name="remark" type="xsd:string" />
+            <xsd:element name="flag" type="xsd:string" />
+            <xsd:element name="service_no" type="xsd:string" />
+            <xsd:element name="shop_no" type="xsd:string" />
+            <xsd:element name="cert" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddOrderResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="code" type="xsd:string" />
+            <xsd:element name="message" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddConsumeOrder">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="no" type="xsd:string" />
+            <xsd:element name="user_no" type="xsd:string" />
+            <xsd:element name="order_date" type="xsd:date" />
+            <xsd:element name="total" type="xsd:decimal" />
+            <xsd:element name="pv" type="xsd:decimal" />
+            <xsd:element name="vip_user_no" type="xsd:string" />
+            <xsd:element name="prv" type="xsd:string" />
+            <xsd:element name="city" type="xsd:string" />
+            <xsd:element name="country" type="xsd:string" />
+            <xsd:element name="remark" type="xsd:string" />
+            <xsd:element name="flag" type="xsd:string" />
+            <xsd:element name="service_no" type="xsd:string" />
+            <xsd:element name="shop_no" type="xsd:string" />
+            <xsd:element name="cert" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddConsumeOrderResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="code" type="xsd:string" />
+            <xsd:element name="message" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddGoodsOrder">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="no" type="xsd:string" />
+            <xsd:element name="user_no" type="xsd:string" />
+            <xsd:element name="order_date" type="xsd:string" />
+            <xsd:element name="total" type="xsd:decimal" />
+            <xsd:element name="prv" type="xsd:string" />
+            <xsd:element name="city" type="xsd:string" />
+            <xsd:element name="country" type="xsd:string" />
+            <xsd:element name="remark" type="xsd:string" />
+            <xsd:element name="flag" type="xsd:string" />
+            <xsd:element name="cert" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddGoodsOrderResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="code" type="xsd:string" />
+            <xsd:element name="message" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CheckAgent">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="user_no" type="xsd:string" />
+            <xsd:element name="cert" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CheckAgentResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="code" type="xsd:string" />
+            <xsd:element name="message" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetAgent">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="rank" type="xsd:string" />
+            <xsd:element name="cert" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetAgentResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="code" type="xsd:string" />
+            <xsd:element name="message" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="AddUserRequest">
+    <wsdl:part name="parameters" element="tns:AddUser" />
+  </wsdl:message>
+  <wsdl:message name="AddUserResponse">
+    <wsdl:part name="parameters" element="tns:AddUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="AuthRequest">
+    <wsdl:part name="parameters" element="tns:Auth" />
+  </wsdl:message>
+  <wsdl:message name="AuthResponse">
+    <wsdl:part name="parameters" element="tns:AuthResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddOrderRequest">
+    <wsdl:part name="parameters" element="tns:AddOrder" />
+  </wsdl:message>
+  <wsdl:message name="AddOrderResponse">
+    <wsdl:part name="parameters" element="tns:AddOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddConsumeOrderRequest">
+    <wsdl:part name="parameters" element="tns:AddConsumeOrder" />
+  </wsdl:message>
+  <wsdl:message name="AddConsumeOrderResponse">
+    <wsdl:part name="parameters" element="tns:AddConsumeOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddGoodsOrderRequest">
+    <wsdl:part name="parameters" element="tns:AddGoodsOrder" />
+  </wsdl:message>
+  <wsdl:message name="AddGoodsOrderResponse">
+    <wsdl:part name="parameters" element="tns:AddGoodsOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckAgentRequest">
+    <wsdl:part name="parameters" element="tns:CheckAgent" />
+  </wsdl:message>
+  <wsdl:message name="CheckAgentResponse">
+    <wsdl:part name="parameters" element="tns:CheckAgentResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAgentRequest">
+    <wsdl:part name="parameters" element="tns:GetAgent" />
+  </wsdl:message>
+  <wsdl:message name="GetAgentResponse">
+    <wsdl:part name="parameters" element="tns:GetAgentResponse" />
+  </wsdl:message>
+  <wsdl:portType name="City">
+    <wsdl:operation name="AddUser">
+      <wsdl:input message="tns:AddUserRequest" />
+      <wsdl:output message="tns:AddUserResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="Auth">
+      <wsdl:input message="tns:AuthRequest" />
+      <wsdl:output message="tns:AuthResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="AddOrder">
+      <wsdl:input message="tns:AddOrderRequest" />
+      <wsdl:output message="tns:AddOrderResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="AddConsumeOrder">
+      <wsdl:input message="tns:AddConsumeOrderRequest" />
+      <wsdl:output message="tns:AddConsumeOrderResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="AddGoodsOrder">
+      <wsdl:input message="tns:AddGoodsOrderRequest" />
+      <wsdl:output message="tns:AddGoodsOrderResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckAgent">
+      <wsdl:input message="tns:CheckAgentRequest" />
+      <wsdl:output message="tns:CheckAgentResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAgent">
+      <wsdl:input message="tns:GetAgentRequest" />
+      <wsdl:output message="tns:GetAgentResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CitySOAP" type="tns:City">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddUser">
+      <soap:operation soapAction="http://tj.qq198198.com:88/City/AddUser" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Auth">
+      <soap:operation soapAction="http://tj.qq198198.com:88/City/Auth" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddOrder">
+      <soap:operation soapAction="http://tj.qq198198.com:88/City/AddOrder" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddConsumeOrder">
+      <soap:operation soapAction="http://tj.qq198198.com:88/City/AddConsumeOrder" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddGoodsOrder">
+      <soap:operation soapAction="http://tj.qq198198.com:88/City/AddGoodsOrder" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckAgent">
+      <soap:operation soapAction="http://tj.qq198198.com:88/City/CheckAgent" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgent">
+      <soap:operation soapAction="http://tj.qq198198.com:88/City/GetAgent" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="City">
+    <wsdl:port name="CitySOAP" binding="tns:CitySOAP">
+      <soap:address location="http://tj.qq198198.com:88/WebService/City/server.php" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.377</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{680387DD-1451-4782-A45E-D8FE45BCF756}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>ShopNum1.WeiXinBusinessLogic</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\dll\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="ShopNum1_Weixin_ShopWeiXinConfig_Active.cs" />
+    <Compile Include="ShopNum1_Weixin_ShopConfig_Active.cs" />
+    <Compile Include="ShopNum1_Weixin_ReplyRuleContent_Active.cs" />
+    <Compile Include="ShopNum1_Weixin_ShopMember_Active.cs" />
+    <Compile Include="ShopNum1_Weixin_ShopMenu_Active.cs" />
+    <Compile Include="ShopNum1_Weixin_ReplyRule_Active.cs" />
+    <Compile Include="ShopNum1_WeiXin_ShopUser_Active.cs" />
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ShopNum1.Common\ShopNum1.Common.csproj">
+      <Project>{3f01a9dc-7c89-41fd-a758-453e0b50d278}</Project>
+      <Name>ShopNum1.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.DataAccess\ShopNum1.DataAccess.csproj">
+      <Project>{3B0857FF-69AF-4C64-A219-524877D79726}</Project>
+      <Name>ShopNum1.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.WeiXinCommon\ShopNum1.WeiXinCommon.csproj">
+      <Project>{3166A100-3017-4F1F-9BC5-9C76C8344895}</Project>
+      <Name>ShopNum1.WeiXinCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.WeiXinInterface\ShopNum1.WeiXinInterface.csproj">
+      <Project>{F5F84579-7974-4E23-89F6-C02A47DDBDAF}</Project>
+      <Name>ShopNum1.WeiXinInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1MultiEntity\ShopNum1MultiEntity.csproj">
+      <Project>{C180CC8C-AED3-4536-82DE-16B796633249}</Project>
+      <Name>ShopNum1MultiEntity</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

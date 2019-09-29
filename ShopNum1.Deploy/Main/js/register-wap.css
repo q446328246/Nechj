@@ -1,0 +1,499 @@
+/* ---------- Responsive ---------- */
+/* ---------- reset ---------- */
+html,
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+input,
+button,
+textarea,
+p,
+th,
+td,
+blockquote {
+  margin: 0;
+  padding: 0;
+}
+nav,
+section,
+menu {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+fieldset,
+img {
+  border: 0;
+}
+:focus {
+  outline: 0;
+}
+em,
+b,
+i,
+th {
+  font-style: normal;
+  font-weight: normal;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+}
+input,
+button,
+textarea,
+select,
+optgroup,
+option {
+  font-family: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+}
+input,
+button,
+textarea,
+select {
+  *font-size: 100%;
+}
+ol,
+ul,
+li {
+  list-style: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+caption,
+th {
+  text-align: left;
+}
+/*a,
+ins {
+  text-decoration: none;
+}*/
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+input[type="text"],
+button,
+textarea {
+  -webkit-appearance: none;
+}
+/*去掉苹果的默认UI来渲染按钮*/
+select {
+  background-color: #fff;
+}
+input,
+textarea,
+select {
+  -webkit-border-radius: 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  outline: none;
+  border: 0;
+}
+/* ---------- Public ---------- */
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+.fr {
+  float: right;
+}
+.fl {
+  float: left;
+}
+.center {
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin: 20px auto;
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-pack: center;
+  -moz-box-align: center;
+  display: -o-box;
+  -o-box-orient: horizontal;
+  -o-box-pack: center;
+  -o-box-align: center;
+  display: -ms-box;
+  -ms-box-orient: horizontal;
+  -ms-box-pack: center;
+  -ms-box-align: center;
+  display: box;
+  box-orient: horizontal;
+  box-pack: center;
+  box-align: center;
+}
+/*page basic */
+body {
+  font: 1rem/1.5 "Microsoft YaHei", Tahoma, sans-serif, simsun;
+  color: #666;
+  background: #e6e6e6;
+}
+a {
+  color: #ff4c4c;
+}
+a:link,
+a:visited,
+a:active,
+a:hover {
+  color: #ff4c4c;
+}
+.form-control {
+  color: #ababab;
+}
+/*register page style*/
+nav {
+  position: relative;
+  width: 100%;
+  height: 38px;
+  line-height: 38px;
+  background-color: #6fc01e;
+  color: #ffffff;
+  text-align: center;
+  font-size: 1.1rem;
+}
+.goback {
+  position: absolute;
+  left: 0px;
+  width: 40px;
+  height: 100%;
+}
+.goback > b {
+  display: block;
+  overflow: hidden;
+  margin: 15px 0 0 15px;
+  width: 10px;
+  height: 10px;
+  line-height: 0;
+  font-size: 0;
+  border-top: 1px solid #fff;
+  border-right: 1px solid #fff;
+  -moz-transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  transform: rotate(-135deg);
+}
+.model-box-one {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background-color: #ffffff;
+}
+.m-title {
+  position: relative;
+  height: 20px;
+  text-align: center;
+  background-color: #fff;
+}
+.m-title .m-title-line {
+  position: absolute;
+  z-index: 0;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  border-top: 1px solid #dddddd;
+}
+.m-title em {
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  height: 20px;
+  line-height: 20px;
+  font-style: normal;
+  font-size: 14px;
+  font-weight: 400;
+  color: #aca8a7;
+  background-color: #fff;
+}
+.m-title em:before,
+.m-title em:after {
+  content: " ";
+  margin: 0 5px;
+}
+.third-party .links {
+  margin: 1rem 0;
+}
+.third-party .links li {
+  float: left;
+  width: 30%;
+  margin-right: 7px;
+  padding-right: 7px;
+  text-align: center;
+  border-right: 1px solid #dddddd;
+}
+.third-party .links li:last-child {
+  margin-right: 0px;
+  padding-right: 0px;
+  border-right: 0px ;
+}
+.third-party .links li a {
+  display: inline-block;
+  padding-left: 30px;
+  height: 21px;
+  line-height: 21px;
+  background-image: url('../images/j_icons.png');
+  background-size: 65px 375px;
+  background-repeat: no-repeat;
+  font-size: 14px;
+}
+.third-party .links li:nth-child(2) a {
+  background-position: 4px -36px;
+}
+.third-party .links li:nth-child(3) a {
+  background-position: 0 -73px;
+}
+.tip {
+  padding: 0.2rem 0.5rem;
+  color: #ff4c4c;
+  font-size: 0.8rem;
+  visibility: hidden;
+}
+.register-item .inputs {
+  padding: 0.5rem;
+  background-color: #ffffff;
+}
+.register-item label {
+  float: left;
+  width: 22%;
+  text-align: right;
+}
+.register-item.register-username {
+  display: none;
+}
+.verifycode-inputs {
+  position: relative;
+}
+.verifycode-inputs #getcode {
+  position: absolute;
+  right: 10px;
+  top: 4px;
+  padding: 3px 8px;
+  border: 1px solid #c9c9c9;
+  border-radius: 20px;
+}
+.add-username {
+  margin: 1rem;
+  padding: 0.5rem 0;
+  text-align: center;
+  background-color: #ffffff;
+}
+.add-username .add-btn {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin: 2px;
+  line-height: 22px;
+  border: 1px solid #dddddd;
+  border-radius: 50%;
+  color: #dddddd;
+  font-size: 1.6rem;
+}
+.register-btn {
+  padding: 1rem;
+}
+.register-btn #submit {
+  width: 100%;
+  height: 3rem;
+  background-color: #6fc01e;
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+.text-center {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.text-center > a {
+  color: #6fc01e;
+}
+/*注册时选择孕育状态*/
+#babybirthday_container {
+  display: none;
+}
+.pregnant-stage {
+  margin-top: 1rem ;
+}
+.pregnant-stage .hd {
+  -webkit-column-count: 3;
+  text-align: center;
+}
+.pregnant-stage .hd li .pic {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background-color: #ffffff;
+  background-image: url('../images/j_icons.png');
+  background-repeat: no-repeat;
+  background-position: 15px -95px;
+  background-size: 65px 375px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.pregnant-stage .hd li .txt {
+  display: block;
+  color: #5e5e5e;
+}
+.pregnant-stage .hd li:nth-child(2) .pic {
+  background-position: 15px -140px;
+}
+.pregnant-stage .hd li:nth-child(2).cur .pic {
+  background-position: -25px -140px;
+}
+.pregnant-stage .hd li:nth-child(3) .pic {
+  background-position: 15px -180px;
+}
+.pregnant-stage .hd li:nth-child(3).cur .pic {
+  background-position: -25px -180px;
+}
+.pregnant-stage .hd li.cur .pic {
+  background-position: -25px -95px;
+}
+.pregnant-stage .hd li.cur .txt {
+  color: #6fc01e;
+}
+.pregnant-stage .datePicker {
+  margin-top: 1rem;
+  background-color: #ffffff;
+}
+.pregnant-stage .datePicker .tit {
+  margin-bottom: 0.5rem;
+  padding-left: 0.5rem;
+  border-bottom: 1px solid #dddddd;
+  font-size: 1.2rem;
+  line-height: 3rem;
+  color: #333333;
+}
+.pregnant-stage .datePicker .teSct {
+  padding: 0.5rem;
+  -moz-column-count: 3;
+  -webkit-column-count: 3;
+  column-count: 3;
+}
+.pregnant-stage .datePicker .teSct select {
+  width: 100%;
+  border: 1px solid #dddddd;
+  color: #5e5e5e;
+  padding: 0.5rem 0;
+}
+/*登录*/
+.login-box .register-item label {
+  padding-left: 30px;
+  background-image: url('../images/j_icons.png');
+  background-repeat: no-repeat;
+  background-position: 0px -250px;
+  background-size: 65px 378px;
+  text-align: left;
+}
+.login-box .register-item:nth-child(2) label {
+  background-position: 0px -285px;
+}
+.login-box .register-item:nth-child(3) label {
+  background-position: 0px -325px;
+}
+.login-box .get-verifycode-box {
+  padding: 0.6rem;
+  border-top: 1px solid #dddddd;
+  background-color: #ffffff;
+  color: #ababab;
+}
+.login-box .get-verifycode-box > img {
+  float: left;
+  margin: 3px 10px 0 0;
+}
+.find-password-link > a {
+  margin-right: 1rem;
+}
+/*激活账号*/
+.fire-passport {
+  padding: 1rem;
+  background-color: #ffffff;
+  color: #ababab;
+}
+.fire-passport .contents {
+  text-indent: 2em;
+}
+a.post-btn {
+  display: block;
+  width: 100%;
+  height: 3rem;
+  line-height: 3rem;
+  background-color: #6fc01e;
+  font-size: 1.2rem;
+  color: #fff;
+  text-align: center;
+}
+.login-email-links {
+  padding: 1rem;
+}
+/*找回密码*/
+.find-password-box {
+  width: 100%;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #dddddd;
+  background-color: #ffffff;
+}
+.find-password-box .hd {
+  width: 100%;
+}
+.find-password-box .hd li {
+  float: left;
+  width: 50%;
+  height: 40px;
+  text-align: center;
+}
+.find-password-box .hd li > span {
+  display: inline-block;
+  line-height: 38px;
+  border-bottom: 2px solid #ffffff;
+}
+.find-password-box .hd li.cur > span {
+  border-bottom: 2px solid #6fc01e;
+}
+.find-password-tip {
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+  color: #ababab;
+  text-align: center;
+}
+.find-password-bd .bd-item {
+  display: none;
+}
+.find-password-bd .bd-item.actived {
+  display: block;
+}
+.find-password-bd label {
+  text-align: left;
+}
+/*submit表单样式*/
+.submit {
+    width: 100%;
+    height: 3rem;
+    background-color: #6FC01E;
+    font-size: 1.2rem;
+    color: #FFF;
+}

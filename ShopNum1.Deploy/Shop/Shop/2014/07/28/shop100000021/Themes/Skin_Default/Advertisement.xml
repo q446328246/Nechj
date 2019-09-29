@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ads>
+  <ad guid="7518f033-5f42-4bd3-82f4-de9ca6f7d641" explain="漂亮的手表" pagename="幻灯片1" filename="Default.aspx" divid="divflash" type="2" content="Themes/Skin_Default/Images/ban_img1.jpg" href="javascript:void(0)" width="120" height="120" />
+  <ad guid="6d8a4bae-b59c-4530-ae30-f5a65646a4bf" explain="广告招商 " pagename="幻灯片2" filename="Default.aspx " divid="divflash" type="2" content="Themes/Skin_Default/Images/ban_img2.jpg" href="javascript:void(0)" width="100" height="100" />
+  <ad guid="70CA87FF-F2B6-4504-93FC-96B4009B386D" explain="网站联盟" pagename="幻灯片3" filename="Default.aspx " divid="divflash" type="2" content="Themes/Skin_Default/Images/ban_img3.jpg" href="javascript:void(0)" width="100" height="100" />
+  <ad guid="1d8a4bae-b59c-4130-ae30-f5a65646a41f" explain="网站联盟" pagename="幻灯片4" filename="Default.aspx " divid="divflash" type="2" content="Themes/Skin_Default/Images/ban_img4.jpg" href="javascript:void(0)" width="100" height="100" />
+</ads>

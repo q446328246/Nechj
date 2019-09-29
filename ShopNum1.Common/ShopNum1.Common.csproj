@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.377</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3F01A9DC-7C89-41FD-A758-453E0B50D278}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>ShopNum1.Common</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\dll\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>ShopNum1.Common</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Compile Include="ShopNum1\Mobile\GZMessage.cs" />
+    <Compile Include="ShopNum1\Mobile\JsonMessage.cs" />
+    <Compile Include="ShopNum1\Mobile\MMessage.cs" />
+    <Compile Include="ShopNum1\Mobile\QLX_NEC_BILI.cs" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System" />
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\dll\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="Microsoft.VisualBasic" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="ShopNum1\Common\CustomerCategory.cs" />
+    <Compile Include="ShopNum1\Common\MD5JiaMi.cs" />
+    <Compile Include="ShopNum1\Common\MemberLevel.cs" />
+    <Compile Include="ShopNum1\Common\ShopIdToTj88.cs" />
+    <Compile Include="ShopNum1\Common\UserDefinedColumnVisit.cs" />
+    <Compile Include="ShopNum1\Common\XmlCreate.cs" />
+    <Compile Include="ShopNum1\Common\SqlDB.cs" />
+    <Compile Include="ShopNum1\Common\ShopNum1UpLoad.cs" />
+    <Compile Include="ShopNum1\Common\GetPageName.cs" />
+    <Compile Include="ShopNum1\Common\ImageUpload.cs" />
+    <Compile Include="ShopNum1\Common\Operator.cs" />
+    <Compile Include="ShopNum1\Common\TosUrl.cs" />
+    <Compile Include="ShopNum1\Common\ErrorShow.cs" />
+    <Compile Include="ShopNum1\Common\UnixDateTimeHelper.cs" />
+    <Compile Include="ShopNum1\Common\MachineKeyCryptography.cs" />
+    <Compile Include="ShopNum1\Common\Validator.cs" />
+    <Compile Include="ShopNum1\Common\GetUrl.cs" />
+    <Compile Include="ShopNum1\Common\CookieProtectionHelperWrapper.cs" />
+    <Compile Include="ShopNum1\Common\InvalidCypherTextException.cs" />
+    <Compile Include="ShopNum1\Common\ImageOperator.cs" />
+    <Compile Include="ShopNum1\Common\Order.cs" />
+    <Compile Include="ShopNum1\Common\SysInfo.cs" />
+    <Compile Include="ShopNum1\Common\XMLComponent.cs" />
+    <Compile Include="ShopNum1\Common\ConcreteComponent.cs" />
+    <Compile Include="ShopNum1\Common\TreeNodeComponent.cs" />
+    <Compile Include="ShopNum1\Common\RssXMLComponent.cs" />
+    <Compile Include="ShopNum1\Common\XMLDecorator.cs" />
+    <Compile Include="ShopNum1\Common\PerfCounter.cs" />
+    <Compile Include="ShopNum1\Common\Themes.cs" />
+    <Compile Include="ShopNum1\Common\ShopNum1Request.cs" />
+    <Compile Include="ShopNum1\Common\ShopNum1Exception.cs" />
+    <Compile Include="ShopNum1\Common\Semaphore.cs" />
+    <Compile Include="ShopNum1\Common\ManagedThreadPool.cs" />
+    <Compile Include="ShopNum1\Common\Json.cs" />
+    <Compile Include="ShopNum1\Common\Change.cs" />
+    <Compile Include="ShopNum1\Common\Common.cs" />
+    <Compile Include="ShopNum1\Common\HexConvert.cs" />
+    <Compile Include="ShopNum1\Common\ShopNum1Zip.cs" />
+    <Compile Include="ShopNum1\Common\ShopNum1UnZipClass.cs" />
+    <Compile Include="ShopNum1\Common\IVerifyImage.cs" />
+    <Compile Include="ShopNum1\Common\VerifyImage.cs" />
+    <Compile Include="ShopNum1\Common\PageList1.cs" />
+    <Compile Include="ShopNum1\Common\PageListBll.cs" />
+    <Compile Include="ShopNum1\Common\TextFile.cs" />
+    <Compile Include="ShopNum1\Common\HttpSecureCookie.cs" />
+    <Compile Include="ShopNum1\Common\Utils.cs" />
+    <Compile Include="ShopNum1\Common\Globals.cs" />
+    <Compile Include="Discuz\Common\SerializationHelper.cs" />
+    <Compile Include="ShopNum1\Common\TypeConverter.cs" />
+    <Compile Include="ShopNum1\Common\XmlOperator.cs" />
+    <Compile Include="ShopNum1\Common\VerifyImageInfo.cs" />
+    <Compile Include="ShopNum1\Common\Encryption.cs" />
+    <Compile Include="ShopNum1\Common\ShopSettings.cs" />
+    <Compile Include="ShopNum1\Common\WebConfigOperate.cs" />
+    <Compile Include="ShopNum1\Common\Num1WebControlCommon.cs" />
+    <Compile Include="ShopNum1\Common\VerifyImageProvider.cs" />
+    <Compile Include="ShopNum1\Common\MessageBox.cs" />
+    <Compile Include="ShopNum1\Common\PageOperator.cs" />
+    <Compile Include="ShopNum1\Common\WaterMarkFont.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ShopNum1.DataAccess\ShopNum1.DataAccess.csproj">
+      <Project>{3B0857FF-69AF-4C64-A219-524877D79726}</Project>
+      <Name>ShopNum1.DataAccess</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

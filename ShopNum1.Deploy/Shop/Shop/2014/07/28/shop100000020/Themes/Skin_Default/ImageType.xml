@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ImageSpec>
+  <image guid="b0f6e545-cd10-4e83-8c96-2c1e143e4948" Name="资讯图片" description="存储前台的资讯图片"/>
+  <image guid="b0f6e545-cd10-4e83-8c96-2c1e143e4948" Name="商品图片" description="存储前台的商品图片"/>
+</ImageSpec>

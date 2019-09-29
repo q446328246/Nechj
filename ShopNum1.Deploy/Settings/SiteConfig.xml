@@ -1,0 +1,6 @@
+<?xml version="1.0" standalone="yes"?>
+<SiteConfig>
+  <VirtualDirectory>/ShopNum1/</VirtualDirectory>
+  <Themes>Skin_Default</Themes>
+  <SensitiveWords>fg</SensitiveWords>
+</SiteConfig>

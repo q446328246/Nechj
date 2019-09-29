@@ -1,0 +1,303 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Text;
+using ShopNum1.Common;
+using ShopNum1.DataAccess;
+using ShopNum1.Interface;
+using ShopNum1MultiEntity;
+using System.Data.Common;
+using System.Data.SqlClient;
+
+namespace ShopNum1.BusinessLogic
+{
+    public class ShopNum1_SupplyDemandComment_Action : IShopNum1_SupplyDemandComment_Action
+    {
+        public int AddSupplyDemandComment(ShopNum1_SupplyDemandComment shopNum1_SupplyDemandComment)
+        {
+            string strProcedureName = "Pro_ShopNum1_SupplyDemandCommentAdd";
+            var paraName = new[]
+            {
+                "@Title", "@Content", "@CreateTime", "@CreateMerber", "@CreateIP", "@SupplyDemandGuid",
+                "@AssociateMemberID", "@IsAudit"
+            };
+            var paraValue = new[]
+            {
+                shopNum1_SupplyDemandComment.Title, shopNum1_SupplyDemandComment.Content,
+                Convert.ToString(shopNum1_SupplyDemandComment.CreateTime), shopNum1_SupplyDemandComment.CreateMerber
+                , shopNum1_SupplyDemandComment.CreateIP,
+                Convert.ToString(shopNum1_SupplyDemandComment.SupplyDemandGuid),
+                Convert.ToString(shopNum1_SupplyDemandComment.AssociateMemberID),
+                shopNum1_SupplyDemandComment.IsAudit.ToString()
+            };
+            return DatabaseExcetue.RunProcedure(strProcedureName, paraName, paraValue);
+        }
+
+        public int DeleteSupplyDemandComment(string guids)
+        {
+            var sqlList = new List<string>();
+            string item = string.Empty;
+            item = "delete from ShopNum1_SupplyDemandComment  WHERE [Guid] IN (" + guids + ") ";
+            sqlList.Add(item);
+            try
+            {
+                DatabaseExcetue.RunTransactionSql(sqlList);
+                return 1;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
+        public DataTable GetSupplyDemandAssociatedMemberID(string guid)
+        {
+            return DatabaseExcetue.RunProcedureReturnDataTable("Pro_ShopNum1_GetSupplyDemandAssociatedMemberID", "@ID",
+                guid);
+        }
+
+        public DataTable GetSupplyDemandCommentAll(string commentTitle, string SupplyDemandName, string SupplyDemandGuid,
+            string createMember, string isAudit, string createTime1,
+            string createTime2)
+        {
+            var builder = new StringBuilder();
+            builder.Append("SELECT ");
+            builder.Append("a.Guid,");
+            builder.Append("a.Title,");
+            builder.Append("a.Content,");
+            builder.Append("b.Title AS SupplyDemandTitle,");
+            builder.Append("a.CreateMerber,");
+            builder.Append("a.CreateTime,");
+            builder.Append("a.IsAudit,");
+            builder.Append("a.SupplyDemandGuid");
+            builder.Append(" FROM ");
+            builder.Append("ShopNum1_SupplyDemandComment AS a,");
+            builder.Append("ShopNum1_SupplyDemand AS b");
+            builder.Append(" WHERE a.SupplyDemandGuid=b.ID");
+            if (Operator.FormatToEmpty(commentTitle) != string.Empty)
+            {
+                builder.Append(" AND a.Title LIKE '%" + Operator.FilterString(commentTitle) + "%'");
+            }
+            if (Operator.FormatToEmpty(SupplyDemandName) != string.Empty)
+            {
+                builder.Append(" AND b.Title LIKE '%" + Operator.FilterString(SupplyDemandName) + "%'");
+            }
+            if (Operator.FormatToEmpty(SupplyDemandGuid) != string.Empty)
+            {
+                builder.Append(" AND a.Guid LIKE '%" + Operator.FilterString(SupplyDemandGuid) + "%'");
+            }
+            if (Operator.FormatToEmpty(createMember) != string.Empty)
+            {
+                builder.Append(" AND a.CreateMerber LIKE '%" + Operator.FilterString(createMember) + "%'");
+            }
+            if (Operator.FormatToEmpty(isAudit) != "-1")
+            {
+                if (Operator.FormatToEmpty(isAudit) == "-2")
+                {
+                    builder.Append(" AND a.IsAudit IN (0,2)");
+                }
+                else
+                {
+                    builder.Append(" AND a.IsAudit LIKE '%" + isAudit + "%'");
+                }
+            }
+            if (Operator.FormatToEmpty(createTime1) != string.Empty)
+            {
+                builder.Append(" AND a.CreateTime>='" + createTime1 + "' ");
+            }
+            if (Operator.FormatToEmpty(createTime2) != string.Empty)
+            {
+                builder.Append(" AND a.CreateTime<='" + createTime2 + "' ");
+            }
+            builder.Append(" ORDER BY a.CreateTime DESC");
+            return DatabaseExcetue.ReturnDataTable(builder.ToString());
+        }
+
+        public DataTable GetSupplyDemandCommentAll(string commentTitle, string SupplyDemandName, string SupplyDemandGuid,
+            string createMember, string isAudit, string createTime1,
+            string createTime2, string createMerber)
+        {
+            var builder = new StringBuilder();
+            builder.Append("SELECT ");
+            builder.Append("a.Guid,");
+            builder.Append("a.Title,");
+            builder.Append("a.CreateMerber,");
+            builder.Append("a.CreateTime,");
+            builder.Append("a.IsAudit");
+            builder.Append(" FROM ");
+            builder.Append("ShopNum1_SupplyDemandComment AS a,");
+            builder.Append("ShopNum1_SupplyDemand AS b");
+            builder.Append(" WHERE a.SupplyDemandGuid=b.Guid");
+            builder.Append(" AND a.CreateMerber='" + createMerber + "'");
+            if (Operator.FormatToEmpty(commentTitle) != string.Empty)
+            {
+                builder.Append(" AND a.Title LIKE '%" + Operator.FilterString(commentTitle) + "%'");
+            }
+            if (Operator.FormatToEmpty(SupplyDemandName) != string.Empty)
+            {
+                builder.Append(" AND b.Title LIKE '%" + Operator.FilterString(SupplyDemandName) + "%'");
+            }
+            if (Operator.FormatToEmpty(SupplyDemandGuid) != string.Empty)
+            {
+                builder.Append(" AND a.Guid LIKE '%" + Operator.FilterString(SupplyDemandGuid) + "%'");
+            }
+            if (Operator.FormatToEmpty(createMember) != string.Empty)
+            {
+                builder.Append(" AND a.CreateMerber LIKE '%" + Operator.FilterString(createMember) + "%'");
+            }
+            if (Operator.FormatToEmpty(isAudit) != "-1")
+            {
+                builder.Append(" AND a.IsAudit LIKE '%" + isAudit + "%'");
+            }
+            if (Operator.FormatToEmpty(createTime1) != string.Empty)
+            {
+                builder.Append(" AND a.CreateTime>='" + createTime1 + "' ");
+            }
+            if (Operator.FormatToEmpty(createTime2) != string.Empty)
+            {
+                builder.Append(" AND a.CreateTime<='" + createTime2 + "' ");
+            }
+            builder.Append(" ORDER BY a.CreateTime DESC");
+            return DatabaseExcetue.ReturnDataTable(builder.ToString());
+        }
+
+        public DataTable GetSupplyDemandCommentList(string guid)
+        {
+            string strProcedureName = "Pro_ShopNum1_SupplyDemandCommentList";
+            return DatabaseExcetue.RunProcedureReturnDataTable(strProcedureName, "@guid", guid);
+        }
+
+        public DataSet GetSupplyDemandCommentList(string perpagenum, string current_page, string guid, string ordername,
+            string isreturcount)
+        {
+            var paraName = new string[6];
+            var paraValue = new string[6];
+            paraName[0] = "@perpagenum";
+            paraValue[0] = perpagenum;
+            paraName[1] = "@current_page";
+            paraValue[1] = current_page;
+            paraName[2] = "@ColumnNames";
+            paraValue[2] =
+                " A.Guid,A.Title,A.[Content],A.CreateTime,A.CreateMerber,A.CreateIP ,B.Title AS SupplyDemandTitle,A.AssociateMemberID,A.Reply ";
+            paraName[3] = "@ordername";
+            paraValue[3] = "";
+            paraName[4] = "@guid";
+            paraValue[4] = guid;
+            paraName[5] = "@isreturcount";
+            paraValue[5] = isreturcount;
+            return DatabaseExcetue.RunProcedureReturnDataSet("Pro_ShopNum1_MemberSupplyDemandComment1", paraName,
+                paraValue);
+        }
+
+        public string GetSupplyDemandGuid(string guid)
+        {
+            var builder = new StringBuilder();
+            builder.Append("SELECT ");
+            builder.Append("SupplyDemandGuid");
+            builder.Append(" FROM ");
+            builder.Append("ShopNum1_SupplyDemandComment");
+            builder.Append(" WHERE ");
+            builder.Append("[Guid] =" + guid);
+            return DatabaseExcetue.ReturnString(builder.ToString());
+        }
+
+        public DataTable MemberSupplyDemandComment(string memberloginid, string commenttitle, string supplydemandname,
+            string publishMemLoginID, string isaudit, string createtime1,
+            string createtime2)
+        {
+            var paraName = new string[7];
+            var paraValue = new string[7];
+            paraName[0] = "@memberloginid";
+            paraValue[0] = memberloginid;
+            paraName[1] = "@commenttitle";
+            paraValue[1] = commenttitle;
+            paraName[2] = "@supplydemandname";
+            paraValue[2] = supplydemandname;
+            paraName[3] = "@publishMemLoginID";
+            paraValue[3] = publishMemLoginID;
+            paraName[4] = "@isaudit";
+            paraValue[4] = isaudit;
+            paraName[5] = "@createtime1";
+            paraValue[5] = createtime1;
+            paraName[6] = "@createtime2";
+            paraValue[6] = createtime2;
+            return DatabaseExcetue.RunProcedureReturnDataTable("Pro_ShopNum1_MemberSupplyDemandComment", paraName,
+                paraValue);
+        }
+
+        public int ReplySupplyDemandComment(string guid, string content)
+        {
+            return
+                DatabaseExcetue.RunNonQuery("UPDATE ShopNum1_SupplyDemandComment SET Reply='" +
+                                            Operator.FormatToEmpty(content) + "' WHERE Guid='" + guid + "'");
+        }
+
+        public int UpdateSupplyDemandCommentAudit(string guids, string state)
+        {
+            List<DbParameter> parms = new List<DbParameter>();
+
+            string andSql = string.Format(" in ({0})", DatabaseExcetue.GetGuidsSql(guids, parms));
+
+            DbParameter parm = new SqlParameter();
+            parm.ParameterName = "@state";
+            parm.Value = state;
+            parms.Add(parm);
+
+            
+            var builder = new StringBuilder();
+            builder.Append("UPDATE ");
+            builder.Append("ShopNum1_SupplyDemandComment");
+            builder.Append(" SET ");
+            builder.Append("IsAudit = @state");
+            builder.Append(" WHERE ");
+            builder.Append("[Guid]"+andSql);
+            return DatabaseExcetue.RunNonQuery(builder.ToString(),parms.ToArray());
+        }
+
+        public DataTable GetSupplyDemandCommentMemberID(string guid)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+            parms[0].ParameterName = "@guid";
+            parms[0].Value = guid.Replace("'","");
+            var builder = new StringBuilder();
+            builder.Append("SELECT CreateMerber");
+            builder.Append("FROM ShopNum1_SupplyDemandComment");
+            builder.Append(" WHERE ");
+            builder.Append("[Guid] = @guid");
+            return DatabaseExcetue.ReturnDataTable(builder.ToString(),parms);
+        }
+
+        public DataTable SearchByGuid(string guid)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+            parms[0].ParameterName = "@guid";
+            parms[0].Value = guid.Replace("'","");
+            return
+                DatabaseExcetue.ReturnDataTable(
+                    ("SELECT A.*,B.Title AS CommentTitle,B.Content AS ConmetContent FROM ShopNum1_SupplyDemandComment AS A LEFT JOIN ShopNum1_SupplyDemand AS B ON A.SupplyDemandGuid=B.ID WHERE A.guid=@guid"),parms);
+        }
+
+        public DataTable Select_List(CommonPageModel commonModel)
+        {
+            var paraName = new string[8];
+            var paraValue = new string[8];
+            paraName[0] = "@pagesize";
+            paraValue[0] = commonModel.PageSize;
+            paraName[1] = "@currentpage";
+            paraValue[1] = commonModel.Currentpage;
+            paraName[2] = "@columns";
+            paraValue[2] = " *  ";
+            paraName[3] = "@tablename";
+            paraValue[3] = "ShopNum1_SupplyDemandComment";
+            paraName[4] = "@condition";
+            paraValue[4] = commonModel.Condition;
+            paraName[5] = "@ordercolumn";
+            paraValue[5] = "CreateTime";
+            paraName[6] = "@sortvalue";
+            paraValue[6] = "desc";
+            paraName[7] = "@resultnum";
+            paraValue[7] = commonModel.Resultnum;
+            return DatabaseExcetue.RunProcedureReturnDataTable("Pro_CommonPager_two", paraName, paraValue);
+        }
+    }
+}

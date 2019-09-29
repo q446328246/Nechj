@@ -1,0 +1,4281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Login">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MemberloginID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PWD" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SelectProdctByShop_category_id">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Shop_category_id" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="StartNumber" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="OrderNumber" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectProdctByShop_category_idResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SelectProdctByShop_category_id_two">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Shop_category_id" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="StartNumber" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="OrderNumber" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectProdctByShop_category_id_twoResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SelectProdctByThree">
+        <s:complexType />
+      </s:element>
+      <s:element name="SelectProdctByThreeResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SelectProdctByID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="shop_category_id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectProdctByIDResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SelectProdctByGUID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="guid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="shop_category_id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectProdctByGUIDResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SelectMemberInfoAllByMemloginID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="memberloginID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectMemberInfoAllByMemloginIDResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SelectAddressByMemberloginID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="memberloginID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectAddressByMemberloginIDResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SelectUserMessageBymemberloginID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="memberloginID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectUserMessageBymemberloginIDResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SelectMemberRank_LinkCategory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="memberloginID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IsReadOrBuy" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Category_ID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectMemberRank_LinkCategoryResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SelectOrderByMemberloginID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="memberloginID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="startnum" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ordernumber" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectOrderByMemberloginIDResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SelectOrderByMemberloginIDAndOrderStyle">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="memberloginID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="startnum" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ordernumber" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="OrderStyle" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectOrderByMemberloginIDAndOrderStyleResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SelectOrderProductByOrderInfoGuid">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OrderInfoGuid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectOrderProductByOrderInfoGuidResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SelectOrderByMemberloginID_GetCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="memberloginID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectOrderByMemberloginID_GetCountResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CreateOrder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceAgent" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MemloginID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ShopCategoryID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="PayMentType" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProductGuid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="BuyNumber" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="PostPrice" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="Color" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Size" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AddressGuid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TextBoxMessage" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="InvoiceType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="InvoiceTitle" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="InvoiceContent" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateOrderResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="AddShopCar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MyMemLoginID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="category" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Num" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="guid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Size" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Color" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddShopCarResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="PostPrice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ShopID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PostPriceResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CreateOrderCar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceAgent" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MemloginID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ShopCategoryID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="PayMentType" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProductGuids" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="BuyNumber" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="PostPrice" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="Color" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Size" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AddressGuid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ShopID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TextBoxMessage" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="InvoiceType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="InvoiceTitle" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="InvoiceContent" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateOrderCarResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ADDAddress">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AddressValue" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Area" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AddressCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Postalcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Tel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Mobile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MemLoginID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ADDAddressResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="MobileServiceRecharge">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MemloginID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="RechargeBV" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="RechargeType" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BankCard" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="BankCardType" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MobileServiceRechargeResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="Pay">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OrderNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MemloginID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ScoreHvType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PayPwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PayResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SelectProductByNameAndShop_category_id">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Shop_category_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectProductByNameAndShop_category_idResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SelectProductByProductCategoryCodeAndShop_category_id">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="shop_category_id" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="top" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="number" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProductCategoryCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectProductByProductCategoryCodeAndShop_category_idResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SelectAllShopCategory">
+        <s:complexType />
+      </s:element>
+      <s:element name="SelectAllShopCategoryResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetScore_pv_b">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MemLoginID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetScore_pv_bResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="Login_Web_tj88">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MemberloginID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PWD" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IdentityCard" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Login_Web_tj88Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login_Web_tj88Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginidGetAllMember">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MemberLongiNO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="md5" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginidGetAllMemberResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginidGetAllMemberResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectOrderByGuid">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="guid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectOrderByGuidResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetALLMemberByShopid">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="shopid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetALLMemberByShopidResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="MobileOrderRefund">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MemLoginID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OrderGuid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ShopID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RefundReason" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Introduce" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RefundTypes" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MobileOrderRefundResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetVersion">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetVersionResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="MobileReceipt">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OrderNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MobileReceiptResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DelteAdress">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="guid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DelteAdressResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateAdressIsDefault">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="guid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="memloginid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateAdressIsDefaultResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DeleteShopCar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="guid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteShopCarResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SelectAllShopCarBymemberloginID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="memberloginID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectAllShopCarBymemberloginIDResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SelcteMoeneyBypwdANDTransfer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="meloginid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="paypwd" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="AdvancePayment" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelcteMoeneyBypwdANDTransferResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SelcteMoeneyBypwdANDTransferResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SignIn_HV">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MyMemLoginID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SignIn_HVResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="PayDecrease">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MemLoginID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MessageCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PayPwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Decrease_bv" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Remark" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PayDecreaseResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="PayDecrease_Bank">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MemLoginID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PayDecrease_BankResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="PayTransfer_BV">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MemLoginID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MessageCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TransferID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TransferID2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PayPwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Transfer" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TransferName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Remark" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PayTransfer_BVResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SelectAllPreTransferByMemberloginID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="memberloginID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Currentpage" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PageSize" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectAllPreTransferByMemberloginIDResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SelectAllAdvancePaymentApplyLogByMemberloginID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="memberloginID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Currentpage" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PageSize" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectAllAdvancePaymentApplyLogByMemberloginIDResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SelectAllAdvancePaymentModifyLogByMemberloginID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="memberloginID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Currentpage" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PageSize" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPayType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectAllAdvancePaymentModifyLogByMemberloginIDResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SelectAllPreTransferByMemberloginIDCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="memberloginID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Currentpage" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PageSize" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectAllPreTransferByMemberloginIDCountResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SelectAllAdvancePaymentApplyLogByMemberloginIDCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="memberloginID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Currentpage" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PageSize" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectAllAdvancePaymentApplyLogByMemberloginIDCountResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SelectAllAdvancePaymentModifyLogByMemberloginIDCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="memberloginID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Currentpage" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PageSize" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPayType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectAllAdvancePaymentModifyLogByMemberloginIDCountResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="MemberRegisterMember">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="memloginid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Mobile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="recommendid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IdentityCard" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Pwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Encryption" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MemberRegisterMemberResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="MemberRegisterMandarinMember">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="memloginid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Mobile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="recommendid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IdentityCard" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Pwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Encryption" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MemberRegisterMandarinMemberResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="MemberRegisterMemberGetMemberNumber">
+        <s:complexType />
+      </s:element>
+      <s:element name="MemberRegisterMemberGetMemberNumberResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="MemberRegisterMandarinMemberGetMemberNumberRegister">
+        <s:complexType />
+      </s:element>
+      <s:element name="MemberRegisterMandarinMemberGetMemberNumberRegisterResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="img">
+        <s:complexType />
+      </s:element>
+      <s:element name="imgResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="BindMobile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MessageCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="modile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MemLoginID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BindMobileResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="BindTradePWD">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MessageCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="modile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MemLoginID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="payPwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BindTradePWDResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SettingsPWD">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MemLoginID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OldPwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NewPwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NewSecondPwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SettingsPWDResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="DataTable" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+            <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="LoginSoapIn">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectProdctByShop_category_idSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectProdctByShop_category_id" />
+  </wsdl:message>
+  <wsdl:message name="SelectProdctByShop_category_idSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectProdctByShop_category_idResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectProdctByShop_category_id_twoSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectProdctByShop_category_id_two" />
+  </wsdl:message>
+  <wsdl:message name="SelectProdctByShop_category_id_twoSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectProdctByShop_category_id_twoResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectProdctByThreeSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectProdctByThree" />
+  </wsdl:message>
+  <wsdl:message name="SelectProdctByThreeSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectProdctByThreeResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectProdctByIDSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectProdctByID" />
+  </wsdl:message>
+  <wsdl:message name="SelectProdctByIDSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectProdctByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectProdctByGUIDSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectProdctByGUID" />
+  </wsdl:message>
+  <wsdl:message name="SelectProdctByGUIDSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectProdctByGUIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectMemberInfoAllByMemloginIDSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectMemberInfoAllByMemloginID" />
+  </wsdl:message>
+  <wsdl:message name="SelectMemberInfoAllByMemloginIDSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectMemberInfoAllByMemloginIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectAddressByMemberloginIDSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectAddressByMemberloginID" />
+  </wsdl:message>
+  <wsdl:message name="SelectAddressByMemberloginIDSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectAddressByMemberloginIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectUserMessageBymemberloginIDSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectUserMessageBymemberloginID" />
+  </wsdl:message>
+  <wsdl:message name="SelectUserMessageBymemberloginIDSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectUserMessageBymemberloginIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectMemberRank_LinkCategorySoapIn">
+    <wsdl:part name="parameters" element="tns:SelectMemberRank_LinkCategory" />
+  </wsdl:message>
+  <wsdl:message name="SelectMemberRank_LinkCategorySoapOut">
+    <wsdl:part name="parameters" element="tns:SelectMemberRank_LinkCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectOrderByMemberloginIDSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectOrderByMemberloginID" />
+  </wsdl:message>
+  <wsdl:message name="SelectOrderByMemberloginIDSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectOrderByMemberloginIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectOrderByMemberloginIDAndOrderStyleSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectOrderByMemberloginIDAndOrderStyle" />
+  </wsdl:message>
+  <wsdl:message name="SelectOrderByMemberloginIDAndOrderStyleSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectOrderByMemberloginIDAndOrderStyleResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectOrderProductByOrderInfoGuidSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectOrderProductByOrderInfoGuid" />
+  </wsdl:message>
+  <wsdl:message name="SelectOrderProductByOrderInfoGuidSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectOrderProductByOrderInfoGuidResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectOrderByMemberloginID_GetCountSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectOrderByMemberloginID_GetCount" />
+  </wsdl:message>
+  <wsdl:message name="SelectOrderByMemberloginID_GetCountSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectOrderByMemberloginID_GetCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateOrderSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateOrder" />
+  </wsdl:message>
+  <wsdl:message name="CreateOrderSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddShopCarSoapIn">
+    <wsdl:part name="parameters" element="tns:AddShopCar" />
+  </wsdl:message>
+  <wsdl:message name="AddShopCarSoapOut">
+    <wsdl:part name="parameters" element="tns:AddShopCarResponse" />
+  </wsdl:message>
+  <wsdl:message name="PostPriceSoapIn">
+    <wsdl:part name="parameters" element="tns:PostPrice" />
+  </wsdl:message>
+  <wsdl:message name="PostPriceSoapOut">
+    <wsdl:part name="parameters" element="tns:PostPriceResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateOrderCarSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateOrderCar" />
+  </wsdl:message>
+  <wsdl:message name="CreateOrderCarSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateOrderCarResponse" />
+  </wsdl:message>
+  <wsdl:message name="ADDAddressSoapIn">
+    <wsdl:part name="parameters" element="tns:ADDAddress" />
+  </wsdl:message>
+  <wsdl:message name="ADDAddressSoapOut">
+    <wsdl:part name="parameters" element="tns:ADDAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="MobileServiceRechargeSoapIn">
+    <wsdl:part name="parameters" element="tns:MobileServiceRecharge" />
+  </wsdl:message>
+  <wsdl:message name="MobileServiceRechargeSoapOut">
+    <wsdl:part name="parameters" element="tns:MobileServiceRechargeResponse" />
+  </wsdl:message>
+  <wsdl:message name="PaySoapIn">
+    <wsdl:part name="parameters" element="tns:Pay" />
+  </wsdl:message>
+  <wsdl:message name="PaySoapOut">
+    <wsdl:part name="parameters" element="tns:PayResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectProductByNameAndShop_category_idSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectProductByNameAndShop_category_id" />
+  </wsdl:message>
+  <wsdl:message name="SelectProductByNameAndShop_category_idSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectProductByNameAndShop_category_idResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectProductByProductCategoryCodeAndShop_category_idSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectProductByProductCategoryCodeAndShop_category_id" />
+  </wsdl:message>
+  <wsdl:message name="SelectProductByProductCategoryCodeAndShop_category_idSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectProductByProductCategoryCodeAndShop_category_idResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectAllShopCategorySoapIn">
+    <wsdl:part name="parameters" element="tns:SelectAllShopCategory" />
+  </wsdl:message>
+  <wsdl:message name="SelectAllShopCategorySoapOut">
+    <wsdl:part name="parameters" element="tns:SelectAllShopCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetScore_pv_bSoapIn">
+    <wsdl:part name="parameters" element="tns:GetScore_pv_b" />
+  </wsdl:message>
+  <wsdl:message name="GetScore_pv_bSoapOut">
+    <wsdl:part name="parameters" element="tns:GetScore_pv_bResponse" />
+  </wsdl:message>
+  <wsdl:message name="Login_Web_tj88SoapIn">
+    <wsdl:part name="parameters" element="tns:Login_Web_tj88" />
+  </wsdl:message>
+  <wsdl:message name="Login_Web_tj88SoapOut">
+    <wsdl:part name="parameters" element="tns:Login_Web_tj88Response" />
+  </wsdl:message>
+  <wsdl:message name="LoginidGetAllMemberSoapIn">
+    <wsdl:part name="parameters" element="tns:LoginidGetAllMember" />
+  </wsdl:message>
+  <wsdl:message name="LoginidGetAllMemberSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginidGetAllMemberResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectOrderByGuidSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectOrderByGuid" />
+  </wsdl:message>
+  <wsdl:message name="SelectOrderByGuidSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectOrderByGuidResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetALLMemberByShopidSoapIn">
+    <wsdl:part name="parameters" element="tns:GetALLMemberByShopid" />
+  </wsdl:message>
+  <wsdl:message name="GetALLMemberByShopidSoapOut">
+    <wsdl:part name="parameters" element="tns:GetALLMemberByShopidResponse" />
+  </wsdl:message>
+  <wsdl:message name="MobileOrderRefundSoapIn">
+    <wsdl:part name="parameters" element="tns:MobileOrderRefund" />
+  </wsdl:message>
+  <wsdl:message name="MobileOrderRefundSoapOut">
+    <wsdl:part name="parameters" element="tns:MobileOrderRefundResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetVersionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVersion" />
+  </wsdl:message>
+  <wsdl:message name="GetVersionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="MobileReceiptSoapIn">
+    <wsdl:part name="parameters" element="tns:MobileReceipt" />
+  </wsdl:message>
+  <wsdl:message name="MobileReceiptSoapOut">
+    <wsdl:part name="parameters" element="tns:MobileReceiptResponse" />
+  </wsdl:message>
+  <wsdl:message name="DelteAdressSoapIn">
+    <wsdl:part name="parameters" element="tns:DelteAdress" />
+  </wsdl:message>
+  <wsdl:message name="DelteAdressSoapOut">
+    <wsdl:part name="parameters" element="tns:DelteAdressResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateAdressIsDefaultSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateAdressIsDefault" />
+  </wsdl:message>
+  <wsdl:message name="UpdateAdressIsDefaultSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateAdressIsDefaultResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteShopCarSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteShopCar" />
+  </wsdl:message>
+  <wsdl:message name="DeleteShopCarSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteShopCarResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectAllShopCarBymemberloginIDSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectAllShopCarBymemberloginID" />
+  </wsdl:message>
+  <wsdl:message name="SelectAllShopCarBymemberloginIDSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectAllShopCarBymemberloginIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelcteMoeneyBypwdANDTransferSoapIn">
+    <wsdl:part name="parameters" element="tns:SelcteMoeneyBypwdANDTransfer" />
+  </wsdl:message>
+  <wsdl:message name="SelcteMoeneyBypwdANDTransferSoapOut">
+    <wsdl:part name="parameters" element="tns:SelcteMoeneyBypwdANDTransferResponse" />
+  </wsdl:message>
+  <wsdl:message name="SignIn_HVSoapIn">
+    <wsdl:part name="parameters" element="tns:SignIn_HV" />
+  </wsdl:message>
+  <wsdl:message name="SignIn_HVSoapOut">
+    <wsdl:part name="parameters" element="tns:SignIn_HVResponse" />
+  </wsdl:message>
+  <wsdl:message name="PayDecreaseSoapIn">
+    <wsdl:part name="parameters" element="tns:PayDecrease" />
+  </wsdl:message>
+  <wsdl:message name="PayDecreaseSoapOut">
+    <wsdl:part name="parameters" element="tns:PayDecreaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="PayDecrease_BankSoapIn">
+    <wsdl:part name="parameters" element="tns:PayDecrease_Bank" />
+  </wsdl:message>
+  <wsdl:message name="PayDecrease_BankSoapOut">
+    <wsdl:part name="parameters" element="tns:PayDecrease_BankResponse" />
+  </wsdl:message>
+  <wsdl:message name="PayTransfer_BVSoapIn">
+    <wsdl:part name="parameters" element="tns:PayTransfer_BV" />
+  </wsdl:message>
+  <wsdl:message name="PayTransfer_BVSoapOut">
+    <wsdl:part name="parameters" element="tns:PayTransfer_BVResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectAllPreTransferByMemberloginIDSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectAllPreTransferByMemberloginID" />
+  </wsdl:message>
+  <wsdl:message name="SelectAllPreTransferByMemberloginIDSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectAllPreTransferByMemberloginIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectAllAdvancePaymentApplyLogByMemberloginIDSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectAllAdvancePaymentApplyLogByMemberloginID" />
+  </wsdl:message>
+  <wsdl:message name="SelectAllAdvancePaymentApplyLogByMemberloginIDSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectAllAdvancePaymentApplyLogByMemberloginIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectAllAdvancePaymentModifyLogByMemberloginIDSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectAllAdvancePaymentModifyLogByMemberloginID" />
+  </wsdl:message>
+  <wsdl:message name="SelectAllAdvancePaymentModifyLogByMemberloginIDSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectAllAdvancePaymentModifyLogByMemberloginIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectAllPreTransferByMemberloginIDCountSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectAllPreTransferByMemberloginIDCount" />
+  </wsdl:message>
+  <wsdl:message name="SelectAllPreTransferByMemberloginIDCountSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectAllPreTransferByMemberloginIDCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectAllAdvancePaymentApplyLogByMemberloginIDCountSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectAllAdvancePaymentApplyLogByMemberloginIDCount" />
+  </wsdl:message>
+  <wsdl:message name="SelectAllAdvancePaymentApplyLogByMemberloginIDCountSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectAllAdvancePaymentApplyLogByMemberloginIDCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectAllAdvancePaymentModifyLogByMemberloginIDCountSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectAllAdvancePaymentModifyLogByMemberloginIDCount" />
+  </wsdl:message>
+  <wsdl:message name="SelectAllAdvancePaymentModifyLogByMemberloginIDCountSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectAllAdvancePaymentModifyLogByMemberloginIDCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="MemberRegisterMemberSoapIn">
+    <wsdl:part name="parameters" element="tns:MemberRegisterMember" />
+  </wsdl:message>
+  <wsdl:message name="MemberRegisterMemberSoapOut">
+    <wsdl:part name="parameters" element="tns:MemberRegisterMemberResponse" />
+  </wsdl:message>
+  <wsdl:message name="MemberRegisterMandarinMemberSoapIn">
+    <wsdl:part name="parameters" element="tns:MemberRegisterMandarinMember" />
+  </wsdl:message>
+  <wsdl:message name="MemberRegisterMandarinMemberSoapOut">
+    <wsdl:part name="parameters" element="tns:MemberRegisterMandarinMemberResponse" />
+  </wsdl:message>
+  <wsdl:message name="MemberRegisterMemberGetMemberNumberSoapIn">
+    <wsdl:part name="parameters" element="tns:MemberRegisterMemberGetMemberNumber" />
+  </wsdl:message>
+  <wsdl:message name="MemberRegisterMemberGetMemberNumberSoapOut">
+    <wsdl:part name="parameters" element="tns:MemberRegisterMemberGetMemberNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="MemberRegisterMandarinMemberGetMemberNumberRegisterSoapIn">
+    <wsdl:part name="parameters" element="tns:MemberRegisterMandarinMemberGetMemberNumberRegister" />
+  </wsdl:message>
+  <wsdl:message name="MemberRegisterMandarinMemberGetMemberNumberRegisterSoapOut">
+    <wsdl:part name="parameters" element="tns:MemberRegisterMandarinMemberGetMemberNumberRegisterResponse" />
+  </wsdl:message>
+  <wsdl:message name="imgSoapIn">
+    <wsdl:part name="parameters" element="tns:img" />
+  </wsdl:message>
+  <wsdl:message name="imgSoapOut">
+    <wsdl:part name="parameters" element="tns:imgResponse" />
+  </wsdl:message>
+  <wsdl:message name="BindMobileSoapIn">
+    <wsdl:part name="parameters" element="tns:BindMobile" />
+  </wsdl:message>
+  <wsdl:message name="BindMobileSoapOut">
+    <wsdl:part name="parameters" element="tns:BindMobileResponse" />
+  </wsdl:message>
+  <wsdl:message name="BindTradePWDSoapIn">
+    <wsdl:part name="parameters" element="tns:BindTradePWD" />
+  </wsdl:message>
+  <wsdl:message name="BindTradePWDSoapOut">
+    <wsdl:part name="parameters" element="tns:BindTradePWDResponse" />
+  </wsdl:message>
+  <wsdl:message name="SettingsPWDSoapIn">
+    <wsdl:part name="parameters" element="tns:SettingsPWD" />
+  </wsdl:message>
+  <wsdl:message name="SettingsPWDSoapOut">
+    <wsdl:part name="parameters" element="tns:SettingsPWDResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoginHttpGetIn">
+    <wsdl:part name="MemberloginID" type="s:string" />
+    <wsdl:part name="PWD" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LoginHttpGetOut" />
+  <wsdl:message name="SelectProdctByShop_category_idHttpGetIn">
+    <wsdl:part name="Shop_category_id" type="s:string" />
+    <wsdl:part name="StartNumber" type="s:string" />
+    <wsdl:part name="OrderNumber" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectProdctByShop_category_idHttpGetOut" />
+  <wsdl:message name="SelectProdctByShop_category_id_twoHttpGetIn">
+    <wsdl:part name="Shop_category_id" type="s:string" />
+    <wsdl:part name="StartNumber" type="s:string" />
+    <wsdl:part name="OrderNumber" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectProdctByShop_category_id_twoHttpGetOut" />
+  <wsdl:message name="SelectProdctByThreeHttpGetIn" />
+  <wsdl:message name="SelectProdctByThreeHttpGetOut" />
+  <wsdl:message name="SelectProdctByIDHttpGetIn">
+    <wsdl:part name="ID" type="s:string" />
+    <wsdl:part name="shop_category_id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectProdctByIDHttpGetOut" />
+  <wsdl:message name="SelectProdctByGUIDHttpGetIn">
+    <wsdl:part name="guid" type="s:string" />
+    <wsdl:part name="shop_category_id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectProdctByGUIDHttpGetOut" />
+  <wsdl:message name="SelectMemberInfoAllByMemloginIDHttpGetIn">
+    <wsdl:part name="memberloginID" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectMemberInfoAllByMemloginIDHttpGetOut" />
+  <wsdl:message name="SelectAddressByMemberloginIDHttpGetIn">
+    <wsdl:part name="memberloginID" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectAddressByMemberloginIDHttpGetOut" />
+  <wsdl:message name="SelectUserMessageBymemberloginIDHttpGetIn">
+    <wsdl:part name="memberloginID" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectUserMessageBymemberloginIDHttpGetOut" />
+  <wsdl:message name="SelectMemberRank_LinkCategoryHttpGetIn">
+    <wsdl:part name="memberloginID" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+    <wsdl:part name="IsReadOrBuy" type="s:string" />
+    <wsdl:part name="Category_ID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectMemberRank_LinkCategoryHttpGetOut" />
+  <wsdl:message name="SelectOrderByMemberloginIDHttpGetIn">
+    <wsdl:part name="memberloginID" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+    <wsdl:part name="startnum" type="s:string" />
+    <wsdl:part name="ordernumber" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectOrderByMemberloginIDHttpGetOut" />
+  <wsdl:message name="SelectOrderByMemberloginIDAndOrderStyleHttpGetIn">
+    <wsdl:part name="memberloginID" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+    <wsdl:part name="startnum" type="s:string" />
+    <wsdl:part name="ordernumber" type="s:string" />
+    <wsdl:part name="OrderStyle" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectOrderByMemberloginIDAndOrderStyleHttpGetOut" />
+  <wsdl:message name="SelectOrderProductByOrderInfoGuidHttpGetIn">
+    <wsdl:part name="OrderInfoGuid" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectOrderProductByOrderInfoGuidHttpGetOut" />
+  <wsdl:message name="SelectOrderByMemberloginID_GetCountHttpGetIn">
+    <wsdl:part name="memberloginID" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectOrderByMemberloginID_GetCountHttpGetOut" />
+  <wsdl:message name="CreateOrderHttpGetIn">
+    <wsdl:part name="token" type="s:string" />
+    <wsdl:part name="ServiceAgent" type="s:string" />
+    <wsdl:part name="MemloginID" type="s:string" />
+    <wsdl:part name="ShopCategoryID" type="s:string" />
+    <wsdl:part name="PayMentType" type="s:string" />
+    <wsdl:part name="ProductGuid" type="s:string" />
+    <wsdl:part name="BuyNumber" type="s:string" />
+    <wsdl:part name="PostPrice" type="s:string" />
+    <wsdl:part name="Color" type="s:string" />
+    <wsdl:part name="Size" type="s:string" />
+    <wsdl:part name="AddressGuid" type="s:string" />
+    <wsdl:part name="TextBoxMessage" type="s:string" />
+    <wsdl:part name="InvoiceType" type="s:string" />
+    <wsdl:part name="InvoiceTitle" type="s:string" />
+    <wsdl:part name="InvoiceContent" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateOrderHttpGetOut" />
+  <wsdl:message name="AddShopCarHttpGetIn">
+    <wsdl:part name="MyMemLoginID" type="s:string" />
+    <wsdl:part name="category" type="s:string" />
+    <wsdl:part name="Num" type="s:string" />
+    <wsdl:part name="guid" type="s:string" />
+    <wsdl:part name="Size" type="s:string" />
+    <wsdl:part name="Color" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddShopCarHttpGetOut" />
+  <wsdl:message name="PostPriceHttpGetIn">
+    <wsdl:part name="ShopID" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PostPriceHttpGetOut" />
+  <wsdl:message name="CreateOrderCarHttpGetIn">
+    <wsdl:part name="ServiceAgent" type="s:string" />
+    <wsdl:part name="MemloginID" type="s:string" />
+    <wsdl:part name="ShopCategoryID" type="s:string" />
+    <wsdl:part name="PayMentType" type="s:string" />
+    <wsdl:part name="ProductGuids" type="s:string" />
+    <wsdl:part name="BuyNumber" type="s:string" />
+    <wsdl:part name="PostPrice" type="s:string" />
+    <wsdl:part name="Color" type="s:string" />
+    <wsdl:part name="Size" type="s:string" />
+    <wsdl:part name="AddressGuid" type="s:string" />
+    <wsdl:part name="ShopID" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+    <wsdl:part name="TextBoxMessage" type="s:string" />
+    <wsdl:part name="InvoiceType" type="s:string" />
+    <wsdl:part name="InvoiceTitle" type="s:string" />
+    <wsdl:part name="InvoiceContent" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateOrderCarHttpGetOut" />
+  <wsdl:message name="ADDAddressHttpGetIn">
+    <wsdl:part name="Name" type="s:string" />
+    <wsdl:part name="Email" type="s:string" />
+    <wsdl:part name="AddressValue" type="s:string" />
+    <wsdl:part name="Area" type="s:string" />
+    <wsdl:part name="AddressCode" type="s:string" />
+    <wsdl:part name="Postalcode" type="s:string" />
+    <wsdl:part name="Tel" type="s:string" />
+    <wsdl:part name="Mobile" type="s:string" />
+    <wsdl:part name="MemLoginID" type="s:string" />
+    <wsdl:part name="Address" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ADDAddressHttpGetOut" />
+  <wsdl:message name="MobileServiceRechargeHttpGetIn">
+    <wsdl:part name="token" type="s:string" />
+    <wsdl:part name="MemloginID" type="s:string" />
+    <wsdl:part name="RechargeBV" type="s:string" />
+    <wsdl:part name="RechargeType" type="s:string" />
+    <wsdl:part name="UserName" type="s:string" />
+    <wsdl:part name="BankCard" type="s:string" />
+    <wsdl:part name="BankCardType" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MobileServiceRechargeHttpGetOut" />
+  <wsdl:message name="PayHttpGetIn">
+    <wsdl:part name="OrderNumber" type="s:string" />
+    <wsdl:part name="MemloginID" type="s:string" />
+    <wsdl:part name="ScoreHvType" type="s:string" />
+    <wsdl:part name="PayPwd" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PayHttpGetOut" />
+  <wsdl:message name="SelectProductByNameAndShop_category_idHttpGetIn">
+    <wsdl:part name="Shop_category_id" type="s:string" />
+    <wsdl:part name="Name" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectProductByNameAndShop_category_idHttpGetOut" />
+  <wsdl:message name="SelectProductByProductCategoryCodeAndShop_category_idHttpGetIn">
+    <wsdl:part name="shop_category_id" type="s:string" />
+    <wsdl:part name="top" type="s:string" />
+    <wsdl:part name="number" type="s:string" />
+    <wsdl:part name="ProductCategoryCode" type="s:string" />
+    <wsdl:part name="name" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectProductByProductCategoryCodeAndShop_category_idHttpGetOut" />
+  <wsdl:message name="SelectAllShopCategoryHttpGetIn" />
+  <wsdl:message name="SelectAllShopCategoryHttpGetOut" />
+  <wsdl:message name="GetScore_pv_bHttpGetIn">
+    <wsdl:part name="MemLoginID" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetScore_pv_bHttpGetOut" />
+  <wsdl:message name="Login_Web_tj88HttpGetIn">
+    <wsdl:part name="MemberloginID" type="s:string" />
+    <wsdl:part name="PWD" type="s:string" />
+    <wsdl:part name="IdentityCard" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Login_Web_tj88HttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="LoginidGetAllMemberHttpGetIn">
+    <wsdl:part name="MemberLongiNO" type="s:string" />
+    <wsdl:part name="md5" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LoginidGetAllMemberHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="SelectOrderByGuidHttpGetIn">
+    <wsdl:part name="token" type="s:string" />
+    <wsdl:part name="guid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectOrderByGuidHttpGetOut" />
+  <wsdl:message name="GetALLMemberByShopidHttpGetIn">
+    <wsdl:part name="shopid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetALLMemberByShopidHttpGetOut" />
+  <wsdl:message name="MobileOrderRefundHttpGetIn">
+    <wsdl:part name="MemLoginID" type="s:string" />
+    <wsdl:part name="OrderGuid" type="s:string" />
+    <wsdl:part name="ShopID" type="s:string" />
+    <wsdl:part name="RefundReason" type="s:string" />
+    <wsdl:part name="Introduce" type="s:string" />
+    <wsdl:part name="RefundTypes" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MobileOrderRefundHttpGetOut" />
+  <wsdl:message name="GetVersionHttpGetIn" />
+  <wsdl:message name="GetVersionHttpGetOut" />
+  <wsdl:message name="MobileReceiptHttpGetIn">
+    <wsdl:part name="OrderNumber" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MobileReceiptHttpGetOut" />
+  <wsdl:message name="DelteAdressHttpGetIn">
+    <wsdl:part name="guid" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DelteAdressHttpGetOut" />
+  <wsdl:message name="UpdateAdressIsDefaultHttpGetIn">
+    <wsdl:part name="guid" type="s:string" />
+    <wsdl:part name="memloginid" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateAdressIsDefaultHttpGetOut" />
+  <wsdl:message name="DeleteShopCarHttpGetIn">
+    <wsdl:part name="guid" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteShopCarHttpGetOut" />
+  <wsdl:message name="SelectAllShopCarBymemberloginIDHttpGetIn">
+    <wsdl:part name="memberloginID" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectAllShopCarBymemberloginIDHttpGetOut" />
+  <wsdl:message name="SelcteMoeneyBypwdANDTransferHttpGetIn">
+    <wsdl:part name="meloginid" type="s:string" />
+    <wsdl:part name="paypwd" type="s:string" />
+    <wsdl:part name="AdvancePayment" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelcteMoeneyBypwdANDTransferHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SignIn_HVHttpGetIn">
+    <wsdl:part name="MyMemLoginID" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SignIn_HVHttpGetOut" />
+  <wsdl:message name="PayDecreaseHttpGetIn">
+    <wsdl:part name="MemLoginID" type="s:string" />
+    <wsdl:part name="MessageCode" type="s:string" />
+    <wsdl:part name="PayPwd" type="s:string" />
+    <wsdl:part name="Decrease_bv" type="s:string" />
+    <wsdl:part name="Remark" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PayDecreaseHttpGetOut" />
+  <wsdl:message name="PayDecrease_BankHttpGetIn">
+    <wsdl:part name="MemLoginID" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PayDecrease_BankHttpGetOut" />
+  <wsdl:message name="PayTransfer_BVHttpGetIn">
+    <wsdl:part name="MemLoginID" type="s:string" />
+    <wsdl:part name="MessageCode" type="s:string" />
+    <wsdl:part name="TransferID" type="s:string" />
+    <wsdl:part name="TransferID2" type="s:string" />
+    <wsdl:part name="PayPwd" type="s:string" />
+    <wsdl:part name="Transfer" type="s:string" />
+    <wsdl:part name="TransferName" type="s:string" />
+    <wsdl:part name="Remark" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PayTransfer_BVHttpGetOut" />
+  <wsdl:message name="SelectAllPreTransferByMemberloginIDHttpGetIn">
+    <wsdl:part name="memberloginID" type="s:string" />
+    <wsdl:part name="Currentpage" type="s:string" />
+    <wsdl:part name="PageSize" type="s:string" />
+    <wsdl:part name="type" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectAllPreTransferByMemberloginIDHttpGetOut" />
+  <wsdl:message name="SelectAllAdvancePaymentApplyLogByMemberloginIDHttpGetIn">
+    <wsdl:part name="memberloginID" type="s:string" />
+    <wsdl:part name="Currentpage" type="s:string" />
+    <wsdl:part name="PageSize" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectAllAdvancePaymentApplyLogByMemberloginIDHttpGetOut" />
+  <wsdl:message name="SelectAllAdvancePaymentModifyLogByMemberloginIDHttpGetIn">
+    <wsdl:part name="memberloginID" type="s:string" />
+    <wsdl:part name="Currentpage" type="s:string" />
+    <wsdl:part name="PageSize" type="s:string" />
+    <wsdl:part name="strPayType" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectAllAdvancePaymentModifyLogByMemberloginIDHttpGetOut" />
+  <wsdl:message name="SelectAllPreTransferByMemberloginIDCountHttpGetIn">
+    <wsdl:part name="memberloginID" type="s:string" />
+    <wsdl:part name="Currentpage" type="s:string" />
+    <wsdl:part name="PageSize" type="s:string" />
+    <wsdl:part name="type" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectAllPreTransferByMemberloginIDCountHttpGetOut" />
+  <wsdl:message name="SelectAllAdvancePaymentApplyLogByMemberloginIDCountHttpGetIn">
+    <wsdl:part name="memberloginID" type="s:string" />
+    <wsdl:part name="Currentpage" type="s:string" />
+    <wsdl:part name="PageSize" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectAllAdvancePaymentApplyLogByMemberloginIDCountHttpGetOut" />
+  <wsdl:message name="SelectAllAdvancePaymentModifyLogByMemberloginIDCountHttpGetIn">
+    <wsdl:part name="memberloginID" type="s:string" />
+    <wsdl:part name="Currentpage" type="s:string" />
+    <wsdl:part name="PageSize" type="s:string" />
+    <wsdl:part name="strPayType" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectAllAdvancePaymentModifyLogByMemberloginIDCountHttpGetOut" />
+  <wsdl:message name="MemberRegisterMemberHttpGetIn">
+    <wsdl:part name="memloginid" type="s:string" />
+    <wsdl:part name="Email" type="s:string" />
+    <wsdl:part name="Mobile" type="s:string" />
+    <wsdl:part name="Name" type="s:string" />
+    <wsdl:part name="recommendid" type="s:string" />
+    <wsdl:part name="IdentityCard" type="s:string" />
+    <wsdl:part name="Pwd" type="s:string" />
+    <wsdl:part name="Code" type="s:string" />
+    <wsdl:part name="Encryption" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MemberRegisterMemberHttpGetOut" />
+  <wsdl:message name="MemberRegisterMandarinMemberHttpGetIn">
+    <wsdl:part name="memloginid" type="s:string" />
+    <wsdl:part name="Email" type="s:string" />
+    <wsdl:part name="Mobile" type="s:string" />
+    <wsdl:part name="Name" type="s:string" />
+    <wsdl:part name="recommendid" type="s:string" />
+    <wsdl:part name="IdentityCard" type="s:string" />
+    <wsdl:part name="Pwd" type="s:string" />
+    <wsdl:part name="Code" type="s:string" />
+    <wsdl:part name="Encryption" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MemberRegisterMandarinMemberHttpGetOut" />
+  <wsdl:message name="MemberRegisterMemberGetMemberNumberHttpGetIn" />
+  <wsdl:message name="MemberRegisterMemberGetMemberNumberHttpGetOut" />
+  <wsdl:message name="MemberRegisterMandarinMemberGetMemberNumberRegisterHttpGetIn" />
+  <wsdl:message name="MemberRegisterMandarinMemberGetMemberNumberRegisterHttpGetOut" />
+  <wsdl:message name="imgHttpGetIn" />
+  <wsdl:message name="imgHttpGetOut" />
+  <wsdl:message name="BindMobileHttpGetIn">
+    <wsdl:part name="MessageCode" type="s:string" />
+    <wsdl:part name="modile" type="s:string" />
+    <wsdl:part name="MemLoginID" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="BindMobileHttpGetOut" />
+  <wsdl:message name="BindTradePWDHttpGetIn">
+    <wsdl:part name="MessageCode" type="s:string" />
+    <wsdl:part name="modile" type="s:string" />
+    <wsdl:part name="MemLoginID" type="s:string" />
+    <wsdl:part name="payPwd" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="BindTradePWDHttpGetOut" />
+  <wsdl:message name="SettingsPWDHttpGetIn">
+    <wsdl:part name="MemLoginID" type="s:string" />
+    <wsdl:part name="OldPwd" type="s:string" />
+    <wsdl:part name="NewPwd" type="s:string" />
+    <wsdl:part name="NewSecondPwd" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SettingsPWDHttpGetOut" />
+  <wsdl:message name="LoginHttpPostIn">
+    <wsdl:part name="MemberloginID" type="s:string" />
+    <wsdl:part name="PWD" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LoginHttpPostOut" />
+  <wsdl:message name="SelectProdctByShop_category_idHttpPostIn">
+    <wsdl:part name="Shop_category_id" type="s:string" />
+    <wsdl:part name="StartNumber" type="s:string" />
+    <wsdl:part name="OrderNumber" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectProdctByShop_category_idHttpPostOut" />
+  <wsdl:message name="SelectProdctByShop_category_id_twoHttpPostIn">
+    <wsdl:part name="Shop_category_id" type="s:string" />
+    <wsdl:part name="StartNumber" type="s:string" />
+    <wsdl:part name="OrderNumber" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectProdctByShop_category_id_twoHttpPostOut" />
+  <wsdl:message name="SelectProdctByThreeHttpPostIn" />
+  <wsdl:message name="SelectProdctByThreeHttpPostOut" />
+  <wsdl:message name="SelectProdctByIDHttpPostIn">
+    <wsdl:part name="ID" type="s:string" />
+    <wsdl:part name="shop_category_id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectProdctByIDHttpPostOut" />
+  <wsdl:message name="SelectProdctByGUIDHttpPostIn">
+    <wsdl:part name="guid" type="s:string" />
+    <wsdl:part name="shop_category_id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectProdctByGUIDHttpPostOut" />
+  <wsdl:message name="SelectMemberInfoAllByMemloginIDHttpPostIn">
+    <wsdl:part name="memberloginID" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectMemberInfoAllByMemloginIDHttpPostOut" />
+  <wsdl:message name="SelectAddressByMemberloginIDHttpPostIn">
+    <wsdl:part name="memberloginID" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectAddressByMemberloginIDHttpPostOut" />
+  <wsdl:message name="SelectUserMessageBymemberloginIDHttpPostIn">
+    <wsdl:part name="memberloginID" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectUserMessageBymemberloginIDHttpPostOut" />
+  <wsdl:message name="SelectMemberRank_LinkCategoryHttpPostIn">
+    <wsdl:part name="memberloginID" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+    <wsdl:part name="IsReadOrBuy" type="s:string" />
+    <wsdl:part name="Category_ID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectMemberRank_LinkCategoryHttpPostOut" />
+  <wsdl:message name="SelectOrderByMemberloginIDHttpPostIn">
+    <wsdl:part name="memberloginID" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+    <wsdl:part name="startnum" type="s:string" />
+    <wsdl:part name="ordernumber" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectOrderByMemberloginIDHttpPostOut" />
+  <wsdl:message name="SelectOrderByMemberloginIDAndOrderStyleHttpPostIn">
+    <wsdl:part name="memberloginID" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+    <wsdl:part name="startnum" type="s:string" />
+    <wsdl:part name="ordernumber" type="s:string" />
+    <wsdl:part name="OrderStyle" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectOrderByMemberloginIDAndOrderStyleHttpPostOut" />
+  <wsdl:message name="SelectOrderProductByOrderInfoGuidHttpPostIn">
+    <wsdl:part name="OrderInfoGuid" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectOrderProductByOrderInfoGuidHttpPostOut" />
+  <wsdl:message name="SelectOrderByMemberloginID_GetCountHttpPostIn">
+    <wsdl:part name="memberloginID" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectOrderByMemberloginID_GetCountHttpPostOut" />
+  <wsdl:message name="CreateOrderHttpPostIn">
+    <wsdl:part name="token" type="s:string" />
+    <wsdl:part name="ServiceAgent" type="s:string" />
+    <wsdl:part name="MemloginID" type="s:string" />
+    <wsdl:part name="ShopCategoryID" type="s:string" />
+    <wsdl:part name="PayMentType" type="s:string" />
+    <wsdl:part name="ProductGuid" type="s:string" />
+    <wsdl:part name="BuyNumber" type="s:string" />
+    <wsdl:part name="PostPrice" type="s:string" />
+    <wsdl:part name="Color" type="s:string" />
+    <wsdl:part name="Size" type="s:string" />
+    <wsdl:part name="AddressGuid" type="s:string" />
+    <wsdl:part name="TextBoxMessage" type="s:string" />
+    <wsdl:part name="InvoiceType" type="s:string" />
+    <wsdl:part name="InvoiceTitle" type="s:string" />
+    <wsdl:part name="InvoiceContent" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateOrderHttpPostOut" />
+  <wsdl:message name="AddShopCarHttpPostIn">
+    <wsdl:part name="MyMemLoginID" type="s:string" />
+    <wsdl:part name="category" type="s:string" />
+    <wsdl:part name="Num" type="s:string" />
+    <wsdl:part name="guid" type="s:string" />
+    <wsdl:part name="Size" type="s:string" />
+    <wsdl:part name="Color" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddShopCarHttpPostOut" />
+  <wsdl:message name="PostPriceHttpPostIn">
+    <wsdl:part name="ShopID" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PostPriceHttpPostOut" />
+  <wsdl:message name="CreateOrderCarHttpPostIn">
+    <wsdl:part name="ServiceAgent" type="s:string" />
+    <wsdl:part name="MemloginID" type="s:string" />
+    <wsdl:part name="ShopCategoryID" type="s:string" />
+    <wsdl:part name="PayMentType" type="s:string" />
+    <wsdl:part name="ProductGuids" type="s:string" />
+    <wsdl:part name="BuyNumber" type="s:string" />
+    <wsdl:part name="PostPrice" type="s:string" />
+    <wsdl:part name="Color" type="s:string" />
+    <wsdl:part name="Size" type="s:string" />
+    <wsdl:part name="AddressGuid" type="s:string" />
+    <wsdl:part name="ShopID" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+    <wsdl:part name="TextBoxMessage" type="s:string" />
+    <wsdl:part name="InvoiceType" type="s:string" />
+    <wsdl:part name="InvoiceTitle" type="s:string" />
+    <wsdl:part name="InvoiceContent" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateOrderCarHttpPostOut" />
+  <wsdl:message name="ADDAddressHttpPostIn">
+    <wsdl:part name="Name" type="s:string" />
+    <wsdl:part name="Email" type="s:string" />
+    <wsdl:part name="AddressValue" type="s:string" />
+    <wsdl:part name="Area" type="s:string" />
+    <wsdl:part name="AddressCode" type="s:string" />
+    <wsdl:part name="Postalcode" type="s:string" />
+    <wsdl:part name="Tel" type="s:string" />
+    <wsdl:part name="Mobile" type="s:string" />
+    <wsdl:part name="MemLoginID" type="s:string" />
+    <wsdl:part name="Address" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ADDAddressHttpPostOut" />
+  <wsdl:message name="MobileServiceRechargeHttpPostIn">
+    <wsdl:part name="token" type="s:string" />
+    <wsdl:part name="MemloginID" type="s:string" />
+    <wsdl:part name="RechargeBV" type="s:string" />
+    <wsdl:part name="RechargeType" type="s:string" />
+    <wsdl:part name="UserName" type="s:string" />
+    <wsdl:part name="BankCard" type="s:string" />
+    <wsdl:part name="BankCardType" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MobileServiceRechargeHttpPostOut" />
+  <wsdl:message name="PayHttpPostIn">
+    <wsdl:part name="OrderNumber" type="s:string" />
+    <wsdl:part name="MemloginID" type="s:string" />
+    <wsdl:part name="ScoreHvType" type="s:string" />
+    <wsdl:part name="PayPwd" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PayHttpPostOut" />
+  <wsdl:message name="SelectProductByNameAndShop_category_idHttpPostIn">
+    <wsdl:part name="Shop_category_id" type="s:string" />
+    <wsdl:part name="Name" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectProductByNameAndShop_category_idHttpPostOut" />
+  <wsdl:message name="SelectProductByProductCategoryCodeAndShop_category_idHttpPostIn">
+    <wsdl:part name="shop_category_id" type="s:string" />
+    <wsdl:part name="top" type="s:string" />
+    <wsdl:part name="number" type="s:string" />
+    <wsdl:part name="ProductCategoryCode" type="s:string" />
+    <wsdl:part name="name" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectProductByProductCategoryCodeAndShop_category_idHttpPostOut" />
+  <wsdl:message name="SelectAllShopCategoryHttpPostIn" />
+  <wsdl:message name="SelectAllShopCategoryHttpPostOut" />
+  <wsdl:message name="GetScore_pv_bHttpPostIn">
+    <wsdl:part name="MemLoginID" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetScore_pv_bHttpPostOut" />
+  <wsdl:message name="Login_Web_tj88HttpPostIn">
+    <wsdl:part name="MemberloginID" type="s:string" />
+    <wsdl:part name="PWD" type="s:string" />
+    <wsdl:part name="IdentityCard" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Login_Web_tj88HttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="LoginidGetAllMemberHttpPostIn">
+    <wsdl:part name="MemberLongiNO" type="s:string" />
+    <wsdl:part name="md5" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LoginidGetAllMemberHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="SelectOrderByGuidHttpPostIn">
+    <wsdl:part name="token" type="s:string" />
+    <wsdl:part name="guid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectOrderByGuidHttpPostOut" />
+  <wsdl:message name="GetALLMemberByShopidHttpPostIn">
+    <wsdl:part name="shopid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetALLMemberByShopidHttpPostOut" />
+  <wsdl:message name="MobileOrderRefundHttpPostIn">
+    <wsdl:part name="MemLoginID" type="s:string" />
+    <wsdl:part name="OrderGuid" type="s:string" />
+    <wsdl:part name="ShopID" type="s:string" />
+    <wsdl:part name="RefundReason" type="s:string" />
+    <wsdl:part name="Introduce" type="s:string" />
+    <wsdl:part name="RefundTypes" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MobileOrderRefundHttpPostOut" />
+  <wsdl:message name="GetVersionHttpPostIn" />
+  <wsdl:message name="GetVersionHttpPostOut" />
+  <wsdl:message name="MobileReceiptHttpPostIn">
+    <wsdl:part name="OrderNumber" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MobileReceiptHttpPostOut" />
+  <wsdl:message name="DelteAdressHttpPostIn">
+    <wsdl:part name="guid" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DelteAdressHttpPostOut" />
+  <wsdl:message name="UpdateAdressIsDefaultHttpPostIn">
+    <wsdl:part name="guid" type="s:string" />
+    <wsdl:part name="memloginid" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateAdressIsDefaultHttpPostOut" />
+  <wsdl:message name="DeleteShopCarHttpPostIn">
+    <wsdl:part name="guid" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteShopCarHttpPostOut" />
+  <wsdl:message name="SelectAllShopCarBymemberloginIDHttpPostIn">
+    <wsdl:part name="memberloginID" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectAllShopCarBymemberloginIDHttpPostOut" />
+  <wsdl:message name="SelcteMoeneyBypwdANDTransferHttpPostIn">
+    <wsdl:part name="meloginid" type="s:string" />
+    <wsdl:part name="paypwd" type="s:string" />
+    <wsdl:part name="AdvancePayment" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelcteMoeneyBypwdANDTransferHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SignIn_HVHttpPostIn">
+    <wsdl:part name="MyMemLoginID" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SignIn_HVHttpPostOut" />
+  <wsdl:message name="PayDecreaseHttpPostIn">
+    <wsdl:part name="MemLoginID" type="s:string" />
+    <wsdl:part name="MessageCode" type="s:string" />
+    <wsdl:part name="PayPwd" type="s:string" />
+    <wsdl:part name="Decrease_bv" type="s:string" />
+    <wsdl:part name="Remark" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PayDecreaseHttpPostOut" />
+  <wsdl:message name="PayDecrease_BankHttpPostIn">
+    <wsdl:part name="MemLoginID" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PayDecrease_BankHttpPostOut" />
+  <wsdl:message name="PayTransfer_BVHttpPostIn">
+    <wsdl:part name="MemLoginID" type="s:string" />
+    <wsdl:part name="MessageCode" type="s:string" />
+    <wsdl:part name="TransferID" type="s:string" />
+    <wsdl:part name="TransferID2" type="s:string" />
+    <wsdl:part name="PayPwd" type="s:string" />
+    <wsdl:part name="Transfer" type="s:string" />
+    <wsdl:part name="TransferName" type="s:string" />
+    <wsdl:part name="Remark" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PayTransfer_BVHttpPostOut" />
+  <wsdl:message name="SelectAllPreTransferByMemberloginIDHttpPostIn">
+    <wsdl:part name="memberloginID" type="s:string" />
+    <wsdl:part name="Currentpage" type="s:string" />
+    <wsdl:part name="PageSize" type="s:string" />
+    <wsdl:part name="type" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectAllPreTransferByMemberloginIDHttpPostOut" />
+  <wsdl:message name="SelectAllAdvancePaymentApplyLogByMemberloginIDHttpPostIn">
+    <wsdl:part name="memberloginID" type="s:string" />
+    <wsdl:part name="Currentpage" type="s:string" />
+    <wsdl:part name="PageSize" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectAllAdvancePaymentApplyLogByMemberloginIDHttpPostOut" />
+  <wsdl:message name="SelectAllAdvancePaymentModifyLogByMemberloginIDHttpPostIn">
+    <wsdl:part name="memberloginID" type="s:string" />
+    <wsdl:part name="Currentpage" type="s:string" />
+    <wsdl:part name="PageSize" type="s:string" />
+    <wsdl:part name="strPayType" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectAllAdvancePaymentModifyLogByMemberloginIDHttpPostOut" />
+  <wsdl:message name="SelectAllPreTransferByMemberloginIDCountHttpPostIn">
+    <wsdl:part name="memberloginID" type="s:string" />
+    <wsdl:part name="Currentpage" type="s:string" />
+    <wsdl:part name="PageSize" type="s:string" />
+    <wsdl:part name="type" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectAllPreTransferByMemberloginIDCountHttpPostOut" />
+  <wsdl:message name="SelectAllAdvancePaymentApplyLogByMemberloginIDCountHttpPostIn">
+    <wsdl:part name="memberloginID" type="s:string" />
+    <wsdl:part name="Currentpage" type="s:string" />
+    <wsdl:part name="PageSize" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectAllAdvancePaymentApplyLogByMemberloginIDCountHttpPostOut" />
+  <wsdl:message name="SelectAllAdvancePaymentModifyLogByMemberloginIDCountHttpPostIn">
+    <wsdl:part name="memberloginID" type="s:string" />
+    <wsdl:part name="Currentpage" type="s:string" />
+    <wsdl:part name="PageSize" type="s:string" />
+    <wsdl:part name="strPayType" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectAllAdvancePaymentModifyLogByMemberloginIDCountHttpPostOut" />
+  <wsdl:message name="MemberRegisterMemberHttpPostIn">
+    <wsdl:part name="memloginid" type="s:string" />
+    <wsdl:part name="Email" type="s:string" />
+    <wsdl:part name="Mobile" type="s:string" />
+    <wsdl:part name="Name" type="s:string" />
+    <wsdl:part name="recommendid" type="s:string" />
+    <wsdl:part name="IdentityCard" type="s:string" />
+    <wsdl:part name="Pwd" type="s:string" />
+    <wsdl:part name="Code" type="s:string" />
+    <wsdl:part name="Encryption" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MemberRegisterMemberHttpPostOut" />
+  <wsdl:message name="MemberRegisterMandarinMemberHttpPostIn">
+    <wsdl:part name="memloginid" type="s:string" />
+    <wsdl:part name="Email" type="s:string" />
+    <wsdl:part name="Mobile" type="s:string" />
+    <wsdl:part name="Name" type="s:string" />
+    <wsdl:part name="recommendid" type="s:string" />
+    <wsdl:part name="IdentityCard" type="s:string" />
+    <wsdl:part name="Pwd" type="s:string" />
+    <wsdl:part name="Code" type="s:string" />
+    <wsdl:part name="Encryption" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MemberRegisterMandarinMemberHttpPostOut" />
+  <wsdl:message name="MemberRegisterMemberGetMemberNumberHttpPostIn" />
+  <wsdl:message name="MemberRegisterMemberGetMemberNumberHttpPostOut" />
+  <wsdl:message name="MemberRegisterMandarinMemberGetMemberNumberRegisterHttpPostIn" />
+  <wsdl:message name="MemberRegisterMandarinMemberGetMemberNumberRegisterHttpPostOut" />
+  <wsdl:message name="imgHttpPostIn" />
+  <wsdl:message name="imgHttpPostOut" />
+  <wsdl:message name="BindMobileHttpPostIn">
+    <wsdl:part name="MessageCode" type="s:string" />
+    <wsdl:part name="modile" type="s:string" />
+    <wsdl:part name="MemLoginID" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="BindMobileHttpPostOut" />
+  <wsdl:message name="BindTradePWDHttpPostIn">
+    <wsdl:part name="MessageCode" type="s:string" />
+    <wsdl:part name="modile" type="s:string" />
+    <wsdl:part name="MemLoginID" type="s:string" />
+    <wsdl:part name="payPwd" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="BindTradePWDHttpPostOut" />
+  <wsdl:message name="SettingsPWDHttpPostIn">
+    <wsdl:part name="MemLoginID" type="s:string" />
+    <wsdl:part name="OldPwd" type="s:string" />
+    <wsdl:part name="NewPwd" type="s:string" />
+    <wsdl:part name="NewSecondPwd" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SettingsPWDHttpPostOut" />
+  <wsdl:portType name="MobileServiceSoap">
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginSoapIn" />
+      <wsdl:output message="tns:LoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectProdctByShop_category_id">
+      <wsdl:input message="tns:SelectProdctByShop_category_idSoapIn" />
+      <wsdl:output message="tns:SelectProdctByShop_category_idSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectProdctByShop_category_id_two">
+      <wsdl:input message="tns:SelectProdctByShop_category_id_twoSoapIn" />
+      <wsdl:output message="tns:SelectProdctByShop_category_id_twoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectProdctByThree">
+      <wsdl:input message="tns:SelectProdctByThreeSoapIn" />
+      <wsdl:output message="tns:SelectProdctByThreeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectProdctByID">
+      <wsdl:input message="tns:SelectProdctByIDSoapIn" />
+      <wsdl:output message="tns:SelectProdctByIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectProdctByGUID">
+      <wsdl:input message="tns:SelectProdctByGUIDSoapIn" />
+      <wsdl:output message="tns:SelectProdctByGUIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectMemberInfoAllByMemloginID">
+      <wsdl:input message="tns:SelectMemberInfoAllByMemloginIDSoapIn" />
+      <wsdl:output message="tns:SelectMemberInfoAllByMemloginIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAddressByMemberloginID">
+      <wsdl:input message="tns:SelectAddressByMemberloginIDSoapIn" />
+      <wsdl:output message="tns:SelectAddressByMemberloginIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectUserMessageBymemberloginID">
+      <wsdl:input message="tns:SelectUserMessageBymemberloginIDSoapIn" />
+      <wsdl:output message="tns:SelectUserMessageBymemberloginIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectMemberRank_LinkCategory">
+      <wsdl:input message="tns:SelectMemberRank_LinkCategorySoapIn" />
+      <wsdl:output message="tns:SelectMemberRank_LinkCategorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectOrderByMemberloginID">
+      <wsdl:input message="tns:SelectOrderByMemberloginIDSoapIn" />
+      <wsdl:output message="tns:SelectOrderByMemberloginIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectOrderByMemberloginIDAndOrderStyle">
+      <wsdl:input message="tns:SelectOrderByMemberloginIDAndOrderStyleSoapIn" />
+      <wsdl:output message="tns:SelectOrderByMemberloginIDAndOrderStyleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectOrderProductByOrderInfoGuid">
+      <wsdl:input message="tns:SelectOrderProductByOrderInfoGuidSoapIn" />
+      <wsdl:output message="tns:SelectOrderProductByOrderInfoGuidSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectOrderByMemberloginID_GetCount">
+      <wsdl:input message="tns:SelectOrderByMemberloginID_GetCountSoapIn" />
+      <wsdl:output message="tns:SelectOrderByMemberloginID_GetCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrder">
+      <wsdl:input message="tns:CreateOrderSoapIn" />
+      <wsdl:output message="tns:CreateOrderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddShopCar">
+      <wsdl:input message="tns:AddShopCarSoapIn" />
+      <wsdl:output message="tns:AddShopCarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PostPrice">
+      <wsdl:input message="tns:PostPriceSoapIn" />
+      <wsdl:output message="tns:PostPriceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrderCar">
+      <wsdl:input message="tns:CreateOrderCarSoapIn" />
+      <wsdl:output message="tns:CreateOrderCarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ADDAddress">
+      <wsdl:input message="tns:ADDAddressSoapIn" />
+      <wsdl:output message="tns:ADDAddressSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MobileServiceRecharge">
+      <wsdl:input message="tns:MobileServiceRechargeSoapIn" />
+      <wsdl:output message="tns:MobileServiceRechargeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Pay">
+      <wsdl:input message="tns:PaySoapIn" />
+      <wsdl:output message="tns:PaySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectProductByNameAndShop_category_id">
+      <wsdl:input message="tns:SelectProductByNameAndShop_category_idSoapIn" />
+      <wsdl:output message="tns:SelectProductByNameAndShop_category_idSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectProductByProductCategoryCodeAndShop_category_id">
+      <wsdl:input message="tns:SelectProductByProductCategoryCodeAndShop_category_idSoapIn" />
+      <wsdl:output message="tns:SelectProductByProductCategoryCodeAndShop_category_idSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllShopCategory">
+      <wsdl:input message="tns:SelectAllShopCategorySoapIn" />
+      <wsdl:output message="tns:SelectAllShopCategorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetScore_pv_b">
+      <wsdl:input message="tns:GetScore_pv_bSoapIn" />
+      <wsdl:output message="tns:GetScore_pv_bSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Login_Web_tj88">
+      <wsdl:input message="tns:Login_Web_tj88SoapIn" />
+      <wsdl:output message="tns:Login_Web_tj88SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoginidGetAllMember">
+      <wsdl:input message="tns:LoginidGetAllMemberSoapIn" />
+      <wsdl:output message="tns:LoginidGetAllMemberSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectOrderByGuid">
+      <wsdl:input message="tns:SelectOrderByGuidSoapIn" />
+      <wsdl:output message="tns:SelectOrderByGuidSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetALLMemberByShopid">
+      <wsdl:input message="tns:GetALLMemberByShopidSoapIn" />
+      <wsdl:output message="tns:GetALLMemberByShopidSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MobileOrderRefund">
+      <wsdl:input message="tns:MobileOrderRefundSoapIn" />
+      <wsdl:output message="tns:MobileOrderRefundSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVersion">
+      <wsdl:input message="tns:GetVersionSoapIn" />
+      <wsdl:output message="tns:GetVersionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MobileReceipt">
+      <wsdl:input message="tns:MobileReceiptSoapIn" />
+      <wsdl:output message="tns:MobileReceiptSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DelteAdress">
+      <wsdl:input message="tns:DelteAdressSoapIn" />
+      <wsdl:output message="tns:DelteAdressSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAdressIsDefault">
+      <wsdl:input message="tns:UpdateAdressIsDefaultSoapIn" />
+      <wsdl:output message="tns:UpdateAdressIsDefaultSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteShopCar">
+      <wsdl:input message="tns:DeleteShopCarSoapIn" />
+      <wsdl:output message="tns:DeleteShopCarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllShopCarBymemberloginID">
+      <wsdl:input message="tns:SelectAllShopCarBymemberloginIDSoapIn" />
+      <wsdl:output message="tns:SelectAllShopCarBymemberloginIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelcteMoeneyBypwdANDTransfer">
+      <wsdl:input message="tns:SelcteMoeneyBypwdANDTransferSoapIn" />
+      <wsdl:output message="tns:SelcteMoeneyBypwdANDTransferSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SignIn_HV">
+      <wsdl:input message="tns:SignIn_HVSoapIn" />
+      <wsdl:output message="tns:SignIn_HVSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PayDecrease">
+      <wsdl:input message="tns:PayDecreaseSoapIn" />
+      <wsdl:output message="tns:PayDecreaseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PayDecrease_Bank">
+      <wsdl:input message="tns:PayDecrease_BankSoapIn" />
+      <wsdl:output message="tns:PayDecrease_BankSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PayTransfer_BV">
+      <wsdl:input message="tns:PayTransfer_BVSoapIn" />
+      <wsdl:output message="tns:PayTransfer_BVSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllPreTransferByMemberloginID">
+      <wsdl:input message="tns:SelectAllPreTransferByMemberloginIDSoapIn" />
+      <wsdl:output message="tns:SelectAllPreTransferByMemberloginIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllAdvancePaymentApplyLogByMemberloginID">
+      <wsdl:input message="tns:SelectAllAdvancePaymentApplyLogByMemberloginIDSoapIn" />
+      <wsdl:output message="tns:SelectAllAdvancePaymentApplyLogByMemberloginIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllAdvancePaymentModifyLogByMemberloginID">
+      <wsdl:input message="tns:SelectAllAdvancePaymentModifyLogByMemberloginIDSoapIn" />
+      <wsdl:output message="tns:SelectAllAdvancePaymentModifyLogByMemberloginIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllPreTransferByMemberloginIDCount">
+      <wsdl:input message="tns:SelectAllPreTransferByMemberloginIDCountSoapIn" />
+      <wsdl:output message="tns:SelectAllPreTransferByMemberloginIDCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllAdvancePaymentApplyLogByMemberloginIDCount">
+      <wsdl:input message="tns:SelectAllAdvancePaymentApplyLogByMemberloginIDCountSoapIn" />
+      <wsdl:output message="tns:SelectAllAdvancePaymentApplyLogByMemberloginIDCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllAdvancePaymentModifyLogByMemberloginIDCount">
+      <wsdl:input message="tns:SelectAllAdvancePaymentModifyLogByMemberloginIDCountSoapIn" />
+      <wsdl:output message="tns:SelectAllAdvancePaymentModifyLogByMemberloginIDCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MemberRegisterMember">
+      <wsdl:input message="tns:MemberRegisterMemberSoapIn" />
+      <wsdl:output message="tns:MemberRegisterMemberSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MemberRegisterMandarinMember">
+      <wsdl:input message="tns:MemberRegisterMandarinMemberSoapIn" />
+      <wsdl:output message="tns:MemberRegisterMandarinMemberSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MemberRegisterMemberGetMemberNumber">
+      <wsdl:input message="tns:MemberRegisterMemberGetMemberNumberSoapIn" />
+      <wsdl:output message="tns:MemberRegisterMemberGetMemberNumberSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MemberRegisterMandarinMemberGetMemberNumberRegister">
+      <wsdl:input message="tns:MemberRegisterMandarinMemberGetMemberNumberRegisterSoapIn" />
+      <wsdl:output message="tns:MemberRegisterMandarinMemberGetMemberNumberRegisterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="img">
+      <wsdl:input message="tns:imgSoapIn" />
+      <wsdl:output message="tns:imgSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BindMobile">
+      <wsdl:input message="tns:BindMobileSoapIn" />
+      <wsdl:output message="tns:BindMobileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BindTradePWD">
+      <wsdl:input message="tns:BindTradePWDSoapIn" />
+      <wsdl:output message="tns:BindTradePWDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SettingsPWD">
+      <wsdl:input message="tns:SettingsPWDSoapIn" />
+      <wsdl:output message="tns:SettingsPWDSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="MobileServiceHttpGet">
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginHttpGetIn" />
+      <wsdl:output message="tns:LoginHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectProdctByShop_category_id">
+      <wsdl:input message="tns:SelectProdctByShop_category_idHttpGetIn" />
+      <wsdl:output message="tns:SelectProdctByShop_category_idHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectProdctByShop_category_id_two">
+      <wsdl:input message="tns:SelectProdctByShop_category_id_twoHttpGetIn" />
+      <wsdl:output message="tns:SelectProdctByShop_category_id_twoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectProdctByThree">
+      <wsdl:input message="tns:SelectProdctByThreeHttpGetIn" />
+      <wsdl:output message="tns:SelectProdctByThreeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectProdctByID">
+      <wsdl:input message="tns:SelectProdctByIDHttpGetIn" />
+      <wsdl:output message="tns:SelectProdctByIDHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectProdctByGUID">
+      <wsdl:input message="tns:SelectProdctByGUIDHttpGetIn" />
+      <wsdl:output message="tns:SelectProdctByGUIDHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectMemberInfoAllByMemloginID">
+      <wsdl:input message="tns:SelectMemberInfoAllByMemloginIDHttpGetIn" />
+      <wsdl:output message="tns:SelectMemberInfoAllByMemloginIDHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAddressByMemberloginID">
+      <wsdl:input message="tns:SelectAddressByMemberloginIDHttpGetIn" />
+      <wsdl:output message="tns:SelectAddressByMemberloginIDHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectUserMessageBymemberloginID">
+      <wsdl:input message="tns:SelectUserMessageBymemberloginIDHttpGetIn" />
+      <wsdl:output message="tns:SelectUserMessageBymemberloginIDHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectMemberRank_LinkCategory">
+      <wsdl:input message="tns:SelectMemberRank_LinkCategoryHttpGetIn" />
+      <wsdl:output message="tns:SelectMemberRank_LinkCategoryHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectOrderByMemberloginID">
+      <wsdl:input message="tns:SelectOrderByMemberloginIDHttpGetIn" />
+      <wsdl:output message="tns:SelectOrderByMemberloginIDHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectOrderByMemberloginIDAndOrderStyle">
+      <wsdl:input message="tns:SelectOrderByMemberloginIDAndOrderStyleHttpGetIn" />
+      <wsdl:output message="tns:SelectOrderByMemberloginIDAndOrderStyleHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectOrderProductByOrderInfoGuid">
+      <wsdl:input message="tns:SelectOrderProductByOrderInfoGuidHttpGetIn" />
+      <wsdl:output message="tns:SelectOrderProductByOrderInfoGuidHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectOrderByMemberloginID_GetCount">
+      <wsdl:input message="tns:SelectOrderByMemberloginID_GetCountHttpGetIn" />
+      <wsdl:output message="tns:SelectOrderByMemberloginID_GetCountHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrder">
+      <wsdl:input message="tns:CreateOrderHttpGetIn" />
+      <wsdl:output message="tns:CreateOrderHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddShopCar">
+      <wsdl:input message="tns:AddShopCarHttpGetIn" />
+      <wsdl:output message="tns:AddShopCarHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PostPrice">
+      <wsdl:input message="tns:PostPriceHttpGetIn" />
+      <wsdl:output message="tns:PostPriceHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrderCar">
+      <wsdl:input message="tns:CreateOrderCarHttpGetIn" />
+      <wsdl:output message="tns:CreateOrderCarHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ADDAddress">
+      <wsdl:input message="tns:ADDAddressHttpGetIn" />
+      <wsdl:output message="tns:ADDAddressHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MobileServiceRecharge">
+      <wsdl:input message="tns:MobileServiceRechargeHttpGetIn" />
+      <wsdl:output message="tns:MobileServiceRechargeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Pay">
+      <wsdl:input message="tns:PayHttpGetIn" />
+      <wsdl:output message="tns:PayHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectProductByNameAndShop_category_id">
+      <wsdl:input message="tns:SelectProductByNameAndShop_category_idHttpGetIn" />
+      <wsdl:output message="tns:SelectProductByNameAndShop_category_idHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectProductByProductCategoryCodeAndShop_category_id">
+      <wsdl:input message="tns:SelectProductByProductCategoryCodeAndShop_category_idHttpGetIn" />
+      <wsdl:output message="tns:SelectProductByProductCategoryCodeAndShop_category_idHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllShopCategory">
+      <wsdl:input message="tns:SelectAllShopCategoryHttpGetIn" />
+      <wsdl:output message="tns:SelectAllShopCategoryHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetScore_pv_b">
+      <wsdl:input message="tns:GetScore_pv_bHttpGetIn" />
+      <wsdl:output message="tns:GetScore_pv_bHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Login_Web_tj88">
+      <wsdl:input message="tns:Login_Web_tj88HttpGetIn" />
+      <wsdl:output message="tns:Login_Web_tj88HttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoginidGetAllMember">
+      <wsdl:input message="tns:LoginidGetAllMemberHttpGetIn" />
+      <wsdl:output message="tns:LoginidGetAllMemberHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectOrderByGuid">
+      <wsdl:input message="tns:SelectOrderByGuidHttpGetIn" />
+      <wsdl:output message="tns:SelectOrderByGuidHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetALLMemberByShopid">
+      <wsdl:input message="tns:GetALLMemberByShopidHttpGetIn" />
+      <wsdl:output message="tns:GetALLMemberByShopidHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MobileOrderRefund">
+      <wsdl:input message="tns:MobileOrderRefundHttpGetIn" />
+      <wsdl:output message="tns:MobileOrderRefundHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVersion">
+      <wsdl:input message="tns:GetVersionHttpGetIn" />
+      <wsdl:output message="tns:GetVersionHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MobileReceipt">
+      <wsdl:input message="tns:MobileReceiptHttpGetIn" />
+      <wsdl:output message="tns:MobileReceiptHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DelteAdress">
+      <wsdl:input message="tns:DelteAdressHttpGetIn" />
+      <wsdl:output message="tns:DelteAdressHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAdressIsDefault">
+      <wsdl:input message="tns:UpdateAdressIsDefaultHttpGetIn" />
+      <wsdl:output message="tns:UpdateAdressIsDefaultHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteShopCar">
+      <wsdl:input message="tns:DeleteShopCarHttpGetIn" />
+      <wsdl:output message="tns:DeleteShopCarHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllShopCarBymemberloginID">
+      <wsdl:input message="tns:SelectAllShopCarBymemberloginIDHttpGetIn" />
+      <wsdl:output message="tns:SelectAllShopCarBymemberloginIDHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelcteMoeneyBypwdANDTransfer">
+      <wsdl:input message="tns:SelcteMoeneyBypwdANDTransferHttpGetIn" />
+      <wsdl:output message="tns:SelcteMoeneyBypwdANDTransferHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SignIn_HV">
+      <wsdl:input message="tns:SignIn_HVHttpGetIn" />
+      <wsdl:output message="tns:SignIn_HVHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PayDecrease">
+      <wsdl:input message="tns:PayDecreaseHttpGetIn" />
+      <wsdl:output message="tns:PayDecreaseHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PayDecrease_Bank">
+      <wsdl:input message="tns:PayDecrease_BankHttpGetIn" />
+      <wsdl:output message="tns:PayDecrease_BankHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PayTransfer_BV">
+      <wsdl:input message="tns:PayTransfer_BVHttpGetIn" />
+      <wsdl:output message="tns:PayTransfer_BVHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllPreTransferByMemberloginID">
+      <wsdl:input message="tns:SelectAllPreTransferByMemberloginIDHttpGetIn" />
+      <wsdl:output message="tns:SelectAllPreTransferByMemberloginIDHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllAdvancePaymentApplyLogByMemberloginID">
+      <wsdl:input message="tns:SelectAllAdvancePaymentApplyLogByMemberloginIDHttpGetIn" />
+      <wsdl:output message="tns:SelectAllAdvancePaymentApplyLogByMemberloginIDHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllAdvancePaymentModifyLogByMemberloginID">
+      <wsdl:input message="tns:SelectAllAdvancePaymentModifyLogByMemberloginIDHttpGetIn" />
+      <wsdl:output message="tns:SelectAllAdvancePaymentModifyLogByMemberloginIDHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllPreTransferByMemberloginIDCount">
+      <wsdl:input message="tns:SelectAllPreTransferByMemberloginIDCountHttpGetIn" />
+      <wsdl:output message="tns:SelectAllPreTransferByMemberloginIDCountHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllAdvancePaymentApplyLogByMemberloginIDCount">
+      <wsdl:input message="tns:SelectAllAdvancePaymentApplyLogByMemberloginIDCountHttpGetIn" />
+      <wsdl:output message="tns:SelectAllAdvancePaymentApplyLogByMemberloginIDCountHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllAdvancePaymentModifyLogByMemberloginIDCount">
+      <wsdl:input message="tns:SelectAllAdvancePaymentModifyLogByMemberloginIDCountHttpGetIn" />
+      <wsdl:output message="tns:SelectAllAdvancePaymentModifyLogByMemberloginIDCountHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MemberRegisterMember">
+      <wsdl:input message="tns:MemberRegisterMemberHttpGetIn" />
+      <wsdl:output message="tns:MemberRegisterMemberHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MemberRegisterMandarinMember">
+      <wsdl:input message="tns:MemberRegisterMandarinMemberHttpGetIn" />
+      <wsdl:output message="tns:MemberRegisterMandarinMemberHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MemberRegisterMemberGetMemberNumber">
+      <wsdl:input message="tns:MemberRegisterMemberGetMemberNumberHttpGetIn" />
+      <wsdl:output message="tns:MemberRegisterMemberGetMemberNumberHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MemberRegisterMandarinMemberGetMemberNumberRegister">
+      <wsdl:input message="tns:MemberRegisterMandarinMemberGetMemberNumberRegisterHttpGetIn" />
+      <wsdl:output message="tns:MemberRegisterMandarinMemberGetMemberNumberRegisterHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="img">
+      <wsdl:input message="tns:imgHttpGetIn" />
+      <wsdl:output message="tns:imgHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BindMobile">
+      <wsdl:input message="tns:BindMobileHttpGetIn" />
+      <wsdl:output message="tns:BindMobileHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BindTradePWD">
+      <wsdl:input message="tns:BindTradePWDHttpGetIn" />
+      <wsdl:output message="tns:BindTradePWDHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SettingsPWD">
+      <wsdl:input message="tns:SettingsPWDHttpGetIn" />
+      <wsdl:output message="tns:SettingsPWDHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="MobileServiceHttpPost">
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginHttpPostIn" />
+      <wsdl:output message="tns:LoginHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectProdctByShop_category_id">
+      <wsdl:input message="tns:SelectProdctByShop_category_idHttpPostIn" />
+      <wsdl:output message="tns:SelectProdctByShop_category_idHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectProdctByShop_category_id_two">
+      <wsdl:input message="tns:SelectProdctByShop_category_id_twoHttpPostIn" />
+      <wsdl:output message="tns:SelectProdctByShop_category_id_twoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectProdctByThree">
+      <wsdl:input message="tns:SelectProdctByThreeHttpPostIn" />
+      <wsdl:output message="tns:SelectProdctByThreeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectProdctByID">
+      <wsdl:input message="tns:SelectProdctByIDHttpPostIn" />
+      <wsdl:output message="tns:SelectProdctByIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectProdctByGUID">
+      <wsdl:input message="tns:SelectProdctByGUIDHttpPostIn" />
+      <wsdl:output message="tns:SelectProdctByGUIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectMemberInfoAllByMemloginID">
+      <wsdl:input message="tns:SelectMemberInfoAllByMemloginIDHttpPostIn" />
+      <wsdl:output message="tns:SelectMemberInfoAllByMemloginIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAddressByMemberloginID">
+      <wsdl:input message="tns:SelectAddressByMemberloginIDHttpPostIn" />
+      <wsdl:output message="tns:SelectAddressByMemberloginIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectUserMessageBymemberloginID">
+      <wsdl:input message="tns:SelectUserMessageBymemberloginIDHttpPostIn" />
+      <wsdl:output message="tns:SelectUserMessageBymemberloginIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectMemberRank_LinkCategory">
+      <wsdl:input message="tns:SelectMemberRank_LinkCategoryHttpPostIn" />
+      <wsdl:output message="tns:SelectMemberRank_LinkCategoryHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectOrderByMemberloginID">
+      <wsdl:input message="tns:SelectOrderByMemberloginIDHttpPostIn" />
+      <wsdl:output message="tns:SelectOrderByMemberloginIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectOrderByMemberloginIDAndOrderStyle">
+      <wsdl:input message="tns:SelectOrderByMemberloginIDAndOrderStyleHttpPostIn" />
+      <wsdl:output message="tns:SelectOrderByMemberloginIDAndOrderStyleHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectOrderProductByOrderInfoGuid">
+      <wsdl:input message="tns:SelectOrderProductByOrderInfoGuidHttpPostIn" />
+      <wsdl:output message="tns:SelectOrderProductByOrderInfoGuidHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectOrderByMemberloginID_GetCount">
+      <wsdl:input message="tns:SelectOrderByMemberloginID_GetCountHttpPostIn" />
+      <wsdl:output message="tns:SelectOrderByMemberloginID_GetCountHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrder">
+      <wsdl:input message="tns:CreateOrderHttpPostIn" />
+      <wsdl:output message="tns:CreateOrderHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddShopCar">
+      <wsdl:input message="tns:AddShopCarHttpPostIn" />
+      <wsdl:output message="tns:AddShopCarHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PostPrice">
+      <wsdl:input message="tns:PostPriceHttpPostIn" />
+      <wsdl:output message="tns:PostPriceHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrderCar">
+      <wsdl:input message="tns:CreateOrderCarHttpPostIn" />
+      <wsdl:output message="tns:CreateOrderCarHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ADDAddress">
+      <wsdl:input message="tns:ADDAddressHttpPostIn" />
+      <wsdl:output message="tns:ADDAddressHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MobileServiceRecharge">
+      <wsdl:input message="tns:MobileServiceRechargeHttpPostIn" />
+      <wsdl:output message="tns:MobileServiceRechargeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Pay">
+      <wsdl:input message="tns:PayHttpPostIn" />
+      <wsdl:output message="tns:PayHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectProductByNameAndShop_category_id">
+      <wsdl:input message="tns:SelectProductByNameAndShop_category_idHttpPostIn" />
+      <wsdl:output message="tns:SelectProductByNameAndShop_category_idHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectProductByProductCategoryCodeAndShop_category_id">
+      <wsdl:input message="tns:SelectProductByProductCategoryCodeAndShop_category_idHttpPostIn" />
+      <wsdl:output message="tns:SelectProductByProductCategoryCodeAndShop_category_idHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllShopCategory">
+      <wsdl:input message="tns:SelectAllShopCategoryHttpPostIn" />
+      <wsdl:output message="tns:SelectAllShopCategoryHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetScore_pv_b">
+      <wsdl:input message="tns:GetScore_pv_bHttpPostIn" />
+      <wsdl:output message="tns:GetScore_pv_bHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Login_Web_tj88">
+      <wsdl:input message="tns:Login_Web_tj88HttpPostIn" />
+      <wsdl:output message="tns:Login_Web_tj88HttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoginidGetAllMember">
+      <wsdl:input message="tns:LoginidGetAllMemberHttpPostIn" />
+      <wsdl:output message="tns:LoginidGetAllMemberHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectOrderByGuid">
+      <wsdl:input message="tns:SelectOrderByGuidHttpPostIn" />
+      <wsdl:output message="tns:SelectOrderByGuidHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetALLMemberByShopid">
+      <wsdl:input message="tns:GetALLMemberByShopidHttpPostIn" />
+      <wsdl:output message="tns:GetALLMemberByShopidHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MobileOrderRefund">
+      <wsdl:input message="tns:MobileOrderRefundHttpPostIn" />
+      <wsdl:output message="tns:MobileOrderRefundHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVersion">
+      <wsdl:input message="tns:GetVersionHttpPostIn" />
+      <wsdl:output message="tns:GetVersionHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MobileReceipt">
+      <wsdl:input message="tns:MobileReceiptHttpPostIn" />
+      <wsdl:output message="tns:MobileReceiptHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DelteAdress">
+      <wsdl:input message="tns:DelteAdressHttpPostIn" />
+      <wsdl:output message="tns:DelteAdressHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAdressIsDefault">
+      <wsdl:input message="tns:UpdateAdressIsDefaultHttpPostIn" />
+      <wsdl:output message="tns:UpdateAdressIsDefaultHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteShopCar">
+      <wsdl:input message="tns:DeleteShopCarHttpPostIn" />
+      <wsdl:output message="tns:DeleteShopCarHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllShopCarBymemberloginID">
+      <wsdl:input message="tns:SelectAllShopCarBymemberloginIDHttpPostIn" />
+      <wsdl:output message="tns:SelectAllShopCarBymemberloginIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelcteMoeneyBypwdANDTransfer">
+      <wsdl:input message="tns:SelcteMoeneyBypwdANDTransferHttpPostIn" />
+      <wsdl:output message="tns:SelcteMoeneyBypwdANDTransferHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SignIn_HV">
+      <wsdl:input message="tns:SignIn_HVHttpPostIn" />
+      <wsdl:output message="tns:SignIn_HVHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PayDecrease">
+      <wsdl:input message="tns:PayDecreaseHttpPostIn" />
+      <wsdl:output message="tns:PayDecreaseHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PayDecrease_Bank">
+      <wsdl:input message="tns:PayDecrease_BankHttpPostIn" />
+      <wsdl:output message="tns:PayDecrease_BankHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PayTransfer_BV">
+      <wsdl:input message="tns:PayTransfer_BVHttpPostIn" />
+      <wsdl:output message="tns:PayTransfer_BVHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllPreTransferByMemberloginID">
+      <wsdl:input message="tns:SelectAllPreTransferByMemberloginIDHttpPostIn" />
+      <wsdl:output message="tns:SelectAllPreTransferByMemberloginIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllAdvancePaymentApplyLogByMemberloginID">
+      <wsdl:input message="tns:SelectAllAdvancePaymentApplyLogByMemberloginIDHttpPostIn" />
+      <wsdl:output message="tns:SelectAllAdvancePaymentApplyLogByMemberloginIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllAdvancePaymentModifyLogByMemberloginID">
+      <wsdl:input message="tns:SelectAllAdvancePaymentModifyLogByMemberloginIDHttpPostIn" />
+      <wsdl:output message="tns:SelectAllAdvancePaymentModifyLogByMemberloginIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllPreTransferByMemberloginIDCount">
+      <wsdl:input message="tns:SelectAllPreTransferByMemberloginIDCountHttpPostIn" />
+      <wsdl:output message="tns:SelectAllPreTransferByMemberloginIDCountHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllAdvancePaymentApplyLogByMemberloginIDCount">
+      <wsdl:input message="tns:SelectAllAdvancePaymentApplyLogByMemberloginIDCountHttpPostIn" />
+      <wsdl:output message="tns:SelectAllAdvancePaymentApplyLogByMemberloginIDCountHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllAdvancePaymentModifyLogByMemberloginIDCount">
+      <wsdl:input message="tns:SelectAllAdvancePaymentModifyLogByMemberloginIDCountHttpPostIn" />
+      <wsdl:output message="tns:SelectAllAdvancePaymentModifyLogByMemberloginIDCountHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MemberRegisterMember">
+      <wsdl:input message="tns:MemberRegisterMemberHttpPostIn" />
+      <wsdl:output message="tns:MemberRegisterMemberHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MemberRegisterMandarinMember">
+      <wsdl:input message="tns:MemberRegisterMandarinMemberHttpPostIn" />
+      <wsdl:output message="tns:MemberRegisterMandarinMemberHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MemberRegisterMemberGetMemberNumber">
+      <wsdl:input message="tns:MemberRegisterMemberGetMemberNumberHttpPostIn" />
+      <wsdl:output message="tns:MemberRegisterMemberGetMemberNumberHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MemberRegisterMandarinMemberGetMemberNumberRegister">
+      <wsdl:input message="tns:MemberRegisterMandarinMemberGetMemberNumberRegisterHttpPostIn" />
+      <wsdl:output message="tns:MemberRegisterMandarinMemberGetMemberNumberRegisterHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="img">
+      <wsdl:input message="tns:imgHttpPostIn" />
+      <wsdl:output message="tns:imgHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BindMobile">
+      <wsdl:input message="tns:BindMobileHttpPostIn" />
+      <wsdl:output message="tns:BindMobileHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BindTradePWD">
+      <wsdl:input message="tns:BindTradePWDHttpPostIn" />
+      <wsdl:output message="tns:BindTradePWDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SettingsPWD">
+      <wsdl:input message="tns:SettingsPWDHttpPostIn" />
+      <wsdl:output message="tns:SettingsPWDHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MobileServiceSoap" type="tns:MobileServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectProdctByShop_category_id">
+      <soap:operation soapAction="http://tempuri.org/SelectProdctByShop_category_id" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectProdctByShop_category_id_two">
+      <soap:operation soapAction="http://tempuri.org/SelectProdctByShop_category_id_two" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectProdctByThree">
+      <soap:operation soapAction="http://tempuri.org/SelectProdctByThree" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectProdctByID">
+      <soap:operation soapAction="http://tempuri.org/SelectProdctByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectProdctByGUID">
+      <soap:operation soapAction="http://tempuri.org/SelectProdctByGUID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectMemberInfoAllByMemloginID">
+      <soap:operation soapAction="http://tempuri.org/SelectMemberInfoAllByMemloginID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectAddressByMemberloginID">
+      <soap:operation soapAction="http://tempuri.org/SelectAddressByMemberloginID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectUserMessageBymemberloginID">
+      <soap:operation soapAction="http://tempuri.org/SelectUserMessageBymemberloginID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectMemberRank_LinkCategory">
+      <soap:operation soapAction="http://tempuri.org/SelectMemberRank_LinkCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectOrderByMemberloginID">
+      <soap:operation soapAction="http://tempuri.org/SelectOrderByMemberloginID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectOrderByMemberloginIDAndOrderStyle">
+      <soap:operation soapAction="http://tempuri.org/SelectOrderByMemberloginIDAndOrderStyle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectOrderProductByOrderInfoGuid">
+      <soap:operation soapAction="http://tempuri.org/SelectOrderProductByOrderInfoGuid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectOrderByMemberloginID_GetCount">
+      <soap:operation soapAction="http://tempuri.org/SelectOrderByMemberloginID_GetCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrder">
+      <soap:operation soapAction="http://tempuri.org/CreateOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddShopCar">
+      <soap:operation soapAction="http://tempuri.org/AddShopCar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostPrice">
+      <soap:operation soapAction="http://tempuri.org/PostPrice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrderCar">
+      <soap:operation soapAction="http://tempuri.org/CreateOrderCar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ADDAddress">
+      <soap:operation soapAction="http://tempuri.org/ADDAddress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MobileServiceRecharge">
+      <soap:operation soapAction="http://tempuri.org/MobileServiceRecharge" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Pay">
+      <soap:operation soapAction="http://tempuri.org/Pay" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectProductByNameAndShop_category_id">
+      <soap:operation soapAction="http://tempuri.org/SelectProductByNameAndShop_category_id" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectProductByProductCategoryCodeAndShop_category_id">
+      <soap:operation soapAction="http://tempuri.org/SelectProductByProductCategoryCodeAndShop_category_id" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllShopCategory">
+      <soap:operation soapAction="http://tempuri.org/SelectAllShopCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetScore_pv_b">
+      <soap:operation soapAction="http://tempuri.org/GetScore_pv_b" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login_Web_tj88">
+      <soap:operation soapAction="http://tempuri.org/Login_Web_tj88" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginidGetAllMember">
+      <soap:operation soapAction="http://tempuri.org/LoginidGetAllMember" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectOrderByGuid">
+      <soap:operation soapAction="http://tempuri.org/SelectOrderByGuid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetALLMemberByShopid">
+      <soap:operation soapAction="http://tempuri.org/GetALLMemberByShopid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MobileOrderRefund">
+      <soap:operation soapAction="http://tempuri.org/MobileOrderRefund" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVersion">
+      <soap:operation soapAction="http://tempuri.org/GetVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MobileReceipt">
+      <soap:operation soapAction="http://tempuri.org/MobileReceipt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelteAdress">
+      <soap:operation soapAction="http://tempuri.org/DelteAdress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAdressIsDefault">
+      <soap:operation soapAction="http://tempuri.org/UpdateAdressIsDefault" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteShopCar">
+      <soap:operation soapAction="http://tempuri.org/DeleteShopCar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllShopCarBymemberloginID">
+      <soap:operation soapAction="http://tempuri.org/SelectAllShopCarBymemberloginID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelcteMoeneyBypwdANDTransfer">
+      <soap:operation soapAction="http://tempuri.org/SelcteMoeneyBypwdANDTransfer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SignIn_HV">
+      <soap:operation soapAction="http://tempuri.org/SignIn_HV" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PayDecrease">
+      <soap:operation soapAction="http://tempuri.org/PayDecrease" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PayDecrease_Bank">
+      <soap:operation soapAction="http://tempuri.org/PayDecrease_Bank" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PayTransfer_BV">
+      <soap:operation soapAction="http://tempuri.org/PayTransfer_BV" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllPreTransferByMemberloginID">
+      <soap:operation soapAction="http://tempuri.org/SelectAllPreTransferByMemberloginID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllAdvancePaymentApplyLogByMemberloginID">
+      <soap:operation soapAction="http://tempuri.org/SelectAllAdvancePaymentApplyLogByMemberloginID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllAdvancePaymentModifyLogByMemberloginID">
+      <soap:operation soapAction="http://tempuri.org/SelectAllAdvancePaymentModifyLogByMemberloginID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllPreTransferByMemberloginIDCount">
+      <soap:operation soapAction="http://tempuri.org/SelectAllPreTransferByMemberloginIDCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllAdvancePaymentApplyLogByMemberloginIDCount">
+      <soap:operation soapAction="http://tempuri.org/SelectAllAdvancePaymentApplyLogByMemberloginIDCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllAdvancePaymentModifyLogByMemberloginIDCount">
+      <soap:operation soapAction="http://tempuri.org/SelectAllAdvancePaymentModifyLogByMemberloginIDCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MemberRegisterMember">
+      <soap:operation soapAction="http://tempuri.org/MemberRegisterMember" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MemberRegisterMandarinMember">
+      <soap:operation soapAction="http://tempuri.org/MemberRegisterMandarinMember" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MemberRegisterMemberGetMemberNumber">
+      <soap:operation soapAction="http://tempuri.org/MemberRegisterMemberGetMemberNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MemberRegisterMandarinMemberGetMemberNumberRegister">
+      <soap:operation soapAction="http://tempuri.org/MemberRegisterMandarinMemberGetMemberNumberRegister" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="img">
+      <soap:operation soapAction="http://tempuri.org/img" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BindMobile">
+      <soap:operation soapAction="http://tempuri.org/BindMobile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BindTradePWD">
+      <soap:operation soapAction="http://tempuri.org/BindTradePWD" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SettingsPWD">
+      <soap:operation soapAction="http://tempuri.org/SettingsPWD" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MobileServiceSoap12" type="tns:MobileServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Login">
+      <soap12:operation soapAction="http://tempuri.org/Login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectProdctByShop_category_id">
+      <soap12:operation soapAction="http://tempuri.org/SelectProdctByShop_category_id" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectProdctByShop_category_id_two">
+      <soap12:operation soapAction="http://tempuri.org/SelectProdctByShop_category_id_two" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectProdctByThree">
+      <soap12:operation soapAction="http://tempuri.org/SelectProdctByThree" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectProdctByID">
+      <soap12:operation soapAction="http://tempuri.org/SelectProdctByID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectProdctByGUID">
+      <soap12:operation soapAction="http://tempuri.org/SelectProdctByGUID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectMemberInfoAllByMemloginID">
+      <soap12:operation soapAction="http://tempuri.org/SelectMemberInfoAllByMemloginID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectAddressByMemberloginID">
+      <soap12:operation soapAction="http://tempuri.org/SelectAddressByMemberloginID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectUserMessageBymemberloginID">
+      <soap12:operation soapAction="http://tempuri.org/SelectUserMessageBymemberloginID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectMemberRank_LinkCategory">
+      <soap12:operation soapAction="http://tempuri.org/SelectMemberRank_LinkCategory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectOrderByMemberloginID">
+      <soap12:operation soapAction="http://tempuri.org/SelectOrderByMemberloginID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectOrderByMemberloginIDAndOrderStyle">
+      <soap12:operation soapAction="http://tempuri.org/SelectOrderByMemberloginIDAndOrderStyle" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectOrderProductByOrderInfoGuid">
+      <soap12:operation soapAction="http://tempuri.org/SelectOrderProductByOrderInfoGuid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectOrderByMemberloginID_GetCount">
+      <soap12:operation soapAction="http://tempuri.org/SelectOrderByMemberloginID_GetCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrder">
+      <soap12:operation soapAction="http://tempuri.org/CreateOrder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddShopCar">
+      <soap12:operation soapAction="http://tempuri.org/AddShopCar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostPrice">
+      <soap12:operation soapAction="http://tempuri.org/PostPrice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrderCar">
+      <soap12:operation soapAction="http://tempuri.org/CreateOrderCar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ADDAddress">
+      <soap12:operation soapAction="http://tempuri.org/ADDAddress" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MobileServiceRecharge">
+      <soap12:operation soapAction="http://tempuri.org/MobileServiceRecharge" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Pay">
+      <soap12:operation soapAction="http://tempuri.org/Pay" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectProductByNameAndShop_category_id">
+      <soap12:operation soapAction="http://tempuri.org/SelectProductByNameAndShop_category_id" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectProductByProductCategoryCodeAndShop_category_id">
+      <soap12:operation soapAction="http://tempuri.org/SelectProductByProductCategoryCodeAndShop_category_id" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllShopCategory">
+      <soap12:operation soapAction="http://tempuri.org/SelectAllShopCategory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetScore_pv_b">
+      <soap12:operation soapAction="http://tempuri.org/GetScore_pv_b" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login_Web_tj88">
+      <soap12:operation soapAction="http://tempuri.org/Login_Web_tj88" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginidGetAllMember">
+      <soap12:operation soapAction="http://tempuri.org/LoginidGetAllMember" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectOrderByGuid">
+      <soap12:operation soapAction="http://tempuri.org/SelectOrderByGuid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetALLMemberByShopid">
+      <soap12:operation soapAction="http://tempuri.org/GetALLMemberByShopid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MobileOrderRefund">
+      <soap12:operation soapAction="http://tempuri.org/MobileOrderRefund" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVersion">
+      <soap12:operation soapAction="http://tempuri.org/GetVersion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MobileReceipt">
+      <soap12:operation soapAction="http://tempuri.org/MobileReceipt" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelteAdress">
+      <soap12:operation soapAction="http://tempuri.org/DelteAdress" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAdressIsDefault">
+      <soap12:operation soapAction="http://tempuri.org/UpdateAdressIsDefault" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteShopCar">
+      <soap12:operation soapAction="http://tempuri.org/DeleteShopCar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllShopCarBymemberloginID">
+      <soap12:operation soapAction="http://tempuri.org/SelectAllShopCarBymemberloginID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelcteMoeneyBypwdANDTransfer">
+      <soap12:operation soapAction="http://tempuri.org/SelcteMoeneyBypwdANDTransfer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SignIn_HV">
+      <soap12:operation soapAction="http://tempuri.org/SignIn_HV" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PayDecrease">
+      <soap12:operation soapAction="http://tempuri.org/PayDecrease" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PayDecrease_Bank">
+      <soap12:operation soapAction="http://tempuri.org/PayDecrease_Bank" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PayTransfer_BV">
+      <soap12:operation soapAction="http://tempuri.org/PayTransfer_BV" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllPreTransferByMemberloginID">
+      <soap12:operation soapAction="http://tempuri.org/SelectAllPreTransferByMemberloginID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllAdvancePaymentApplyLogByMemberloginID">
+      <soap12:operation soapAction="http://tempuri.org/SelectAllAdvancePaymentApplyLogByMemberloginID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllAdvancePaymentModifyLogByMemberloginID">
+      <soap12:operation soapAction="http://tempuri.org/SelectAllAdvancePaymentModifyLogByMemberloginID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllPreTransferByMemberloginIDCount">
+      <soap12:operation soapAction="http://tempuri.org/SelectAllPreTransferByMemberloginIDCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllAdvancePaymentApplyLogByMemberloginIDCount">
+      <soap12:operation soapAction="http://tempuri.org/SelectAllAdvancePaymentApplyLogByMemberloginIDCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllAdvancePaymentModifyLogByMemberloginIDCount">
+      <soap12:operation soapAction="http://tempuri.org/SelectAllAdvancePaymentModifyLogByMemberloginIDCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MemberRegisterMember">
+      <soap12:operation soapAction="http://tempuri.org/MemberRegisterMember" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MemberRegisterMandarinMember">
+      <soap12:operation soapAction="http://tempuri.org/MemberRegisterMandarinMember" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MemberRegisterMemberGetMemberNumber">
+      <soap12:operation soapAction="http://tempuri.org/MemberRegisterMemberGetMemberNumber" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MemberRegisterMandarinMemberGetMemberNumberRegister">
+      <soap12:operation soapAction="http://tempuri.org/MemberRegisterMandarinMemberGetMemberNumberRegister" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="img">
+      <soap12:operation soapAction="http://tempuri.org/img" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BindMobile">
+      <soap12:operation soapAction="http://tempuri.org/BindMobile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BindTradePWD">
+      <soap12:operation soapAction="http://tempuri.org/BindTradePWD" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SettingsPWD">
+      <soap12:operation soapAction="http://tempuri.org/SettingsPWD" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MobileServiceHttpGet" type="tns:MobileServiceHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="Login">
+      <http:operation location="/Login" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectProdctByShop_category_id">
+      <http:operation location="/SelectProdctByShop_category_id" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectProdctByShop_category_id_two">
+      <http:operation location="/SelectProdctByShop_category_id_two" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectProdctByThree">
+      <http:operation location="/SelectProdctByThree" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectProdctByID">
+      <http:operation location="/SelectProdctByID" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectProdctByGUID">
+      <http:operation location="/SelectProdctByGUID" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectMemberInfoAllByMemloginID">
+      <http:operation location="/SelectMemberInfoAllByMemloginID" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAddressByMemberloginID">
+      <http:operation location="/SelectAddressByMemberloginID" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectUserMessageBymemberloginID">
+      <http:operation location="/SelectUserMessageBymemberloginID" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectMemberRank_LinkCategory">
+      <http:operation location="/SelectMemberRank_LinkCategory" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectOrderByMemberloginID">
+      <http:operation location="/SelectOrderByMemberloginID" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectOrderByMemberloginIDAndOrderStyle">
+      <http:operation location="/SelectOrderByMemberloginIDAndOrderStyle" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectOrderProductByOrderInfoGuid">
+      <http:operation location="/SelectOrderProductByOrderInfoGuid" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectOrderByMemberloginID_GetCount">
+      <http:operation location="/SelectOrderByMemberloginID_GetCount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrder">
+      <http:operation location="/CreateOrder" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="AddShopCar">
+      <http:operation location="/AddShopCar" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="PostPrice">
+      <http:operation location="/PostPrice" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrderCar">
+      <http:operation location="/CreateOrderCar" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ADDAddress">
+      <http:operation location="/ADDAddress" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="MobileServiceRecharge">
+      <http:operation location="/MobileServiceRecharge" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="Pay">
+      <http:operation location="/Pay" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectProductByNameAndShop_category_id">
+      <http:operation location="/SelectProductByNameAndShop_category_id" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectProductByProductCategoryCodeAndShop_category_id">
+      <http:operation location="/SelectProductByProductCategoryCodeAndShop_category_id" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllShopCategory">
+      <http:operation location="/SelectAllShopCategory" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetScore_pv_b">
+      <http:operation location="/GetScore_pv_b" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="Login_Web_tj88">
+      <http:operation location="/Login_Web_tj88" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginidGetAllMember">
+      <http:operation location="/LoginidGetAllMember" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectOrderByGuid">
+      <http:operation location="/SelectOrderByGuid" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetALLMemberByShopid">
+      <http:operation location="/GetALLMemberByShopid" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="MobileOrderRefund">
+      <http:operation location="/MobileOrderRefund" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetVersion">
+      <http:operation location="/GetVersion" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="MobileReceipt">
+      <http:operation location="/MobileReceipt" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="DelteAdress">
+      <http:operation location="/DelteAdress" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAdressIsDefault">
+      <http:operation location="/UpdateAdressIsDefault" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteShopCar">
+      <http:operation location="/DeleteShopCar" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllShopCarBymemberloginID">
+      <http:operation location="/SelectAllShopCarBymemberloginID" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelcteMoeneyBypwdANDTransfer">
+      <http:operation location="/SelcteMoeneyBypwdANDTransfer" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SignIn_HV">
+      <http:operation location="/SignIn_HV" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="PayDecrease">
+      <http:operation location="/PayDecrease" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="PayDecrease_Bank">
+      <http:operation location="/PayDecrease_Bank" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="PayTransfer_BV">
+      <http:operation location="/PayTransfer_BV" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllPreTransferByMemberloginID">
+      <http:operation location="/SelectAllPreTransferByMemberloginID" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllAdvancePaymentApplyLogByMemberloginID">
+      <http:operation location="/SelectAllAdvancePaymentApplyLogByMemberloginID" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllAdvancePaymentModifyLogByMemberloginID">
+      <http:operation location="/SelectAllAdvancePaymentModifyLogByMemberloginID" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllPreTransferByMemberloginIDCount">
+      <http:operation location="/SelectAllPreTransferByMemberloginIDCount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllAdvancePaymentApplyLogByMemberloginIDCount">
+      <http:operation location="/SelectAllAdvancePaymentApplyLogByMemberloginIDCount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllAdvancePaymentModifyLogByMemberloginIDCount">
+      <http:operation location="/SelectAllAdvancePaymentModifyLogByMemberloginIDCount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="MemberRegisterMember">
+      <http:operation location="/MemberRegisterMember" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="MemberRegisterMandarinMember">
+      <http:operation location="/MemberRegisterMandarinMember" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="MemberRegisterMemberGetMemberNumber">
+      <http:operation location="/MemberRegisterMemberGetMemberNumber" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="MemberRegisterMandarinMemberGetMemberNumberRegister">
+      <http:operation location="/MemberRegisterMandarinMemberGetMemberNumberRegister" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="img">
+      <http:operation location="/img" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="BindMobile">
+      <http:operation location="/BindMobile" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="BindTradePWD">
+      <http:operation location="/BindTradePWD" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SettingsPWD">
+      <http:operation location="/SettingsPWD" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MobileServiceHttpPost" type="tns:MobileServiceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="Login">
+      <http:operation location="/Login" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectProdctByShop_category_id">
+      <http:operation location="/SelectProdctByShop_category_id" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectProdctByShop_category_id_two">
+      <http:operation location="/SelectProdctByShop_category_id_two" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectProdctByThree">
+      <http:operation location="/SelectProdctByThree" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectProdctByID">
+      <http:operation location="/SelectProdctByID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectProdctByGUID">
+      <http:operation location="/SelectProdctByGUID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectMemberInfoAllByMemloginID">
+      <http:operation location="/SelectMemberInfoAllByMemloginID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAddressByMemberloginID">
+      <http:operation location="/SelectAddressByMemberloginID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectUserMessageBymemberloginID">
+      <http:operation location="/SelectUserMessageBymemberloginID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectMemberRank_LinkCategory">
+      <http:operation location="/SelectMemberRank_LinkCategory" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectOrderByMemberloginID">
+      <http:operation location="/SelectOrderByMemberloginID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectOrderByMemberloginIDAndOrderStyle">
+      <http:operation location="/SelectOrderByMemberloginIDAndOrderStyle" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectOrderProductByOrderInfoGuid">
+      <http:operation location="/SelectOrderProductByOrderInfoGuid" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectOrderByMemberloginID_GetCount">
+      <http:operation location="/SelectOrderByMemberloginID_GetCount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrder">
+      <http:operation location="/CreateOrder" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="AddShopCar">
+      <http:operation location="/AddShopCar" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="PostPrice">
+      <http:operation location="/PostPrice" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrderCar">
+      <http:operation location="/CreateOrderCar" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ADDAddress">
+      <http:operation location="/ADDAddress" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="MobileServiceRecharge">
+      <http:operation location="/MobileServiceRecharge" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="Pay">
+      <http:operation location="/Pay" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectProductByNameAndShop_category_id">
+      <http:operation location="/SelectProductByNameAndShop_category_id" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectProductByProductCategoryCodeAndShop_category_id">
+      <http:operation location="/SelectProductByProductCategoryCodeAndShop_category_id" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllShopCategory">
+      <http:operation location="/SelectAllShopCategory" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetScore_pv_b">
+      <http:operation location="/GetScore_pv_b" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="Login_Web_tj88">
+      <http:operation location="/Login_Web_tj88" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginidGetAllMember">
+      <http:operation location="/LoginidGetAllMember" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectOrderByGuid">
+      <http:operation location="/SelectOrderByGuid" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetALLMemberByShopid">
+      <http:operation location="/GetALLMemberByShopid" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="MobileOrderRefund">
+      <http:operation location="/MobileOrderRefund" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetVersion">
+      <http:operation location="/GetVersion" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="MobileReceipt">
+      <http:operation location="/MobileReceipt" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="DelteAdress">
+      <http:operation location="/DelteAdress" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAdressIsDefault">
+      <http:operation location="/UpdateAdressIsDefault" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteShopCar">
+      <http:operation location="/DeleteShopCar" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllShopCarBymemberloginID">
+      <http:operation location="/SelectAllShopCarBymemberloginID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelcteMoeneyBypwdANDTransfer">
+      <http:operation location="/SelcteMoeneyBypwdANDTransfer" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SignIn_HV">
+      <http:operation location="/SignIn_HV" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="PayDecrease">
+      <http:operation location="/PayDecrease" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="PayDecrease_Bank">
+      <http:operation location="/PayDecrease_Bank" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="PayTransfer_BV">
+      <http:operation location="/PayTransfer_BV" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllPreTransferByMemberloginID">
+      <http:operation location="/SelectAllPreTransferByMemberloginID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllAdvancePaymentApplyLogByMemberloginID">
+      <http:operation location="/SelectAllAdvancePaymentApplyLogByMemberloginID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllAdvancePaymentModifyLogByMemberloginID">
+      <http:operation location="/SelectAllAdvancePaymentModifyLogByMemberloginID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllPreTransferByMemberloginIDCount">
+      <http:operation location="/SelectAllPreTransferByMemberloginIDCount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllAdvancePaymentApplyLogByMemberloginIDCount">
+      <http:operation location="/SelectAllAdvancePaymentApplyLogByMemberloginIDCount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllAdvancePaymentModifyLogByMemberloginIDCount">
+      <http:operation location="/SelectAllAdvancePaymentModifyLogByMemberloginIDCount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="MemberRegisterMember">
+      <http:operation location="/MemberRegisterMember" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="MemberRegisterMandarinMember">
+      <http:operation location="/MemberRegisterMandarinMember" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="MemberRegisterMemberGetMemberNumber">
+      <http:operation location="/MemberRegisterMemberGetMemberNumber" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="MemberRegisterMandarinMemberGetMemberNumberRegister">
+      <http:operation location="/MemberRegisterMandarinMemberGetMemberNumberRegister" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="img">
+      <http:operation location="/img" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="BindMobile">
+      <http:operation location="/BindMobile" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="BindTradePWD">
+      <http:operation location="/BindTradePWD" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SettingsPWD">
+      <http:operation location="/SettingsPWD" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MobileService">
+    <wsdl:port name="MobileServiceSoap" binding="tns:MobileServiceSoap">
+      <soap:address location="http://www.tj88.com:808/Service/MobileService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MobileServiceSoap12" binding="tns:MobileServiceSoap12">
+      <soap12:address location="http://www.tj88.com:808/Service/MobileService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MobileServiceHttpGet" binding="tns:MobileServiceHttpGet">
+      <http:address location="http://www.tj88.com:808/Service/MobileService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MobileServiceHttpPost" binding="tns:MobileServiceHttpPost">
+      <http:address location="http://www.tj88.com:808/Service/MobileService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,486 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="GZ1" xml:space="preserve">
+    <value>该订单已经支付</value>
+  </data>
+  <data name="GZ10" xml:space="preserve">
+    <value>很抱歉,商品太火爆了,库存不足,无法完成下面操作哟！</value>
+  </data>
+  <data name="GZ11" xml:space="preserve">
+    <value>购买失败</value>
+  </data>
+  <data name="GZ12" xml:space="preserve">
+    <value>用户编号存在，请刷新在次注册</value>
+  </data>
+  <data name="GZ13" xml:space="preserve">
+    <value>推荐人不存在</value>
+  </data>
+  <data name="GZ14" xml:space="preserve">
+    <value>昵称不能为空</value>
+  </data>
+  <data name="GZ15" xml:space="preserve">
+    <value>密码不能为空</value>
+  </data>
+  <data name="GZ16" xml:space="preserve">
+    <value>二级密码不能为空</value>
+  </data>
+  <data name="GZ17" xml:space="preserve">
+    <value>推荐人不存在</value>
+  </data>
+  <data name="GZ18" xml:space="preserve">
+    <value>注册失败!请重新注册!</value>
+  </data>
+  <data name="GZ19" xml:space="preserve">
+    <value>创建NEC地址失败,请重新注册!</value>
+  </data>
+  <data name="GZ2" xml:space="preserve">
+    <value>支付密码为空</value>
+  </data>
+  <data name="GZ20" xml:space="preserve">
+    <value>对方不是商家,不能转账!</value>
+  </data>
+  <data name="GZ21" xml:space="preserve">
+    <value>申请成功,请耐心等待管理员审批!</value>
+  </data>
+  <data name="GZ22" xml:space="preserve">
+    <value>您已在申请列表中,请耐心等待管理员审批!</value>
+  </data>
+  <data name="GZ23" xml:space="preserve">
+    <value>没有更多商品!</value>
+  </data>
+  <data name="GZ24" xml:space="preserve">
+    <value>没有更多订单!</value>
+  </data>
+  <data name="GZ25" xml:space="preserve">
+    <value>起购数量为</value>
+  </data>
+  <data name="GZ26" xml:space="preserve">
+    <value>购买数量必须为100的倍数</value>
+  </data>
+  <data name="GZ27" xml:space="preserve">
+    <value>库存不足!</value>
+  </data>
+  <data name="GZ3" xml:space="preserve">
+    <value>您输入的交易密码不正确</value>
+  </data>
+  <data name="GZ4" xml:space="preserve">
+    <value>付款金额错误</value>
+  </data>
+  <data name="GZ5" xml:space="preserve">
+    <value>您当前帐户上面的NEC不足，无法支付</value>
+  </data>
+  <data name="GZ6" xml:space="preserve">
+    <value>该订单已经支付</value>
+  </data>
+  <data name="GZ7" xml:space="preserve">
+    <value>支付失败</value>
+  </data>
+  <data name="GZ8" xml:space="preserve">
+    <value>很抱歉,您的租赁算力将超过100万,不可租赁</value>
+  </data>
+  <data name="GZ9" xml:space="preserve">
+    <value>很抱歉,抢购商品一个ID限购一件！</value>
+  </data>
+  <data name="MG000001" xml:space="preserve">
+    <value>发送成功</value>
+  </data>
+  <data name="MG0000011" xml:space="preserve">
+    <value>发送成功</value>
+  </data>
+  <data name="MG000002" xml:space="preserve">
+    <value>发送失败</value>
+  </data>
+  <data name="MG0000021" xml:space="preserve">
+    <value>发送失败</value>
+  </data>
+  <data name="MG000003" xml:space="preserve">
+    <value>系统错误</value>
+  </data>
+  <data name="MG000004" xml:space="preserve">
+    <value>暂无该UID</value>
+  </data>
+  <data name="MG000005" xml:space="preserve">
+    <value>验证码错误</value>
+  </data>
+  <data name="MG000006" xml:space="preserve">
+    <value>提现金额有误</value>
+  </data>
+  <data name="MG000007" xml:space="preserve">
+    <value>交易密码为空!</value>
+  </data>
+  <data name="MG000008" xml:space="preserve">
+    <value>NEC不足</value>
+  </data>
+  <data name="MG000009" xml:space="preserve">
+    <value>扣除手续费后不够NEC最低提现额度!</value>
+  </data>
+  <data name="MG000010" xml:space="preserve">
+    <value>交易密码错误!</value>
+  </data>
+  <data name="MG000011" xml:space="preserve">
+    <value>成功!</value>
+  </data>
+  <data name="MG000012" xml:space="preserve">
+    <value>请重新登陆哟，您的身份验证已经过期</value>
+  </data>
+  <data name="MG000013" xml:space="preserve">
+    <value>ETH不足!</value>
+  </data>
+  <data name="MG000014" xml:space="preserve">
+    <value>扣除手续费后不够ETH最低提现额度!</value>
+  </data>
+  <data name="MG000015" xml:space="preserve">
+    <value>扣除手续费后不够NEC最低提现额度</value>
+  </data>
+  <data name="MG000016" xml:space="preserve">
+    <value>密钥验证失败</value>
+  </data>
+  <data name="MG000017" xml:space="preserve">
+    <value>此账号禁止交易</value>
+  </data>
+  <data name="MG000018" xml:space="preserve">
+    <value>没有更多提现记录</value>
+  </data>
+  <data name="MG000019" xml:space="preserve">
+    <value>您不能给自己转账</value>
+  </data>
+  <data name="MG000020" xml:space="preserve">
+    <value>转账金额有误</value>
+  </data>
+  <data name="MG000021" xml:space="preserve">
+    <value>交易密码为空!</value>
+  </data>
+  <data name="MG000022" xml:space="preserve">
+    <value>暂时不可互转</value>
+  </data>
+  <data name="MG000023" xml:space="preserve">
+    <value>账号不存在!</value>
+  </data>
+  <data name="MG000024" xml:space="preserve">
+    <value>USDT不足!</value>
+  </data>
+  <data name="MG000025" xml:space="preserve">
+    <value>ETH地址创建失败</value>
+  </data>
+  <data name="MG000026" xml:space="preserve">
+    <value>支付成功</value>
+  </data>
+  <data name="MG000027" xml:space="preserve">
+    <value>参数错误</value>
+  </data>
+  <data name="MG000028" xml:space="preserve">
+    <value>没有更多商品</value>
+  </data>
+  <data name="MG000029" xml:space="preserve">
+    <value>账户同步成功</value>
+  </data>
+  <data name="MG000030" xml:space="preserve">
+    <value>修改成功</value>
+  </data>
+  <data name="MG000031" xml:space="preserve">
+    <value>修改失败</value>
+  </data>
+  <data name="MG000032" xml:space="preserve">
+    <value>您不能购买自己的订单!</value>
+  </data>
+  <data name="MG000033" xml:space="preserve">
+    <value>订单状态异常</value>
+  </data>
+  <data name="MG000034" xml:space="preserve">
+    <value>USDT不足</value>
+  </data>
+  <data name="MG000035" xml:space="preserve">
+    <value>订单不明确</value>
+  </data>
+  <data name="MG000036" xml:space="preserve">
+    <value>目前没有卖单</value>
+  </data>
+  <data name="MG000037" xml:space="preserve">
+    <value>目前没有买单</value>
+  </data>
+  <data name="MG000038" xml:space="preserve">
+    <value>发送过多</value>
+  </data>
+  <data name="MG000039" xml:space="preserve">
+    <value>手机号码已存在</value>
+  </data>
+  <data name="MG000040" xml:space="preserve">
+    <value>登陆密码和支付密码不能相等</value>
+  </data>
+  <data name="MG000041" xml:space="preserve">
+    <value>交易密码必须为6位</value>
+  </data>
+  <data name="MG000042" xml:space="preserve">
+    <value>支付密码不能输入非数字</value>
+  </data>
+  <data name="MG000043" xml:space="preserve">
+    <value>推荐人不存在</value>
+  </data>
+  <data name="MG000044" xml:space="preserve">
+    <value>昵称不能为空</value>
+  </data>
+  <data name="MG000045" xml:space="preserve">
+    <value>密码不能为空</value>
+  </data>
+  <data name="MG000046" xml:space="preserve">
+    <value>二级密码不能为空</value>
+  </data>
+  <data name="MG000047" xml:space="preserve">
+    <value>注册失败!请重新注册!</value>
+  </data>
+  <data name="MG000048" xml:space="preserve">
+    <value>创建ETH地址或NEC地址失败,请重新注册</value>
+  </data>
+  <data name="MG000049" xml:space="preserve">
+    <value>用户已经被禁用</value>
+  </data>
+  <data name="MG000050" xml:space="preserve">
+    <value>用户密码错误次数过多已经被禁用</value>
+  </data>
+  <data name="MG000051" xml:space="preserve">
+    <value>密码或者账户可能有误</value>
+  </data>
+  <data name="MG000052" xml:space="preserve">
+    <value>两次加密串对比不匹配</value>
+  </data>
+  <data name="MG000053" xml:space="preserve">
+    <value>验证码错误，请重新输入验证码</value>
+  </data>
+  <data name="MG000054" xml:space="preserve">
+    <value>该账号暂无记录</value>
+  </data>
+  <data name="MG000055" xml:space="preserve">
+    <value>暂无该手机号</value>
+  </data>
+  <data name="MG000056" xml:space="preserve">
+    <value>请联系管理员</value>
+  </data>
+  <data name="MG000057" xml:space="preserve">
+    <value>您的账户余额不足</value>
+  </data>
+  <data name="MG000058" xml:space="preserve">
+    <value>已签到</value>
+  </data>
+  <data name="MG000059" xml:space="preserve">
+    <value>暂无奖金</value>
+  </data>
+  <data name="MG000060" xml:space="preserve">
+    <value>未到签到时间</value>
+  </data>
+  <data name="MG000061" xml:space="preserve">
+    <value>您已签到,请勿重复签到</value>
+  </data>
+  <data name="MG000062" xml:space="preserve">
+    <value>签到成功</value>
+  </data>
+  <data name="MG000063" xml:space="preserve">
+    <value>您算力为0,不能签到</value>
+  </data>
+  <data name="MG000064" xml:space="preserve">
+    <value>输入他人账号有误</value>
+  </data>
+  <data name="MG000065" xml:space="preserve">
+    <value>UID和手机号不匹配</value>
+  </data>
+  <data name="MG000066" xml:space="preserve">
+    <value>修改支付密码成功</value>
+  </data>
+  <data name="MG000067" xml:space="preserve">
+    <value>修改登录密码成功</value>
+  </data>
+  <data name="MG000068" xml:space="preserve">
+    <value>修改昵称成功</value>
+  </data>
+  <data name="MG000069" xml:space="preserve">
+    <value>修改昵称失败</value>
+  </data>
+  <data name="MG000070" xml:space="preserve">
+    <value>旧密码输入错误</value>
+  </data>
+  <data name="MG000071" xml:space="preserve">
+    <value>修改密码成功</value>
+  </data>
+  <data name="MG000072" xml:space="preserve">
+    <value>修改密码失败</value>
+  </data>
+  <data name="MG000073" xml:space="preserve">
+    <value>反馈成功</value>
+  </data>
+  <data name="MG000074" xml:space="preserve">
+    <value>反馈失败</value>
+  </data>
+  <data name="MG000075" xml:space="preserve">
+    <value>您已在申请列表中，请等待系统审批！</value>
+  </data>
+  <data name="MG000076" xml:space="preserve">
+    <value>绑定失败,请填写完整信息！</value>
+  </data>
+  <data name="MG000077" xml:space="preserve">
+    <value>您已经绑定过了，请勿重复绑定！</value>
+  </data>
+  <data name="MG000078" xml:space="preserve">
+    <value>该设备号已经被绑定！</value>
+  </data>
+  <data name="MG000079" xml:space="preserve">
+    <value>申请绑定失败！</value>
+  </data>
+  <data name="MG000080" xml:space="preserve">
+    <value>系统不存在该设备号！</value>
+  </data>
+  <data name="MG000081" xml:space="preserve">
+    <value>身份验证已过期，请重新登录！</value>
+  </data>
+  <data name="MG000082" xml:space="preserve">
+    <value>密钥验证失败！</value>
+  </data>
+  <data name="MG000083" xml:space="preserve">
+    <value>此账号禁止交易</value>
+  </data>
+  <data name="MG000084" xml:space="preserve">
+    <value>绑定成功</value>
+  </data>
+  <data name="MG000085" xml:space="preserve">
+    <value>绑定失败</value>
+  </data>
+  <data name="MG000086" xml:space="preserve">
+    <value>密码输入错误</value>
+  </data>
+  <data name="MG000087" xml:space="preserve">
+    <value>暂时不可挂卖</value>
+  </data>
+  <data name="MG000088" xml:space="preserve">
+    <value>暂时不可挂买</value>
+  </data>
+  <data name="MG000089" xml:space="preserve">
+    <value>取消订单成功</value>
+  </data>
+  <data name="MG000090" xml:space="preserve">
+    <value>该订单已完成交易或订单不存在</value>
+  </data>
+  <data name="MG000091" xml:space="preserve">
+    <value>订单不存在</value>
+  </data>
+  <data name="MG000092" xml:space="preserve">
+    <value>获取成功</value>
+  </data>
+  <data name="MG000093" xml:space="preserve">
+    <value>type不在范围内</value>
+  </data>
+</root>

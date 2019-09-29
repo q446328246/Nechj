@@ -1,0 +1,9 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ShopNum1.Webservice.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ShopNum1_Webservice_CreateOrderTJ88_Qhtj88CreateOrder" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://www.tj88.com/Service/Qhtj88CreateOrder.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

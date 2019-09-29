@@ -1,0 +1,464 @@
+﻿using System;
+using System.Data;
+using ShopNum1.Common;
+using ShopNum1.DataAccess;
+using ShopNum1.Interface;
+using ShopNum1MultiEntity;
+using System.Data.Common;
+
+namespace ShopNum1.BusinessLogic
+{
+    public class ShopNum1_Shop_ScoreProduct_Action : IShopNum1_Shop_ScoreProduct_Action
+    {
+        public int Add(ShopNum1_Shop_ScoreProduct ScoreProductNew)
+        {
+            return DatabaseExcetue.RunNonQuery(string.Concat(new object[]
+            {
+                "INSERT ShopNum1_Shop_ScoreProduct(  Guid, Name, OriginalImge, ThumbImage, SmallImage, RepertoryNumber, ProductCategoryID, ProductCategoryName, Weight, RepertoryCount, UnitName, RepertoryWarnCount, Score, Brief, Detail, ClickCount, IsSaled, SaleTime, IsNew, IsHot, IsAudit, IsRecommend, Meto_Title, Meto_Description, Meto_Keywords, MemLoginID, ShopID, OrderID, CreateUser, CreateTime, ModifyUser, ModifyTime, ProductCategoryCode, MarketPrice, HaveSale, IsDeleted ) VALUES (  '"
+                , ScoreProductNew.Guid, "',  '", ScoreProductNew.Name, "',  '", ScoreProductNew.OriginalImge,
+                "',  '", ScoreProductNew.ThumbImage, "',  '", ScoreProductNew.SmallImage, "',  '",
+                ScoreProductNew.RepertoryNumber, "',  '", ScoreProductNew.ProductCategoryID, "',  '",
+                ScoreProductNew.ProductCategoryName,
+                "',  '", ScoreProductNew.Weight, "',  '", ScoreProductNew.RepertoryCount, "',  '",
+                ScoreProductNew.UnitName, "',  '", ScoreProductNew.RepertoryWarnCount, "',  '",
+                ScoreProductNew.Score, "',  '", ScoreProductNew.Brief, "',  '", ScoreProductNew.Detail, "',  '",
+                ScoreProductNew.ClickCount,
+                "',  '", ScoreProductNew.IsSaled, "',  '", ScoreProductNew.SaleTime, "',  '", ScoreProductNew.IsNew,
+                "',  '", ScoreProductNew.IsHot, "',  '", ScoreProductNew.IsAudit, "',  '",
+                ScoreProductNew.IsRecommend, "',  '", ScoreProductNew.Meto_Title, "',  '",
+                ScoreProductNew.Meto_Description,
+                "',  '", ScoreProductNew.Meto_Keywords, "',  '", ScoreProductNew.MemLoginID, "',  '",
+                ScoreProductNew.ShopID, "',  '", ScoreProductNew.OrderID, "',  '", ScoreProductNew.CreateUser,
+                "',  '", ScoreProductNew.CreateTime, "',   '", ScoreProductNew.ModifyUser, "',   '",
+                ScoreProductNew.ModifyTime,
+                "',   '", ScoreProductNew.ProductCategoryCode, "',   '", ScoreProductNew.MarketPrice, "',   '",
+                ScoreProductNew.HaveSale, "',   ", ScoreProductNew.IsDeleted, " )"
+            }));
+        }
+
+        public int Delete(string guids)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+
+            parms[0].ParameterName = "@guids";
+            parms[0].Value = guids;
+
+            return DatabaseExcetue.RunNonQuery("   delete ShopNum1_Shop_ScoreProduct where  Guid in (@guids)  ", parms);
+        }
+
+        public DataTable GetInfoByGuid(string guid)
+        {
+            string str = guid.Replace("'", "");
+            return
+                DatabaseExcetue.ReturnDataTable("   select  * from  ShopNum1_Shop_ScoreProduct  where Guid ='" + str +
+                                                "'   ");
+        }
+
+        public int Update(ShopNum1_Shop_ScoreProduct ScoreProductNew)
+        {
+            return DatabaseExcetue.RunNonQuery(string.Concat(new object[]
+            {
+                "UPDATE  ShopNum1_Shop_ScoreProduct  SET \tName\t='", ScoreProductNew.Name, "', \tOriginalImge\t='",
+                ScoreProductNew.OriginalImge, "', \tThumbImage\t='", ScoreProductNew.ThumbImage,
+                "', \tSmallImage\t='", Operator.FilterString(ScoreProductNew.SmallImage), "',\tRepertoryNumber\t='",
+                Operator.FilterString(ScoreProductNew.RepertoryNumber), "',\tProductCategoryID\t='",
+                Operator.FilterString(ScoreProductNew.ProductCategoryID), "',\tProductCategoryName\t='",
+                Operator.FilterString(ScoreProductNew.ProductCategoryName), "',\tWeight\t='",
+                Operator.FilterString(ScoreProductNew.Weight),
+                "',\tRepertoryCount\t='", Operator.FilterString(ScoreProductNew.RepertoryCount), "',\tUnitName\t='",
+                Operator.FilterString(ScoreProductNew.UnitName), "',\tScore\t='",
+                Operator.FilterString(ScoreProductNew.Score), "',\tBrief\t='", ScoreProductNew.Brief,
+                "', \tDetail='", ScoreProductNew.Detail, "' ,\tIsNew\t='",
+                Operator.FilterString(ScoreProductNew.IsNew), "',\tIsHot\t='",
+                Operator.FilterString(ScoreProductNew.IsHot), "',\tMeto_Title\t='",
+                Operator.FilterString(ScoreProductNew.Meto_Title),
+                "',\tMeto_Description\t='", Operator.FilterString(ScoreProductNew.Meto_Description),
+                "',\tMeto_Keywords\t='", Operator.FilterString(ScoreProductNew.Meto_Keywords), "',\tModifyUser\t='",
+                Operator.FilterString(ScoreProductNew.ModifyUser), "',\tProductCategoryCode\t='",
+                Operator.FilterString(ScoreProductNew.ProductCategoryCode), "',\tMarketPrice\t='",
+                Operator.FilterString(ScoreProductNew.MarketPrice), "',\tModifyTime='", ScoreProductNew.ModifyTime,
+                "'  WHERE Guid='", ScoreProductNew.Guid, "'"
+            }));
+        }
+
+        public int ClickProduct(string Guid)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+
+            parms[0].ParameterName = "@Guid";
+            parms[0].Value = Guid.Replace("'","");
+            return
+                DatabaseExcetue.RunNonQuery(
+                    "   update ShopNum1_Shop_ScoreProduct set ClickCount=ClickCount+1  where  Guid =@Guid", parms);
+        }
+
+        public DataTable GetDataInfoInAdmin(string Name, string RepertoryNumber, int starJF, int endJF, int IsAudit,
+            string ProductCategoryCode, int IsSaled, string MemLoginID)
+        {
+            object obj2;
+            string str = string.Empty + "    select * from ShopNum1_Shop_ScoreProduct where 1=1     ";
+            if (!string.IsNullOrEmpty(Name))
+            {
+                str = str + "   and     Name like     '%" + Name + "%'   ";
+            }
+            if (!string.IsNullOrEmpty(RepertoryNumber))
+            {
+                str = str + "   and    RepertoryNumber='" + RepertoryNumber + "'   ";
+            }
+            if (starJF != -1)
+            {
+                obj2 = str;
+                str = string.Concat(new[] { obj2, "   and    Score >  '", starJF, "'   " });
+            }
+            if (endJF != -1)
+            {
+                obj2 = str;
+                str = string.Concat(new[] { obj2, "   and   Score < '", endJF, "'   " });
+            }
+            if (IsAudit != -1)
+            {
+                obj2 = str;
+                str = string.Concat(new[] { obj2, "   and   IsAudit = '", IsAudit, "'   " });
+            }
+            if (ProductCategoryCode != "-1")
+            {
+                str = str + "   and   ProductCategoryCode like '" + ProductCategoryCode + "%'   ";
+            }
+            if (IsSaled != -1)
+            {
+                obj2 = str;
+                str = string.Concat(new[] { obj2, "   and   IsSaled = '", IsSaled, "'   " });
+            }
+            if (!string.IsNullOrEmpty(MemLoginID))
+            {
+                str = str + "   and   MemLoginID = '" + MemLoginID + "'   ";
+            }
+            return DatabaseExcetue.ReturnDataTable(str + "   order  by    CreateTime     desc    ");
+        }
+
+        public DataTable GetDataInfoInAdmin(string Name, string RepertoryNumber, int starJF, int endJF, int IsAudit,
+            string ProductCategoryCode, int IsDeleted, int IsSaled, string MemLoginID,
+            int IsNew, int IsHot)
+        {
+            object obj2;
+            string str = string.Empty + "    select * from ShopNum1_Shop_ScoreProduct where 1=1     ";
+            if (!string.IsNullOrEmpty(Name))
+            {
+                str = str + "   and     Name like     '%" + Name + "%'   ";
+            }
+            if (!string.IsNullOrEmpty(RepertoryNumber))
+            {
+                str = str + "   and    RepertoryNumber='" + RepertoryNumber + "'   ";
+            }
+            if (starJF != -1)
+            {
+                obj2 = str;
+                str = string.Concat(new[] { obj2, "   and    Score >  '", starJF, "'   " });
+            }
+            if (endJF != -1)
+            {
+                obj2 = str;
+                str = string.Concat(new[] { obj2, "   and   Score < '", endJF, "'   " });
+            }
+            if (IsAudit != -1)
+            {
+                obj2 = str;
+                str = string.Concat(new[] { obj2, "   and   IsAudit = '", IsAudit, "'   " });
+            }
+            if (ProductCategoryCode != "-1")
+            {
+                str = str + "   and   ProductCategoryCode like '" + ProductCategoryCode + "%'   ";
+            }
+            if (IsSaled != -1)
+            {
+                obj2 = str;
+                str = string.Concat(new[] { obj2, "   and   IsSaled = '", IsSaled, "'   " });
+            }
+            if (IsSaled != -1)
+            {
+                obj2 = str;
+                str = string.Concat(new[] { obj2, "   and   IsDeleted = '", IsDeleted, "'   " });
+            }
+            if (!string.IsNullOrEmpty(MemLoginID))
+            {
+                str = str + "   and   MemLoginID = '" + MemLoginID + "'   ";
+            }
+            if (IsNew != -1)
+            {
+                obj2 = str;
+                str = string.Concat(new[] { obj2, "   and   IsNew = '", IsNew, "'   " });
+            }
+            if (IsHot != -1)
+            {
+                obj2 = str;
+                str = string.Concat(new[] { obj2, "   and   IsHot = '", IsHot, "'   " });
+            }
+            return DatabaseExcetue.ReturnDataTable(str + "   order  by    CreateTime     desc    ");
+        }
+
+        public DataTable GetDataInfoInAdminNew(string Name, string RepertoryNumber, int starJF, int endJF, int IsAudit,
+            string ProductCategoryCode, int IsDeleted, int IsSaled, string MemLoginID,
+            int IsNew, int IsHot)
+        {
+            object obj2;
+            string str = string.Empty + "    select * from ShopNum1_Shop_ScoreProduct where 1=1     ";
+            if (!string.IsNullOrEmpty(Name))
+            {
+                str = str + "   and     Name like     '%" + Name + "%'   ";
+            }
+            if (!string.IsNullOrEmpty(RepertoryNumber))
+            {
+                str = str + "   and    RepertoryNumber='" + RepertoryNumber + "'   ";
+            }
+            if (starJF != -1)
+            {
+                obj2 = str;
+                str = string.Concat(new[] { obj2, "   and    Score >  '", starJF, "'   " });
+            }
+            if (endJF != -1)
+            {
+                obj2 = str;
+                str = string.Concat(new[] { obj2, "   and   Score < '", endJF, "'   " });
+            }
+            str = str + "   and   IsAudit     IN (0,2)   ";
+            if (ProductCategoryCode != "-1")
+            {
+                str = str + "   and   ProductCategoryCode like '" + ProductCategoryCode + "%'   ";
+            }
+            if (IsSaled != -1)
+            {
+                obj2 = str;
+                str = string.Concat(new[] { obj2, "   and   IsSaled = '", IsSaled, "'   " });
+            }
+            if (IsSaled != -1)
+            {
+                obj2 = str;
+                str = string.Concat(new[] { obj2, "   and   IsDeleted = '", IsDeleted, "'   " });
+            }
+            if (!string.IsNullOrEmpty(MemLoginID))
+            {
+                str = str + "   and   MemLoginID = '" + MemLoginID + "'   ";
+            }
+            if (IsNew != -1)
+            {
+                obj2 = str;
+                str = string.Concat(new[] { obj2, "   and   IsNew = '", IsNew, "'   " });
+            }
+            if (IsHot != -1)
+            {
+                obj2 = str;
+                str = string.Concat(new[] { obj2, "   and   IsHot = '", IsHot, "'   " });
+            }
+            return DatabaseExcetue.ReturnDataTable(str + "   order  by    CreateTime     desc    ");
+        }
+
+        public DataTable GetDataShopWeb(int IsAudit, int IsDeleted, int IsSaled, string Guid)
+        {
+            string str = string.Empty;
+            str = "   select *   from  ShopNum1_Shop_ScoreProduct  where 1=1    ";
+            if ((IsAudit == 0) || (IsAudit == 1))
+            {
+                str = str + "    and  IsAudit=" + IsAudit;
+            }
+            if ((IsDeleted == 0) || (IsDeleted == 1))
+            {
+                str = str + "    and  IsDeleted=" + IsDeleted;
+            }
+            if ((IsSaled == 0) || (IsSaled == 1))
+            {
+                str = str + "    and  IsSaled=" + IsSaled;
+            }
+            return
+                DatabaseExcetue.ReturnDataTable((str + "    and      Guid ='" + Guid + "'     ") +
+                                                "   order  by    CreateTime   desc      ");
+        }
+
+        public DataTable GetDataTopWeb(int IsAudit, int IsDeleted, int IsSaled)
+        {
+            string str = string.Empty;
+            str =
+                "   select Guid,MemLoginID,Name,OriginalImge,Score,HaveSale,CreateTime,RepertoryCount,ProductCategoryName,RepertoryCount,MarketPrice   from  ShopNum1_Shop_ScoreProduct  where 1=1    ";
+            if ((IsAudit == 0) || (IsAudit == 1))
+            {
+                str = str + "    and  IsAudit=" + IsAudit;
+            }
+            if ((IsDeleted == 0) || (IsDeleted == 1))
+            {
+                str = str + "    and  IsDeleted=" + IsDeleted;
+            }
+            if ((IsSaled == 0) || (IsSaled == 1))
+            {
+                str = str + "    and  IsSaled=" + IsSaled;
+            }
+            return DatabaseExcetue.ReturnDataTable(str + "   order  by    CreateTime   desc      ");
+        }
+
+        public DataTable GetDataTopWeb(int IsAudit, int IsDeleted, int IsSaled, int topNum)
+        {
+            string str = string.Empty;
+            str = "   select  top   " + topNum +
+                  "  Guid,MemLoginID,Name,OriginalImge,Score,HaveSale,CreateTime,RepertoryCount,ProductCategoryName,RepertoryCount,MarketPrice   from  ShopNum1_Shop_ScoreProduct  where 1=1    ";
+            if ((IsAudit == 0) || (IsAudit == 1))
+            {
+                str = str + "    and  IsAudit=" + IsAudit;
+            }
+            if ((IsDeleted == 0) || (IsDeleted == 1))
+            {
+                str = str + "    and  IsDeleted=" + IsDeleted;
+            }
+            if ((IsSaled == 0) || (IsSaled == 1))
+            {
+                str = str + "    and  IsSaled=" + IsSaled;
+            }
+            return DatabaseExcetue.ReturnDataTable(str + "   order  by    HaveSale   desc      ");
+        }
+
+        public DataTable GetInfoByGuid(string guid, int IsSaled, int IsAudit, int IsDeleted)
+        {
+            string str = guid.Replace("'", "");
+            string strSql = string.Empty;
+            strSql = "   select  * from  ShopNum1_Shop_ScoreProduct  where Guid ='" + str + "'   ";
+            if ((IsSaled == 1) || (IsSaled == 0))
+            {
+                strSql = strSql + "   and   IsSaled=" + IsSaled;
+            }
+            if ((IsAudit == 1) || (IsAudit == 0))
+            {
+                strSql = strSql + "   and   IsAudit=" + IsAudit;
+            }
+            if ((IsDeleted == 1) || (IsDeleted == 0))
+            {
+                strSql = strSql + "   and   IsDeleted=" + IsDeleted;
+            }
+            return DatabaseExcetue.ReturnDataTable(strSql);
+        }
+
+        public DataTable GetPhotoByMemLoginID(string MemLoginID)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+
+            parms[0].ParameterName = "@MemLoginID";
+            parms[0].Value = MemLoginID;
+            return
+                DatabaseExcetue.ReturnDataTable("   SELECT   Photo FROM  ShopNum1_Member   WHERE  MemLoginID =@MemLoginID", parms);
+        }
+
+        public DataTable GetScoreByMemLoginID(string MemLoginID)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+
+            parms[0].ParameterName = "@MemLoginID";
+            parms[0].Value = MemLoginID;
+            return
+                DatabaseExcetue.ReturnDataTable(
+                    "   select  Score ,MemberRank from  ShopNum1_Member  where MemLoginID =@MemLoginID ", parms);
+        }
+
+        public int IsAudit(string Guid, int IsAudit)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(2);
+
+            parms[0].ParameterName = "@Guid";
+            parms[0].Value = Guid.Replace("'","");
+            parms[1].ParameterName = "@IsAudit";
+            parms[1].Value = IsAudit;
+            return
+                DatabaseExcetue.RunNonQuery(
+                    string.Concat(new object[]
+                    {
+                        "   update ShopNum1_Shop_ScoreProduct set IsAudit=@IsAudit,  ModifyTime='",
+                        DateTime.Now.ToString(), "'    where  Guid  in (@Guid)   "
+                    }), parms);
+        }
+
+        public int Operate(string ziduan, string value, string Guid)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(3);
+
+            parms[0].ParameterName = "@ziduan";
+            parms[0].Value = ziduan;
+            parms[1].ParameterName = "@value";
+            parms[1].Value = value;
+            parms[2].ParameterName = "@Guid";
+            parms[2].Value = Guid.Replace("'","");
+            return
+                DatabaseExcetue.RunNonQuery("   update ShopNum1_Shop_ScoreProduct set @ziduan=@value,  ModifyTime='" + DateTime.Now + "'    where  Guid  in (@Guid)   ",parms);
+        }
+
+        public DataSet SearchScoreProductList(string ordername, string soft, string perpagenum, string current_page,
+            string isreturcount)
+        {
+            string str = " 1=1  ";
+            var paraName = new string[7];
+            var paraValue = new string[7];
+            paraName[0] = "@perpagenum";
+            paraValue[0] = perpagenum;
+            paraName[1] = "@current_page";
+            paraValue[1] = current_page;
+            paraName[2] = "@columnnames";
+            paraValue[2] = " *  ";
+            paraName[3] = "@ordername";
+            paraValue[3] = ordername;
+            paraName[4] = "@searchname";
+            paraValue[4] = str;
+            paraName[5] = "@sdesc";
+            paraValue[5] = soft;
+            paraName[6] = "@isreturcount";
+            paraValue[6] = isreturcount;
+            return DatabaseExcetue.RunProcedureReturnDataSet("Pro_Shop_SearchScoreProduct", paraName, paraValue);
+        }
+
+        public DataTable Select_List(CommonPageModel commonModel)
+        {
+            var paraName = new string[8];
+            var paraValue = new string[8];
+            paraName[0] = "@pagesize";
+            paraValue[0] = commonModel.PageSize;
+            paraName[1] = "@currentpage";
+            paraValue[1] = commonModel.Currentpage;
+            paraName[2] = "@columns";
+            paraValue[2] = " * ";
+            paraName[3] = "@tablename";
+            paraValue[3] = "ShopNum1_Shop_ScoreProduct";
+            paraName[4] = "@condition";
+            paraValue[4] = commonModel.Condition;
+            paraName[5] = "@ordercolumn";
+            paraValue[5] = "CreateTime";
+            paraName[6] = "@sortvalue";
+            paraValue[6] = "desc";
+            paraName[7] = "@resultnum";
+            paraValue[7] = commonModel.Resultnum;
+            return DatabaseExcetue.RunProcedureReturnDataTable("Pro_CommonPager", paraName, paraValue);
+        }
+
+        public int UpdateIsIntegralShop(string Guid, int IsIntegralShop)
+        {
+            string strSql = string.Empty;
+            if ((IsIntegralShop == 1) || (IsIntegralShop == 0))
+            {
+                object obj2 = strSql;
+                strSql =
+                    string.Concat(new[] { obj2, "   update ShopNum1_ShopInfo  set IsIntegralShop=", IsIntegralShop, "    " }) +
+                    "   where Guid ='" + Guid + "'    ";
+            }
+            return DatabaseExcetue.RunNonQuery(strSql);
+        }
+
+        public int UpOrDownSaled(string Guid, int IsSaled)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(2);
+
+            parms[0].ParameterName = "@Guid";
+            parms[0].Value = Guid.Replace("'","");
+            parms[1].ParameterName = "@IsSaled";
+            parms[1].Value = IsSaled;
+            
+            return
+                DatabaseExcetue.RunNonQuery(
+                    string.Concat(new object[]
+                    {
+                        "   update ShopNum1_Shop_ScoreProduct set IsSaled=@IsSaled  where  Guid  in (@Guid)   "
+                    }),parms);
+        }
+    }
+}

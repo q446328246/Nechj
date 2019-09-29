@@ -1,0 +1,153 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using ShopNum1.Common;
+using ShopNum1.DataAccess;
+using ShopNum1.Interface;
+using ShopNum1MultiEntity;
+using System.Data.Common;
+
+namespace ShopNum1.BusinessLogic
+{
+    public class ShopNum1_SurveyTheme_Action : IShopNum1_SurveyTheme_Action
+    {
+        public int Add(ShopNum1_SurveyTheme shopNum1_SurveyTheme)
+        {
+            return
+                DatabaseExcetue.RunNonQuery(
+                    string.Concat(new object[]
+                    {
+                        "insert shopNum1_SurveyTheme(Guid,Title,StartTime,EndTime,SimplyOrMultiCheck) values('",
+                        shopNum1_SurveyTheme.Guid, "','", shopNum1_SurveyTheme.Title, "','",
+                        shopNum1_SurveyTheme.StartTime, "','", shopNum1_SurveyTheme.EndTime, "',",
+                        shopNum1_SurveyTheme.SimplyOrMultiCheck, ")"
+                    }));
+        }
+
+        public int Delete(string guids)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+            parms[0].ParameterName = "@guids";
+            parms[0].Value = guids;
+            return DatabaseExcetue.RunNonQuery("DELETE FROM shopNum1_SurveyTheme WHERE Guid IN (@guids)",parms);
+        }
+
+        public DataTable GetEditInfo(string guid)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+            parms[0].ParameterName = "@guid";
+            parms[0].Value = guid.Replace("'","");
+            return
+                DatabaseExcetue.ReturnDataTable(
+                    "SELECT  Title, StartTime, EndTime, SimplyOrMultiCheck FROM shopNum1_SurveyTheme Where Guid=@guid" );
+        }
+
+        public int GetMaxCount(string surveyGuid)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+            parms[0].ParameterName = "@surveyGuid";
+            parms[0].Value = surveyGuid;
+            return
+                Convert.ToInt32(
+                    DatabaseExcetue.ReturnDataTable("SELECT Count FROM ShopNum1_SurveyTheme WHERE Guid=@surveyGuid", parms).Rows[0]["Count"].ToString());
+        }
+
+        public int GetSurveyOptionMaxCount(string surveyOptionGuid)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+            parms[0].ParameterName = "@surveyOptionGuid";
+            parms[0].Value = surveyOptionGuid;
+            return
+                Convert.ToInt32(
+                    DatabaseExcetue.ReturnDataTable("SELECT Count FROM ShopNum1_SurveyOption WHERE Guid=@surveyOptionGuid",parms).Rows[0]["Count"].ToString());
+        }
+
+        public DataTable Search(string name)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+            parms[0].ParameterName = "@name";
+            parms[0].Value = Operator.FilterString(name);
+            string strSql = string.Empty;
+            strSql = "SELECT Guid, Title, StartTime, EndTime, Count from ShopNum1_SurveyTheme Where 0=0";
+            if (name != string.Empty)
+            {
+                strSql = strSql + " AND Title LIKE '%@name%'";
+            }
+            return DatabaseExcetue.ReturnDataTable(strSql, parms);
+        }
+
+        public DataTable SearchFirst(string startTime, string endTime)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(2);
+            parms[0].ParameterName = "@startTime";
+            parms[0].Value = Operator.FilterString(startTime);
+            parms[1].ParameterName = "@endTime";
+            parms[1].Value = Operator.FilterString(endTime);
+            string str = string.Empty;
+            str =
+                "SELECT top 1 Guid, Title, StartTime,SimplyOrMultiCheck,EndTime,Count from ShopNum1_SurveyTheme Where 0=0 ";
+            if (Operator.FormatToEmpty(startTime) != string.Empty)
+            {
+                str = str + " AND StartTime<=@startTime ";
+            }
+            if (Operator.FormatToEmpty(endTime) != string.Empty)
+            {
+                str = str + " AND EndTime>=@endTime";
+            }
+            return DatabaseExcetue.ReturnDataTable(str + "ORDER BY  StartTime DESC",parms);
+        }
+
+        public DataTable SearchSurveyOption(string surveyGuid)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+            parms[0].ParameterName = "@surveyGuid";
+            parms[0].Value = surveyGuid;
+            return
+                DatabaseExcetue.ReturnDataTable(
+                    "SELECT A.Name,A.Count,A.SurveyGuid,B.Count AS AllCount,B.Title  FROM  ShopNum1_SurveyOption AS A,ShopNum1_SurveyTheme AS B WHERE  A. SurveyGuid = B.Guid AND A. SurveyGuid=@surveyGuid",parms);
+        }
+
+        public int SurveyAdd(string surveyGuid, string surveyOptionGuid)
+        {
+            string item = string.Empty;
+            var sqlList = new List<string>();
+            item =
+                string.Concat(new object[]
+                {
+                    "UPDATE  ShopNum1_SurveyTheme SET \t Count =", Convert.ToInt32((GetMaxCount(surveyGuid) + 1)),
+                    " WHERE Guid='", surveyGuid, "'"
+                });
+            sqlList.Add(item);
+            item =
+                string.Concat(new object[]
+                {
+                    "UPDATE  ShopNum1_SurveyOption SET \t Count =",
+                    Convert.ToInt32((GetSurveyOptionMaxCount(surveyOptionGuid) + 1)), " WHERE Guid='",
+                    surveyOptionGuid, "'"
+                });
+            sqlList.Add(item);
+            try
+            {
+                DatabaseExcetue.RunTransactionSql(sqlList);
+                return 1;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
+        public int Update(string guid, ShopNum1_SurveyTheme shopNum1_SurveyTheme)
+        {
+            return
+                DatabaseExcetue.RunNonQuery(
+                    string.Concat(new object[]
+                    {
+                        "update shopNum1_SurveyTheme set Title='", Operator.FilterString(shopNum1_SurveyTheme.Title)
+                        ,
+                        "',StartTime='", shopNum1_SurveyTheme.StartTime, "',EndTime='", shopNum1_SurveyTheme.EndTime
+                        , "',SimplyOrMultiCheck=", shopNum1_SurveyTheme.SimplyOrMultiCheck, " where Guid=", guid
+                    }));
+        }
+    }
+}

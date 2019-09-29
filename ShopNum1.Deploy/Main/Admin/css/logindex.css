@@ -1,0 +1,164 @@
+@charset "gb2312";
+/* CSS Document */
+
+body {
+    background: #2675b0 url(../images/lbg.jpg) repeat-x;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    color: #666;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+form {
+    margin: 0;
+    padding: 0;
+}
+
+.clear { clear: both; }
+
+.alogin_bg {
+    background: url(../images/login.jpg) center center no-repeat;
+    height: 718px;
+    margin: 0 auto;
+    width: 1000px;
+}
+
+.warp { padding: 270px 99px 0 92px; }
+
+.logo {
+    background: url(../images/logo3.png) 50px 10px no-repeat; 
+    cursor: pointer;
+    display: inline;
+    float: left;
+    height: 72px;
+    margin-left: 37px;
+    width: 329px;
+}
+
+.admin_login_box {
+    display: inline;
+    float: left;
+    height: 120px;
+    margin-left: 65px;
+    width: 325px;
+}
+
+.ad {
+    height: 70px;
+    overflow: hidden;
+}
+
+.admin_login {
+    display: block;
+    float: left;
+    margin-right: 8px;
+    width: 225px;
+}
+
+.adminbtn {
+    float: left;
+    height: 58px;
+    margin-top: 5px;
+    overflow: hidden;
+    width: 77px;
+}
+
+.adminbtn a, .bt3 {
+    background: url(../images/dlbtn.jpg) no-repeat;
+    border: none;
+    cursor: pointer;
+    display: block;
+    height: 58px;
+    text-indent: -99999px;
+    width: 77px;
+}
+
+.admin_login li {
+    color: #666;
+    float: left;
+    font-size: 14px;
+    height: 35px;
+    line-height: 30px;
+}
+
+.admin_login li.left_txt {
+    text-align: right;
+    width: 56px;
+}
+
+.admin_login li.right_input {
+    float: right;
+    width: 168px;
+}
+
+.admin_login .right_input .text, .code_rigth .txtcode {
+    border: 1px solid #ccc;
+    font-size: 12px;
+    height: 22px;
+    line-height: 22px;
+    outline: none;
+    width: 160px;
+}
+
+.adcode {
+    overflow: hidden;
+    width: 325px;
+}
+
+.code_left {
+    color: #666;
+    float: left;
+    font-size: 14px;
+    height: 35px;
+    line-height: 30px;
+    width: 56px;
+}
+
+.code_rigth {
+    float: left;
+    height: 35px;
+    line-height: 30px;
+    padding-left: 2px;
+    width: 265px;
+}
+
+.code_rigth .txtcode { width: 80px; }
+
+.code_rigth a.on {
+    color: #1e76b1;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.code_rigth a.on:hover { text-decoration: underline; }
+
+.copyright {
+    color: #666;
+    font-family: Arial;
+    font-size: 12px;
+    margin: 0;
+    margin-top: 35px;
+    text-align: center;
+    zoom: 1;
+}
+
+.copyright a {
+    color: #317fbb;
+    font-family: Arial;
+    font-size: 12px;
+    margin: 0;
+    text-align: center;
+    text-decoration: none;
+    zoom: 1;
+}
+
+.copyright a:hover {
+    color: #317fbb;
+    text-decoration: underline;
+}

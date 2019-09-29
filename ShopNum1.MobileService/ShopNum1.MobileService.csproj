@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FDDEA28B-7357-4EDE-AFCD-8B6841221626}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ShopNum1.MobileService</RootNamespace>
+    <AssemblyName>ShopNum1.MobileService</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\dll\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="ServiceConfirmOrder.cs" />
+    <Compile Include="ServiceMobileAPPPayMent.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ShopCar.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ShopNum1.BusinessLogic\ShopNum1.BusinessLogic.csproj">
+      <Project>{090F4879-20C3-431F-A839-D8BCADB27BC1}</Project>
+      <Name>ShopNum1.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.Common\ShopNum1.Common.csproj">
+      <Project>{3F01A9DC-7C89-41FD-A758-453E0B50D278}</Project>
+      <Name>ShopNum1.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.Email\ShopNum1.Email.csproj">
+      <Project>{225E6E14-C543-42A9-87B0-3BC77480560D}</Project>
+      <Name>ShopNum1.Email</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.Factory\ShopNum1.Factory.csproj">
+      <Project>{612ED950-D9CF-498E-882F-CA523DA66716}</Project>
+      <Name>ShopNum1.Factory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.Interface\ShopNum1.Interface.csproj">
+      <Project>{637FD586-553B-4F84-8A8E-AA2883DEB393}</Project>
+      <Name>ShopNum1.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.MultiBaseWebControl\ShopNum1.MultiBaseWebControl.csproj">
+      <Project>{411E8BD3-CEFA-44CE-B7EA-B4BFB8469ECA}</Project>
+      <Name>ShopNum1.MultiBaseWebControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.Payment\ShopNum1.Payment.csproj">
+      <Project>{5AC9F7AC-D8AE-471A-A97C-1C7AD251F066}</Project>
+      <Name>ShopNum1.Payment</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.ShopBusinessLogic\ShopNum1.ShopBusinessLogic.csproj">
+      <Project>{D5352277-F1DD-4854-9C4A-C936E63B5E31}</Project>
+      <Name>ShopNum1.ShopBusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.ShopFeeTemplate\ShopNum1.ShopFeeTemplate.csproj">
+      <Project>{90C7BB13-3801-4543-8CC8-496C7879096D}</Project>
+      <Name>ShopNum1.ShopFeeTemplate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.ShopInterface\ShopNum1.ShopInterface.csproj">
+      <Project>{1DF5E363-1167-4275-AB8B-26179F39933E}</Project>
+      <Name>ShopNum1.ShopInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.Standard\ShopNum1.Standard.csproj">
+      <Project>{FBF33D3C-6EB7-4D50-90DA-08B352ED8DAD}</Project>
+      <Name>ShopNum1.Standard</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1MultiEntity\ShopNum1MultiEntity.csproj">
+      <Project>{C180CC8C-AED3-4536-82DE-16B796633249}</Project>
+      <Name>ShopNum1MultiEntity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.Deploy\ShopNum1.Deploy.csproj">
+      <Project>{451D02A2-3D2F-4C2B-8785-4FE8231FED19}</Project>
+      <Name>ShopNum1.Deploy</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

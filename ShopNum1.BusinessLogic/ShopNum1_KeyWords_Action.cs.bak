@@ -1,0 +1,144 @@
+﻿using System;
+using System.Data;
+using ShopNum1.Common;
+using ShopNum1.DataAccess;
+using ShopNum1.Interface;
+using ShopNum1MultiEntity;
+using System.Data.Common;
+
+namespace ShopNum1.BusinessLogic
+{
+    public class ShopNum1_KeyWords_Action : IShopNum1_KeyWords_Action
+    {
+        public int Add(ShopNum1_KeyWords shopnum1_keywords)
+        {
+            return DatabaseExcetue.RunNonQuery(string.Concat(new object[]
+            {
+                "insert ShopNum1_KeyWords(  Guid, Name, Count, Type, IfShow, CreateUser, CreateTime, ModifyUser, ModifyTime, IsDeleted ) VALUES (  '"
+                , shopnum1_keywords.Guid, "',  '", Operator.FilterString(shopnum1_keywords.Name), "',  ",
+                shopnum1_keywords.Count, ",  ", shopnum1_keywords.Type, ",  ", shopnum1_keywords.IfShow, ",  '",
+                shopnum1_keywords.CreateUser, "',   '", shopnum1_keywords.CreateTime, "',   '",
+                shopnum1_keywords.ModifyUser,
+                "',   '", shopnum1_keywords.ModifyTime, "',   ", shopnum1_keywords.IsDeleted, "  )"
+            }));
+        }
+
+        public DataTable CheckIsExist(string name, int type)
+        {
+                DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+            
+            parms[0].ParameterName = "@type";
+            parms[0].Value = type;
+            return
+                DatabaseExcetue.ReturnDataTable(
+                    string.Concat(new object[]
+                    {
+                        "SELECT  Guid, Name,Type,Count   FROM ShopNum1_KeyWords WHERE Name='",
+                        Operator.FilterString(name), "'  AND Type =@type"
+                    }), parms);
+        }
+
+        public int Delete(string guid)
+        {
+                DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+
+            parms[0].ParameterName = "@guid";
+            parms[0].Value = guid;
+            return DatabaseExcetue.RunNonQuery("DELETE FROM ShopNum1_KeyWords WHERE Guid IN (@guid)",parms);
+        }
+
+        public DataTable GetEditInfo(string guid)
+        {
+                DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+            parms[0].ParameterName = "@guid";
+            parms[0].Value = guid;
+            return
+                DatabaseExcetue.ReturnDataTable(
+                    "SELECT Guid, Name, Type, Count, IfShow,  CreateUser, CreateTime,ModifyUser, ModifyTime, IsDeleted FROM ShopNum1_KeyWords WHERE Guid =@guid",parms);
+        }
+
+        public DataTable Search(string name, string count, int type, int ifshow, int isDelete)
+        {
+            string str = string.Empty;
+            str =
+                "SELECT Guid, Name, Type, Count, IfShow,  CreateUser, CreateTime,ModifyUser, ModifyTime, IsDeleted FROM ShopNum1_KeyWords WHERE 1=1 ";
+            if (Operator.FormatToEmpty(name) != string.Empty)
+            {
+                str = str + " AND Name Like '%" + Operator.FilterString(name) + "%'";
+            }
+            if ((type == 0) || (type == 1))
+            {
+                str = string.Concat(new object[] {str, " AND Type=", type, " "});
+            }
+            if (Operator.FormatToEmpty(count) != string.Empty)
+            {
+                str = str + " AND Count= '" + Operator.FilterString(count) + "' ";
+            }
+            if ((ifshow == 0) || (ifshow == 1))
+            {
+                str = string.Concat(new object[] {str, " AND IfShow=", ifshow, " "});
+            }
+            if (isDelete == 0)
+            {
+                str = string.Concat(new object[] {str, " AND IsDeleted=", isDelete, " "});
+            }
+            return DatabaseExcetue.ReturnDataTable(str + " Order By CreateTime Desc");
+        }
+
+        public DataTable SearchName(int count, int type)
+        {
+            string str = string.Empty;
+            if (count > 0)
+            {
+                str = "SELECT top " + count +
+                      " Guid, Name, Type, Count , IsDeleted FROM ShopNum1_KeyWords WHERE  IfShow =1 AND IsDeleted=0  ";
+            }
+            else
+            {
+                str =
+                    "SELECT  Guid, Name, Type, Count, IsDeleted FROM ShopNum1_KeyWords WHERE  IfShow =1 AND IsDeleted=0  ";
+            }
+            return DatabaseExcetue.ReturnDataTable(str + "ORDER BY Count DESC");
+        }
+
+        public int Update(string guid, ShopNum1_KeyWords shopnum1_keywords)
+        {
+            return
+                DatabaseExcetue.RunNonQuery(
+                    string.Concat(new object[]
+                    {
+                        "UPDATE  ShopNum1_KeyWords SET  Name='", Operator.FilterString(shopnum1_keywords.Name),
+                        "', Type='", shopnum1_keywords.Type, "', Count=", shopnum1_keywords.Count, ", IfShow='",
+                        shopnum1_keywords.IfShow, "', ModifyUser='", shopnum1_keywords.ModifyUser, "', ModifyTime='"
+                        , shopnum1_keywords.ModifyTime, "'WHERE Guid=", guid
+                    }));
+        }
+
+        public int UpdateCount(string name, int type, int count)
+        {
+                DbParameter[] parms = DatabaseExcetue.CreateParameter(2);
+            parms[0].ParameterName = "@type";
+            parms[0].Value = type;
+            parms[1].ParameterName = "@count";
+            parms[1].Value = count;
+            return
+                DatabaseExcetue.RunNonQuery(
+                    string.Concat(new object[]
+                    {
+                        "UPDATE  ShopNum1_KeyWords SET  Count=@count, ModifyUser='", string.Empty,
+                        "', ModifyTime='", DateTime.Now, "' WHERE Name='", Operator.FilterString(name),
+                        "'  AND Type =@type"
+                    }), parms);
+        }
+
+        public DataTable GetKeyWords(string showCount)
+        {
+            string strProcedureName = "Pro_ShopNum1_GetKeyWords";
+            var paraName = new string[1];
+            var paraValue = new string[1];
+            paraName[0] = "@showCount";
+            paraValue[0] = showCount;
+            return DatabaseExcetue.RunProcedureReturnDataTable(strProcedureName, paraName, paraValue);
+        }
+    }
+}

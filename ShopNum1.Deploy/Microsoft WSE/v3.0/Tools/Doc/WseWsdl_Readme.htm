@@ -1,0 +1,861 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 11 (filtered)">
+<title>WSDL to SoapClient Tool (WseWsdl3.exe)</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Verdana;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+@font-face
+	{font-family:"Microsoft Logo 95";
+	panose-1:0 0 0 0 0 0 0 0 0 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:3.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	line-height:13.0pt;
+	font-size:10.0pt;
+	font-family:Verdana;
+	color:fuchsia;
+	font-weight:bold;}
+h1
+	{margin-top:9.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:-.25in;
+	line-height:20.0pt;
+	page-break-after:avoid;
+	font-size:18.0pt;
+	font-family:Verdana;
+	color:black;}
+h2
+	{margin-top:9.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:-.25in;
+	line-height:20.0pt;
+	page-break-after:avoid;
+	font-size:18.0pt;
+	font-family:Verdana;
+	color:gray;}
+h3
+	{margin-top:9.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:-.25in;
+	line-height:20.0pt;
+	page-break-after:avoid;
+	font-size:18.0pt;
+	font-family:Verdana;
+	color:silver;}
+h4
+	{margin-top:9.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:-.25in;
+	line-height:20.0pt;
+	page-break-after:avoid;
+	font-size:18.0pt;
+	font-family:Verdana;
+	color:black;
+	font-weight:normal;}
+h5
+	{margin-top:9.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:-.25in;
+	line-height:20.0pt;
+	page-break-after:avoid;
+	font-size:18.0pt;
+	font-family:Verdana;
+	color:gray;
+	font-weight:normal;}
+h6
+	{margin-top:9.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:-.25in;
+	line-height:20.0pt;
+	page-break-after:avoid;
+	font-size:18.0pt;
+	font-family:Verdana;
+	color:silver;
+	font-weight:normal;}
+p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+	{margin-top:9.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:-.25in;
+	line-height:18.0pt;
+	page-break-after:avoid;
+	font-size:16.0pt;
+	font-family:Verdana;
+	color:black;
+	font-weight:bold;}
+p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
+	{margin-top:9.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:-.25in;
+	line-height:15.0pt;
+	page-break-after:avoid;
+	font-size:13.0pt;
+	font-family:Verdana;
+	color:black;
+	font-weight:bold;}
+p.MsoHeading9, li.MsoHeading9, div.MsoHeading9
+	{margin-top:9.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:-.25in;
+	line-height:13.0pt;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:Verdana;
+	color:black;
+	font-weight:bold;}
+p.MsoIndex1, li.MsoIndex1, div.MsoIndex1
+	{margin-top:3.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:9.0pt;
+	text-indent:-9.0pt;
+	line-height:11.0pt;
+	font-size:8.0pt;
+	font-family:Verdana;
+	color:olive;}
+p.MsoIndex2, li.MsoIndex2, div.MsoIndex2
+	{margin-top:3.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:27.0pt;
+	text-indent:-9.0pt;
+	line-height:11.0pt;
+	font-size:8.0pt;
+	font-family:Verdana;
+	color:olive;}
+p.MsoIndex3, li.MsoIndex3, div.MsoIndex3
+	{margin-top:3.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:45.0pt;
+	text-indent:-9.0pt;
+	line-height:11.0pt;
+	font-size:8.0pt;
+	font-family:Verdana;
+	color:olive;}
+p.MsoToc1, li.MsoToc1, div.MsoToc1
+	{margin-top:3.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	line-height:13.0pt;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:Verdana;
+	color:olive;
+	font-weight:bold;}
+p.MsoToc2, li.MsoToc2, div.MsoToc2
+	{margin-top:3.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:.25in;
+	line-height:13.0pt;
+	font-size:10.0pt;
+	font-family:Verdana;
+	color:olive;}
+p.MsoToc3, li.MsoToc3, div.MsoToc3
+	{margin-top:3.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:.5in;
+	line-height:13.0pt;
+	font-size:10.0pt;
+	font-family:Verdana;
+	color:olive;}
+p.MsoToc4, li.MsoToc4, div.MsoToc4
+	{margin-top:3.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:.75in;
+	line-height:13.0pt;
+	font-size:10.0pt;
+	font-family:Verdana;
+	color:olive;}
+p.MsoFootnoteText, li.MsoFootnoteText, div.MsoFootnoteText
+	{margin-top:3.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	line-height:13.0pt;
+	font-size:10.0pt;
+	font-family:Verdana;
+	color:blue;}
+p.MsoCommentText, li.MsoCommentText, div.MsoCommentText
+	{margin-top:3.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	line-height:13.0pt;
+	font-size:10.0pt;
+	font-family:Verdana;
+	color:black;}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{margin-top:0in;
+	margin-right:1.0pt;
+	margin-bottom:0in;
+	margin-left:-17.0pt;
+	margin-bottom:.0001pt;
+	line-height:11.0pt;
+	border:none;
+	padding:0in;
+	font-size:8.0pt;
+	font-family:Verdana;
+	color:olive;}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{margin-top:0in;
+	margin-right:1.0pt;
+	margin-bottom:0in;
+	margin-left:-17.0pt;
+	margin-bottom:.0001pt;
+	line-height:11.0pt;
+	font-size:8.0pt;
+	font-family:Verdana;
+	color:olive;}
+p.MsoIndexHeading, li.MsoIndexHeading, div.MsoIndexHeading
+	{margin-top:9.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	line-height:15.0pt;
+	page-break-after:avoid;
+	font-size:13.0pt;
+	font-family:Verdana;
+	color:olive;
+	font-weight:bold;}
+span.MsoFootnoteReference
+	{color:blue;
+	vertical-align:super;}
+span.MsoPageNumber
+	{font-family:Verdana;
+	color:olive;}
+p.MsoDocumentMap, li.MsoDocumentMap, div.MsoDocumentMap
+	{margin-top:3.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	line-height:13.0pt;
+	background:navy;
+	font-size:10.0pt;
+	font-family:Tahoma;
+	color:fuchsia;
+	font-weight:bold;}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{margin-top:3.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	line-height:13.0pt;
+	font-size:8.0pt;
+	font-family:Tahoma;
+	color:fuchsia;
+	font-weight:bold;}
+p.Text, li.Text, div.Text
+	{margin-top:3.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	line-height:13.0pt;
+	font-size:10.0pt;
+	font-family:Verdana;
+	color:black;}
+p.Figure, li.Figure, div.Figure
+	{margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	font-size:10.0pt;
+	font-family:Verdana;
+	color:black;}
+p.Code, li.Code, div.Code
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	line-height:15.0pt;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	color:navy;}
+p.LabelinList2, li.LabelinList2, div.LabelinList2
+	{margin-top:3.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:.5in;
+	line-height:13.0pt;
+	font-size:10.0pt;
+	font-family:Verdana;
+	color:black;
+	font-weight:bold;}
+p.TextinList2, li.TextinList2, div.TextinList2
+	{margin-top:3.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:.5in;
+	line-height:13.0pt;
+	font-size:10.0pt;
+	font-family:Verdana;
+	color:black;}
+p.Label, li.Label, div.Label
+	{margin-top:3.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	line-height:13.0pt;
+	font-size:10.0pt;
+	font-family:Verdana;
+	color:black;
+	font-weight:bold;}
+p.NumberedList2, li.NumberedList2, div.NumberedList2
+	{margin-top:3.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:.5in;
+	text-indent:-.25in;
+	line-height:13.0pt;
+	font-size:10.0pt;
+	font-family:Verdana;
+	color:black;}
+p.Syntax, li.Syntax, div.Syntax
+	{margin-top:0in;
+	margin-right:5.0pt;
+	margin-bottom:3.0pt;
+	margin-left:2.0pt;
+	line-height:15.0pt;
+	background:#E2E2E2;
+	border:none;
+	padding:0in;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	color:black;}
+p.TableFootnote, li.TableFootnote, div.TableFootnote
+	{margin-top:2.0pt;
+	margin-right:0in;
+	margin-bottom:4.0pt;
+	margin-left:0in;
+	line-height:11.0pt;
+	font-size:8.0pt;
+	font-family:Verdana;
+	color:black;}
+span.CodeEmbedded
+	{font-family:"Courier New";
+	color:navy;
+	position:relative;
+	top:-.5pt;}
+span.LabelEmbedded
+	{font-family:Verdana;
+	font-weight:bold;}
+span.LinkText
+	{color:blue;
+	text-decoration:underline;}
+span.LinkTextPopup
+	{color:blue;
+	text-decoration:underline;}
+span.LinkID
+	{color:red;
+	display:none;}
+p.TableSpacing, li.TableSpacing, div.TableSpacing
+	{margin:0in;
+	margin-bottom:.0001pt;
+	line-height:6.0pt;
+	font-size:6.0pt;
+	font-family:Verdana;
+	color:fuchsia;}
+p.CodeinList2, li.CodeinList2, div.CodeinList2
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:.5in;
+	line-height:15.0pt;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	color:navy;}
+span.ConditionalMarker
+	{font-family:"Courier New";
+	color:black;
+	display:none;
+	border:none;
+	background:#FFFFBF;}
+p.FigureinList2, li.FigureinList2, div.FigureinList2
+	{margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.5in;
+	font-size:10.0pt;
+	font-family:Verdana;
+	color:black;}
+p.TableFootnoteinList2, li.TableFootnoteinList2, div.TableFootnoteinList2
+	{margin-top:2.0pt;
+	margin-right:0in;
+	margin-bottom:4.0pt;
+	margin-left:.5in;
+	line-height:11.0pt;
+	font-size:8.0pt;
+	font-family:Verdana;
+	color:black;}
+p.LabelinList1, li.LabelinList1, div.LabelinList1
+	{margin-top:3.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:.25in;
+	line-height:13.0pt;
+	font-size:10.0pt;
+	font-family:Verdana;
+	color:black;
+	font-weight:bold;}
+p.TextinList1, li.TextinList1, div.TextinList1
+	{margin-top:3.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:.25in;
+	line-height:13.0pt;
+	font-size:10.0pt;
+	font-family:Verdana;
+	color:black;}
+p.CodeinList1, li.CodeinList1, div.CodeinList1
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:.25in;
+	line-height:15.0pt;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	color:navy;}
+p.FigureinList1, li.FigureinList1, div.FigureinList1
+	{margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.25in;
+	font-size:10.0pt;
+	font-family:Verdana;
+	color:black;}
+p.TableFootnoteinList1, li.TableFootnoteinList1, div.TableFootnoteinList1
+	{margin-top:2.0pt;
+	margin-right:0in;
+	margin-bottom:4.0pt;
+	margin-left:.25in;
+	line-height:11.0pt;
+	font-size:8.0pt;
+	font-family:Verdana;
+	color:black;}
+span.HTML
+	{font-family:"Courier New";
+	color:black;
+	border:none;
+	background:#DDFFDD;}
+p.AlertText, li.AlertText, div.AlertText
+	{margin-top:3.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:.25in;
+	line-height:13.0pt;
+	font-size:10.0pt;
+	font-family:Verdana;
+	color:black;}
+p.AlertTextinList1, li.AlertTextinList1, div.AlertTextinList1
+	{margin-top:3.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:.5in;
+	line-height:13.0pt;
+	font-size:10.0pt;
+	font-family:Verdana;
+	color:black;}
+p.AlertTextinList2, li.AlertTextinList2, div.AlertTextinList2
+	{margin-top:3.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:.75in;
+	line-height:13.0pt;
+	font-size:10.0pt;
+	font-family:Verdana;
+	color:black;}
+p.RevisionHistory, li.RevisionHistory, div.RevisionHistory
+	{margin-top:3.0pt;
+	margin-right:1.0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	line-height:13.0pt;
+	font-size:10.0pt;
+	font-family:Verdana;
+	color:purple;
+	display:none;}
+p.BulletedList1, li.BulletedList1, div.BulletedList1
+	{margin-top:3.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:.25in;
+	text-indent:-.25in;
+	line-height:13.0pt;
+	font-size:10.0pt;
+	font-family:Verdana;
+	color:black;}
+p.TextIndented, li.TextIndented, div.TextIndented
+	{margin-top:3.0pt;
+	margin-right:.25in;
+	margin-bottom:3.0pt;
+	margin-left:.25in;
+	line-height:13.0pt;
+	font-size:10.0pt;
+	font-family:Verdana;
+	color:black;}
+p.BulletedList2, li.BulletedList2, div.BulletedList2
+	{margin-top:3.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:.5in;
+	text-indent:-.25in;
+	line-height:13.0pt;
+	font-size:10.0pt;
+	font-family:Verdana;
+	color:black;}
+p.DefinedTerm, li.DefinedTerm, div.DefinedTerm
+	{margin-top:3.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	line-height:13.0pt;
+	font-size:10.0pt;
+	font-family:Verdana;
+	color:black;}
+p.Definition, li.Definition, div.Definition
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:.25in;
+	line-height:13.0pt;
+	font-size:10.0pt;
+	font-family:Verdana;
+	color:black;}
+p.NumberedList1, li.NumberedList1, div.NumberedList1
+	{margin-top:3.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:.25in;
+	text-indent:-.25in;
+	line-height:13.0pt;
+	font-size:10.0pt;
+	font-family:Verdana;
+	color:black;}
+p.GlueLinkText, li.GlueLinkText, div.GlueLinkText
+	{margin-top:3.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	line-height:13.0pt;
+	font-size:10.0pt;
+	font-family:Verdana;
+	color:black;}
+p.IndexTag, li.IndexTag, div.IndexTag
+	{margin-top:3.0pt;
+	margin-right:1.0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	line-height:13.0pt;
+	font-size:10.0pt;
+	font-family:Verdana;
+	color:green;
+	display:none;
+	font-weight:bold;}
+p.LabelforProcedures, li.LabelforProcedures, div.LabelforProcedures
+	{margin-top:3.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	line-height:13.0pt;
+	font-size:10.0pt;
+	font-family:Verdana;
+	color:navy;
+	font-weight:bold;}
+p.Copyright, li.Copyright, div.Copyright
+	{margin-top:3.0pt;
+	margin-right:-48.0pt;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	line-height:11.0pt;
+	font-size:8.0pt;
+	font-family:Verdana;
+	color:black;}
+p.PrintDivisionTitle, li.PrintDivisionTitle, div.PrintDivisionTitle
+	{margin-top:9.0pt;
+	margin-right:0in;
+	margin-bottom:9.0pt;
+	margin-left:0in;
+	text-align:right;
+	line-height:22.0pt;
+	page-break-after:avoid;
+	font-size:20.0pt;
+	font-family:Verdana;
+	color:olive;
+	font-weight:bold;}
+p.PrintMSCorp, li.PrintMSCorp, div.PrintMSCorp
+	{margin-top:9.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	text-align:right;
+	line-height:15.0pt;
+	font-size:13.0pt;
+	font-family:"Microsoft Logo 95";
+	color:olive;}
+p.Slugline, li.Slugline, div.Slugline
+	{margin:0in;
+	margin-bottom:.0001pt;
+	line-height:9.0pt;
+	font-size:7.0pt;
+	font-family:Verdana;
+	color:olive;}
+span.Bold
+	{font-weight:bold;}
+span.MultilanguageMarkerAuto
+	{font-family:Verdana;
+	color:gray;}
+span.BoldItalic
+	{font-weight:bold;
+	font-style:italic;}
+p.MultilanguageMarkerExplicitBegin, li.MultilanguageMarkerExplicitBegin, div.MultilanguageMarkerExplicitBegin
+	{margin-top:3.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	line-height:11.0pt;
+	font-size:8.0pt;
+	font-family:Verdana;
+	color:gray;}
+p.MultilanguageMarkerExplicitEnd, li.MultilanguageMarkerExplicitEnd, div.MultilanguageMarkerExplicitEnd
+	{margin-top:3.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	line-height:11.0pt;
+	font-size:8.0pt;
+	font-family:Verdana;
+	color:gray;
+	text-decoration:underline;}
+span.CodeFeaturedElement
+	{font-family:"Courier New";
+	color:navy;
+	font-weight:bold;}
+span.Italic
+	{font-style:italic;}
+p.PrintDivisionNumber, li.PrintDivisionNumber, div.PrintDivisionNumber
+	{margin-top:9.0pt;
+	margin-right:-6.0pt;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	text-align:right;
+	line-height:13.0pt;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:Verdana;
+	color:olive;
+	text-transform:uppercase;
+	letter-spacing:6.0pt;}
+span.Strikethrough
+	{text-decoration:line-through;}
+span.Subscript
+	{vertical-align:sub;}
+span.Superscript
+	{vertical-align:super;}
+p.FigureImageMapPlaceholder, li.FigureImageMapPlaceholder, div.FigureImageMapPlaceholder
+	{margin-top:3.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:4.0pt;
+	border:none;
+	padding:0in;
+	font-size:10.0pt;
+	font-family:Verdana;
+	color:black;}
+p.SamplesButtonMarker, li.SamplesButtonMarker, div.SamplesButtonMarker
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:4.0pt;
+	margin-bottom:.0001pt;
+	line-height:13.0pt;
+	border:none;
+	padding:0in;
+	font-size:10.0pt;
+	font-family:Verdana;
+	color:black;}
+span.SV
+	{font-family:"Courier New";
+	color:black;
+	border:none;
+	background:#B4FFFF;}
+span.msoDel
+	{text-decoration:line-through;
+	color:red;}
+ /* Page Definitions */
+ @page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 83.0pt 1.0in 83.0pt;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US>
+
+<div class=Section1>
+
+<h2 style='margin-left:0in'>WSDL to SoapClient Tool (WseWsdl3.exe)</h2>
+
+<p class=Text>The WSDL to SoapClient tool generates proxy code for Web service
+clients from WSDL descriptions.  The generated proxy code contains a class that
+derives from Microsoft.Web.Services3.Messaging.SoapClient.  Use this generated
+class to send SOAP messages to SOAP receivers using the SOAP Messaging model in
+the Web Services Enhancements for Microsoft .NET (WSE) 3.0.</p>
+
+<div style='border:solid white 1.0pt;padding:0in 4.0pt 3.0pt 2.0pt;background:
+#E2E2E2;margin-left:2.0pt;margin-right:5.0pt'>
+
+<p class=Syntax style='margin-top:0in;margin-right:0in;margin-bottom:3.0pt;
+margin-left:0in;background:#E2E2E2'><span class=Bold>WseWsdl3 </span>{<span
+class=Italic>URL | path} </span>{path to file} [<span class=Italic>language</span>]</p>
+
+</div>
+
+<p class=TableSpacing>&nbsp;</p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='margin-left:4.0pt;border-collapse:collapse;border:none'>
+ <tr>
+  <td width=213 valign=top style='width:159.9pt;border:solid silver 1.0pt;
+  background:#E2E2E2;padding:0in 4.0pt 0in 4.0pt'>
+  <p class=Label>Argument</p>
+  </td>
+  <td width=381 valign=top style='width:286.1pt;border:solid silver 1.0pt;
+  border-left:none;background:#E2E2E2;padding:0in 4.0pt 0in 4.0pt'>
+  <p class=Label>Description</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=213 valign=top style='width:159.9pt;border:solid silver 1.0pt;
+  border-top:none;padding:0in 4.0pt 0in 4.0pt'>
+  <p class=Text><span class=Italic>URL</span></p>
+  </td>
+  <td width=381 valign=top style='width:286.1pt;border-top:none;border-left:
+  none;border-bottom:solid silver 1.0pt;border-right:solid silver 1.0pt;
+  padding:0in 4.0pt 0in 4.0pt'>
+  <p class=Text>The URL to a WSDL file (.wsdl) or the URL to a deployed
+  SoapReceiver or SoapService instance.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=213 valign=top style='width:159.9pt;border:solid silver 1.0pt;
+  border-top:none;padding:0in 4.0pt 0in 4.0pt'>
+  <p class=Text><span class=Italic>Path</span></p>
+  </td>
+  <td width=381 valign=top style='width:286.1pt;border-top:none;border-left:
+  none;border-bottom:solid silver 1.0pt;border-right:solid silver 1.0pt;
+  padding:0in 4.0pt 0in 4.0pt'>
+  <p class=Text>The path to a local WSDL file (.wsdl).</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=213 valign=top style='width:159.9pt;border:solid silver 1.0pt;
+  border-top:none;padding:0in 4.0pt 0in 4.0pt'>
+  <p class=Text><span class=Italic>path to file</span></p>
+  </td>
+  <td width=381 valign=top style='width:286.1pt;border-top:none;border-left:
+  none;border-bottom:solid silver 1.0pt;border-right:solid silver 1.0pt;
+  padding:0in 4.0pt 0in 4.0pt'>
+  <p class=Text>Specifies the file in which to save the generated proxy code.
+  The generated proxy code is a class deriving from Microsoft.Web.Services2.Messaging.SoapClient.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=213 valign=top style='width:159.9pt;border:solid silver 1.0pt;
+  border-top:none;padding:0in 4.0pt 0in 4.0pt'>
+  <p class=Text><span class=Italic>language</span></p>
+  </td>
+  <td width=381 valign=top style='width:286.1pt;border-top:none;border-left:
+  none;border-bottom:solid silver 1.0pt;border-right:solid silver 1.0pt;
+  padding:0in 4.0pt 0in 4.0pt'>
+  <p class=Text>Specifies the language to use for the generated proxy class.
+  You can specify <span class=Bold>CS</span> (C#; default) or <span class=Bold>VB</span>
+  (Visual Basic) as the language argument.</p>
+  </td>
+ </tr>
+</table>
+
+<p class=TableSpacing><span class=msoDel><del cite="mailto:a-japel"
+datetime="2001-03-22T10:46">&nbsp;</del></span></p>
+
+<p class=TableSpacing>&nbsp;</p>
+
+<p class=TableSpacing>&nbsp;</p>
+
+<p class=MsoHeading9 style='margin-left:0in'>Remarks</p>
+
+<p class=Text>A .wsdl file is an XML document written in an XML grammar called
+Web Services Description Language (WSDL). This file defines how an Web service
+behaves and instructs clients as to how to interact with the service. WSDL
+files are also returned automatically by deployed instances of SoapReceiver and
+SoapService classes. You can also retrieve a WSDL file from ASP.NET Web services.</p>
+
+<p class=Text>When you use WseWsdl3.exe to create a proxy class, a single source
+file is created in the programming language that you specify. In the process of
+generating the source code for the proxy class, the tool determines the best
+type to use for objects specified in the service description. In some cases the
+tool uses a least-common-denominator approach for casting objects to a type. As
+a result, the generated type in the proxy class might not be what the developer
+wants or expects. For example, when WseWsdl3.exe encounters an <span class=Bold>ArrayList</span>
+type in a service description, it creates an <span class=Bold>Object Array</span>
+in the generated proxy class. To ensure correct object type casts, open the
+file containing the generated proxy class and change any incorrect object types
+to the expected object type.</p>
+
+<p class=MsoHeading9 style='margin-left:0in'>Examples</p>
+
+<p class=Text>The following command creates a client proxy class in the C#
+language for an Web service located at the specified URL. The tool saves the
+client proxy class in the file <span style='font-family:"Courier New";
+color:navy'>myProxyClass.cs</span>.</p>
+
+<p class=Code>WseWsdl3 http://hostServer/WebserviceRoot/WebServiceName.ashx
+myProxyClass.cs</p>
+
+<p class=Text>The following command creates a client proxy class in the
+Microsoft Visual Basic language for an Web service located at the specified
+URL. The tool saves the client proxy class in the file <span style='font-family:
+"Courier New";color:navy'>myProxyClass.vb</span>.</p>
+
+<p class=Code>WseWsdl3 http://hostServer/WebserviceRoot/WebServiceName.ashx
+myProxyClass.vb VB</p>
+
+</div>
+
+</body>
+
+</html>

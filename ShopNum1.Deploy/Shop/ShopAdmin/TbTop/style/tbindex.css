@@ -1,0 +1,139 @@
+﻿/* CSS reset*/
+body {
+    background: #fff;
+    color: #222;
+    font-family: "宋体", Verdana, Arial;
+    font-size: 12px;
+    line-height: 150%;
+    margin: 0 auto;
+    padding: 0;
+    width: 1000px;
+}
+
+.navigator {
+    background: url(../images/right_table_bg.jpg) repeat-x left top;
+    border: 1px solid #ddd;
+    color: #20599c;
+    font-size: 14px;
+    font-weight: bold;
+    height: 26px;
+    line-height: 26px;
+    padding-left: 20px;
+}
+
+.bt2 {
+    background: url(../images/allbtbg.jpg) repeat-x left top;
+    border: 1px solid #c7dee9;
+    cursor: pointer;
+    height: 24px;
+    line-height: 24px;
+    margin: 6px;
+    padding: 0 3px;
+}
+
+a {
+    color: #075B92;
+    text-decoration: none;
+}
+
+a:hover { color: #ff0000; }
+			
+/*** 弹出层css*/
+
+.pop_ {
+    background: #fff;
+    border: 1px #96D1DF solid;
+    color: #333;
+    height: auto;
+    left: 2%;
+    padding: 1px;
+    position: absolute;
+    top: 20%;
+    width: 80%;
+    z-index: 10
+}
+
+.pop_title {
+    /* background: #ecf9ff url ('../images/title_move.gif') center no-repeat; */
+    background: #ecf9ff;
+    border-bottom: 1px #d3ecf3 solid;
+    color: #444;
+    float: left;
+    font-weight: bold;
+    height: 30px;
+    line-height: 30px;
+    width: 100%;
+}
+
+.pop_title_left {
+    cursor: move;
+    float: left;
+    overflow: hidden;
+    text-indent: 6px;
+    width: 90%;
+}
+
+.pop_title_left img {
+    border: 0;
+    float: left;
+    margin: 10px 0 0 5px
+}
+
+.pop_title_right {
+    cursor: pointer;
+    float: right;
+    text-align: right;
+    width: 8%;
+}
+
+.pop_title_right_print {
+    float: left;
+    text-align: right;
+    width: 3%;
+}
+
+.pop_title_right img {
+    cursor: pointer;
+    margin: 5px 10px 5px 10px;
+}
+
+.pop_title_right_print img {
+    cursor: pointer;
+    margin: 5px 10px 5px 10px;
+}
+
+.pop_content {
+    float: left;
+    font-size: 14px;
+    margin: 1px 0 0 0;
+    width: 100%;
+}
+
+.pop_function {
+    border-top: 1px #fff solid;
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    width: 100%;
+}
+
+.pop_search {
+    border-bottom: 3px #96D1DF dotted;
+    border-top: 1px #fff solid;
+    font-size: 12px;
+    font-weight: bold;
+    height: 35px;
+    margin: 5px 0 5px 0;
+    text-align: center;
+    width: 100%;
+}
+
+.pop_page {
+    border-top: 3px #96D1DF dotted;
+    font-size: 12px;
+    height: 25px;
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+}

@@ -1,0 +1,69 @@
+﻿body{font-size: 12px;font-family: "宋体" , Verdana, Arial;line-height: 150%;margin: 0;padding: 0;color: #222;background:#fff;}
+div{margin: 0 auto;padding: 0;}
+a:visited,a:link{color: #222;text-decoration: none;}
+a:hover{color: #ff0000;text-decoration: none;}
+h1, h2, h3, h4, h5, h6, ul, li, dl, dt, dd, form, img, p{margin: 0;padding: 0;border: none;list-style-type: none;}
+h1, h2, h3, h4, h5, h6{font-size: 12px;}
+.clearfix:after{content: ".";display: block;height: 0;clear: both;visibility: hidden;}
+*html .clearfix{height: 1%;}* + html .clearfix{height: 1%;}
+.fl{float: left;}
+.fr{float: right;}
+#right{width:820px;float: right;}
+.mod_left1{margin-bottom: 6px;}
+.mod_left1 .title{background-image: url(../Images/mod1_titlebj.png);background-repeat: no-repeat;background-position: 0px 0px;font-size: 14px;line-height: 30px;height: 30px;padding: 0 12px;position: relative;color: #FFFFFF;font-weight: bold;}
+.ProductCartTitle{height:25px;line-height:25px;font-size:13px;font-weight:bold;padding-left:10px;}
+.mod_left1 .content{border: 2px solid #8A0B02;background-color: #FFF8F6;overflow: hidden;}
+.mod_left1 .title .more{padding-top: 7px;}
+/*head*/
+.head_bg{width: 1000px;height: 100px;background: url(../Member/images/top_logo2.jpg);margin: 0;padding: 0;color: #fff;}
+.logo{height: 100px;width: 293px;background: url(../Member/images/top_logo2.png) no-repeat;float: left;padding: 0;}
+#menu{float: left;width: 680px;margin-top: 10px;}
+#Nav{float: left;width: 680px;}
+#Nav a{color: #FFF;height:25px;line-height:25px;padding: 0 2px;text-align:center;font-size: 12px;font-weight: normal;}
+#Nav a:hover{  color: #FFF;text-decoration:none;}
+.admin_center{float: right;height: 60px;margin-top: 0px;margin-right: 20px;position:relative;display: inline;}
+.home{width: 80px;height: 30px;background: url(../Member/images/shop_home_08.gif);display: block;}
+.quit{width: 80px;height: 30px;background: url(../Member/images/tuichu_08.gif);border: 0;}
+/* CSS Document */
+.MemberAll{background: #f3f3f3;border: 1px solid #ccc;margin-bottom: 6px;}
+.MemberAll .MemberTitle{background-color: #efefef;line-height: 30px;padding-left:15px;}
+.MemberAll .MemberTr{text-align: left;}
+.MemberAll td{background: #FFFFFF;padding-left: 5px;line-height: 250%;}
+/*-------footer-----------*/
+.footer a{text-align: center;color:#222;}
+#BottomNavigator{line-height: 180%;text-align: center;clear: both;}
+.StorePrice{line-height: 15px;font-size: 14px;font-weight: bold;color: #E20272;}
+.Button1{width: 90px;line-height: 25px;height: 25px;border: 1px solid #fe4800;background:url(../Member/images/allbtbg.jpg) repeat-x;text-align: center;cursor:pointer;}
+.Button12{width:67px;line-height: 25px;height: 25px;border:0;background:url(../Member/images/bt12.gif);}
+.Button13{width:49px;line-height: 25px;height: 25px;border:0;background:url(../Member/images/bt13.gif);}
+.Button14{width:67px;line-height: 25px;height: 25px;border:0;background:url(../Member/images/bt14.gif);}
+.Button2{width: 90px;line-height: 25px;height: 25px;background:url(../Member/images/allbtbg.jpg) repeat-x;border: 1px solid #C7DEE9;text-align: center;cursor:pointer;}
+.Button3{width:126px;line-height: 25px;height: 25px;background:url(../Member/images/allbtbg.jpg) repeat-x;border: 1px solid #C7DEE9;text-align: center;cursor:pointer;}
+/*分页类控制样式*/
+.pager{padding-right: 10px;line-height: 25px;text-align: right;height: 25px;color:#0000ff;border: 1px solid #ccc;background-color: #f7f7f7;margin: 6px 0;}
+.pager a{color: #0000ff;}
+.pager a:hover{color: #FF0000;}
+/*------发布活动------*/
+.Launches_warp{background: #fff;border: 1px solid #dedede;margin-bottom: 6px;}
+.Launches_warp .Launches{height:29px;background:url(../images/s_line.jpg) repeat-x;}
+.Launches_warp .Launches h3{line-height: 29px;height:29px;padding-left:25px;color:#990d01;background:url(../images/help_icon.jpg) 10px 7px no-repeat;}
+.Launches_warp .MemberTr{text-align: left;}
+.Launches_warp td{background: #FFFFFF;padding-left: 5px;line-height:35px;}
+.active_bmbut{background:url(../images/bnaomin.jpg) no-repeat;height:29px;width:60px;border:none;}
+/*-----用户中心------*/
+.leftMeau{width: 164px;background-color: #ff8fc5;padding: 2px;border: 1px solid #98064d;}
+.leftMeau dt{width: 160px;height: 35px;line-height: 35px;color: #e30471;background: url(../Member/images/shop_ul_13.gif);font-size: 14px;}
+.leftMeau dd{width: 140px;text-align: center;border-bottom: 1px dotted #ddd;margin: 0 10px;height: 25px;line-height: 25px;}
+.leftMeau dd a{color: #000;}
+.leftMeau .content{width: 160px;background-color: #fff;}
+.iconChange{float: left;}
+.Member_Title{height:26px;line-height: 26px;background: url(../Member/images/right_table_bg.jpg) repeat-x left top;padding-left: 10px;font-size: 14px;font-weight: bold;color: #E30471;border: 1px solid #ddd;}
+.footer{background: url(../Member/images/footer_bg.gif) no-repeat;display:block;height:48px;}
+.category dd a{width: 130px;display: block;margin-left: 10px;}
+.category dd a:hover{background: url(../Member/images/shop_li_13.gif) no-repeat left;}
+/*** 弹出层css*/
+.pop_title {height:26px;line-height: 26px;background: url(../Member/images/right_table_bg.jpg) repeat-x left top;font-size: 14px;font-weight: bold;color: #E30471;border: 1px solid #ddd;}
+.pop_title_left {float: left;width: 80%;overflow: hidden;text-indent: 6px;cursor: move}
+.pop_title_right {width: 15%;float: right;text-align: right;cursor: pointer}
+.pop_content {float: left;width:100%;background:#fff;margin:5px 0 0 0;font-size: 12px;}
+.head_bg a{color:#FFF;}

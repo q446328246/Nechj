@@ -1,0 +1,1 @@
+<%@ Page Language="C#" AutoEventWireup="True" CodeBehind="ShopAmount_Report.aspx.cs" Inherits="ShopNum1.Deploy.Main.Admin.ShopAmount_Report" %>

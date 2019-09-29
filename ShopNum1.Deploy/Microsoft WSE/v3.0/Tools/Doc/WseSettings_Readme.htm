@@ -1,0 +1,402 @@
+﻿<HTML xmlns:wsse>
+    <HEAD>
+        <TITLE>Web Services Enhancements 2.0 Settings - Release Notes</TITLE>
+        <style> BODY { FONT-SIZE: 10pt; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif }
+	PRE { BACKGROUND-COLOR: #c0c0c0 }
+	</style>
+    </HEAD>
+    <BODY>
+        <H1>Welcome to the Web Services Enhancements 2.0 Settings</H1>
+        <P>The Web Services Enhancements 2.0 Settings is a tool to assist developers to 
+            configure applications which use the Web Services Enhancements (WSE). &nbsp;For 
+            more information on WSE, visit us on the <A href="http://go.microsoft.com/fwlink/?linkid=10708&amp;clcid=0x409">
+                Web</A>.
+        </P>
+        <H2>How to invoke the tool</H2>
+        <BLOCKQUOTE dir="ltr" style="MARGIN-RIGHT: 0px">
+            <P><STRONG>Step 1</STRONG>: Start Visual studio;</P>
+            <P><STRONG>Step 2</STRONG>: Open the project which you want to use Web Services 
+                Enhancement.</P>
+            <P><STRONG>Step 3</STRONG>: Right-click on the project name, on the popup menu, 
+                click on the "WSE Settings 2.0..." command.</P>
+            <BLOCKQUOTE dir="ltr" style="MARGIN-RIGHT: 0px">
+                <P>&nbsp;<IMG src="fig1_rightclick.jpg"></P>
+            </BLOCKQUOTE>
+            <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                Figure 1: right click on the WseSettings</P>
+            <P><STRONG>Step 4</STRONG>: Switch between the tabs to adjust settings for WSE.</P>
+            <P><STRONG>Step 5</STRONG>:&nbsp;Click "OK"&nbsp;to save all the settings.</P>
+            <P>&nbsp;</P>
+        </BLOCKQUOTE>
+        <H2>What this tool provides</H2>
+        <UL>
+            <LI>
+                <FONT size="4"><STRONG>General features</STRONG></FONT></LI></UL>
+        <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The first tab 
+            page on the WSE Setting tool contains two check boxes.&nbsp;</P>
+        <BLOCKQUOTE dir="ltr" style="MARGIN-RIGHT: 0px"> <BLOCKQUOTE dir="ltr" style="MARGIN-RIGHT: 0px">
+                <P><IMG alt="" src="fig3_general.JPG"></P>
+                <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                    Figure 3: General tab</P>
+            </BLOCKQUOTE></BLOCKQUOTE>
+        <OL>
+        <OL>
+            <LI>
+                <STRONG>Enable this project for Web Services Enhancements</STRONG>: 
+            Checking this box will add a reference to Microsoft.Web.Services2.dll library 
+            to this Visual Studio project. Web References that are added to or updated in 
+            this project will be WSE enabled. Unchecking this item will remove this 
+            reference as well as WSE related settings from the configuration file; Web 
+            References will need to be manually updated to remove the WSE 
+            dependencies.&nbsp;&nbsp;
+            <LI>
+                <STRONG>Enable Microsoft Web Services Enhancement Soap Extensions</STRONG> :&nbsp;Checking 
+                this box&nbsp;will add the WSE SOAP Extension to this project. This is only 
+                applicable to ASP.NET projects.&nbsp;&nbsp; The following element will be added 
+                to the web.cofig&nbsp;file if this box is checked.</LI></OL>
+        </OL> <BLOCKQUOTE dir="ltr" style="MARGIN-RIGHT: 0px"> <BLOCKQUOTE dir="ltr" style="MARGIN-RIGHT: 0px">
+                <P dir="ltr"><FONT color="#3366ff">&lt;system.web&gt;
+                        <br>
+                        &nbsp;&nbsp;&lt;webServices&gt;
+                        <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;soapExtensionTypes&gt;
+                        <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;add 
+                        type="Microsoft.Web.Services2.WebServicesExtension, Microsoft.Web.Services2, 
+                        Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" priority="1" 
+                        group="0" /&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;/soapExtensionTypes&gt;
+                        <br>
+                        &nbsp;&nbsp;&lt;/webServices&gt;
+                        <br>
+                        &lt;/system.web&gt;
+                        <br>
+                    </FONT>
+                </P>
+            </BLOCKQUOTE></BLOCKQUOTE>
+        <UL>
+            <LI>
+                <STRONG><FONT size="4">Security</FONT></STRONG></LI></UL>
+        <BLOCKQUOTE dir="ltr" style="MARGIN-RIGHT: 0px"> <BLOCKQUOTE dir="ltr" style="MARGIN-RIGHT: 0px">
+                <P><IMG alt="" src="fig4_security.JPG"></P>
+                <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                    Figure 4: Security tab
+                </P>
+            </BLOCKQUOTE></BLOCKQUOTE>
+        <OL>
+        <OL>
+            <LI>
+                <STRONG>Binary Security Tokens</STRONG>: The binarySecurityTokenManager element 
+                defines a user supplied class that supports the 
+                Microsoft.Web.Services2.Security.Tokens.ISecurityTokenManager interface to 
+                manage the authentication and loading of binary security tokens from soap 
+                envelopes and from policy documents. Multiple security managers may be declared 
+                but each must be registered for a unique value type.<FONT color="#3366ff">
+                    <P dir="ltr"><FONT color="#3366ff">&lt;microsoft.web.services2&gt;
+                            <BR>
+                            &nbsp;&nbsp;&lt;security&gt;
+                            <BR>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;binarySecurityTokenManager 
+                            type="GxaToken.GxaBinaryToken, gxatoken" 
+                            xmlns:gbt="http://tempuri.org/gxabinarytoken/" 
+                            valueType="gbt:GxaBinaryToken"&nbsp; /&gt;<BR>
+                            &nbsp;&nbsp;&lt;/security&gt;
+                            <BR>
+                            &lt;/microsoft.web.services2&gt;</FONT></P>
+                </FONT>
+            <LI>
+                <STRONG>Security Tokens</STRONG>:&nbsp;The securityTokenManager element defines 
+                a user supplied class that supports the 
+                Microsoft.Web.Services2.Security.Tokens.ISecurityTokenManager interface to 
+                manage the authentication and loading of XML security tokens from soap 
+                envelopes and from policy documents. Multiple security managers may be declared 
+                but each must be registered for a qualified name. This qualified name is 
+                interpreted as the name of the xml element which defines the security token in 
+                the
+                <wsse:security></wsse:security>header.<FONT color="#3366ff">
+                    <P dir="ltr"><FONT color="#3366ff">&lt;microsoft.web.services2&gt;
+                            <BR>
+                            &nbsp;&nbsp;&lt;security&gt;
+                            <BR>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;securityToken type="GxaToken.GxaToken, gxatoken" 
+                            xmlns:gbt="http://tempuri.org/gxatoken/" valueType="gbt:GxaToken"&nbsp; /&gt;<BR>
+                            &nbsp;&nbsp;&lt;/security&gt;
+                            <BR>
+                            &lt;/microsoft.web.services2&gt;</FONT></P>
+                </FONT>
+            <LI>
+                <STRONG>X. 509 Certificate Settings</STRONG>: There are four check boxes and 
+                one combo box in this section to allow developers select different attribute 
+                values for x509 element.&nbsp; The x509 element defines configuration settings 
+                for the WSE X.509 certificate support. The storeLocation attribute&nbsp;defines 
+                which store the WSE should search when attempting to verify a certificate for a 
+                trusted root or when attempting to retrieve a certificate by name. Values for 
+                this attribute can be either "LocalMachine" or "CurrentUser". Typically, 
+                client-side uses "CurrentUser" whilst server-side uses "LocalMachine". The 
+                default is "LocalMachine". The verifyTrust property determines whether the WSE 
+                verifies that certificates used to sign a message have an issuer chain that 
+                extends to a trusted root authority. Values for the attribute are either "true" 
+                or "false" with the default as "true". The allowTestRoot property modifies the 
+                trust verification process to allow certificates signed by a test root to pass 
+                the verification. Values for this attribute are either "true" or "false". The 
+                allowRevocationUrlRetrieval corresponds 
+                to&nbsp;CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY flag.&nbsp; This 
+                attribute&nbsp;value&nbsp;decided whether we will do URL retrieval&nbsp;in 
+                the&nbsp;revocation checking.&nbsp; When it is false,&nbsp;revocation checking 
+                only accesses cached URLs and the WSE does not hit the wire to do any 
+                revocation URL retrieval. The allowUrlRetrieval corresponds to 
+                CERT_CHAIN_CACHE_ONLY_URL_RETRIEVAL flag.&nbsp;When this flag is false, only 
+                cached URLs are used in building a certificate trust chain and the WSE does not 
+                hit the wire to do any URL retrieval.&nbsp;&nbsp;The true or false value can be 
+                selected by checking or unchecking those check boxes in this section.&nbsp; The 
+                following element is example which&nbsp;might be added to the 
+                configuration&nbsp;file as an X509 element, and the attribute values&nbsp;shown 
+                below are all default values.&nbsp;&nbsp;
+                <P dir="ltr"><FONT color="#3366ff">&lt;microsoft.web.services2&gt;
+                        <BR>
+                        &nbsp;&nbsp;&lt;security&gt;
+                        <BR>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;x509 storeLocation="LocalMachine" 
+                        verifyTrust="true" allowTestRoot="false" allowRevocationUrlRetrieval="true" 
+                        allowUrlRetrieval="false" /&gt;<BR>
+                        &nbsp;&nbsp;&lt;/security&gt;
+                        <BR>
+                        &lt;/microsoft.web.services2&gt;</FONT>
+                </P>
+            </LI>
+        </OL>
+        </OL>
+        <UL>
+            <LI>
+                <STRONG><FONT size="4">Policy</FONT></STRONG></LI></UL>
+        <BLOCKQUOTE dir="ltr" style="MARGIN-RIGHT: 0px"> <BLOCKQUOTE dir="ltr" style="MARGIN-RIGHT: 0px">
+                <P>WS-Policy specific configurations. This section is not required for a default 
+                    installation.&nbsp; It may be used to enable WS-policy for the 
+                    application.&nbsp;</P>
+                <P><IMG alt="" src="fig5_policy.JPG"></P>
+                <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                    Figure 5:&nbsp;Policy tab</P>
+                <P>&nbsp;</P>
+            </BLOCKQUOTE></BLOCKQUOTE>
+        <OL>
+        <OL>
+            <LI>
+                <STRONG>Enable&nbsp;policy</STRONG> :&nbsp;This creates a policy file for the 
+                application.&nbsp;
+                <P dir="ltr"><FONT color="#3366ff">&lt;microsoft.web.services2&gt;<br>
+                        &nbsp;&nbsp;&lt;policy&gt;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;cache name="policyCache.xml" /&gt;<BR>
+                        &nbsp;&nbsp;&lt;/ policy&gt;
+                        <br>
+                        &lt;/microsoft.web.services2&gt;
+                        <br>
+                    </FONT>
+                </P>
+            <LI>
+                <STRONG>Edit&nbsp;Application policy</STRONG>&nbsp;:&nbsp;This is used to 
+                manage policies in your application.&nbsp;<FONT color="#3366ff"><FONT color="#3366ff">&nbsp;
+                        <BR>
+                    </FONT></FONT>
+            </LI>
+        </OL>
+        </OL>
+        <UL>
+            <LI>
+                <STRONG><FONT size="4">TokenIssuing</FONT></STRONG>
+            </LI>
+        </UL>
+        <BLOCKQUOTE dir="ltr" style="MARGIN-RIGHT: 0px"> <BLOCKQUOTE dir="ltr" style="MARGIN-RIGHT: 0px">
+                <P>Token Issuing service related specification. This section is not required for a 
+                    default installation. However, user is strongly recommended to provide a 
+                    &amp;ls;serverToken%gt; section to sign the response if this server provides 
+                    token issuing service. This section is not required for a default installation. 
+                    It may be used to customize token issuing service.</P>
+                <P><IMG alt="" src="fig6_tokenIssuing.JPG"></P>
+                <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                    Figure 6:&nbsp;TokenIssuing&nbsp;tab</P>
+            </BLOCKQUOTE></BLOCKQUOTE>
+        <OL>
+        <OL>
+            <LI>
+                <STRONG>Server Token</STRONG> : The severToken section defines a user supplied 
+                security Token Information for a server to specify a token to sign a 
+                RequestSecurityTokenResponse. A SecurityTokenReference could be one example of 
+                keyInfoClause.&nbsp;&nbsp;
+                <P dir="ltr"><FONT color="#3366ff">&lt;microsoft.web.services2&gt;<br>
+                        &nbsp;&nbsp;&lt;tokenIssuer&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;serverToken&gt;<BR>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT color="#3366ff">&lt;KeyInfo&gt;<BR>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;SecurityTokenReference&gt;<BR>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                        &lt;KeyIdentifier&gt;Your Certificate's Identifier encoded in 
+                        base64&lt;/KeyIdentifier&gt;<BR>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/SecurityTokenReference&gt;&nbsp;<BR>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/KeyInfo&gt;&nbsp;<BR>
+                        &nbsp;&nbsp;&nbsp; &lt;/serverToken&gt;&nbsp;<BR>
+                        &nbsp;&nbsp;&lt;/ tokenIssuer&gt;
+                        <br>
+                        &lt;/microsoft.web.services2&gt;
+                        <br>
+                    </FONT>
+                </P>
+            <LI>
+                <STRONG>ttlInSeconds</STRONG>: The ttlInSeconds section defines a user supplied default 
+                time-to-live for an IIssuedToken. It is optional, and its default value is 4 hours 
+                <P dir="ltr"><FONT color="#3366ff"><br>
+                        <FONT color="#3366ff"><FONT color="#3366ff">&lt;microsoft.web.services2&gt;<BR>
+                                &nbsp;&nbsp;&lt;tokenIssuer&gt;<BR>
+                                &nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT color="#3366ff">&nbsp;&nbsp;&nbsp;&nbsp;&lt;ttlInSeconds&gt;120&lt;/ttlInSeconds&gt;<BR>
+                                &nbsp;&nbsp;&lt;/ tokenIssuer&gt;
+                                <BR>
+                                &lt;/microsoft.web.services2&gt;
+                                <BR>
+                            </FONT></FONT></FONT>
+                </P>
+            </LI>
+        </OL>
+        </OL>
+        <UL>
+            <LI>
+                <STRONG><FONT size="4">Custom filters</FONT></STRONG></LI></UL>
+        <BLOCKQUOTE dir="ltr" style="MARGIN-RIGHT: 0px"> <BLOCKQUOTE dir="ltr" style="MARGIN-RIGHT: 0px">
+                <P>Filter chain configuration. This section is not required for a default 
+                    installation. It may be used to install customized WSE filters.</P>
+                <P><IMG alt="" src="fig7_custom.JPG"></P>
+                <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                    Figure 7: Custom filters tab</P>
+            </BLOCKQUOTE></BLOCKQUOTE>
+        <OL>
+        <OL>
+            <LI>
+                <STRONG>Input filters</STRONG>: Click on the Add/Edit/Remove button to 
+                add/edit/remove a user supplied class type.&nbsp; The input should look like 
+                "MyFilterNamespace.MyFilterClass, MyFilterDll".&nbsp; The 
+                following&nbsp;element is an example which might be added&nbsp;to the 
+                configuration file to register&nbsp;an input filter.&nbsp;
+                <P dir="ltr"><FONT color="#3366ff">&lt;microsoft.web.services2&gt;<br>
+                        &nbsp;&nbsp;&lt;filters&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;add type="MyFilterNamespace.MyFilterClass, 
+                        MyFilterDll<INSERT reference here type>"&nbsp;&nbsp;/&gt;<br>&nbsp;&nbsp;&lt;/ filters&gt; <br>&lt;/microsoft.web.services2&gt; <br></FONT></P>
+            <LI>
+                <STRONG>Output filters</STRONG>: Click on the Add/Edit/Remove button to 
+                add/edit/remove a user supplied class type.&nbsp;&nbsp; The input should look 
+                like "MyFilterNamespace.MyFilterClass, MyFilterDll".&nbsp; The 
+                following&nbsp;element is an example which might be added&nbsp;to the 
+                configuration file to register&nbsp;an output filter.
+                <P dir="ltr"><FONT color="#3366ff">&lt;microsoft.web.services2&gt;<br>
+                        &nbsp;&nbsp;&lt;filters&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;add type="MyFilterNamespace.MyFilterClass, 
+                        MyFilterDll<INSERT reference here type>"&nbsp;/&gt;<br>&nbsp;&nbsp;&lt;/filters&gt; <br>&lt;/microsoft.web.services2&gt; <br></FONT></P>
+            </LI>
+        </OL>
+        </OL> <BLOCKQUOTE dir="ltr" style="MARGIN-RIGHT: 0px"> <BLOCKQUOTE dir="ltr" style="MARGIN-RIGHT: 0px">
+                <P>The custom filters are run&nbsp;before the built-in WSE filters get run on 
+                    the&nbsp;sending side, while they are run after the built-in WSE 
+                    filters&nbsp;on the&nbsp;receiving side.&nbsp; The WSE built-in filters 
+                    are&nbsp;closest to the wire on both&nbsp;sending and&nbsp;receiving 
+                    sides.&nbsp;</P>
+            </BLOCKQUOTE></BLOCKQUOTE>
+        <UL>
+            <LI>
+                <STRONG><FONT size="4">Routing</FONT></STRONG></LI></UL>
+        <BLOCKQUOTE dir="ltr" style="MARGIN-RIGHT: 0px"> <BLOCKQUOTE dir="ltr" style="MARGIN-RIGHT: 0px">
+                <P><IMG alt="" src="fig8_routing.JPG"></P>
+                <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                    Figure 8: routing tab
+                </P>
+            </BLOCKQUOTE>
+            <OL dir="ltr" style="MARGIN-RIGHT: 0px">
+                <LI>
+                    <P><STRONG>Routing Handlers</STRONG>:This section allows developers to&nbsp;define 
+                        the WSE HttpHandler which implements a WS-Routing compliant SOAP router.&nbsp; 
+                        The&nbsp;verb attribute&nbsp;specifies that the router handles ALL incoming 
+                        requests for resources that match&nbsp;its value. The path attribute should be 
+                        modified to use a more specific path value for the URL that the router will 
+                        service. Multiple entries are possible allowing the router to replace an 
+                        existing Web service and delegate that service to a different URL.&nbsp; The 
+                        following element is an example which may be added in the configuration file to 
+                        register a router.</P>
+                    <P dir="ltr"><FONT color="#3366ff">&lt;system.web&gt;<br>
+                            &nbsp;&nbsp;&lt;httpHandlers&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;add verb="*" path="*.ashx" 
+                            type="Microsoft.Web.Services2.Routing.RoutingHandler, Microsoft.Web.Services2, 
+                            Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" /&gt;<br>
+                            &nbsp;&nbsp;&lt;/httpHandlers&gt;
+                            <br>
+                            &lt;/system.web&gt;
+                            <br>
+                        </FONT>
+                    </P>
+                <LI>
+                    <DIV><STRONG>Referral Cache</STRONG>:&nbsp;The referralCache element points to the 
+                        referral cache file that is used to make routing decisions. If this section is 
+                        not provided, the default file name of "referralCache.config" is used and the 
+                        file will reside in the applications base directory. If this section is 
+                        provided, the file specified must exists before invoking WSE runtime. Exception 
+                        will be raised otherwise.&nbsp; The following element is an example which may 
+                        be added in the configuration file to register a referral cache file.</DIV>
+                    <P dir="ltr"><FONT color="#3366ff">&lt;microsoft.web.services2&gt;<br>
+                            &nbsp;&nbsp;&lt;referral&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;cache name="referralCache.config" /&gt;<br>
+                            &nbsp;&nbsp;&lt;/referral&gt;
+                            <br>
+                            &lt;/microsoft.web.services2&gt;
+                            <br>
+                        </FONT>
+                    </P>
+                </LI>
+            </OL>
+        </BLOCKQUOTE>
+        <UL>
+            <LI>
+                <STRONG><FONT size="4">Diagnostics</FONT></STRONG></LI></UL>
+        <BLOCKQUOTE dir="ltr" style="MARGIN-RIGHT: 0px"> <BLOCKQUOTE dir="ltr" style="MARGIN-RIGHT: 0px">
+                <P><IMG alt="" src="fig9_diagnostics.JPG"></P>
+                <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                    Figure 9: diagnostics tab</P>
+            </BLOCKQUOTE></BLOCKQUOTE>
+        <OL dir="ltr" style="MARGIN-RIGHT: 0px">
+        <OL>
+            <LI>
+                <STRONG>Tracing</STRONG>: enabled is a required attribute for trace element, 
+                while input and output are not required. Note that enabling Trace has a 
+                significant performance penalty and should only be used for development 
+                purposes. If input and output attributes are not provided, the default file 
+                name of "inputTrace.webinfo" and "outputTrace.webinfo" are used and the file 
+                will reside in the applications base directory.&nbsp; The following element is 
+                an example which may be added in the configuration file to&nbsp;enable 
+                trace.&nbsp;
+                <P dir="ltr"><FONT color="#3366ff">&lt;microsoft.web.services2&gt;<br>
+                        &nbsp;&nbsp;&lt;diagnostics&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;trace enabled="false" input= "inputTrace.webinfo" 
+                        output= "outputTrace.webinfo" /&gt;<br>
+                        &nbsp;&nbsp;&lt;/diagnostics&gt;
+                        <br>
+                        &lt;/microsoft.web.services2&gt;
+                        <br>
+                    </FONT>
+                </P>
+            <LI>
+                <STRONG>Error reporting mode</STRONG>:There are three error reporting 
+                mode&nbsp;values&nbsp;defined in ASP.net which control the display of 
+                user-friendly error messages to users instead of error details (including a 
+                stack trace).&nbsp; WSE will reuse this setting to decide whether server will 
+                send back the whole stack trace or not when exception happens.&nbsp;"On" Always 
+                display custom (friendly) messages; "Off" Always display detailed ASP.NET error 
+                information; "RemoteOnly" Display custom (friendly) messages only to users not 
+                running on the local Web server.&nbsp; "RemoteOnly"&nbsp;is recommended for 
+                security purposes, so that you do not display application detail information to 
+                remote clients.&nbsp; The following element is an example which may be added in 
+                the configuration file to&nbsp;set error reporting mode.&nbsp;
+            </LI>
+        </OL>
+        </OL> <BLOCKQUOTE dir="ltr" style="MARGIN-RIGHT: 0px"> <BLOCKQUOTE dir="ltr" style="MARGIN-RIGHT: 0px">
+                <P dir="ltr"><FONT color="#3366ff">&lt;system.web&gt;<BR>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;customErrors mode="RemoteOnly"&nbsp; /&gt;<BR>
+                        &lt;/system.web&gt;
+                        <BR>
+                    </FONT>
+                </P>
+            </BLOCKQUOTE></BLOCKQUOTE>
+    </BODY>
+</HTML>

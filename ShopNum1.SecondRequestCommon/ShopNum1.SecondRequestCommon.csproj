@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.377</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8C0732D4-8236-4941-AE86-D054092B2637}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>ShopNum1.SecondRequestCommon</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\dll\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Configuration" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="UrlImgOperate.cs" />
+    <Compile Include="ShopNum1_Alipay_notify.cs" />
+    <Compile Include="XmlOperate.cs" />
+    <Compile Include="ShopNum1_XinlanCommonClient.cs" />
+    <Compile Include="ShopNum1_TaobaoCommonClient.cs" />
+    <Compile Include="ShopNum1_QzoneConfig.cs" />
+    <Compile Include="ShopNum1_Alipay_config.cs" />
+    <Compile Include="ShopNum1_TaobaoOAuthClient.cs" />
+    <Compile Include="ShopNum1_BaiduOAuthClient.cs" />
+    <Compile Include="JsonOperate.cs" />
+    <Compile Include="ShopNum1_Alipay_function.cs" />
+    <Compile Include="ShopNum1_QzoneCommonClient.cs" />
+    <Compile Include="ShopNum1_BaiduCommonClient.cs" />
+    <Compile Include="ShopNum1_AlipayOAuthClient.cs" />
+    <Compile Include="ErrorRsp.cs" />
+    <Compile Include="ShopNum1_XinlanOAuthClient.cs" />
+    <Compile Include="s.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ShopNum1.SecondBussinesslogic\ShopNum1.SecondBussinesslogic.csproj">
+      <Project>{6456776B-1EC1-4460-944B-4E7EB9A1139F}</Project>
+      <Name>ShopNum1.SecondBussinesslogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.SecondResponseCommon\ShopNum1.SecondResponseCommon.csproj">
+      <Project>{AED959DD-0CD3-4D11-8217-D2E2DD18F1E0}</Project>
+      <Name>ShopNum1.SecondResponseCommon</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

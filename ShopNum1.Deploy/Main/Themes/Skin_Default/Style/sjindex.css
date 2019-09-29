@@ -1,0 +1,114 @@
+﻿@charset "utf-8";
+/*---------------------------------CSS Reset---------------------------------*/
+body{margin:0 auto;padding:0;background:#8f0508 url(../images/linebg.jpg);color:#666;font-size: 12px; font-family: "宋体" , Verdana, Arial;text-align:center; }
+body > div{margin-right:auto;margin-left:auto;text-align:center; } 
+div,form,ul,ol,li,span,p,dl,dt,dd,img{margin:0;padding:0;border:0;}
+h1,h2,h3,h4,h5,h6{margin:0;padding:0;font-size:12px;font-weight:normal;}
+em, i {font-style: normal;}
+ul,ol,li{list-style:none}
+table,td,input,textarea{font-size:12px}
+a:link {color:#333;text-decoration:none;}
+a:visited{color:#333;text-decoration:none;}
+a:hover{color:#C00;text-decoration:underline;}
+a:active{ color:#333;text-decoration:none;}
+.module_head{ background:#5c0101 url(../images/bg_img.jpg); background-position:center top; height:700px;}
+.warp{ width:1000px; height:auto; margin:0 auto; text-align:center; margin-top:-314px;  }
+.clearfix:after{content:".";display:block;height:0;font-size:0;clear:both;visibility:hidden;}
+.colwrapper{ overflow:hidden; zoom:1; margin:0px auto;} 
+.clear{ clear:both;}
+.fl{ float:left;}
+.fr{ float:right;}
+
+/*---------------------------------头部导航 nav 样式开始---------------------------------*/
+.nav{width:1000px; margin:0 auto; height:46px; overflow:hidden;}
+.nav li{ height:46px; line-height:46px; width:130px; font-size:16px; text-align:center; color:#fff; font-weight:bold; float:left;  background:url(../images/s_nav.gif) repeat-x; }
+.nav li.last{ width:220px;}
+.nav li a:link,.nav li a:visited{ color:#fff; background:url(../images/s_lr.jpg) no-repeat left;  width:130px; height:46px; overflow:hidden; display:block; }
+.nav li a:hover,.nav li a:active,.nav li a.curr{ color:#fff; background:url(../images/s_curr.gif) repeat-x; text-decoration:none; }
+/*---------------------------------头部导航 nav  样式结束---------------------------------*/
+
+/*---------------------------------主体内容 main 样式开始---------------------------------*/
+.main{ background:#fff; padding:15px 10px; width:980px; -moz-box-shadow:0px 0px 20px #000; -webkit-box-shadow:0px 0px 20px #000;}
+.m_head{ height:228px; margin-bottom:10px;}
+/*信息公告*/
+.mess_notice{ border:4px solid #ebebeb; padding:0 10px; width:252px;height:220px; background:#fafafa; color:#404040; text-align:left; margin-right:10px; float:left;}
+.mess_notice h1{ color:#404040; font-weight:bold; font-size:14px; height:35px; line-height:35px; border-bottom:1px solid #f1f1f1;}
+.mess_notice .mess_con{ border-top:1px solid #fff; padding-top:7px; padding-bottom:15px;}
+.mess_notice .mess_con li{ height:23px; line-height:23px; overflow:hidden;}
+/*幻灯*/
+.m_ad,.m_btn{  border:4px solid #ebebeb; float:left; width:438px; height:220px; overflow:hidden; margin-right:10px; background:#fafafa;}
+.play{width: 438px;height:220px;overflow: hidden;position: relative;}
+.ol_class{position: absolute;right: 5px;bottom: 5px;z-index: 2;}
+.ol_class li{float: left;margin-right: 3px;display: inline;cursor: pointer;background: #fcf2cf;border: 1px solid #f47500;padding: 2px 6px;color: #d94b01;font-family: arial;font-size: 12px;}
+.active{padding: 3px 8px;font-weight: bold;color: #ffffff;background: #ffb442;position: relative;bottom: 2px;}
+.ul_class{position: absolute;top: 0;left: 0;z-index: 1;}
+.ul_class li{width: 430px;height: 171px;float: left;}
+.ul_class img{float: left;width: 438px;height: 220px;}
+/*入住查询*/
+.m_btn{ width:226px; height:200px; padding-top:20px; margin:0;}
+.m_ruzhu{ width:186px; margin:0 auto;}
+.s_rzhu{ width:186px; height:56px; overflow:hidden;}
+.m_p{ font-size:12px; color:#666; line-height:20px; padding:20px 0;}
+.m_chax a.chxun{ background:url(../images/s_btn1.gif) no-repeat; width:185px; height:28px; line-height:28px; display:block; color:#666;}
+.m_chax a.chxun:hover{ color:#666; text-decoration:none;}
+/*项目介绍*/
+.box_xm{ margin-bottom:10px; background:#ebebeb; border-top-left-radius:3px; border-top-right-radius:3px;  color:#404040; font-size:13px; padding:5px;}
+.titi{ height:30px; line-height:30px; font-size:14px; font-weight:bold; color:#fff; position:relative; text-align:left;}
+.titi .xm{ background:url(../images/s_tit.gif) no-repeat; width:137px; height:36px; line-height:36px; text-align:center; display:block; overflow:hidden; margin-left:6px; position:absolute;}
+.jieshao{ background:#fafafa; padding:25px 35px; text-align:left;}
+.jieshao p{ margin-bottom:10px;}
+/*招商要求*/
+.zhaos{ background:#fafafa url(../images/s_ws.jpg) no-repeat right 10px; height:auto!important; height:320px; min-height:320px;}
+.font_title{ font-size:14px; font-weight:bold; color:#333; height:30px; line-height:30px;  padding-bottom:10px;}
+.box_mod,.step{ width:100%; clear:both;}
+.mod1{ font-size:13px; color:#404040; line-height:20px; width:380px; padding-right:20px; overflow:hidden; float:left; margin-bottom:10px;}
+.mod1 p{ background:#bf0000; width:105px; height:30px; line-height:30px; text-align:center; font-size:14px; font-weight:bold; color:#fff;}
+.mod1 dt{ font-weight:bold;}
+.mod1 dd{ padding-left:30px;}
+/*招商范围*/
+.mod_cont li{ height:20px; line-height:20px; padding-left:30px; }
+.modlast{ width:auto;}
+.fwei{ padding:25px 17px 10px;}
+.fwei li{ float:left; margin-right:10px; margin-bottom:15px; width:143px; height:45px; border:1px solid #ccc; border-radius:3px;  display:inline; zoom:1;}
+/*入驻流程*/
+.step{  border:4px solid #ebebeb; background:#fafafa; width:972px; color:#404040; margin-bottom:10px; }
+.ruzhu{ font-weight:bold; font-size:14px; height:30px; line-height:30px; overflow:hidden; border-bottom:2px solid #f1f1f1; text-align:left;  margin-bottom:20px;}
+.ruzt{ float:left; border-bottom:2px solid #990003; height:28px; line-height:28px; display:block; width:75px; text-align:center; }
+.ruzhu a.rumore{ font-size:12px; font-weight:normal; color:#36c; float:right; display:block; padding-right:10px;}
+.step_cont{ background:url(../images/s_step.jpg) no-repeat; height:163px; width:954px; overflow:hidden; margin-bottom:20px; margin-left:8px; *margin-left:0px; zoom:1;}
+.step1,.step2{ width:171px; height:163px; overflow:hidden; float:left; margin-right:39px; display:inline; text-align:center;}
+.step1 p,.step2 p,.step3 p,.step4 p,.step5 p{ font-size:14px; font-weight:bold;}
+.step3,.step4{ width:155px; height:163px; overflow:hidden; float:left;  display:inline; text-align:center;}
+.step3{ margin-right:38px;}
+.step4{ margin-right:37px;}
+.step5{ width:149px; height:163px; overflow:hidden; float:left;  display:inline; text-align:center;}
+.step1 p.title{ padding-top:48px;}
+.step_red{ color:#ca0000; font-size:12px; padding-top:55px;}
+.sjmess{ padding-top:34px; padding-bottom:3px;}
+.sjul{ display:block; text-align:left; padding-left:17px;}
+.sjul li{ height:20px; line-height:20px; overflow:hidden;}
+.sulcom{ padding-top:50px; padding-left:30px;}
+.shenqin{ height:75px; line-height:75px; margin-bottom:25px; zoom:1; }
+.sqxia{ height:55px; line-height:55px;}
+.sqxiac{ margin:0; height:55px; line-height:55px;}
+.sq{ font-size:16px; font-weight:bold; color:#bf0000;  width:145px; overflow:hidden; float:left;}
+.sqcon{ float:left; width:100px; overflow:hidden; line-height:20px; font-size:12px; font-weight:bold; color:#bf0000; text-align:right;}
+.sqcon p,.spright p{ margin:0;}
+.spright{ float:left; font-size:12px; font-weight:normal; line-height:20px; color:#000;}
+/*联系我们*/
+.contact{ width:980px;}
+.con_tit{ border-bottom:4px solid #bf0000;  height:26px;}
+.con_tit .lxi{ display:block; width:117px; height:26px;  line-height:30px; background:#bf0000; font-size:16px; font-weight:bold; color:#fff; text-align:center; float:left;}
+.cont_us{ padding:5px; background:#ebebeb; margin-top:1px;}
+.cont_tab{ background:#fff;}
+.cont_tab table{ width:100%; text-align:center; font-size:14px; border:1px solid #ddd; border-collapse:collapse;}
+.cont_tab th,.cont_tab td{  line-height:30px; border:1px solid #ddd;  font-size:14px; }
+.cont_tab th,.cont_tab tr:hover{ background:#fafafa;}
+.icon{ display:inline-block; width:16px; height:17px; overflow:hidden; background:url(../images/msn.jpg) no-repeat; position:relative; top:5px; *top:0;}
+.icon1{ display:inline-block; width:16px; height:17px; overflow:hidden; background:url(../images/qq.jpg) no-repeat; position:relative; top:5px; *top:0;}
+/*---------------------------------主体内容 main 样式结束---------------------------------*/
+
+/*---------------------------------底部 foot 样式开始---------------------------------*/
+.foot{ width:1000px; margin:0 auto; padding:20px 0;}
+.foot p{ font-size:13px; color:#fff; text-align:center; line-height:30px;}
+/*---------------------------------底部 foot 样式结束---------------------------------*/

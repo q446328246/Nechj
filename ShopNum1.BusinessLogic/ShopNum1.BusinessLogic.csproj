@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.377</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{090F4879-20C3-431F-A839-D8BCADB27BC1}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>ShopNum1.BusinessLogic</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\dll\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>ShopNum1.BusinessLogic</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Compile Include="Member\ShopNum1_AdvancePaymentHelper.cs" />
+    <Compile Include="Member\ShopNum1_MemberShip_Action.cs" />
+    <Compile Include="Member\ShopNum1_Referral_Action.cs" />
+    <Compile Include="Member\ShopNum1_ShopUserRecommend_Action.cs" />
+    <Compile Include="Mobile\ShopNum1_MobileService_Action.cs" />
+    <Compile Include="Order\ShopNum1_Cart_Action.cs" />
+    <Compile Include="Order\ShopNum1_OrderInfo_Action.cs" />
+    <Compile Include="Order\ShopNum1_OrderOperateLog_Action.cs" />
+    <Compile Include="Order\ShopNum1_OrderPrint_Action.cs" />
+    <Compile Include="Order\ShopNum1_OrderProduct_Action.cs" />
+    <Compile Include="Order\ShopNum1_OrderRefund_Action.cs" />
+    <Compile Include="Order\ShopNum1_Order_Refuse_Action.cs" />
+    <Compile Include="Order\ShopNum1_Refund_Action.cs" />
+    <Compile Include="Score\ShopNum1_FreezeRelease_Action.cs" />
+    <Compile Include="Score\ShopNum1_PostageSettings_Action.cs" />
+    <Compile Include="ShopNum1.Shop_CustomerCategory_Action.cs" />
+    <Compile Include="ShopNum1_MemberRank_LinkCategory_Action.cs" />
+    <Compile Include="ShopNum1_Shop_Product_Action.cs" />
+    <Compile Include="SMS\ShopNum1_MMSGroupSend_Action.cs" />
+    <Compile Include="SMS\ShopNum1_MMSType_Action.cs" />
+    <Compile Include="SMS\ShopNum1_MMS_Action.cs" />
+    <Compile Include="Tb\ShopNum1_TbAddress_Action.cs" />
+    <Compile Include="Tb\ShopNum1_TbItemImg_Action.cs" />
+    <Compile Include="Tb\ShopNum1_TbItem_Action.cs" />
+    <Compile Include="Tb\ShopNum1_TbSellCat_Action.cs" />
+    <Compile Include="Tb\ShopNum1_TbSku_Action.cs" />
+    <Compile Include="Tb\ShopNum1_TbSystem_Action.cs" />
+    <Compile Include="Tb\ShopNum1_TbTopKey_Action.cs" />
+    <Compile Include="Video\ShopNum1_VideoCategory_Action.cs" />
+    <Compile Include="Video\ShopNum1_VideoComment_Action.cs" />
+    <Compile Include="Video\ShopNum1_Video_Action.cs" />
+    <Compile Include="Ztc\ShopNum1_ZtcApply_Action.cs" />
+    <Compile Include="Ztc\ShopNum1_ZtcGoods_Action.cs" />
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dll\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dll\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Web" />
+    <Compile Include="Ad\ShopNum1_CategoryAdID_Action.cs" />
+    <Compile Include="Ad\ShopNum1_CategoryAdPayMent_Action.cs" />
+    <Compile Include="Ad\ShopNum1_CategoryAdvertisement_Action.cs" />
+    <Compile Include="Article\ShopNum1_ArticleCategory_Action.cs" />
+    <Compile Include="Article\ShopNum1_ArticleComment_Action.cs" />
+    <Compile Include="Article\ShopNum1_Article_Action.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="AttachMent\ShopNum1_AttachMentCategory_Action.cs" />
+    <Compile Include="AttachMent\ShopNum1_AttachMent_Action.cs" />
+    <Compile Include="Dispatch\ShopNum1_DispatchRegion_Action.cs" />
+    <Compile Include="Extend\ShopNum1_Consult_Action.cs" />
+    <Compile Include="Extend\ShopNum1_ExtendOrderStatistics_Action.cs" />
+    <Compile Include="Extend\ShopNum1_ExtendPageAddress_Action.cs" />
+    <Compile Include="Extend\ShopNum1_ExtendQutation_Action.cs" />
+    <Compile Include="Extend\ShopNum1_ExtendReport_Action.cs" />
+    <Compile Include="Extend\ShopNum1_ExtendSiteMapXml_Action.cs" />
+    <Compile Include="Extend\ShopNum1_ExtendSiteMota_Action.cs" />
+    <Compile Include="Extend\ShopNum1_ShopProductPropValue_Action.cs" />
+    <Compile Include="Extend\ShopNum1_ShopProductProp_Action.cs" />
+    <Compile Include="Extend\ShopNum1_ShopProRelateProp_Action.cs" />
+    <Compile Include="Extend\ShopNum1_SpecificationProudctCategory_Action.cs" />
+    <Compile Include="Extend\ShopNum1_SpecProudctDetail_Action.cs" />
+    <Compile Include="Extend\ShopNum1_SpecProudct_Action.cs" />
+    <Compile Include="Extend\ShopNum1_Spec_Action.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="Member\ShopNum1_Address_Action.cs" />
+    <Compile Include="Member\ShopNum1_AdvancePaymentApplyLog_Action.cs" />
+    <Compile Include="Member\ShopNum1_AdvancePaymentFreezeLog_Action.cs" />
+    <Compile Include="Member\ShopNum1_AdvancePaymentModifyLog_Action.cs" />
+    <Compile Include="Member\ShopNum1_Collect_Action.cs" />
+    <Compile Include="Member\ShopNum1_MemberActivate_Action.cs" />
+    <Compile Include="Member\ShopNum1_MemberCenter_Action.cs" />
+    <Compile Include="Member\ShopNum1_MemberEmailExec_Action.cs" />
+    <Compile Include="Member\ShopNum1_MemberProfitBonusLog_Action.cs" />
+    <Compile Include="Member\ShopNum1_MemberPwd_Action.cs" />
+    <Compile Include="Member\ShopNum1_MemberRank_Action.cs" />
+    <Compile Include="Member\ShopNum1_MemberReport_Action.cs" />
+    <Compile Include="Member\ShopNum1_Member_Action.cs" />
+    <Compile Include="Member\ShopNum1_MessageBoard_Action.cs" />
+    <Compile Include="Member\ShopNum1_OrderComplaintsReplyList_Action.cs" />
+    <Compile Include="Member\ShopNum1_ShopProduct_Browse_Action.cs" />
+    <Compile Include="Message\ShopNum1_MemberMessage_Action.cs" />
+    <Compile Include="Message\ShopNum1_MessageInfo_Action.cs" />
+    <Compile Include="Payment\ShopNum1_Payment_Action.cs" />
+    <Compile Include="Payment\ShopNum1_PreTransfer_Action.cs" />
+    <Compile Include="Payment\ShopNum1_ShopPayment_Action.cs" />
+    <Compile Include="Power\ShopNum1_Dept_Action.cs" />
+    <Compile Include="Power\ShopNum1_Group_Action.cs" />
+    <Compile Include="Power\ShopNum1_PageWebControl_Action.cs" />
+    <Compile Include="Power\ShopNum1_Page_Action.cs" />
+    <Compile Include="Power\ShopNum1_User_Action.cs" />
+    <Compile Include="Report\ShopNum1_Report_Action.cs" />
+    <Compile Include="Score\ShopNum1_RankScoreModifyLog_Action.cs" />
+    <Compile Include="Score\ShopNum1_ScoreModifyLog_Action.cs" />
+    <Compile Include="Score\ShopNum1_ScoreOrderInfo_Action.cs" />
+    <Compile Include="Score\ShopNum1_ScoreProductCategory_Action.cs" />
+    <Compile Include="Score\ShopNum1_Shop_ScoreProduct_Action.cs" />
+    <Compile Include="ShopNum1_Help_Action.cs" />
+    <Compile Include="ShopNum1_ShopCategory_Action.cs" />
+    <Compile Include="ShopNum1_Coupon_Action.cs" />
+    <Compile Include="ShopNum1_CategoryType_Action.cs" />
+    <Compile Include="ShopNum1_CategoryChecked_Action.cs" />
+    <Compile Include="ShopNum1_DefaultAdImg_Action.cs" />
+    <Compile Include="ShopNum1_Activity_Action.cs" />
+    <Compile Include="ShopNum1_SurveyTheme_Action.cs" />
+    <Compile Include="ShopNum1_Announcement_Action.cs" />
+    <Compile Include="ShopNum1_ProductCategory_Action.cs" />
+    <Compile Include="ShopNum1_ShopTemplate_Action.cs" />
+    <Compile Include="ShopNum1_Menu_Action.cs" />
+    <Compile Include="ShopNum1_SupplyDemandCategory_Action.cs" />
+    <Compile Include="ShopNum1_PageAddress_Action.cs" />
+    <Compile Include="ShopNum1_OnLineService_Action.cs" />
+    <Compile Include="ShopNum1_SupplyDemandCheck_Action.cs" />
+    <Compile Include="ShopNum1_ShopURLManage_Action.cs" />
+    <Compile Include="ShopNum1_ControlData_Action.cs" />
+    <Compile Include="ShopNum1_Ensure_Action.cs" />
+    <Compile Include="ShopNum1_KeyWords_Action.cs" />
+    <Compile Include="ShopNum1_Advertisement_Action.cs" />
+    <Compile Include="ShopNum1_VedioCommentChecked_Action.cs" />
+    <Compile Include="ShopNum1_ImageCategory_Action.cs" />
+    <Compile Include="ShopNum1_Image_Action.cs" />
+    <Compile Include="ShopNum1_CategoryComment_Action.cs" />
+    <Compile Include="ShopNum1_AdminWelcome_Action.cs" />
+    <Compile Include="ShopNum1_City_Action.cs" />
+    <Compile Include="ShopNum1_SurveyOption_Action.cs" />
+    <Compile Include="ShopNum1_SupplyDemandComment_Action.cs" />
+    <Compile Include="ShopNum1_ComplaintsManagement_Action.cs" />
+    <Compile Include="ShopNum1_PreventIp_Action.cs" />
+    <Compile Include="ShopNum1_PageAdID_Action.cs" />
+    <Compile Include="ShopNum1_Brand_Action.cs" />
+    <Compile Include="ShopNum1_ProductComment_Action.cs" />
+    <Compile Include="ShopNum1_SiteMap_Action.cs" />
+    <Compile Include="ShopNum1_BadWord_Action.cs" />
+    <Compile Include="ShopNum1_Region_Action.cs" />
+    <Compile Include="ShopNum1_Common_Action.cs" />
+    <Compile Include="ShopNum1_ShopInfoList_Action.cs" />
+    <Compile Include="ShopNum1_WebSite_Action.cs" />
+    <Compile Include="ShopNum1_UserDefinedColumn_Action.cs" />
+    <Compile Include="ShopNum1_Link_Action.cs" />
+    <Compile Include="ShopNum1_Reputation_Action.cs" />
+    <Compile Include="ShopNum1_AnnouncementCategory_Action.cs" />
+    <Compile Include="ShopNum1_Logistic_Action.cs" />
+    <Compile Include="ShopNum1_Vedio_List_Action.cs" />
+    <Compile Include="ShopNum1_CouponType_Action.cs" />
+    <Compile Include="ShopNum1_OperateLog_Action.cs" />
+    <Compile Include="ShopNum1_Email_Action.cs" />
+    <Compile Include="ShopNum1_PageInfo_Action.cs" />
+    <Compile Include="ShopNum1_Comment_Action.cs" />
+    <Compile Include="ShopNum1_ArticleCheck_Action.cs" />
+    <Compile Include="ShopNum1_ProuductChecked_Action.cs" />
+    <Compile Include="ShopNum1_Control_Action.cs" />
+    <Compile Include="ShopNum1_HelpType_Action.cs" />
+    <Compile Include="ShopNum1_OrdeComplaints_Action.cs" />
+    <Compile Include="ShopNum1_ShopArticleComment_Action.cs" />
+    <Compile Include="ShopNum1_GroupProduct_Action.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ShopNum1.Common\ShopNum1.Common.csproj">
+      <Project>{3f01a9dc-7c89-41fd-a758-453e0b50d278}</Project>
+      <Name>ShopNum1.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.DataAccess\ShopNum1.DataAccess.csproj">
+      <Project>{3B0857FF-69AF-4C64-A219-524877D79726}</Project>
+      <Name>ShopNum1.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.Factory\ShopNum1.Factory.csproj">
+      <Project>{612ED950-D9CF-498E-882F-CA523DA66716}</Project>
+      <Name>ShopNum1.Factory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.Interface\ShopNum1.Interface.csproj">
+      <Project>{637FD586-553B-4F84-8A8E-AA2883DEB393}</Project>
+      <Name>ShopNum1.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.ShopInterface\ShopNum1.ShopInterface.csproj">
+      <Project>{1DF5E363-1167-4275-AB8B-26179F39933E}</Project>
+      <Name>ShopNum1.ShopInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.TbLinq\ShopNum1.TbLinq.csproj">
+      <Project>{CEB1A80C-2B59-4135-AD74-364981C0B637}</Project>
+      <Name>ShopNum1.TbLinq</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1MultiEntity\ShopNum1MultiEntity.csproj">
+      <Project>{c180cc8c-aed3-4536-82de-16b796633249}</Project>
+      <Name>ShopNum1MultiEntity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+</Project>

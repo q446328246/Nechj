@@ -1,0 +1,175 @@
+﻿using System.Collections.Generic;
+using System.Data;
+using ShopNum1.Common;
+using ShopNum1.DataAccess;
+using ShopNum1.Interface;
+using ShopNum1MultiEntity;
+using System.Data.Common;
+
+namespace ShopNum1.BusinessLogic
+{
+    public class ShopNum1_VideoComment_Action : IShopNum1_VideoComment_Action
+    {
+        public int Add(ShopNum1_VideoComment videoComment_Action)
+        {
+            string item = string.Empty;
+            var sqlList = new List<string>();
+            item =
+                string.Concat(new object[]
+                {
+                    "INSERT INTO ShopNum1_VideoComment( \tGuid\t, \tCreateTime\t, \tContent\t, \tMemLoginID\t, \tIsAudit\t, \tIsDeleted\t, \tVideoGuid\t ) VALUES (  '"
+                    , videoComment_Action.Guid, "',  '", videoComment_Action.CreateTime, "',  '",
+                    Operator.FilterString(videoComment_Action.Content), "',  '",
+                    Operator.FilterString(videoComment_Action.MemLoginID), "',  ",
+                    Operator.FilterString(videoComment_Action.IsAudit), ",  ",
+                    Operator.FilterString(videoComment_Action.IsDeleted), ",  '", videoComment_Action.VideoGuid,
+                    "')"
+                });
+            sqlList.Add(item);
+            item = "UPDATE ShopNum1_Video SET CommentCount =CommentCount + 1 WHERE Guid='" +
+                   videoComment_Action.VideoGuid + "'";
+            sqlList.Add(item);
+            try
+            {
+                DatabaseExcetue.RunTransactionSql(sqlList);
+                return 1;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
+        public int Delete(string guids)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+
+            parms[0].ParameterName = "@guids";
+            parms[0].Value = guids;
+            return DatabaseExcetue.RunNonQuery("delete from ShopNum1_VideoComment  WHERE Guid IN (@guids) ",parms);
+        }
+
+        public DataSet GetPageVideoComment(string VideoGuid, string perpagenum, string current_page, string isreturcount)
+        {
+            string str = string.Empty;
+            if (VideoGuid != "-1")
+            {
+                str = " VideoGuid = '" + Operator.FilterString(VideoGuid) + "'";
+            }
+            else
+            {
+                str = "1=1";
+            }
+            var paraName = new string[5];
+            var paraValue = new string[5];
+            paraName[0] = "@perpagenum";
+            paraValue[0] = perpagenum;
+            paraName[1] = "@current_page";
+            paraValue[1] = current_page;
+            paraName[2] = "@columnnames";
+            paraValue[2] = " * ";
+            paraName[3] = "@searchname";
+            paraValue[3] = str;
+            paraName[4] = "@isreturcount";
+            paraValue[4] = isreturcount;
+            return DatabaseExcetue.RunProcedureReturnDataSet("Pro_CommonPageVideoComment", paraName, paraValue);
+        }
+
+        public DataTable GetVideoCommentList(string guid)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+
+            parms[0].ParameterName = "@guid";
+            parms[0].Value = guid.Replace("'","");
+            return
+                DatabaseExcetue.ReturnDataTable(
+                    "SELECT *   from ShopNum1_VideoComment   where   IsAudit=1 AND    VideoGuid =@guid   ORDER BY CreateTime DESC",parms);
+        }
+
+        public DataTable GetVideoCommentList(string guid, int isAudit)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(2);
+
+            parms[0].ParameterName = "@guid";
+            parms[0].Value = guid.Replace("'","");
+            parms[1].ParameterName = "@isAudit";
+            parms[1].Value = isAudit;
+            string str = string.Empty;
+            str = "SELECT *   from ShopNum1_VideoComment   where   VideoGuid =@guid ";
+            if ((isAudit == 0) || (isAudit == 1))
+            {
+                object obj2 = str;
+                str = string.Concat(new[] {obj2, " AND IsAudit =@isAudit"});
+            }
+            return DatabaseExcetue.ReturnDataTable(str + " ORDER BY CreateTime DESC",parms);
+        }
+
+        public DataTable Search(string guid)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+
+            parms[0].ParameterName = "@guid";
+            parms[0].Value = guid.Replace("'","");
+            return
+                DatabaseExcetue.ReturnDataTable("SELECT * from ShopNum1_VideoComment where VideoGuid =@guid ORDER BY CreateTime DESC");
+        }
+
+        public DataTable Search(string MemLoginID, string VideoTitle, int IsAudit, string SendTime1, string SendTime2)
+        {
+            string str = string.Empty;
+            str =
+                "select A.*,B.Title from ShopNum1_VideoComment as a Left join  ShopNum1_Video as b on a.VideoGuid =b.Guid where 1=1 ";
+            if (Operator.FormatToEmpty(VideoTitle) != string.Empty)
+            {
+                str = str + " AND B.Title Like '%" + Operator.FilterString(VideoTitle) + "%'";
+            }
+            if (Operator.FormatToEmpty(MemLoginID) != string.Empty)
+            {
+                str = str + " AND A.MemLoginID like  '%" + Operator.FilterString(MemLoginID) + "%'";
+            }
+            if (IsAudit != -1)
+            {
+                str = str + " AND A.IsAudit =" + IsAudit;
+            }
+            if (Operator.FormatToEmpty(SendTime1) != string.Empty)
+            {
+                str = str + " AND A.CreateTime>='" + Operator.FilterString(SendTime1) + "' ";
+            }
+            if (Operator.FormatToEmpty(SendTime2) != string.Empty)
+            {
+                str = str + " AND A.CreateTime<='" + Operator.FilterString(SendTime2) + "' ";
+            }
+            return DatabaseExcetue.ReturnDataTable(str + "  ORDER BY A.CreateTime DESC");
+        }
+
+        public DataTable SearchByGuid(string guid)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+
+            parms[0].ParameterName = "@guid";
+            parms[0].Value = guid.Replace("'","");
+            return
+                DatabaseExcetue.ReturnDataTable("SELECT * from ShopNum1_VideoComment where Guid =@guid ORDER BY CreateTime DESC",parms);
+        }
+
+        public int UpdateAudit(string StrGuids)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+
+            parms[0].ParameterName = "@StrGuids";
+            parms[0].Value = StrGuids;
+            return
+                DatabaseExcetue.RunNonQuery("UPDATE  ShopNum1_VideoComment SET IsAudit= 1 WHERE Guid in (@StrGuids)", parms);
+        }
+
+        public int UpdateAuditNot(string StrGuids)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+
+            parms[0].ParameterName = "@StrGuids";
+            parms[0].Value = StrGuids;
+            return
+                DatabaseExcetue.RunNonQuery("UPDATE  ShopNum1_VideoComment SET IsAudit= 2 WHERE Guid in (@StrGuids)",parms);
+        }
+    }
+}

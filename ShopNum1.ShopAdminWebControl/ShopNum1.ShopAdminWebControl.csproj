@@ -1,0 +1,298 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.377</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7F7DE754-BB14-40EA-AF68-FF2567B6FC58}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>ShopNum1.ShopAdminWebControl</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\dll\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Compile Include="Properties\Settings1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\TJAPIzl\Reference.cs" />
+    <Compile Include="Service References\TJAPIzl\Reference1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="S_Order_ListTwo.cs" />
+    <Compile Include="W_ShopApiConfig.cs" />
+    <Compile Include="W_ShopConfig.cs" />
+    <Compile Include="W_ShopMember.cs" />
+    <Compile Include="W_ShopMenu.cs" />
+    <Compile Include="W_ShopReplyImgTxt.cs" />
+    <Compile Include="W_ShopReplyImgTxtList.cs" />
+    <Compile Include="W_ShopReplyText.cs" />
+    <Compile Include="W_ShopReplyTextList.cs" />
+    <Compile Include="W_ShopUser.cs" />
+    <Compile Include="W_ShopWeiXinApiConfig.cs" />
+    <Compile Include="W_WelcomeWx.cs" />
+    <Reference Include="ShopNum1.QRCode, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dll\ShopNum1.QRCode.dll</HintPath>
+    </Reference>
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Data" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="S_ShopInfo.cs" />
+    <Compile Include="S_ProductBookingList.cs" />
+    <Compile Include="S_UnAuditProduct.cs" />
+    <Compile Include="S_ShopOpenStep1.cs" />
+    <Compile Include="S_ZtcApply_Edit.cs" />
+    <Compile Include="S_ShopProductUpload.cs" />
+    <Compile Include="S_LifeOrder_List.cs" />
+    <Compile Include="S_ZtcGoodsAddMoney_Operate.cs" />
+    <Compile Include="S_ShopURLManageEdit.cs" />
+    <Compile Include="S_SellProduct.cs" />
+    <Compile Include="S_Limit_Packages.cs" />
+    <Compile Include="S_CreditHonor.cs" />
+    <Compile Include="S_ShowShopPhoto.cs" />
+    <Compile Include="S_ScoreOrder_Edit.cs" />
+    <Compile Include="S_OpGoods2.cs" />
+    <Compile Include="S_Album_2.cs" />
+    <Compile Include="S_MemberReport.cs" />
+    <Compile Include="S_ReportDetailed.cs" />
+    <Compile Include="S_GroupProductOperate.cs" />
+    <Compile Include="S_ShopLink.cs" />
+    <Compile Include="S_SkinBackup.cs" />
+    <Compile Include="S_ShowShopRank.cs" />
+    <Compile Include="S_OpGoods1.cs" />
+    <Compile Include="S_Head.cs" />
+    <Compile Include="S_Album_1.cs" />
+    <Compile Include="S_Limit_ActivityOpreate.cs" />
+    <Compile Include="S_Stock_Report.cs" />
+    <Compile Include="S_ProductMessageBoardReply.cs" />
+    <Compile Include="S_ZtcApply.cs" />
+    <Compile Include="S_Logistics.cs" />
+    <Compile Include="S_ShopVideoCategoryEdit.cs" />
+    <Compile Include="S_ShopSellOrder.cs" />
+    <Compile Include="S_ShopURLManage.cs" />
+    <Compile Include="S_SellGoods1.cs" />
+    <Compile Include="S_ExitProduct.cs" />
+    <Compile Include="S_Limit_AddProduct.cs" />
+    <Compile Include="S_ShopSEOManageEdit.cs" />
+    <Compile Include="S_ShopVideoCategory.cs" />
+    <Compile Include="S_Limit_ProductList.cs" />
+    <Compile Include="S_PrintOrder.cs" />
+    <Compile Include="S_ZtcApply_Detail.cs" />
+    <Compile Include="S_PaipaiImport.cs" />
+    <Compile Include="S_GroupProduct.cs" />
+    <Compile Include="S_Limit_BuyPackage.cs" />
+    <Compile Include="S_ShopVideoEdit.cs" />
+    <Compile Include="S_OnLineServiceList.cs" />
+    <Compile Include="S_DeployPayment.cs" />
+    <Compile Include="S_MessageBoardReply.cs" />
+    <Compile Include="S_ShopRankDetailed.cs" />
+    <Compile Include="S_ScoreProduct.cs" />
+    <Compile Include="S_ExitManage.cs" />
+    <Compile Include="S_SeeBuyRate_Report.cs" />
+    <Compile Include="S_RepertoryAlertProduct.cs" />
+    <Compile Include="S_StoreProducts.cs" />
+    <Compile Include="S_ProductCategory.cs" />
+    <Compile Include="S_ComplaintReport.cs" />
+    <Compile Include="S_ShopNews.cs" />
+    <Compile Include="S_AdvertisementList.cs" />
+    <Compile Include="S_GroupOrder_List.cs" />
+    <Compile Include="S_SkinSelect.cs" />
+    <Compile Include="S_AddScoreProduct.cs" />
+    <Compile Include="S_ShopInfo_ShopMap.cs" />
+    <Compile Include="S_ZtcGoods_List.cs" />
+    <Compile Include="S_AlbumList.cs" />
+    <Compile Include="S_LogisticsTemplateOperate.cs" />
+    <Compile Include="S_ShopLinkEdit.cs" />
+    <Compile Include="S_ShopCouponEdit.cs" />
+    <Compile Include="S_ZtcApply_List.cs" />
+    <Compile Include="S_StockReport.cs" />
+    <Compile Include="S_WelcomeShop.cs" />
+    <Compile Include="S_ProductCategory_Operate.cs" />
+    <Compile Include="S_Left.cs" />
+    <Compile Include="S_FeeTemplate_Select.cs" />
+    <Compile Include="S_ShopVideo.cs" />
+    <Compile Include="S_ShopInfo_Company.cs" />
+    <Compile Include="S_ScoreOrder_List.cs" />
+    <Compile Include="S_PackAgeList.cs" />
+    <Compile Include="S_ShopNewsCategoryEdit.cs" />
+    <Compile Include="S_ShopSellOrder_Report.cs" />
+    <Compile Include="S_ProductMessageBoardList.cs" />
+    <Compile Include="S_Import.cs" />
+    <Compile Include="S_OrderComplaints.cs" />
+    <Compile Include="S_SeeBuyRate.cs" />
+    <Compile Include="S_Limit_ActivityList.cs" />
+    <Compile Include="S_ShopNewsEdit.cs" />
+    <Compile Include="S_ShowMyShop.cs" />
+    <Compile Include="S_ShowPaymentType.cs" />
+    <Compile Include="S_OrderDetail.cs" />
+    <Compile Include="S_WelcomeOpenShop.cs" />
+    <Compile Include="S_OrderComplaintDetailed.cs" />
+    <Compile Include="S_RefundGoods.cs" />
+    <Compile Include="S_YiquImport.cs" />
+    <Compile Include="S_PackAgeOpreate.cs" />
+    <Compile Include="S_UserDefinedColumnOperate.cs" />
+    <Compile Include="S_ShopSEOManage.cs" />
+    <Compile Include="S_MessageBoardList.cs" />
+    <Compile Include="S_EnsureApplyRecordOperate.cs" />
+    <Compile Include="S_EnsureApplyRecordList.cs" />
+    <Compile Include="S_ComplaintOrderComplaint.cs" />
+    <Compile Include="S_ShopNewsCategory.cs" />
+    <Compile Include="S_UserDefinedColumnList.cs" />
+    <Compile Include="S_ShopCoupon.cs" />
+    <Compile Include="S_OnLineServiceOperate.cs" />
+    <Compile Include="S_ProductBookingDetail.cs" />
+    <Compile Include="S_Order_List.cs" />
+    <Compile Include="S_ShopOpenStep3.cs" />
+    <Compile Include="S_ThemeProductList.cs" />
+    <Compile Include="S_ThemeList.cs" />
+    <Compile Include="S_PageGo.cs" />
+    <Compile Include="S_ExitGoods.cs" />
+    <Compile Include="S_ReplaceUpload.cs" />
+    <Compile Include="S_AdvertisementOperate.cs" />
+    <Compile Include="S_ShopInfo_Settings.cs" />
+    <Compile Include="S_ShopInfo_Classify.cs" />
+    <Compile Include="S_ShopOpenStep2.cs" />
+    <Compile Include="S_ScoreProductList.cs" />
+    <Compile Include="S_Bottom.cs" />
+    <Compile Include="S_ZtcGoods_Operate.cs" />
+    <Compile Include="S_GetScoreSetV82.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ShopNum1.BusinessLogic\ShopNum1.BusinessLogic.csproj">
+      <Project>{090f4879-20c3-431f-a839-d8bcadb27bc1}</Project>
+      <Name>ShopNum1.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.Common\ShopNum1.Common.csproj">
+      <Project>{3F01A9DC-7C89-41FD-A758-453E0B50D278}</Project>
+      <Name>ShopNum1.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.Email\ShopNum1.Email.csproj">
+      <Project>{225E6E14-C543-42A9-87B0-3BC77480560D}</Project>
+      <Name>ShopNum1.Email</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.Factory\ShopNum1.Factory.csproj">
+      <Project>{612ED950-D9CF-498E-882F-CA523DA66716}</Project>
+      <Name>ShopNum1.Factory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.Interface\ShopNum1.Interface.csproj">
+      <Project>{637FD586-553B-4F84-8A8E-AA2883DEB393}</Project>
+      <Name>ShopNum1.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.KuaiDi\ShopNum1.KuaiDi.csproj">
+      <Project>{325c1b72-8554-4d89-a92a-8787ee996df6}</Project>
+      <Name>ShopNum1.KuaiDi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.MultiBaseWebControl\ShopNum1.MultiBaseWebControl.csproj">
+      <Project>{411E8BD3-CEFA-44CE-B7EA-B4BFB8469ECA}</Project>
+      <Name>ShopNum1.MultiBaseWebControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.Payment\ShopNum1.Payment.csproj">
+      <Project>{5AC9F7AC-D8AE-471A-A97C-1C7AD251F066}</Project>
+      <Name>ShopNum1.Payment</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.ShopBusinessLogic\ShopNum1.ShopBusinessLogic.csproj">
+      <Project>{d5352277-f1dd-4854-9c4a-c936e63b5e31}</Project>
+      <Name>ShopNum1.ShopBusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.ShopFactory\ShopNum1.ShopFactory.csproj">
+      <Project>{BE4B32F3-4EBC-431D-91AA-EDA5E71B81C1}</Project>
+      <Name>ShopNum1.ShopFactory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.ShopFeeTemplate\ShopNum1.ShopFeeTemplate.csproj">
+      <Project>{90c7bb13-3801-4543-8cc8-496c7879096d}</Project>
+      <Name>ShopNum1.ShopFeeTemplate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.ShopInterface\ShopNum1.ShopInterface.csproj">
+      <Project>{1df5e363-1167-4275-ab8b-26179f39933e}</Project>
+      <Name>ShopNum1.ShopInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.Standard\ShopNum1.Standard.csproj">
+      <Project>{FBF33D3C-6EB7-4D50-90DA-08B352ED8DAD}</Project>
+      <Name>ShopNum1.Standard</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.WeiXinBusinessLogic\ShopNum1.WeiXinBusinessLogic.csproj">
+      <Project>{680387DD-1451-4782-A45E-D8FE45BCF756}</Project>
+      <Name>ShopNum1.WeiXinBusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1.WeiXinInterface\ShopNum1.WeiXinInterface.csproj">
+      <Project>{F5F84579-7974-4E23-89F6-C02A47DDBDAF}</Project>
+      <Name>ShopNum1.WeiXinInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNum1MultiEntity\ShopNum1MultiEntity.csproj">
+      <Project>{c180cc8c-aed3-4536-82de-16b796633249}</Project>
+      <Name>ShopNum1MultiEntity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://125.227.91.169:8081//WebService.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\TJapi\</RelPath>
+      <UpdateFromURL>http://125.227.91.169:8081//WebService.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>ShopNum1_ShopAdminWebControl_TJapi_WebService</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Service References\TJAPIzl\configuration.svcinfo" />
+    <Content Include="Service References\TJAPIzl\configuration91.svcinfo" />
+    <Content Include="Service References\TJAPIzl\MemberService.disco" />
+    <Content Include="Service References\TJAPIzl\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference1.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\TJAPIzl\MemberService.wsdl" />
+  </ItemGroup>
+</Project>

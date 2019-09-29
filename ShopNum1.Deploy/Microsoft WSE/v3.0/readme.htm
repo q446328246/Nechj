@@ -1,0 +1,260 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+  <TITLE>Web Services Enhancements 3.0 - Release Notes</TITLE>
+  <META http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <STYLE>
+  BODY {
+    FONT-SIZE: 10pt; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+  }
+  PRE {
+    BACKGROUND-COLOR: #c0c0c0
+  }
+  </STYLE>
+  <META content="MSHTML 6.00.3790.118" name="GENERATOR"/>
+</HEAD>
+<BODY>
+<H1>Welcome to Web Services Enhancements (WSE) 3.0</H1>
+<P>
+The Web Services Enhancements 3.0 for Microsoft .NET (WSE) enables developers
+to create interoperable Web services with advanced Web services features. With WSE 
+3.0,
+you can secure your messages using digital signatures and encryption, use MTOM 
+to efficiently send large amounts of binary data, route messages through intermediaries, 
+host Web Services outside of IIS, use the TCP/IP protocol and more. WSE 3.0 comes complete
+with samples and product documentation. For more information, visit the WSE home 
+page on <a href="http://go.microsoft.com/fwlink/?linkid=10708&clcid=0x409">MSDN</a>.
+</P>
+<H2>System Requirements</H2>
+<UL>
+  <LI>
+    Microsoft&reg; Windows&reg; XP Home or Microsoft&reg; Windows&reg; XP
+    Professional or Microsoft&reg; Windows&reg; 2000 Professional or Microsoft&reg;
+    Windows&reg; 2000 Server or Microsoft&reg;&nbsp;Windows Server&trade; 2003
+  </LI>
+  <LI>
+    Microsoft&reg; Internet Information Services (IIS) 5.0, 5.1, or 6.0
+  </LI>
+  <LI>
+    Microsoft&reg; .NET Framework version 2.0 or Visual Studio 2005
+    which can be installed from <a href="http://lab.msdn.microsoft.com/vs2005/get/">here</a>.
+    <br>
+    <b>Note that if you install the Visual Studio 2005 Express Editions </b>these do not support the WSE 
+    Configuration add-in tool. This is because these versions of Visual Studio 2005 do not support
+    any additional add-ins. However the standalone version of the WSE 
+    Configuration tool can be used to configure the project and generate policy file.
+    The standalone version of the WSE Configuration tool can be found in the WSE Tools installation
+    directory or launched from the Start button.
+ </LI>
+</UL>
+
+<h2>Major Features In Version 3.0</h2>
+<ul>
+	<li><b>Easier message level security with the introduction of Turnkey Security Scenarios</b> by providing high level 
+	security building blocks that enable you to secure messaging patterns 
+	rather than having to consider how to secure the 
+	request and response messages independently. These Turnkey Security Scenarios, 
+	otherwise known as security assertions, are industry best practices when securing
+	end-to-end messages.</li>
+
+	<li><b>Interoperability with Windows Communication Foundation (WCF).</b>
+	WSE 3.0 aligns with WCF on the same set of Web service specifications
+	 (see the product documentation for the complete list) 
+	thereby achieving wire-level interoperability for messages. 
+	Furthermore, the security simplification
+ 	and relevant API names have been aligned so that conceptually WSE 3.0 provides
+	many of the security features found in WCF. WSE 3.0 Policy is akin to 
+	WCF Binding. WCF clients can communicate with WSE 3.0 Web services
+	and WSE 3.0 clients can communicate with WCF services. 
+
+	<li><b>Improved Policy Framework</b></li>
+<ol>
+	<ul>
+		<li>The Policy file format has been simplified to reflect the Turnkey 
+		Security Scenarios. Policy still allows configuration-based declaration 
+		of security requirements for incoming and outgoing SOAP messages, but 
+		it now concentrates on where to get the security tokens from based upon the 
+		chosen security assertion.</li>
+		<li>CLR attribute based programming. Policy files can now be associated 
+		with a client proxy or a service by applying a Policy attribute i.e. [Policy(&quot;ServerPolicy&quot;)]</li>
+		<li>Imperative and declarative programming models for policy have been 
+		aligned to provide uniform programming abstractions. In WSE 2.0 there 
+		was no correlation between the code written to secure a message exchange 
+		and declarative policy files. In WSE 3.0 through the use of the CLR 
+		Policy attribute and the <i>SetPolicy</i> method on WSE generated client 
+		proxies (via Visual Studio&#39;s Add Web Reference or by using the wsewsdl3.exe
+	        command line tool)
+		policy files can now be 
+		used in code to secure a client or a service.</li>
+		<li>Policy also allows significant extensibility mechanisms for 
+		user-defined or custom policies in code. By extending the <i>
+		Microsoft.Web.Services3.Design.PolicyAssertion</i> class to create your 
+		own policy assertion, custom transformations of the SOAP envelope can be 
+		performed at any stage in the pipeline. For example this enables you to 
+		define a logging assertion or have a policy assertion that enforces 
+		specified XML schemas for message validation. The same assertion can 
+		then be used in the declarative policy file. You can also extend the built in
+		policy security assertions thereby tailoring the turnkey security scenarios to 
+		your needs. For example adding additonal supporting tokens to the message.
+		Examples of custom policies are provided in the Quickstart samples.</li>
+		<li>An updated Security Settings Wizard helps secure an application 
+		by generating a policy through a series of simple steps.
+		The Security Settings Wizard asks questions to choose the most appropriate
+		Turnkey Security Scenario when securing an application and walks 
+		you through the best choice of Policy assertion for your chosen 
+		application deployment. </li>
+	</ul>
+</ol>
+
+	<li><b>Web services hosted by ASP.NET, otherwise known as ASMX Web services, can now be 
+	hosted outside of IIS</b>, for example in console applications or Windows services 
+	and called with the TCP/IP protocol. The existing lightweight, 
+	message-oriented, SOAP programming model based on the SoapSender and SoapReceiver classes 
+	remains as an alternative messaging API.</li>
+	<li><b>Support for the
+	<a href="http://www.w3.org/TR/2005/REC-soap12-mtom-20050125/">W3C MTOM 
+	Recommendation</a></b> to enable large amounts of binary data to be sent 
+	efficiently, securely and integrated into ASP.NET Web Services programming model.</li>
+	<li><b>Integration of Policy and the SoapHttpRouter class</b>. As a result of the improvements
+	to policy, policies can now be applied to both the received and forwarded messages
+	when using the SoapHttpRouter class.</li>
+	<li><b>More detailed tracing</b> showing the pre-processed message on the wire, the policy assertions
+	that processes the message and the processed message that emerges from pipeline
+	before it is dispatch to you business logic.</li>
+	<li><b>Improved session management when using WS-SecureConversation and 
+	Security Context Tokens (SCTs)</b>. SCTs can now encrypt and contain the original client 
+	authentication security token when sent from the client to the service, which enable 
+	sessions to be re-established if lost e.g. when a Web service&#39;s application domain is 
+	reset. This provides reliability for the session and enables sessions to be 
+	used in Web farm scenarios.</li>
+	<ol>
+		<ul><li>WS-SecureConversation sessions can now be cancelled explicitly.</li>
+	</ol>
+	<li><b>Signature Confirmation.</b> Message signatures sent in message from the client 
+	can now be reflected back to the client in the response
+	message from the server indicating that the service was able to successfully
+	process the request.</li>
+	<li><b>Integrated tool support with Visual Studio 2005</b>. The WSE 3.0 
+	configuration tool can be accessed via the context menu on the Visual Studio 
+	2005 Solution Explorer. Usability enhancements have been made to the WSE 3.0
+	configuration tool to address common scenarios such as overriding the build in token 
+	managers and selecting certificates from particular stores when securing a message. </li>
+	<li><b>Support for updated Web services specifications</b> including WS-Addressing, 
+	WS-Security, WS-Trust, and WS-SecureConversation.
+	For more details, see Web Service Specifications Supported by WSE in the documentation. </li>
+	<li><b>Support for 64 bit runtime</b>.</li>
+	<li><b>A comprehensive set of QuickStart samples</b> showing the numerous features of WSE 3.0. </li>
+	<li><b>See the product documentation for more detailed information</b>.</li>
+</ul>
+
+<h2>Known Issues</h2>
+<UL>
+ <LI>
+    <font size="2" face="Verdana"><span class="695222722-01062005">
+    <b>The WSE Settings Tool does not appear on the Visual Studio 2005 Solution Explorer content menu</b>.
+    This occurs if you install Visual Studio
+    2005 and then install WSE 3.0 without first having started Visual Studio 2005. Ensure that
+    you start Visual Studio 2005 before installing WSE 3.0. Alternatively you can use the
+    Visual Studio 2005 Add-in Manager available
+    from the Tools menu item to manually install the WSE 3.0 Settings tool
+    if you do install WSE 3.0 without having started Visual Studio 2005 first.
+    </font>
+  </LI>
+  <LI>
+    	<font face="Verdana" size="2"><span class="695222722-01062005">
+	<b>Cannot write WSE diagnostic trace files. </b>
+	With Microsoft Windows 2003 Server SP1, all Web services that run
+	under the NETWORK SERVICE account cannot write WSE
+	diagnostic trace files. To enable these services to write diagnostic
+	files, either add write access permission for the NETWORK SERVICE account
+	to the directory where the diagnostics files are being written or alternatively
+	run the service under an account which has write access privileges.</span>
+	</font>
+  </LI>
+  <LI>
+    <font size="2" face="Verdana"><span class="695222722-01062005">
+    <b>Wsewsdl3.exe cannot produce ASP.NET proxy clients when just the .NET v2.0 Framework
+    Runtime is installed on the machine.</b> The .NET v2.0 Framework SDK is required to be installed
+    on the machine to successfully generate client proxies.
+    .
+   </font>
+  </LI></UL>
+ 
+<h2>Runtime and Installation Issues</h2>
+<UL>
+	<LI><b>Ensure that you have ASP.NET v2.0 installed and registered.</b> 
+	If you have Visual Studio 2003 already installed on the machine when 
+	you install Visual Studio 2005 then by default ASP.NET v2.0 is not the running 
+	version. These are the steps to ensure you have ASP.NET v2.0 running as the default.<br>
+   <ul>
+	<li>
+	In a Visual Studio 2005 command prompt window type in the following command: <b> aspnet_regiis /Lv</b>
+	</li>
+	<br><br>You should see the following: <br><br>
+
+	<font face="Times New Roman" size="3">
+	<b>C:\Program Files\Microsoft Visual Studio 8\VC>aspnet_regiis /lv <br>
+	1.1.4322.0 C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll<br>
+	2.0.50727.0     Valid (Root)    C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\aspnet_isapi.dll</b></font><br>
+	<br>
+	Make sure you have <b>“Valid (Root)” </b>beside the specific version of .NET 
+	Framework 2.0 (in this case 2.0.50727) as shown in the example above.<br>
+	<br>
+	</li>
+	
+	<li>
+	If you do not have “Valid (Root)” do the following. 
+	<br>In the same command window, run this command: <b>aspnet_regiis /i /enable</b>.
+	<br> This installs ASP.NET v2.0 and enables the ASP.NET Web Services Extension.<br clear="left"></LI>
+	</li>
+  </UL>
+
+</UL>
+
+<H2>Policy Advisor Tool</H2>
+<P>
+The Policy Advisor is a security tool for WSE 3.0. It examines the configuration and policy
+files for one or more WSE endpoints, highlights typical security risks and provides 
+remedial advice. The absence of warnings does not in itself provide strong security
+guarantees; nonetheless, Policy Advisor can find issues that may otherwise be missed.</p>
+
+<p>The Policy Advisor is an XSL file which uses an XML endpoints file to discover and analyse 
+WSE 3.0 security policy and configuration files. If you elected to install samples, the Policy Advisor can be found <A href="samples/Policy Advisor/PolicyAdvisor.xml">here</A>.</p>
+</P>
+
+
+<h2>Viewing the Documentation</h2>
+    <span class="695222722-01062005"><font face="Verdana">In order to view the 
+	WSE 3.0 documentation you need to have either Visual Studio 2005 or 
+	.NET Framework 2.0 SDK installed on the machine.</font></span>
+
+<H2>QuickStart Samples</H2>
+<P>
+A comprehensive set of Quickstart samples has been created for the WSE 3.0 release in both 
+the C# and VB.NET languages. These 
+are located in the \Program Files\Microsoft WSE\v3.0\Samples directory.
+WSE 3.0 does not include prebuilt versions of the QuickStart samples. Please refer
+to the samples <A href="samples/readme.htm">readme.htm</A> file in the \Samples directory
+for instructions on building and configuring the samples.
+</P>
+
+<h2>Major Class Library Changes from WSE Version 2.0 </h2>
+<p>This list is not comprehensive but highlights the some of themajor changes from the WSE 
+2.0 SP3 release for reference purposes. </p>
+<ul>
+	<li>The assembly name has been changed from Microsoft.Web.Services2.dll to 
+	Microsoft.Web.Services3.dll. The root namespace has been changed to 
+	Microsoft.Web.Services3. </li>
+	<li>The Microsoft.Web.Services3.Policy namespace has been superseded by the 
+	Microsoft.Web.Services3.Design namespace</li>
+	<li>The Microsoft.Web.Services2.Security.X509Certificate class has been replaced 
+	with the .NET v2.0 Framework System.Security.Cryptography.X509Certificates.X509Certificate
+	class. The same also applies to X509CertificateStore class.</li>
+	<li>KerberosToken2 has been renamed to KerberosToken so there is only a 
+	single Kerberos token type which only supports SSPI. LSA is no longer 
+	supported.</li>
+	<li>See the product documentation for more information on migrating WSE 2.0 applications to WSE 3.0.</li>
+</ul>
+
+</BODY>
+</HTML>

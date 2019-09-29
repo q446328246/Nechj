@@ -1,0 +1,531 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="GZ1" xml:space="preserve">
+    <value>The order has been paid</value>
+  </data>
+  <data name="GZ10" xml:space="preserve">
+    <value>Sorry, the goods are too hot and the stock is insufficient to complete the following operation yo!</value>
+  </data>
+  <data name="GZ11" xml:space="preserve">
+    <value>Failure to buy</value>
+  </data>
+  <data name="GZ12" xml:space="preserve">
+    <value>User number exists, please refresh the registration</value>
+  </data>
+  <data name="GZ13" xml:space="preserve">
+    <value>Recommenders do not exist</value>
+  </data>
+  <data name="GZ14" xml:space="preserve">
+    <value>A nickname cannot be empty</value>
+  </data>
+  <data name="GZ15" xml:space="preserve">
+    <value>Password cannot be empty</value>
+  </data>
+  <data name="GZ16" xml:space="preserve">
+    <value>Secondary password cannot be empty</value>
+  </data>
+  <data name="GZ17" xml:space="preserve">
+    <value>Recommenders do not exist</value>
+  </data>
+  <data name="GZ18" xml:space="preserve">
+    <value>Registration failed! Please re-register!</value>
+  </data>
+  <data name="GZ19" xml:space="preserve">
+    <value>Failed to create NEC address, please re-register!</value>
+  </data>
+  <data name="GZ2" xml:space="preserve">
+    <value>Payment password is empty</value>
+  </data>
+  <data name="GZ20" xml:space="preserve">
+    <value>The other party is not a merchant, can not transfer money!</value>
+  </data>
+  <data name="GZ21" xml:space="preserve">
+    <value>Successful application, please wait patiently for the approval of the administrator!</value>
+  </data>
+  <data name="GZ22" xml:space="preserve">
+    <value>You are already in the application list, please wait patiently for the approval of the administrator!</value>
+  </data>
+  <data name="GZ23" xml:space="preserve">
+    <value>No more goods!</value>
+  </data>
+  <data name="GZ24" xml:space="preserve">
+    <value>No more orders!</value>
+  </data>
+  <data name="GZ25" xml:space="preserve">
+    <value>The initial purchase quantity is</value>
+  </data>
+  <data name="GZ26" xml:space="preserve">
+    <value>Purchase must be multiple of 100</value>
+  </data>
+  <data name="GZ27" xml:space="preserve">
+    <value>Insufficient stock!</value>
+  </data>
+  <data name="GZ3" xml:space="preserve">
+    <value>The transaction password you entered is incorrect</value>
+  </data>
+  <data name="GZ4" xml:space="preserve">
+    <value>Error in payment amount</value>
+  </data>
+  <data name="GZ5" xml:space="preserve">
+    <value>The NEC on your current account is insufficient and cannot be paid.</value>
+  </data>
+  <data name="GZ6" xml:space="preserve">
+    <value>The order has been paid</value>
+  </data>
+  <data name="GZ7" xml:space="preserve">
+    <value>Failure to pay</value>
+  </data>
+  <data name="GZ8" xml:space="preserve">
+    <value>I'm sorry, but your rental power will exceed 1 million yuan. You can't rent it.</value>
+  </data>
+  <data name="GZ9" xml:space="preserve">
+    <value>I'm sorry to rush to buy one ID item!</value>
+  </data>
+  <data name="MG000001" xml:space="preserve">
+    <value>Sending successfully</value>
+  </data>
+  <data name="MG0000011" xml:space="preserve">
+    <value>Sending successfully</value>
+  </data>
+  <data name="MG00000111" xml:space="preserve">
+    <value>Sending successfully</value>
+  </data>
+  <data name="MG000002" xml:space="preserve">
+    <value>Sending failed</value>
+  </data>
+  <data name="MG0000021" xml:space="preserve">
+    <value>Sending failed</value>
+  </data>
+  <data name="MG00000211" xml:space="preserve">
+    <value>Sending failed</value>
+  </data>
+  <data name="MG000003" xml:space="preserve">
+    <value>Wrong</value>
+  </data>
+  <data name="MG0000031" xml:space="preserve">
+    <value>System Error</value>
+  </data>
+  <data name="MG000004" xml:space="preserve">
+    <value>No UID at present</value>
+  </data>
+  <data name="MG0000041" xml:space="preserve">
+    <value>No UID at present</value>
+  </data>
+  <data name="MG000005" xml:space="preserve">
+    <value>Authentication error</value>
+  </data>
+  <data name="MG0000051" xml:space="preserve">
+    <value>Authentication error</value>
+  </data>
+  <data name="MG000006" xml:space="preserve">
+    <value>The cash withdrawal was incorrect</value>
+  </data>
+  <data name="MG0000061" xml:space="preserve">
+    <value>The cash withdrawal was incorrect</value>
+  </data>
+  <data name="MG000007" xml:space="preserve">
+    <value>The trade password is empty</value>
+  </data>
+  <data name="MG0000071" xml:space="preserve">
+    <value>The trade password is empty</value>
+  </data>
+  <data name="MG000008" xml:space="preserve">
+    <value>NEC insufficient</value>
+  </data>
+  <data name="MG0000081" xml:space="preserve">
+    <value>NEC insufficient</value>
+  </data>
+  <data name="MG000009" xml:space="preserve">
+    <value>Not enough after deducting the handling fee NEC minimum cash limit</value>
+  </data>
+  <data name="MG0000091" xml:space="preserve">
+    <value>Not enough after deducting the handling fee NEC minimum cash limit</value>
+  </data>
+  <data name="MG000010" xml:space="preserve">
+    <value>Wrong trade password</value>
+  </data>
+  <data name="MG0000101" xml:space="preserve">
+    <value>Wrong trade password</value>
+  </data>
+  <data name="MG000011" xml:space="preserve">
+    <value>Success</value>
+  </data>
+  <data name="MG0000111" xml:space="preserve">
+    <value>Success</value>
+  </data>
+  <data name="MG000012" xml:space="preserve">
+    <value>Please login again, your authentication has expired</value>
+  </data>
+  <data name="MG0000121" xml:space="preserve">
+    <value>Please login again, your authentication has expired</value>
+  </data>
+  <data name="MG000013" xml:space="preserve">
+    <value>ETH is not enough</value>
+  </data>
+  <data name="MG0000131" xml:space="preserve">
+    <value>NEC insufficient</value>
+  </data>
+  <data name="MG000014" xml:space="preserve">
+    <value>Not enough ETH after deducting the handling fee</value>
+  </data>
+  <data name="MG0000141" xml:space="preserve">
+    <value>Not enough ETH after deducting the handling fee</value>
+  </data>
+  <data name="MG000015" xml:space="preserve">
+    <value>After deducting the handling fee, it is not enough for NEC minimum withdrawal amount</value>
+  </data>
+  <data name="MG0000151" xml:space="preserve">
+    <value>After deducting the handling fee, it is not enough for NEC minimum withdrawal amount</value>
+  </data>
+  <data name="MG000016" xml:space="preserve">
+    <value>Key validation failed</value>
+  </data>
+  <data name="MG000017" xml:space="preserve">
+    <value>This account prohibits transactions</value>
+  </data>
+  <data name="MG000018" xml:space="preserve">
+    <value>No more cash withdrawals</value>
+  </data>
+  <data name="MG000019" xml:space="preserve">
+    <value>You can't transfer money to yourself</value>
+  </data>
+  <data name="MG000020" xml:space="preserve">
+    <value>The transfer amount was incorrect</value>
+  </data>
+  <data name="MG000021" xml:space="preserve">
+    <value>The trade password is empty</value>
+  </data>
+  <data name="MG000022" xml:space="preserve">
+    <value>Not interchangeable for the time being</value>
+  </data>
+  <data name="MG000023" xml:space="preserve">
+    <value>Account doesn't exist</value>
+  </data>
+  <data name="MG000024" xml:space="preserve">
+    <value>USDT is not enough</value>
+  </data>
+  <data name="MG000025" xml:space="preserve">
+    <value>ETH address creation failed</value>
+  </data>
+  <data name="MG000026" xml:space="preserve">
+    <value>Successful payment</value>
+  </data>
+  <data name="MG000027" xml:space="preserve">
+    <value>Parameter error</value>
+  </data>
+  <data name="MG000028" xml:space="preserve">
+    <value>No more merchandise</value>
+  </data>
+  <data name="MG000029" xml:space="preserve">
+    <value>Successful account synchronization</value>
+  </data>
+  <data name="MG000030" xml:space="preserve">
+    <value>Modified successfully</value>
+  </data>
+  <data name="MG000031" xml:space="preserve">
+    <value>Modifications failed</value>
+  </data>
+  <data name="MG000032" xml:space="preserve">
+    <value>You can't buy your own order</value>
+  </data>
+  <data name="MG000033" xml:space="preserve">
+    <value>Order status exception</value>
+  </data>
+  <data name="MG000034" xml:space="preserve">
+    <value>USDT insufficient</value>
+  </data>
+  <data name="MG000035" xml:space="preserve">
+    <value>Unclear order</value>
+  </data>
+  <data name="MG000036" xml:space="preserve">
+    <value>There's no bill at the moment</value>
+  </data>
+  <data name="MG000037" xml:space="preserve">
+    <value>No bill at the moment</value>
+  </data>
+  <data name="MG000038" xml:space="preserve">
+    <value>Send Too Much</value>
+  </data>
+  <data name="MG000039" xml:space="preserve">
+    <value>Cell phone number already exists</value>
+  </data>
+  <data name="MG000040" xml:space="preserve">
+    <value>The login password and the payment password can not be equal</value>
+  </data>
+  <data name="MG000041" xml:space="preserve">
+    <value>The transaction password must be 6 bits</value>
+  </data>
+  <data name="MG000042" xml:space="preserve">
+    <value>Payment password can not enter non-numbers</value>
+  </data>
+  <data name="MG000043" xml:space="preserve">
+    <value>The references don't exist</value>
+  </data>
+  <data name="MG000044" xml:space="preserve">
+    <value>Nicknames can not be empty</value>
+  </data>
+  <data name="MG000045" xml:space="preserve">
+    <value>Password can not be empty</value>
+  </data>
+  <data name="MG000046" xml:space="preserve">
+    <value>Secondary password can not be empty</value>
+  </data>
+  <data name="MG000047" xml:space="preserve">
+    <value>Registration failed! Please re-register!</value>
+  </data>
+  <data name="MG000048" xml:space="preserve">
+    <value>Failed to create ETH address or NEC address, please re-register</value>
+  </data>
+  <data name="MG000049" xml:space="preserve">
+    <value>User has been disabled</value>
+  </data>
+  <data name="MG000050" xml:space="preserve">
+    <value>Too many user password errors have been disabled</value>
+  </data>
+  <data name="MG000051" xml:space="preserve">
+    <value>Could be an error in the password or account</value>
+  </data>
+  <data name="MG000052" xml:space="preserve">
+    <value>Two matches to the encryption string</value>
+  </data>
+  <data name="MG000053" xml:space="preserve">
+    <value>Validator error, please re-enter the validator</value>
+  </data>
+  <data name="MG000054" xml:space="preserve">
+    <value>There is no record of the account</value>
+  </data>
+  <data name="MG000055" xml:space="preserve">
+    <value>There's no cell phone number</value>
+  </data>
+  <data name="MG000056" xml:space="preserve">
+    <value>Please contact the administrator</value>
+  </data>
+  <data name="MG000057" xml:space="preserve">
+    <value>Your account balance is insufficient</value>
+  </data>
+  <data name="MG000058" xml:space="preserve">
+    <value>Checked in</value>
+  </data>
+  <data name="MG000059" xml:space="preserve">
+    <value>No bonus at the moment</value>
+  </data>
+  <data name="MG000060" xml:space="preserve">
+    <value>Unsigned time</value>
+  </data>
+  <data name="MG000061" xml:space="preserve">
+    <value>You have checked in, do not repeat</value>
+  </data>
+  <data name="MG000062" xml:space="preserve">
+    <value>Checked in successfully</value>
+  </data>
+  <data name="MG000063" xml:space="preserve">
+    <value>You count 0, you can not sign in</value>
+  </data>
+  <data name="MG000064" xml:space="preserve">
+    <value>Error entering other person's account number</value>
+  </data>
+  <data name="MG000065" xml:space="preserve">
+    <value>UID doesn't match the cell phone number</value>
+  </data>
+  <data name="MG000066" xml:space="preserve">
+    <value>Modifying payment password successful</value>
+  </data>
+  <data name="MG000067" xml:space="preserve">
+    <value>Modifying login password successful</value>
+  </data>
+  <data name="MG000068" xml:space="preserve">
+    <value>Modifying nickname successful</value>
+  </data>
+  <data name="MG000069" xml:space="preserve">
+    <value>Failed to modify nickname</value>
+  </data>
+  <data name="MG000070" xml:space="preserve">
+    <value>Old password input error</value>
+  </data>
+  <data name="MG000071" xml:space="preserve">
+    <value>Password modification successful</value>
+  </data>
+  <data name="MG000072" xml:space="preserve">
+    <value>Failed to change password</value>
+  </data>
+  <data name="MG000073" xml:space="preserve">
+    <value>Feedback Success</value>
+  </data>
+  <data name="MG000074" xml:space="preserve">
+    <value>Feedback Failed</value>
+  </data>
+  <data name="MG000075" xml:space="preserve">
+    <value>You are already in the application list, please wait for the system approval</value>
+  </data>
+  <data name="MG000076" xml:space="preserve">
+    <value>The binding failed, please fill in the full information</value>
+  </data>
+  <data name="MG000077" xml:space="preserve">
+    <value>You are already bound, do not repeat the binding</value>
+  </data>
+  <data name="MG000078" xml:space="preserve">
+    <value>The device number has been bound</value>
+  </data>
+  <data name="MG000079" xml:space="preserve">
+    <value>Failed to apply for binding</value>
+  </data>
+  <data name="MG000080" xml:space="preserve">
+    <value>The system does not have the device number</value>
+  </data>
+  <data name="MG000081" xml:space="preserve">
+    <value>Authentication has expired, please login again</value>
+  </data>
+  <data name="MG000082" xml:space="preserve">
+    <value>Key validation failed</value>
+  </data>
+  <data name="MG000083" xml:space="preserve">
+    <value>This account prohibits transactions</value>
+  </data>
+  <data name="MG000084" xml:space="preserve">
+    <value>Binding successful</value>
+  </data>
+  <data name="MG000085" xml:space="preserve">
+    <value>Binding failed</value>
+  </data>
+  <data name="MG000086" xml:space="preserve">
+    <value>Password input error</value>
+  </data>
+  <data name="MG000087" xml:space="preserve">
+    <value>Not for the time being</value>
+  </data>
+  <data name="MG000088" xml:space="preserve">
+    <value>You can't hang it for now</value>
+  </data>
+  <data name="MG000089" xml:space="preserve">
+    <value>Cancel order successful</value>
+  </data>
+  <data name="MG000090" xml:space="preserve">
+    <value>The order has been completed or the order does not exist</value>
+  </data>
+  <data name="MG000091" xml:space="preserve">
+    <value>Order does not exist</value>
+  </data>
+  <data name="MG000092" xml:space="preserve">
+    <value>Success</value>
+  </data>
+  <data name="MG000093" xml:space="preserve">
+    <value>Type is out of range</value>
+  </data>
+</root>

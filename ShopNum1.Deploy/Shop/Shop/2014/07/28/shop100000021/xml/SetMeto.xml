@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SiteMeta>
+  <Meta PageName="Default.aspx" Title="店铺首页" KeyWords="店铺首页" Description="店铺首页" />
+  <Meta PageName="ProductListNew.aspx" Title="最新商品" KeyWords="最新商品" Description="最新商品123" />
+  <Meta PageName="ProductListHot.aspx" Title="热卖商品" KeyWords="热卖商品" Description="热卖商品" />
+  <Meta PageName="ProductListPromotion.aspx" Title="促销商品" KeyWords="促销商品" Description="促销商品" />
+  <Meta PageName="NewsListBestNew.aspx" Title="商城资讯" KeyWords="商城资讯" Description="商城资讯" />
+  <Meta PageName="ShopComment.aspx" Title="店铺评论" KeyWords="店铺评论" Description="店铺评论" />
+  <Meta PageName="ShopMessageBoard.aspx" Title="商城留言" KeyWords="商城留言" Description="商城留言" />
+  <Meta PageName="ProductIsSpell_List.aspx" Title="团购列表" KeyWords="团购列表" Description="团购列表" />
+  <Meta PageName="ProductIsPanic_List.aspx" Title="抢购列表" KeyWords="抢购列表" Description="抢购列表" />
+  <Meta PageName="CouponList.aspx" Title="优惠券列表" KeyWords="优惠券列表" Description="优惠券列表" />
+  <Meta PageName="VideoList.aspx" Title="视频列表" KeyWords="视频列表" Description="视频列表" />
+  <Meta PageName="ProductBooking.aspx" Title="免费预约" KeyWords="免费预约" Description="免费预约" />
+  <Meta PageName="ProductSearchList.aspx" Title="商品搜索" KeyWords="商品搜索" Description="商品搜索" />
+  <Meta PageName="NewsDetail.aspx" Title="商城资讯详细" KeyWords="商城资讯详细" Description="商城资讯详细" />
+  <Meta PageName="productdetail.aspx" Title="商品详细" KeyWords="商品详细" Description="商品详细" />
+  <Meta PageName="ProductIsSpell_Detail.aspx" Title="团购商品详细" KeyWords="团购商品详细" Description="团购商品详细" />
+  <Meta PageName="ProductIsPanic_Detail.aspx" Title="抢购商品详细" KeyWords="抢购商品详细" Description="抢购商品详细" />
+  <Meta PageName="Coupon.aspx" Title="优惠券详细" KeyWords="优惠券详细" Description="优惠券详细" />
+  <Meta PageName="CouponPrint.aspx" Title="优惠券打印" KeyWords="优惠券打印" Description="优惠券打印" />
+  <Meta PageName="VideoDetail.aspx" Title="视频详细" KeyWords="视频详细" Description="视频详细" />
+  <Meta PageName="ProductIntegral.aspx" Title="积分商品详细" KeyWords="积分商品详细" Description="积分商品详细" />
+</SiteMeta>

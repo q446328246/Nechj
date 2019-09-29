@@ -1,0 +1,25 @@
+/* CSS Document */
+#top{
+	width:100%;
+	height:110px;
+	overflow:hidden;
+	background:#b3110e;
+}
+#top .top_box{
+	width:1190px;
+	height:auto;
+	margin:0 auto;
+	padding-top:20px;
+}
+#top .top_box .logo_login{
+	width:282px;
+	height:71px;
+	overflow:hidden;
+	line-height:9999px;
+	background:url(images/logo_login.png) no-repeat;
+	float:left;
+}
+
+.m_top{
+	margin:50px auto 35px auto;;
+}
