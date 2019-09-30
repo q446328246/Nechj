@@ -72,6 +72,7 @@ namespace ShopNum1.Deploy.KCESservice
         /// <param name="NEC">nec</param>
         /// <param name="IIPassWord">支付密码</param>
         /// <param name="Token"></param>
+        [WebMethod]
         public void RenRenZhuanZhang(string MemLoginID, decimal NEC, string IIPassWord, string Token) {
 
             ShopNum1_Member_Action member_Action = (ShopNum1_Member_Action)ShopNum1.Factory.LogicFactory.CreateShopNum1_Member_Action();
@@ -200,6 +201,149 @@ namespace ShopNum1.Deploy.KCESservice
             }
         }
 
+
+
+        //人人商城创建租赁订单
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="MemLoginID">会员ID</param>
+        /// <param name="ProductGuid">商品Guid  23470ba0-183f-4e8d-94e8-e7fcee0f3306  1G综合算力包 </param>
+        /// <param name="GuiGeType">购买个数购买种类1=60天2=180天3=270天</param>
+        /// <param name="BuyNumber">购买个数</param>
+        /// <param name="PayPwd">支付密码</param>
+        /// <param name="KeyToken">支付密码</param>
+        [WebMethod]
+        public void RenRenCreateOrder(string MemLoginID, string ProductGuid, int GuiGeType, int BuyNumber, string PayPwd,string KeyToken)
+        {
+
+            Gz_LogicApi cnfirmOrderAPP = new Gz_LogicApi();
+            GZMessage message = new GZMessage();
+
+            if (CheckKeyToken(MemLoginID, KeyToken))
+            {
+                try
+                {
+
+                    string order = cnfirmOrderAPP.CreateOrder(MemLoginID, ProductGuid, GuiGeType, BuyNumber, PayPwd);
+
+                    if (order == "1")
+                    {
+                        message.Code = Gz_LogicApi.GetString("MG000026");
+                        message.Message = Gz_LogicApi.GetString("MG000026");
+                        message.Result = 1;
+                    }
+                    else
+                    {
+                        message.Code = order;
+                        message.Message = order;
+                        message.Result = 0;
+                    }
+
+
+
+
+                    Context.Response.Write(KceApiHelper.GetJSON<GZMessage>(message));
+
+                }
+                catch (Exception ex)
+                {
+
+                    message.Result = 0;
+                    message.Code = Gz_LogicApi.GetString("MG000003");
+                    message.Message = Gz_LogicApi.GetString("MG000003");
+
+                    Context.Response.Write(KceApiHelper.GetJSON<GZMessage>(message));
+
+                }
+                Context.Response.End();
+
+
+
+            }
+            else {
+                message.Result = 0;
+                message.Code = "10086";
+                message.Message = Gz_LogicApi.GetString("MG000016");
+
+                Context.Response.Write(KceApiHelper.GetJSON<GZMessage>(message));
+                Context.Response.End();
+            }
+
+
+            //string TokenPuzzle = ShopNum1.Encryption.DESEncrypt.M_Decrypt(KceApiHelper.FormatParam(Token));
+            //string[] tValues = TokenPuzzle.Split('~');
+            //string ReturnValue = KceApiHelper.UserAuthentication(tValues[0], tValues[1], tValues[2]);
+            //if (ReturnValue == "1" && tValues[0].ToUpper() == MemLoginID.ToUpper())
+            //{
+            //    try
+            //    {
+
+            //        string order = cnfirmOrderAPP.CreateOrder(MemLoginID, ProductGuid, GuiGeType, BuyNumber, PayPwd);
+
+            //        if (order == "1")
+            //        {
+            //            message.Code = Gz_LogicApi.GetString("MG000026");
+            //            message.Message = Gz_LogicApi.GetString("MG000026");
+            //            message.Result = 1;
+            //        }
+            //        else
+            //        {
+            //            message.Code = order;
+            //            message.Message = order;
+            //            message.Result = 0;
+            //        }
+
+
+
+
+            //        Context.Response.Write(KceApiHelper.GetJSON<GZMessage>(message));
+
+            //    }
+            //    catch (Exception ex)
+            //    {
+
+            //        message.Result = 0;
+            //        message.Code = Gz_LogicApi.GetString("MG000003");
+            //        message.Message = Gz_LogicApi.GetString("MG000003");
+
+            //        Context.Response.Write(KceApiHelper.GetJSON<GZMessage>(message));
+
+            //    }
+            //    Context.Response.End();
+            //}
+
+            //else
+            //{
+            //    // Serialize(ContentType);
+            //    if (ReturnValue == "0")
+            //    {
+            //        message.Result = 0;
+            //        message.Code = "10086";
+            //        message.Message = Gz_LogicApi.GetString("MG000012");
+
+            //        Context.Response.Write(KceApiHelper.GetJSON<GZMessage>(message));
+            //        Context.Response.End();
+            //    }
+            //    else if (ReturnValue == "2")
+            //    {
+            //        message.Result = 0;
+            //        message.Code = "10086";
+            //        message.Message = Gz_LogicApi.GetString("MG000016");
+
+            //        Context.Response.Write(KceApiHelper.GetJSON<GZMessage>(message));
+            //        Context.Response.End();
+            //    }
+
+            //}
+        }
+
+
+
+        public bool CheckKeyToken(string MemLoginID, string KeyToken) {
+            bool dvsd = false;
+            return false;
+        }
 
 
 
@@ -2729,6 +2873,15 @@ namespace ShopNum1.Deploy.KCESservice
 
 
         //创建租赁订单
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Token"></param>
+        /// <param name="MemLoginID">会员ID</param>
+        /// <param name="ProductGuid">商品Guid</param>
+        /// <param name="GuiGeType">购买种类1=60天2=180天3=270天</param>
+        /// <param name="BuyNumber">购买个数</param>
+        /// <param name="PayPwd">支付密码</param>
         [WebMethod]
         public void CreateOrder(string Token, string MemLoginID, string ProductGuid, int GuiGeType, int BuyNumber, string PayPwd)
         {
@@ -2800,6 +2953,10 @@ namespace ShopNum1.Deploy.KCESservice
 
             }
         }
+
+
+
+    
 
 
 
