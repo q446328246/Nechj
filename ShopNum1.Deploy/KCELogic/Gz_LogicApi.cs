@@ -30,6 +30,20 @@ namespace ShopNum1.Deploy.KCELogic
         ShopNum1_Member_Action ShopNum1_Member_Action = (ShopNum1_Member_Action)LogicFactory.CreateShopNum1_Member_Action();
         ShopNum1_OrderInfo_Action ShopNum1_OrderInfo_Action = (ShopNum1_OrderInfo_Action)LogicFactory.CreateShopNum1_OrderInfo_Action();
 
+        public string RenRenZhuanZhang(string MemLoginID, decimal NEC) {
+            string fh = string.Empty;
+
+
+
+
+            return fh;
+        }
+
+
+
+
+
+
 
 
         //创建ETH地址

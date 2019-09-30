@@ -15,6 +15,19 @@ namespace ShopNum1.BusinessLogic
     public class ShopNum1_Member_Action : IShopNum1_Member_Action
     {
 
+        public int Add_Nec_RenRenZZ(string MemLoginID,decimal NEC,string ChongZhiID,int Status)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(4);
+            parms[0].ParameterName = "@MemLoginID";
+            parms[0].Value = MemLoginID;
+            parms[1].ParameterName = "@NEC";
+            parms[1].Value = NEC;
+            parms[2].ParameterName = "@ChongZhiID";
+            parms[2].Value = ChongZhiID;
+            parms[3].ParameterName = "@Status";
+            parms[3].Value = Status;
+            return DatabaseExcetue.RunNonQuery(" insert into Nec_RenRenZZ(MemLoginID,NEC,ChongZhiID,Status,AddTime) values(@MemLoginID,@NEC,@ChongZhiID,@Status,GETDATE())", parms);
+        }
 
 
 

@@ -52,6 +52,7 @@
     <Compile Include="NEC_ChongZhiJiLu.cs" />
     <Compile Include="NEC_LiCaiJiJin.cs" />
     <Compile Include="NEC_LiCaiJiJinOrderInfo.cs" />
+    <Compile Include="Nec_RenRenZZ.cs" />
     <Compile Include="NEC_TiXian.cs" />
     <Compile Include="PostPrice.cs" />
     <Compile Include="QlxApp_SuanLiOrderInfo.cs" />

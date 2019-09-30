@@ -65,6 +65,141 @@ namespace ShopNum1.Deploy.KCESservice
 
 
 
+        /// <summary>
+        /// 人人转账
+        /// </summary>
+        /// <param name="MemLoginID">用户id</param>
+        /// <param name="NEC">nec</param>
+        /// <param name="IIPassWord">支付密码</param>
+        /// <param name="Token"></param>
+        public void RenRenZhuanZhang(string MemLoginID, decimal NEC, string IIPassWord, string Token) {
+
+            ShopNum1_Member_Action member_Action = (ShopNum1_Member_Action)ShopNum1.Factory.LogicFactory.CreateShopNum1_Member_Action();
+            GZMessage message = new GZMessage();
+
+
+            string TokenPuzzle = ShopNum1.Encryption.DESEncrypt.M_Decrypt(KceApiHelper.FormatParam(Token));
+            string[] tValues = TokenPuzzle.Split('~');
+            string ReturnValue = KceApiHelper.UserAuthentication(tValues[0], tValues[1], tValues[2]);
+            if (ReturnValue == "1" && tValues[0].ToUpper() == MemLoginID.ToUpper())
+            {
+
+                if (NEC < 0)
+                {
+                    message.Result = 0;
+                    message.Code = "10001";
+                    message.Message = Gz_LogicApi.GetString("MG000020");
+                    Context.Response.Write(KceApiHelper.GetJSON<GZMessage>(message));
+                    Context.Response.End();
+                }
+                else
+                {
+
+                    DataTable table = member_Action.SearchMembertwo(MemLoginID);
+                    decimal MyNEC = Convert.ToDecimal(table.Rows[0]["Score_dv"]);
+                    string MyIIPassWord = table.Rows[0]["PayPwd"].ToString();
+                    #region 11
+                    if (IIPassWord == "")
+                    {
+                        message.Result = 0;
+                        message.Code = "10023";
+                        message.Message = Gz_LogicApi.GetString("MG000021");
+                        Context.Response.Write(KceApiHelper.GetJSON<GZMessage>(message));
+
+                        Context.Response.End();
+                    }
+                    else if (MyNEC < NEC)
+                    {
+                        message.Result = 0;
+                        message.Code = "10023";
+                        message.Message = Gz_LogicApi.GetString("MG000008");
+                        Context.Response.Write(KceApiHelper.GetJSON<GZMessage>(message));
+
+                        Context.Response.End();
+                    }
+                    else
+                    {
+                        string md5SecondHash = Common.Encryption.GetMd5SecondHash(IIPassWord.Trim());
+                        if (MyIIPassWord != md5SecondHash)
+                        {
+                            message.Result = 0;
+                            message.Code = "10024";
+                            message.Message = Gz_LogicApi.GetString("MG000010");
+                            Context.Response.Write(KceApiHelper.GetJSON<GZMessage>(message));
+
+                            Context.Response.End();
+
+                        }
+                        else
+                        {
+                            if (table.Rows.Count > 0)
+                            {
+                               
+                                int Status = 0;
+                                string ChongZhiID = string.Empty;
+                                #region 发送充值请求
+                                Gz_LogicApi gla = new Gz_LogicApi();
+                                ChongZhiID = gla.RenRenZhuanZhang(MemLoginID, NEC);
+                                #endregion
+                                if (!string.IsNullOrEmpty(ChongZhiID))
+                                {
+                                    Status = 2;
+                                    member_Action.ZhuanZhangNECKou(MemLoginID, NEC, "商城支出");
+                                }
+                                else
+                                {
+                                    Status = 1;
+                                }
+                                #region 记录该次交易
+                                member_Action.Add_Nec_RenRenZZ(MemLoginID, NEC, ChongZhiID, Status);
+                                #endregion
+
+
+                             
+                                message.Result = 1;
+                                message.Code = "10000";
+                                message.Message = Gz_LogicApi.GetString("MG000011");
+                                Context.Response.Write(KceApiHelper.GetJSON<GZMessage>(message));
+
+                                Context.Response.End();
+
+                            }
+                            else
+                            {
+                                message.Result = 0;
+                                message.Code = "10001";
+                                message.Message = Gz_LogicApi.GetString("MG000023");
+                                Context.Response.Write(KceApiHelper.GetJSON<GZMessage>(message));
+
+                                Context.Response.End();
+                            }
+                        }
+                    }
+                    #endregion
+                }
+            }
+            else {
+                if (ReturnValue == "0")
+                {
+                    message.Result = 0;
+                    message.Code = "10086";
+                    message.Message = Gz_LogicApi.GetString("MG000012");
+
+                    Context.Response.Write(KceApiHelper.GetJSON<GZMessage>(message));
+                    Context.Response.End();
+                }
+                else if (ReturnValue == "2")
+                {
+                    message.Result = 0;
+                    message.Code = "10086";
+                    message.Message = Gz_LogicApi.GetString("MG000016");
+
+                    Context.Response.Write(KceApiHelper.GetJSON<GZMessage>(message));
+                    Context.Response.End();
+                }
+            }
+        }
+
 
 
 
