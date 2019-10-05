@@ -853,7 +853,8 @@
                                     <li><a class="current" onclick=" changeIfam('FreezeAdvancePaymentLog_List.aspx', this); LeftSubExpansion(39, 5, this);javascript:shopnum1.Tool.LoadMask.show(); ">（NEC币种）解/冻日志</a></li>
                                     <li id="a_Select_Money_All" runat="server" style="display: none;"><a class="current" onclick=" changeIfam('Select_Money_All.aspx', this); LeftSubExpansion(39, 8, this);javascript:shopnum1.Tool.LoadMask.show(); ">admin每日资金统计</a></li>
                                     <li id="a_NewBlackList" runat="server" style="display: none;"><a class="current" onclick=" changeIfam('NewBlackList.aspx', this); LeftSubExpansion(39, 10, this);javascript:shopnum1.Tool.LoadMask.show();">黑名单管理</a></li>
-                                    <li id="a_NewSelect_Money_All" runat="server"><a class="current" onclick=" changeIfam('NewSelect_Money_All.aspx', this);LeftSubExpansion(39, 11, this);javascript:shopnum1.Tool.LoadMask.show(); ">每日资金统计</a></li>
+                                    <li><a class="current" onclick=" changeIfam('NewSelect_Money_All.aspx', this);LeftSubExpansion(39, 11, this);javascript:shopnum1.Tool.LoadMask.show(); ">每日资金统计</a></li>
+                                    <li id="a_ChongzhiKt" runat="server"><a class="current" onclick=" changeIfam('AAA_KCE_addKT.aspx', this);LeftSubExpansion(39, 12, this);javascript:shopnum1.Tool.LoadMask.show(); ">充值</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -1477,6 +1478,7 @@
                             <li><a class="current" onclick=" changeIfam('ChangeAdvancePaymentLog_List.aspx', this); LeftSubExpansion(39, 2, this);javascript:shopnum1.Tool.LoadMask.show(); ">金币（BV）变更日志 </a></li>
                             <li><a class="current" onclick=" changeIfam('FreezeAdvancePaymentLog_List.aspx', this); LeftSubExpansion(39, 5, this);javascript:shopnum1.Tool.LoadMask.show(); ">金币（BV）解/冻日志</a></li>
                             <li><a class="current" onclick=" changeIfam('Select_Money_All.aspx', this); LeftSubExpansion(39, 7, this);javascript:shopnum1.Tool.LoadMask.show(); ">每日资金统计</a></li>
+                             <li><a class="current" onclick=" changeIfam('Select_Money_All.aspx', this); LeftSubExpansion(39, 9, this);javascript:shopnum1.Tool.LoadMask.show(); ">每日资金统计</a></li>
                         </ul>
                     </dd>
                 </dl>

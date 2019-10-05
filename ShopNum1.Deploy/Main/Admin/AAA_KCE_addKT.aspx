@@ -42,8 +42,8 @@
                         <td><asp:DropDownList ID="DropdownListSOperateType" runat="server" Width="201px" CssClass="tselect">
                                     <asp:ListItem Value="0">增加NEC</asp:ListItem><%--Score_dv--%>
                                     <asp:ListItem Value="1">减少NEC</asp:ListItem>
-                                    <asp:ListItem Value="3">减少USDT</asp:ListItem>
-                                    <asp:ListItem Value="5">减少ETH</asp:ListItem>
+                             <%--       <asp:ListItem Value="3">减少USDT</asp:ListItem>
+                                    <asp:ListItem Value="5">减少ETH</asp:ListItem>--%>
                                 </asp:DropDownList></td>
                     </tr>
                     <tr>
@@ -59,7 +59,7 @@
                 </table>
             </div>
             <div class="tablebtn">
-                <%--<asp:Button ID="Button1" class="fanh" runat="server" Text="确定" OnClick="Button1_Click" />--%>
+                <asp:Button ID="Button1" class="fanh" runat="server" Text="确定" OnClick="Button1_Click" />
                 <span id="msg" runat="server" style="color: Green;"></span>
             </div>
         </div>
