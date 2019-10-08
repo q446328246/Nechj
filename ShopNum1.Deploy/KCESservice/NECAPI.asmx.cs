@@ -16,6 +16,8 @@ using System.Configuration;
 using ShopNum1.Deploy.Service;
 using ShopNum1.Deploy.MobileServiceAPP;
 using Newtonsoft.Json;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace ShopNum1.Deploy.KCESservice
 {
@@ -30,7 +32,7 @@ namespace ShopNum1.Deploy.KCESservice
     public class NECAPI : System.Web.Services.WebService
     {
 
-
+        
 
 
 
@@ -225,7 +227,10 @@ namespace ShopNum1.Deploy.KCESservice
                 try
                 {
 
-                    string order = cnfirmOrderAPP.CreateOrder(MemLoginID, ProductGuid, GuiGeType, BuyNumber, PayPwd);
+                    
+
+
+                    string order = cnfirmOrderAPP.WHJ_CreateOrder(MemLoginID, ProductGuid, GuiGeType, BuyNumber, PayPwd);
 
                     if (order == "1")
                     {
@@ -269,79 +274,16 @@ namespace ShopNum1.Deploy.KCESservice
                 Context.Response.Write(KceApiHelper.GetJSON<GZMessage>(message));
                 Context.Response.End();
             }
-
-
-            //string TokenPuzzle = ShopNum1.Encryption.DESEncrypt.M_Decrypt(KceApiHelper.FormatParam(Token));
-            //string[] tValues = TokenPuzzle.Split('~');
-            //string ReturnValue = KceApiHelper.UserAuthentication(tValues[0], tValues[1], tValues[2]);
-            //if (ReturnValue == "1" && tValues[0].ToUpper() == MemLoginID.ToUpper())
-            //{
-            //    try
-            //    {
-
-            //        string order = cnfirmOrderAPP.CreateOrder(MemLoginID, ProductGuid, GuiGeType, BuyNumber, PayPwd);
-
-            //        if (order == "1")
-            //        {
-            //            message.Code = Gz_LogicApi.GetString("MG000026");
-            //            message.Message = Gz_LogicApi.GetString("MG000026");
-            //            message.Result = 1;
-            //        }
-            //        else
-            //        {
-            //            message.Code = order;
-            //            message.Message = order;
-            //            message.Result = 0;
-            //        }
-
-
-
-
-            //        Context.Response.Write(KceApiHelper.GetJSON<GZMessage>(message));
-
-            //    }
-            //    catch (Exception ex)
-            //    {
-
-            //        message.Result = 0;
-            //        message.Code = Gz_LogicApi.GetString("MG000003");
-            //        message.Message = Gz_LogicApi.GetString("MG000003");
-
-            //        Context.Response.Write(KceApiHelper.GetJSON<GZMessage>(message));
-
-            //    }
-            //    Context.Response.End();
-            //}
-
-            //else
-            //{
-            //    // Serialize(ContentType);
-            //    if (ReturnValue == "0")
-            //    {
-            //        message.Result = 0;
-            //        message.Code = "10086";
-            //        message.Message = Gz_LogicApi.GetString("MG000012");
-
-            //        Context.Response.Write(KceApiHelper.GetJSON<GZMessage>(message));
-            //        Context.Response.End();
-            //    }
-            //    else if (ReturnValue == "2")
-            //    {
-            //        message.Result = 0;
-            //        message.Code = "10086";
-            //        message.Message = Gz_LogicApi.GetString("MG000016");
-
-            //        Context.Response.Write(KceApiHelper.GetJSON<GZMessage>(message));
-            //        Context.Response.End();
-            //    }
-
-            //}
         }
 
 
 
         public bool CheckKeyToken(string MemLoginID, string KeyToken) {
             bool dvsd = false;
+            Gz_LogicApi cnfirmOrderAPP = new Gz_LogicApi();
+            if (cnfirmOrderAPP.RJiaMi(MemLoginID) == KeyToken) {
+                dvsd = true;
+            }
             return false;
         }
 

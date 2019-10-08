@@ -30,6 +30,7 @@ namespace ShopNum1.Deploy.Main.Admin
             {
                 a_NewBlackList.Attributes.Remove("style");//显示黑名单
                 a_Select_Money_All.Attributes.Remove("style");//显示admin每日资金统计
+                a_ChongzhiKt.Attributes.Remove("style");
             }
             else {
               

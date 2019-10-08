@@ -22,6 +22,7 @@ using ShopNum1.ShopInterface;
 using ShopNum1.Standard;
 using ShopNum1.Email;
 using System.Resources;
+using System.Security.Cryptography;
 
 namespace ShopNum1.Deploy.KCELogic
 {
@@ -30,11 +31,35 @@ namespace ShopNum1.Deploy.KCELogic
         ShopNum1_Member_Action ShopNum1_Member_Action = (ShopNum1_Member_Action)LogicFactory.CreateShopNum1_Member_Action();
         ShopNum1_OrderInfo_Action ShopNum1_OrderInfo_Action = (ShopNum1_OrderInfo_Action)LogicFactory.CreateShopNum1_OrderInfo_Action();
 
+
+        protected string miyao = "EDpqF8c9Qz0WbcAoNlttRRV0FgPoAUV7";
+
+
+        public string RJiaMi(string Mem)
+        {
+            return Encrypt(Mem + miyao).ToLower();
+        }
+
+        public string Encrypt(string plaintext)
+        {
+            string cl1 = plaintext;
+            string pwd = string.Empty;
+            MD5 md5 = MD5.Create();
+            byte[] s = md5.ComputeHash(Encoding.UTF8.GetBytes(cl1));
+            for (int i = 0; i < s.Length; i++)
+            {
+                pwd = pwd + s[i].ToString("X");
+            }
+            return pwd;
+        }
+
+
         public string RenRenZhuanZhang(string MemLoginID, decimal NEC) {
             string fh = string.Empty;
-
-
-
+            string postCan = "mid="+ MemLoginID;
+            postCan += "&nec=" + NEC;
+            postCan += "&keytoken=" + RJiaMi(MemLoginID);
+            string fhone = PostDataGetHtml("http://www.ikex8.com/Api/Currency/newprice", postCan);
 
             return fh;
         }
@@ -1230,6 +1255,350 @@ namespace ShopNum1.Deploy.KCELogic
             #endregion
         }
 
+
+        /// <summary>
+        /// 商城用订单
+        /// </summary>
+        /// <param name="MemloginID"></param>
+        /// <param name="ProductGuid"></param>
+        /// <param name="GuiGeType"></param>
+        /// <param name="BuyNumber"></param>
+        /// <param name="PayPwd"></param>
+        /// <returns></returns>
+        public string WHJ_CreateOrder(string MemloginID, string ProductGuid, int GuiGeType, int BuyNumber, string PayPwd)
+        {
+
+            int ShopCategoryID = 3;
+
+
+
+
+            #region 商品价格等信息
+            ShopNum1_Member_Action member_Action = (ShopNum1_Member_Action)ShopNum1.Factory.LogicFactory.CreateShopNum1_Member_Action();
+            //会员等级
+
+
+            string memberGuid = member_Action.GetCurrentMemberRankGuid(MemloginID);
+
+
+            Shop_Product_Action shop_Product_Action = (Shop_Product_Action)ShopFactory.LogicFactory.CreateShop_Product_Action();
+
+            DataTable shopProductEdit = shop_Product_Action.GetShopProductEdit(ProductGuid, ShopCategoryID);
+
+            DataTable zongEtable = member_Action.Select_All_ZuLinPrice(MemloginID);
+            decimal zongE = 0M;
+            if (zongEtable != null && zongEtable.Rows.Count > 0 && zongEtable.Rows[0]["zongPrice"] != null && zongEtable.Rows[0]["zongPrice"].ToString() != "")
+            {
+                zongE = Convert.ToDecimal(zongEtable.Rows[0]["zongPrice"].ToString());
+            }
+
+            #region
+            //得到积分
+            decimal ShangPinPrice = Convert.ToDecimal(shopProductEdit.Rows[0]["ShopPrice"]) * BuyNumber;
+
+            if (ShangPinPrice + zongE > 1000000)
+            {
+
+                return GetString("GZ8");
+
+            }
+
+            #endregion
+            int Day = Convert.ToInt32(shopProductEdit.Rows[0]["SuanLiDaySum"]);
+            decimal UnitPrice = Convert.ToDecimal(shopProductEdit.Rows[0]["SuanLiUnitPrice"]) * BuyNumber;
+            decimal MYlabelScore_dv = Convert.ToDecimal(shopProductEdit.Rows[0]["Score_dv"]);
+            decimal MYlabelScore_pv_b = Convert.ToDecimal(shopProductEdit.Rows[0]["Score_pv_b"]);
+            //string MYlabelAgentId = Convert.ToString(shopProductEdit.Rows[0]["agentId"]);
+
+            int shop_category_id = Convert.ToInt32(shopProductEdit.Rows[0]["shop_category_id"]);
+
+            #endregion
+
+
+            #region 服务代理查询
+
+
+
+
+
+            #region 添加订单
+            string SuperiorRankGuid = "";
+            DataTable tableTJ = member_Action.SearchMembertwo(MemloginID);
+            string TJMemberNO = tableTJ.Rows[0]["Superior"].ToString();
+            if (TJMemberNO != null && TJMemberNO != "")
+            {
+                String TJGuid2 = member_Action.GetGuidByMemLoginNO(tableTJ.Rows[0]["Superior"].ToString());
+                DataTable tableTJRank = member_Action.SearchMemberGuid(TJGuid2);
+                SuperiorRankGuid = tableTJRank.Rows[0]["MemberRankGuid"].ToString().ToUpper();
+            }
+            ShopNum1_OrderInfo shopNum1_OrderInfo = new ShopNum1_OrderInfo();
+            shopNum1_OrderInfo.MemLoginID = MemloginID;
+            if (SuperiorRankGuid == "")
+            {
+                shopNum1_OrderInfo.SuperiorRank = new Guid("00000000-0000-0000-0000-000000000000");
+            }
+            else
+            {
+                shopNum1_OrderInfo.SuperiorRank = new Guid(SuperiorRankGuid);
+            }
+            shopNum1_OrderInfo.Guid = Guid.NewGuid();
+            Order order = new Order();
+            shopNum1_OrderInfo.OrderNumber = "ZL" + order.CreateOrderNumberDD(MemloginID);
+            shopNum1_OrderInfo.TradeID = shopNum1_OrderInfo.OrderNumber;
+            shopNum1_OrderInfo.ShipmentStatus = 0;
+            shopNum1_OrderInfo.PaymentStatus = 0;
+            shopNum1_OrderInfo.PayMentMemLoginID = shopProductEdit.Rows[0]["MemLoginID"].ToString();
+            shopNum1_OrderInfo.OrderType = 0;
+            shopNum1_OrderInfo.Score_dv = 0;
+
+            shopNum1_OrderInfo.Score_hv = 0;
+
+
+            shopNum1_OrderInfo.score_reduce_hv = 0;
+
+
+            shopNum1_OrderInfo.Score_pv_a = 0;
+
+            shopNum1_OrderInfo.score_reduce_pv_a = 0;
+
+            shopNum1_OrderInfo.Score_pv_b = MYlabelScore_pv_b;
+
+            shopNum1_OrderInfo.Score_cv = 0;
+            shopNum1_OrderInfo.Score_max_hv = 0;
+            shopNum1_OrderInfo.shop_category_id = shop_category_id;
+            shopNum1_OrderInfo.AgentId = BuyNumber.ToString();
+            shopNum1_OrderInfo.ServiceAgent = "C0000001";
+            shopNum1_OrderInfo.score_pv_cv = 0.01M;
+
+
+
+
+            shopNum1_OrderInfo.Name = "租赁不需要地址信息";
+            shopNum1_OrderInfo.Email = "租赁不需要地址信息";
+            shopNum1_OrderInfo.Address = "租赁不需要地址信息";
+            shopNum1_OrderInfo.Postalcode = "租赁不需要地址信息";
+            shopNum1_OrderInfo.Tel = "租赁不需要地址信息";
+            shopNum1_OrderInfo.Mobile = "租赁不需要地址信息";
+            shopNum1_OrderInfo.RegionCode = "租赁不需要地址信息"; //拿不准的数据
+
+
+            shopNum1_OrderInfo.ClientToSellerMsg = "";
+
+            shopNum1_OrderInfo.DispatchType = 0;
+            shopNum1_OrderInfo.FeeType = 666;
+            shopNum1_OrderInfo.DispatchPrice = Convert.ToDecimal(0.0);
+            shopNum1_OrderInfo.ShouldPayPrice = ShangPinPrice;
+            if (GuiGeType.ToString().Trim() == "1".Trim())
+            {
+
+                shopNum1_OrderInfo.SuanLiDaySum = 60;
+                //shopNum1_OrderInfo.SuanLiUnitPrice = ShangPinPrice * Convert.ToDecimal(0.005);
+                //2.0需要的改动
+                shopNum1_OrderInfo.SuanLiUnitPrice = ShangPinPrice * Convert.ToDecimal(0.004);
+            }
+            else if (GuiGeType.ToString().Trim() == "2".Trim())
+            {
+                shopNum1_OrderInfo.SuanLiDaySum = 180;
+                //shopNum1_OrderInfo.SuanLiUnitPrice = ShangPinPrice * Convert.ToDecimal(0.007);
+                //2.0需要的改动
+                shopNum1_OrderInfo.SuanLiUnitPrice = ShangPinPrice * Convert.ToDecimal(0.0056);
+            }
+            else if (GuiGeType.ToString().Trim() == "3".Trim())
+            {
+                shopNum1_OrderInfo.SuanLiDaySum = 270;
+
+                //shopNum1_OrderInfo.SuanLiUnitPrice = ShangPinPrice * Convert.ToDecimal(0.01);
+                //2.0需要的改动
+                shopNum1_OrderInfo.SuanLiUnitPrice = ShangPinPrice * Convert.ToDecimal(0.008);
+            }
+
+
+
+            shopNum1_OrderInfo.InvoiceTitle = "";//拿不准的数据
+            shopNum1_OrderInfo.InvoiceContent = "";//拿不准的数据
+            shopNum1_OrderInfo.InvoiceType = "";//拿不准的数据
+            shopNum1_OrderInfo.InvoiceTax = 0m;//拿不准的数据
+
+            shopNum1_OrderInfo.OderStatus = 0;
+
+            shopNum1_OrderInfo.PaymentGuid = new Guid("D7A29771-7640-4999-85DE-B3B493DA5970");
+            shopNum1_OrderInfo.PaymentName = "NEC支付";
+
+
+            shopNum1_OrderInfo.PaymentPrice = Convert.ToDecimal("0.00");
+            shopNum1_OrderInfo.SellerToClientMsg = "";
+            shopNum1_OrderInfo.ReceivedDays = int.Parse(ShopSettings.GetValue("DefaultReceivedDays"));
+            shopNum1_OrderInfo.IsMemdelay = 0;
+            shopNum1_OrderInfo.OutOfStockOperate = "";
+            shopNum1_OrderInfo.PackGuid = Guid.NewGuid();
+            shopNum1_OrderInfo.PackName = "";
+            shopNum1_OrderInfo.PackPrice = 0m;
+            shopNum1_OrderInfo.BlessCardGuid = Guid.NewGuid();
+            shopNum1_OrderInfo.BlessCardName = "";
+            shopNum1_OrderInfo.BlessCardPrice = 0m;
+            shopNum1_OrderInfo.BlessCardContent = "";
+            shopNum1_OrderInfo.ProductPrice = Convert.ToDecimal(ShangPinPrice);
+            shopNum1_OrderInfo.ProductPv_b = MYlabelScore_pv_b;
+            shopNum1_OrderInfo.AlreadPayPrice = 0m;
+            shopNum1_OrderInfo.SurplusPrice = 0m;
+            shopNum1_OrderInfo.UseScore = 0;
+            shopNum1_OrderInfo.ScorePrice = 0m;
+
+            shopNum1_OrderInfo.JoinActiveType = -1;
+            shopNum1_OrderInfo.FromAd = Guid.NewGuid();
+            shopNum1_OrderInfo.FromUrl = string.Empty;
+            shopNum1_OrderInfo.PayTime = null;
+            shopNum1_OrderInfo.DispatchTime = null;
+            shopNum1_OrderInfo.ShipmentNumber = string.Empty;
+            shopNum1_OrderInfo.CreateTime = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+            shopNum1_OrderInfo.ConfirmTime = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+            shopNum1_OrderInfo.PayMemo = "";
+            shopNum1_OrderInfo.ActivityGuid = Guid.NewGuid();
+            shopNum1_OrderInfo.BuyType = "";
+            shopNum1_OrderInfo.Discount = 0m;
+            shopNum1_OrderInfo.Deposit = 0m;
+            shopNum1_OrderInfo.JoinActiveType = 0;
+            shopNum1_OrderInfo.ActvieContent = "";
+            shopNum1_OrderInfo.UsedFavourTicket = "";
+            string text = string.Empty;
+            if (shopNum1_OrderInfo.FeeType == 2)
+            {
+                var random = new Random();
+                for (int i = 1; i < 7; i++)
+                {
+                    text += random.Next(1, 9).ToString();
+                }
+            }
+            shopNum1_OrderInfo.IdentifyCode = text;
+            string value = ShopSettings.GetValue("IsRecommendCommisionOpen");
+            if (value == "true")
+            {
+                ShopSettings.GetValue("RecommendCommision");
+                double num = Convert.ToDouble(ShopSettings.GetValue("RecommendCommision")) / 100.0;
+                shopNum1_OrderInfo.RecommendCommision =
+                    Convert.ToDecimal(Convert.ToDouble(shopNum1_OrderInfo.ProductPrice) * num);
+            }
+            else
+            {
+                shopNum1_OrderInfo.RecommendCommision = 0m;
+            }
+            Shop_Product_Action shop_Product_Action1 = (Shop_Product_Action)ShopFactory.LogicFactory.CreateShop_Product_Action();
+            DataTable dataTable2 = shop_Product_Action1.SearchProductShopByGuid_two(ProductGuid, ShopCategoryID);
+            shopNum1_OrderInfo.ShopID = dataTable2.Rows[0]["MemLoginID"].ToString();
+            shopNum1_OrderInfo.ShopName = dataTable2.Rows[0]["ShopName"].ToString();
+            var list = new List<ShopNum1_OrderProduct>();
+            ShopNum1_OrderProduct shopNum1_OrderProduct = new ShopNum1_OrderProduct();
+            shopNum1_OrderProduct.BuyNumber = BuyNumber;
+            shopNum1_OrderProduct.shop_category_id = shop_category_id;
+            shopNum1_OrderProduct.Guid = Guid.NewGuid();
+            shopNum1_OrderProduct.OrderInfoGuid = shopNum1_OrderInfo.Guid.ToString();
+            shopNum1_OrderProduct.ProductGuid = ProductGuid;
+            shopNum1_OrderProduct.GroupPrice = Convert.ToDecimal("0.00");
+            shopNum1_OrderProduct.RepertoryNumber = dataTable2.Rows[0]["ProductNum"].ToString();
+            shopNum1_OrderProduct.MarketPrice = Convert.ToDecimal(dataTable2.Rows[0]["MarketPrice"].ToString());
+            shopNum1_OrderProduct.ShopPrice = Convert.ToDecimal(dataTable2.Rows[0]["ShopPrice"].ToString());
+            shopNum1_OrderProduct.score_pv_cv = 0;
+            IShop_Ensure_Action shop_Ensure_Action = ShopFactory.LogicFactory.CreateShop_Ensure_Action();
+            //DataTable dataTable33 =
+            //    shop_Ensure_Action.SearchEnsureApply(shopProductEdit.Rows[0]["MemLoginID"].ToString());
+
+            //shopNum1_OrderProduct.ProductImg = dataTable2.Rows[0]["OriginalImage"].ToString();
+            shopNum1_OrderProduct.ProductImg = dataTable2.Rows[0]["OriginalImage"].ToString();
+            shopNum1_OrderProduct.OrderType = 0;
+            string nameById = Common.Common.GetNameById("memloginid", "shopnum1_orderinfo",
+    string.Concat(new[]
+                            {
+                                " And memloginid='",
+                                MemloginID,
+                                "' And ordertype=4 And Oderstatus>-1 And Oderstatus<4 And guid in(select orderinfoguid from shopnum1_orderproduct where productguid='",
+                                shopNum1_OrderProduct.ProductGuid,
+                                "' and MemloginID='",
+                                MemloginID,
+                                "' And ProductState=1)"
+                            }));
+            if (nameById != "")
+            {
+
+                return GetString("GZ9");
+
+            }
+            string nameById2 = Common.Common.GetNameById("repertorycount", "shopnum1_shop_product",
+   " And Guid='" + shopNum1_OrderProduct.ProductGuid + "'");
+            if (nameById2 == "0")
+            {
+
+                return GetString("GZ10");
+
+            }
+            shopNum1_OrderProduct.Attributes =
+    dataTable2.Rows[0]["setStock"].ToString();
+            shopNum1_OrderProduct.SpecificationName = "";//拿不准的数据
+            shopNum1_OrderProduct.SpecificationValue = "";//拿不准的数据
+            shopNum1_OrderProduct.setStock = dataTable2.Rows[0]["setStock"].ToString();
+            shopNum1_OrderProduct.IsShipment = 0;
+            shopNum1_OrderProduct.IsReal =
+                Convert.ToInt32(dataTable2.Rows[0]["IsReal"].ToString());
+            shopNum1_OrderProduct.ExtensionAttriutes = "";
+            shopNum1_OrderProduct.IsJoinActivity = 0;
+            shopNum1_OrderProduct.CreateTime =
+                Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+            shopNum1_OrderProduct.DetailedSpecifications = "";
+            shopNum1_OrderProduct.MemLoginID = MemloginID;
+            shopNum1_OrderProduct.ShopID = dataTable2.Rows[0]["MemLoginID"].ToString();
+            shopNum1_OrderProduct.ProductName = dataTable2.Rows[0]["Name"].ToString();
+            shopNum1_OrderProduct.Color = "";
+            shopNum1_OrderProduct.Size = "";
+            list.Add(shopNum1_OrderProduct);
+            string ProductName_EN = "";
+            if (dataTable2.Rows[0]["ProductName_EN"].ToString() != null)
+            {
+                ProductName_EN = dataTable2.Rows[0]["ProductName_EN"].ToString();
+            }
+
+            var shopNum1_OrderInfo_Action =
+(ShopNum1_OrderInfo_Action)LogicFactory.CreateShopNum1_OrderInfo_Action();
+
+            int num2 = shopNum1_OrderInfo_Action.AddZuLin(shopNum1_OrderInfo, list, ProductName_EN);
+            if (num2 > 0)
+            {
+
+                //return shopNum1_OrderInfo.ShouldPayPrice.ToString() + "," + shopNum1_OrderInfo.shop_category_id.ToString() + "," + shopNum1_OrderInfo.TradeID + "," + shopNum1_OrderInfo.Guid;
+                
+                member_Action.ZhuanZhangNECJia(shopNum1_OrderInfo.MemLoginID, shopNum1_OrderInfo.ShouldPayPrice.Value, "商城锁仓商品");
+
+                string fh = Pay(shopNum1_OrderInfo.OrderNumber, shopNum1_OrderInfo.MemLoginID, PayPwd);
+                return fh;
+
+            }
+
+            else
+            {
+
+                return GetString("GZ11");
+            }
+
+
+
+
+
+
+
+
+
+            #endregion
+
+
+
+
+
+
+
+
+
+
+
+            #endregion
+        }
 
 
 
