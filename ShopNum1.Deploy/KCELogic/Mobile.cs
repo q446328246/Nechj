@@ -24,7 +24,7 @@ public class Mobile : System.Web.UI.Page
 
         StringBuilder sbTemp = new StringBuilder();
         string uid = "qianlixing";
-        string pwd = "9224938909";
+        string pwd = "qianlixing123";
         string Pass = FormsAuthentication.HashPasswordForStoringInConfigFile(pwd + uid, "MD5"); //密码进行MD5加密
         //POST 传值
         string template = templatet;

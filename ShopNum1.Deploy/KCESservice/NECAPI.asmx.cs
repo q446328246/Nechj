@@ -75,7 +75,7 @@ namespace ShopNum1.Deploy.KCESservice
         /// <param name="IIPassWord">支付密码</param>
         /// <param name="Token"></param>
         [WebMethod]
-        public void RenRenZhuanZhang(string MemLoginID, decimal NEC, string IIPassWord, string Token) {
+        public void RenRenZhuanZhang(string MemLoginID, decimal NEC, string phone, string IIPassWord, string Token) {
 
             ShopNum1_Member_Action member_Action = (ShopNum1_Member_Action)ShopNum1.Factory.LogicFactory.CreateShopNum1_Member_Action();
             GZMessage message = new GZMessage();
@@ -142,7 +142,7 @@ namespace ShopNum1.Deploy.KCESservice
                                 string ChongZhiID = string.Empty;
                                 #region 发送充值请求
                                 Gz_LogicApi gla = new Gz_LogicApi();
-                                ChongZhiID = gla.RenRenZhuanZhang(MemLoginID, NEC);
+                                ChongZhiID = gla.RenRenZhuanZhang(MemLoginID, NEC, phone);
                                 #endregion
                                 if (!string.IsNullOrEmpty(ChongZhiID))
                                 {

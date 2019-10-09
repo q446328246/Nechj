@@ -322,6 +322,7 @@
     <Compile Include="KCELogic\Mobile.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="KCELogic\StringHelper.cs" />
     <Compile Include="KCELogic\US.Designer.cs" />
     <Compile Include="KCESservice\KceAPI.asmx.cs">
       <DependentUpon>KceAPI.asmx</DependentUpon>

@@ -54,17 +54,49 @@ namespace ShopNum1.Deploy.KCELogic
         }
 
 
-        public string RenRenZhuanZhang(string MemLoginID, decimal NEC) {
+        public string RenRenZhuanZhang(string MemLoginID, decimal NEC,string phone) {
             string fh = string.Empty;
-            string postCan = "mid="+ MemLoginID;
+            string postCan = "&memid=" + MemLoginID;
             postCan += "&nec=" + NEC;
+            postCan += "&phone=" + phone;
             postCan += "&keytoken=" + RJiaMi(MemLoginID);
-            string fhone = PostDataGetHtml("http://www.ikex8.com/Api/Currency/newprice", postCan);
+            string fhone = GET("http://localhost:45666/app/index.php?i=3&c=entry&m=ewei_shopv2&do=mobile&r=index.renrenchongzhi"+postCan);
+            try
+            {
+                Root rt = StringHelper.Deserialize<Root>(fhone);
+                if (rt.status == 1) {
+                    fh = "456";
+                }
 
+            }
+            catch (Exception)
+            {
+
+            }
             return fh;
         }
 
 
+       
+        public class Result
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public string url { get; set; }
+        }
+
+        public class Root
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public int status { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public Result result { get; set; }
+        }
 
 
 
