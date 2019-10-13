@@ -54,20 +54,21 @@ namespace ShopNum1.Deploy.KCELogic
         }
 
 
-        public string RenRenZhuanZhang(string MemLoginID, decimal NEC,string phone) {
+        public string RenRenZhuanZhang(string MemLoginID, decimal NEC,string phone,string RenType) {
             string fh = string.Empty;
             string postCan = "&memid=" + MemLoginID;
             postCan += "&nec=" + NEC;
             postCan += "&phone=" + phone;
             postCan += "&keytoken=" + RJiaMi(MemLoginID);
+            postCan += "&rentype=" + RenType;
             string fhone = GET("http://localhost:45666/app/index.php?i=3&c=entry&m=ewei_shopv2&do=mobile&r=index.renrenchongzhi"+postCan);
+            //string fhone = GET("https://www.batj.club/app/index.php?i=3&c=entry&m=ewei_shopv2&do=mobile&r=index.renrenchongzhi" + postCan);
             try
             {
                 Root rt = StringHelper.Deserialize<Root>(fhone);
                 if (rt.status == 1) {
-                    fh = "456";
+                    fh = rt.result.message;
                 }
-
             }
             catch (Exception)
             {
@@ -84,6 +85,8 @@ namespace ShopNum1.Deploy.KCELogic
             /// 
             /// </summary>
             public string url { get; set; }
+
+            public string message { get; set; }
         }
 
         public class Root
@@ -620,6 +623,71 @@ namespace ShopNum1.Deploy.KCELogic
             }
         }
 
+        public string WHJPay(string OrderNumber, string MemloginID)
+        {
+
+
+            DataTable OrderInfoTable = ShopNum1_OrderInfo_Action.SerchOrderInfoAll(OrderNumber);
+
+
+            decimal ShouldPayPrice = Convert.ToDecimal(OrderInfoTable.Rows[0]["ShouldPayPrice"]);
+
+
+            DataSet dataSet_0 = ShopNum1_OrderInfo_Action.CheckTradeState(OrderNumber, MemloginID);
+
+            //我有的
+            decimal MyUSDT = Convert.ToDecimal(dataSet_0.Tables[1].Rows[0]["AdvancePayment"]);
+
+            decimal MyNEC = Convert.ToDecimal(dataSet_0.Tables[1].Rows[0]["Score_dv"]);
+
+            if (dataSet_0 != null && dataSet_0.Tables.Count == 2 &&
+                        !(dataSet_0.Tables[0].Rows[0][0].ToString() == "-1"))
+            {
+                DataTable dataTableStatus = ShopNum1_OrderInfo_Action.SearchOrderInfo(OrderNumber);
+                if (dataTableStatus.Rows[0]["PaymentStatus"].ToString() == "1")
+                {
+
+                    return GetString("GZ1");
+                }
+
+
+            }
+
+            decimal num2 = Convert.ToDecimal(ShouldPayPrice);
+            decimal nom4 = 0M;
+
+            if ((num2.ToString() == "0.00" || num2.ToString() == "0") || (num2 < 0))
+            {
+                return GetString("GZ4");
+            }
+            else
+            {
+                if (ShouldPayPrice > MyNEC)
+                {
+                    return GetString("GZ5");
+                }
+                else
+                {
+                    DataTable dataTableStatus = ShopNum1_OrderInfo_Action.SearchOrderInfo(OrderNumber);
+                    if (dataTableStatus.Rows[0]["PaymentStatus"].ToString() == "1")
+                    {
+                        return GetString("GZ6");
+                    }
+                    else
+                    {
+                        int fh = ShopNum1_OrderInfo_Action.NEC_PayOrderInfo(OrderNumber, MemloginID, DateTime.Now, ShouldPayPrice, MyNEC);
+                        if (fh == 1)
+                        {
+                            return fh.ToString();
+                        }
+                        else
+                        {
+                            return GetString("GZ7");
+                        }
+                    }
+                }
+            }
+        }
 
 
 
@@ -1297,7 +1365,7 @@ namespace ShopNum1.Deploy.KCELogic
         /// <param name="BuyNumber"></param>
         /// <param name="PayPwd"></param>
         /// <returns></returns>
-        public string WHJ_CreateOrder(string MemloginID, string ProductGuid, int GuiGeType, int BuyNumber, string PayPwd)
+        public string WHJ_CreateOrder(string MemloginID, string ProductGuid, int GuiGeType, int BuyNumber)
         {
 
             int ShopCategoryID = 3;
@@ -1598,7 +1666,7 @@ namespace ShopNum1.Deploy.KCELogic
                 
                 member_Action.ZhuanZhangNECJia(shopNum1_OrderInfo.MemLoginID, shopNum1_OrderInfo.ShouldPayPrice.Value, "商城锁仓商品");
 
-                string fh = Pay(shopNum1_OrderInfo.OrderNumber, shopNum1_OrderInfo.MemLoginID, PayPwd);
+                string fh = WHJPay(shopNum1_OrderInfo.OrderNumber, shopNum1_OrderInfo.MemLoginID);
                 return fh;
 
             }
