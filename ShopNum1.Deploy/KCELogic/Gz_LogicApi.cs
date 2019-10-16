@@ -42,15 +42,27 @@ namespace ShopNum1.Deploy.KCELogic
 
         public string Encrypt(string plaintext)
         {
-            string cl1 = plaintext;
-            string pwd = string.Empty;
-            MD5 md5 = MD5.Create();
-            byte[] s = md5.ComputeHash(Encoding.UTF8.GetBytes(cl1));
-            for (int i = 0; i < s.Length; i++)
+            MD5 md5 = new MD5CryptoServiceProvider();
+            byte[] bytes = System.Text.Encoding.UTF8.GetBytes(plaintext);
+            bytes = md5.ComputeHash(bytes);
+            md5.Clear();
+
+            string ret = "";
+            for (int i = 0; i < bytes.Length; i++)
             {
-                pwd = pwd + s[i].ToString("X");
+                ret += Convert.ToString(bytes[i], 16).PadLeft(2, '0');
             }
-            return pwd;
+            return ret.PadLeft(32, '0');
+
+            //string cl1 = plaintext;
+            //string pwd = string.Empty;
+            //MD5 md5 = MD5.Create();
+            //byte[] s = md5.ComputeHash(Encoding.UTF8.GetBytes(cl1));
+            //for (int i = 0; i < s.Length; i++)
+            //{
+            //    pwd = pwd + s[i].ToString("X");
+            //}
+            //return pwd;
         }
 
 
@@ -62,7 +74,8 @@ namespace ShopNum1.Deploy.KCELogic
             postCan += "&keytoken=" + RJiaMi(MemLoginID);
             postCan += "&rentype=" + RenType;
             string fhone = GET("http://localhost:45666/app/index.php?i=3&c=entry&m=ewei_shopv2&do=mobile&r=index.renrenchongzhi"+postCan);
-            //string fhone = GET("https://www.batj.club/app/index.php?i=3&c=entry&m=ewei_shopv2&do=mobile&r=index.renrenchongzhi" + postCan);
+            //string fhone = GET("http://wz.batj.club/app/index.php?i=8&c=entry&m=ewei_shopv2&do=mobile&r=index.renrenchongzhi" + postCan);
+            //http://wz.batj.club/app/index.php?i=8&c=entry&m=ewei_shopv2&do=mobile&r=member.rank
             try
             {
                 Root rt = StringHelper.Deserialize<Root>(fhone);

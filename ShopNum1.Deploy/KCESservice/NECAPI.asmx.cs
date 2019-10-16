@@ -32,8 +32,17 @@ namespace ShopNum1.Deploy.KCESservice
     public class NECAPI : System.Web.Services.WebService
     {
 
-        
+        [WebMethod]
 
+        public void WHJTest(string MemLoginID) {
+            GZMessage message = new GZMessage();
+            Gz_LogicApi gl = new Gz_LogicApi();
+            message.Result = 0;
+            message.Code = gl.RJiaMi(MemLoginID);
+            message.Message = Gz_LogicApi.GetString("MG000020");
+            Context.Response.Write(KceApiHelper.GetJSON<GZMessage>(message));
+            Context.Response.End();
+        }
 
 
 
@@ -195,46 +204,61 @@ namespace ShopNum1.Deploy.KCESservice
                             Context.Response.End();
                         }
                         else {
-                            if (table.Rows.Count > 0)
+
+                            string md5SecondHash = Common.Encryption.GetMd5SecondHash(IIPassWord.Trim());
+                            if (MyIIPassWord != md5SecondHash)
                             {
-                                int Status = 0;
-                                string ChongZhiID = string.Empty;
-                                #region 发送充值请求
-                                Gz_LogicApi gla = new Gz_LogicApi();
-                                ChongZhiID = gla.RenRenZhuanZhang(MemLoginID, NEC, phone, RenType);
-                                #endregion
-                                if (!string.IsNullOrEmpty(ChongZhiID))
+                                message.Result = 0;
+                                message.Code = "10024";
+                                message.Message = Gz_LogicApi.GetString("MG000010");
+                                Context.Response.Write(KceApiHelper.GetJSON<GZMessage>(message));
+
+                                Context.Response.End();
+
+                            }
+                            else {
+                                if (table.Rows.Count > 0)
                                 {
-                                    Status = 2;
-                                    member_Action.ZhuanZhangNECJia(MemLoginID, NEC, "商城转入");
+                                    int Status = 0;
+                                    string ChongZhiID = string.Empty;
+                                    #region 发送充值请求
+                                    Gz_LogicApi gla = new Gz_LogicApi();
+                                    ChongZhiID = gla.RenRenZhuanZhang(MemLoginID, NEC, phone, RenType);
+                                    #endregion
+                                    if (!string.IsNullOrEmpty(ChongZhiID))
+                                    {
+                                        Status = 2;
+                                        member_Action.ZhuanZhangNECJia(MemLoginID, NEC, "商城转入");
+                                    }
+                                    else
+                                    {
+                                        Status = 1;
+                                    }
+                                    #region 记录该次交易
+                                    member_Action.Add_Nec_RenRenZZ(MemLoginID, NEC, ChongZhiID, Status);
+                                    #endregion
+
+
+
+                                    message.Result = (Status == 2 ? 1 : 0);
+                                    message.Code = "10000";
+                                    message.Message = (Status == 2 ? Gz_LogicApi.GetString("MG000011") : "商城同步失败");
+                                    Context.Response.Write(KceApiHelper.GetJSON<GZMessage>(message));
+
+                                    Context.Response.End();
+
                                 }
                                 else
                                 {
-                                    Status = 1;
+                                    message.Result = 0;
+                                    message.Code = "10001";
+                                    message.Message = Gz_LogicApi.GetString("MG000023");
+                                    Context.Response.Write(KceApiHelper.GetJSON<GZMessage>(message));
+
+                                    Context.Response.End();
                                 }
-                                #region 记录该次交易
-                                member_Action.Add_Nec_RenRenZZ(MemLoginID, NEC, ChongZhiID, Status);
-                                #endregion
-
-
-
-                                message.Result = (Status == 2 ? 1 : 0);
-                                message.Code = "10000";
-                                message.Message = (Status == 2 ? Gz_LogicApi.GetString("MG000011") : "商城同步失败");
-                                Context.Response.Write(KceApiHelper.GetJSON<GZMessage>(message));
-
-                                Context.Response.End();
-
                             }
-                            else
-                            {
-                                message.Result = 0;
-                                message.Code = "10001";
-                                message.Message = Gz_LogicApi.GetString("MG000023");
-                                Context.Response.Write(KceApiHelper.GetJSON<GZMessage>(message));
-
-                                Context.Response.End();
-                            }
+             
                         }
                     }
 
