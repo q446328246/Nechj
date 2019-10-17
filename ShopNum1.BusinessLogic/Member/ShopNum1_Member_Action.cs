@@ -15,9 +15,9 @@ namespace ShopNum1.BusinessLogic
     public class ShopNum1_Member_Action : IShopNum1_Member_Action
     {
 
-        public int Add_Nec_RenRenZZ(string MemLoginID,decimal NEC,string ChongZhiID,int Status)
+        public int Add_Nec_RenRenZZ(string MemLoginID,decimal NEC,string ChongZhiID,int Status,string RenType)
         {
-            DbParameter[] parms = DatabaseExcetue.CreateParameter(4);
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(5);
             parms[0].ParameterName = "@MemLoginID";
             parms[0].Value = MemLoginID;
             parms[1].ParameterName = "@NEC";
@@ -26,9 +26,21 @@ namespace ShopNum1.BusinessLogic
             parms[2].Value = ChongZhiID;
             parms[3].ParameterName = "@Status";
             parms[3].Value = Status;
-            return DatabaseExcetue.RunNonQuery(" insert into Nec_RenRenZZ(MemLoginID,NEC,ChongZhiID,Status,AddTime) values(@MemLoginID,@NEC,@ChongZhiID,@Status,GETDATE())", parms);
+            parms[4].ParameterName = "@RenType";
+            parms[4].Value = RenType;
+            return DatabaseExcetue.RunNonQuery(" insert into Nec_RenRenZZ(MemLoginID,NEC,ChongZhiID,Status,AddTime,RenType) values(@MemLoginID,@NEC,@ChongZhiID,@Status,GETDATE(),@RenType)", parms);
         }
 
+        public DataTable RenRenZZList(string MemLoginID) {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+            parms[0].ParameterName = "@MemLoginID";
+            parms[0].Value = MemLoginID;
+            return DatabaseExcetue.ReturnDataTable("select * from Nec_RenRenZZ where MemLoginID=@MemLoginID and DateDiff(dd,AddTime,getdate())<=7;", parms);
+
+        }
+
+
+       
 
 
         public int AddWHJ_BlackList(string MemLoginID)

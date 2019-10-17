@@ -46,6 +46,9 @@ namespace ShopNum1.Deploy.KCESservice
 
 
 
+
+
+
         public void WriteLog(string strLog)
         {
             string sFilePath = "d:\\" + DateTime.Now.ToString("yyyyMM");
@@ -73,6 +76,63 @@ namespace ShopNum1.Deploy.KCESservice
             fs.Close();
         }
 
+        public List<Nec_RenRenZZ> FromDataRowNec_RenRenZZ(DataTable table)
+        {
+            List<Nec_RenRenZZ> KCE_CTC_OrderInfo = new List<Nec_RenRenZZ>();
+            foreach (DataRow row in table.Rows)
+            {
+                Nec_RenRenZZ kco = new Nec_RenRenZZ();
+
+                kco.ID = Convert.ToString(row["ID"]);
+                kco.NEC = Convert.ToString(row["NEC"]);
+                kco.ChongZhiID = Convert.ToString(row["ChongZhiID"]);
+                kco.AddTime = Convert.ToString(row["AddTime"]);
+                kco.Status = Convert.ToString(row["Status"]);
+                kco.RenType = Convert.ToString(row["RenType"]);
+                KCE_CTC_OrderInfo.Add(kco);
+            }
+            return KCE_CTC_OrderInfo;
+        }
+
+
+
+
+
+        [WebMethod]
+        public void RenRenZZList(string MemLoginID)
+        {
+            GZMessage message = new GZMessage();
+            Gz_LogicApi gl = new Gz_LogicApi();
+            ShopNum1_Member_Action member_Action = (ShopNum1_Member_Action)ShopNum1.Factory.LogicFactory.CreateShopNum1_Member_Action();
+
+            DataTable dt = member_Action.RenRenZZList(MemLoginID);
+
+            if (dt.Rows.Count > 0)
+            {
+                object CCCC = new
+                {
+                    Result = 1,
+                    Data = FromDataRowNec_RenRenZZ(dt)
+                };
+
+                Context.Response.Write(StringHelper.Serialize(CCCC));
+                Context.Response.End();
+            }
+            else
+            {
+                object CCCCT = new
+                {
+                    Result = 0,
+                    Code = "10086",
+                    Message = Gz_LogicApi.GetString("GZ24")
+                };
+                Context.Response.Write(StringHelper.Serialize(CCCCT));
+                Context.Response.End();
+            }
+        }
+
+        
+    
 
 
 
@@ -167,7 +227,7 @@ namespace ShopNum1.Deploy.KCESservice
                                         Status = 1;
                                     }
                                     #region 记录该次交易
-                                    member_Action.Add_Nec_RenRenZZ(MemLoginID, NEC, ChongZhiID, Status);
+                                    member_Action.Add_Nec_RenRenZZ(MemLoginID, NEC, ChongZhiID, Status,RenType);
                                     #endregion
 
 
@@ -235,7 +295,7 @@ namespace ShopNum1.Deploy.KCESservice
                                         Status = 1;
                                     }
                                     #region 记录该次交易
-                                    member_Action.Add_Nec_RenRenZZ(MemLoginID, NEC, ChongZhiID, Status);
+                                    member_Action.Add_Nec_RenRenZZ(MemLoginID, NEC, ChongZhiID, Status, RenType);
                                     #endregion
 
 
