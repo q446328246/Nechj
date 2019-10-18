@@ -111,8 +111,9 @@ namespace ShopNum1.Deploy.KCESservice
             {
                 object CCCC = new
                 {
-                    Result = 1,
-                    Data = FromDataRowNec_RenRenZZ(dt)
+                    result = 1,
+                    code = "10000",
+                    data = FromDataRowNec_RenRenZZ(dt)
                 };
 
                 Context.Response.Write(StringHelper.Serialize(CCCC));
@@ -122,8 +123,9 @@ namespace ShopNum1.Deploy.KCESservice
             {
                 object CCCCT = new
                 {
-                    Result = 0,
-                    Code = "10086",
+                    result = 0,
+                    code = "10086",
+                    message="没有数据",
                     Message = Gz_LogicApi.GetString("GZ24")
                 };
                 Context.Response.Write(StringHelper.Serialize(CCCCT));
@@ -3321,7 +3323,7 @@ namespace ShopNum1.Deploy.KCESservice
             product.UpdeModel = UpdeModel;
             product.VersionNumber2 = VersionNumber2;
             //product.Address = "http://" + ShopSettings.siteDomain + "/kceAPP.apk";
-            product.Address = "https://cw.pub/X3Jm";
+            product.Address = "https://nec2019.oss-cn-chengdu.aliyuncs.com/nec/necapp.apk";
 
 
             message.Data = ProductShow.FromDataRowVer(product);
