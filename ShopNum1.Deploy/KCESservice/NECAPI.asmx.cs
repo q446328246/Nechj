@@ -18,6 +18,7 @@ using ShopNum1.Deploy.MobileServiceAPP;
 using Newtonsoft.Json;
 using System.Security.Cryptography;
 using System.Text;
+using System.Net;
 
 namespace ShopNum1.Deploy.KCESservice
 {
@@ -42,6 +43,340 @@ namespace ShopNum1.Deploy.KCESservice
             message.Message = Gz_LogicApi.GetString("MG000020");
             Context.Response.Write(KceApiHelper.GetJSON<GZMessage>(message));
             Context.Response.End();
+        }
+
+        [WebMethod]
+        public void TiBiZQ(string MemLoginID, string NECAddress, decimal NEC, string IIPassWord) {
+            string Message = string.Empty;
+            string Code = string.Empty;
+            int Result = 0;
+
+            ShopNum1_Member_Action member_Action = (ShopNum1_Member_Action)ShopNum1.Factory.LogicFactory.CreateShopNum1_Member_Action();
+            DataTable REtable = member_Action.SearchMembertwoOrMobile(MemLoginID);
+            if (REtable!=null&&REtable.Rows.Count > 0)
+            {
+                decimal MyNEC = Convert.ToDecimal(REtable.Rows[0]["Score_dv"]);
+                #region 余额
+                if (NEC < 0)
+                {
+                    Result = 0;
+                    Code = "10001";
+                    Message = Gz_LogicApi.GetString("MG000020");//转账金额有误
+                    object whjjson = new
+                    {
+                        result = Result,
+                        code = Code,
+                        data = "",
+                        message = Message,
+                    };
+
+                    Context.Response.Write(StringHelper.Serialize(whjjson));
+                    Context.Response.End();
+                    return;
+                }
+
+
+                if (MyNEC < NEC)
+                {
+                    Result = 0;
+                    Code = "10023";
+                    Message = Gz_LogicApi.GetString("MG000008");
+                    object whjjson = new
+                    {
+                        result = Result,
+                        code = Code,
+                        data = "",
+                        message = Message,
+                    };
+
+                    Context.Response.Write(StringHelper.Serialize(whjjson));
+                    Context.Response.End();
+                    return;
+                }
+                #endregion
+
+                #region 密码
+                if (IIPassWord == "")
+                {
+                    Result = 0;
+                    Code = "10023";
+                    Message = Gz_LogicApi.GetString("MG000021");
+                    object whjjson = new
+                    {
+                        result = Result,
+                        code = Code,
+                        data = "",
+                        message = Message,
+                    };
+
+                    Context.Response.Write(StringHelper.Serialize(whjjson));
+                    Context.Response.End();
+                    return;
+                }
+
+                string MyIIPassWord = REtable.Rows[0]["PayPwd"].ToString();
+
+                string md5SecondHash = Common.Encryption.GetMd5SecondHash(IIPassWord.Trim());
+
+                if (MyIIPassWord != md5SecondHash)
+                {
+                    Result = 0;
+                    Code = "10024";
+                    Message = Gz_LogicApi.GetString("MG000010");
+                    object whjjson = new
+                    {
+                        result = Result,
+                        code = Code,
+                        data = "",
+                        message = Message,
+                    };
+
+                    Context.Response.Write(StringHelper.Serialize(whjjson));
+                    Context.Response.End();
+                    return;
+                }
+
+                #endregion
+
+
+                Message = TiBiZQPost(MemLoginID, NEC, NECAddress, out Result);
+
+                if (Result == 1) {
+                    member_Action.ZhuanZhangNECKou(MemLoginID, NEC, "快捷转出到ZQ");
+                }
+
+                object whjjsontt = new
+                {
+                    result = Result,
+                    code = Code,
+                    data = "",
+                    message = Message,
+                };
+
+                Context.Response.Write(StringHelper.Serialize(whjjsontt));
+                Context.Response.End();
+                return;
+
+            }
+            else {
+                Result = 0;
+                Message = "找不到该用户";
+                object whjjson = new
+                {
+                    result = Result,
+                    code = Code,
+                    data = "",
+                    message = Message,
+                };
+
+                Context.Response.Write(StringHelper.Serialize(whjjson));
+                Context.Response.End();
+                return;
+            }
+        }
+
+
+        public string TiBiZQPost(string MemLoginID, decimal NEC, string NECAddress, out int Result)
+        {
+            Result = 0;
+            string Message = string.Empty;
+            string api = "www.baidu.com";
+            string postCan = "&nec=" + NEC;
+            postCan += "&memid=" + MemLoginID;
+            postCan += "&necaddress=" + NECAddress;
+
+            string fhone = GET(api + postCan);
+            try
+            {
+                RootWHJ rt = StringHelper.Deserialize<RootWHJ>(fhone);
+                Result = rt.status;
+                Message = rt.result;
+            }
+            catch (Exception)
+            {
+                Result = 0;
+                Message = "网络同步异常";
+            }
+            return Message;
+        }
+
+        [WebMethod]
+        public void ChongzhiByZQ(string NECAddress, decimal NEC, string KeyToken)
+        {
+            string Message = string.Empty;
+            string Code = string.Empty;
+            int Result = 0;
+            if (RJiaMi(NECAddress) != KeyToken)
+            {
+                Result = 0;
+                Message = "不是ZQ发起的请求";
+                object whjjson = new
+                {
+                    result = Result,
+                    code = Code,
+                    data = "",
+                    message = Message,
+                };
+
+                Context.Response.Write(StringHelper.Serialize(whjjson));
+                Context.Response.End();
+                return;
+            }
+            else
+            {
+                ShopNum1_Member_Action member_Action = (ShopNum1_Member_Action)ShopNum1.Factory.LogicFactory.CreateShopNum1_Member_Action();
+                DataTable REtable = member_Action.SearchMemberByNECAddress(NECAddress);
+                if (REtable!=null&&REtable.Rows.Count > 0)
+                {
+                    string MemLoginID = REtable.Rows[0]["MemLoginID"].ToString();
+                    if (NEC < 0)
+                    {
+                        Result = 0;
+                        Code = "10001";
+                        Message = Gz_LogicApi.GetString("MG000020");//转账金额有误
+                        object whjjson = new
+                        {
+                            result = Result,
+                            code = Code,
+                            data = "",
+                            message = Message,
+                        };
+                        Context.Response.Write(StringHelper.Serialize(whjjson));
+                        Context.Response.End();
+                        return;
+                    }
+                    else {
+                        member_Action.ZhuanZhangNECJia(MemLoginID, NEC, "ZQ转入NEC");
+                        Result = 1;
+                        Message = "转入成功";
+                        object whjjson = new
+                        {
+                            result = Result,
+                            code = Code,
+                            data = "",
+                            message = Message,
+                        };
+                        Context.Response.Write(StringHelper.Serialize(whjjson));
+                        Context.Response.End();
+                        return;
+                    }
+                }
+                else {
+                    Result = 0;
+                    Message = "找不到该用户";
+                    object whjjson = new
+                    {
+                        result = Result,
+                        code = Code,
+                        data = "",
+                        message = Message,
+                    };
+
+                    Context.Response.Write(StringHelper.Serialize(whjjson));
+                    Context.Response.End();
+                    return;
+                }
+            }
+        }
+
+        [WebMethod]
+        public void TiBiZQList(string MemLoginID, string RenType = "1") {
+            string Message = string.Empty;
+            string Code = string.Empty;
+            int Result = 0;
+            string Memo = string.Empty;
+            Memo = (RenType == "1" ? "快捷转出到ZQ" : "ZQ转入NEC");
+            ShopNum1_Member_Action member_Action = (ShopNum1_Member_Action)ShopNum1.Factory.LogicFactory.CreateShopNum1_Member_Action();
+            DataTable dt = member_Action.TiBiZQList(MemLoginID, Memo);
+
+
+            if (dt != null&& dt.Rows.Count > 0)
+            {
+                Result = 1;
+                object whjjson = new
+                {
+                    result = Result,
+                    code = Code,
+                    data = dt,
+                    message = Message,
+                };
+
+                Context.Response.Write(StringHelper.Serialize(whjjson));
+                Context.Response.End();
+                return;
+
+            }
+            else {
+                Result = 0;
+                Message = "找不到该用户记录";
+                object whjjson = new
+                {
+                    result = Result,
+                    code = Code,
+                    data = "",
+                    message = Message,
+                };
+
+                Context.Response.Write(StringHelper.Serialize(whjjson));
+                Context.Response.End();
+                return;
+            }
+
+
+
+
+        }
+
+
+
+        protected string miyao = "EDpqF8c9Qz0WbcAoNlttRRV0FgPoAUV7";
+
+
+        public string RJiaMi(string Mem)
+        {
+            return Encrypt(Mem + miyao).ToLower();
+        }
+
+        public string Encrypt(string plaintext)
+        {
+            MD5 md5 = new MD5CryptoServiceProvider();
+            byte[] bytes = System.Text.Encoding.UTF8.GetBytes(plaintext);
+            bytes = md5.ComputeHash(bytes);
+            md5.Clear();
+
+            string ret = "";
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                ret += Convert.ToString(bytes[i], 16).PadLeft(2, '0');
+            }
+            return ret.PadLeft(32, '0');
+        }
+
+
+        public string GET(string url)
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.Method = "GET";
+            HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+            StreamReader stream = new StreamReader(response.GetResponseStream(), Encoding.UTF8);
+            string jsonstr = stream.ReadLine();
+            return jsonstr;//返回Json数据
+        }
+
+
+
+   
+
+        public class RootWHJ
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public int status { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string result { get; set; }
         }
 
 

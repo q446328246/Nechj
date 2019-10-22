@@ -35,12 +35,25 @@ namespace ShopNum1.BusinessLogic
             DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
             parms[0].ParameterName = "@MemLoginID";
             parms[0].Value = MemLoginID;
-            return DatabaseExcetue.ReturnDataTable("select * from Nec_RenRenZZ where MemLoginID=@MemLoginID and DateDiff(dd,AddTime,getdate())<=7;", parms);
-
+            return DatabaseExcetue.ReturnDataTable("select * from Nec_RenRenZZ where MemLoginID=@MemLoginID and DateDiff(dd,AddTime,getdate())<=7 ORDER BY AddTime desc;", parms);
         }
 
 
-       
+        public DataTable TiBiZQList(string MemLoginID,string Memo)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(2);
+            parms[0].ParameterName = "@MemLoginID";
+            parms[0].Value = MemLoginID;
+            parms[1].ParameterName = "@Memo";
+            parms[1].Value = Memo;
+            return DatabaseExcetue.ReturnDataTable("select * from ShopNum1_AdvancePaymentModifyLog where MemLoginID=@MemLoginID and Memo=@Memo and DateDiff(dd,CreateTime,getdate())<=7 ORDER BY CreateTime desc;", parms);
+        }
+
+
+
+
+
+
 
 
         public int AddWHJ_BlackList(string MemLoginID)
@@ -2384,6 +2397,19 @@ namespace ShopNum1.BusinessLogic
             string strSql = string.Empty;
             strSql =
                 "SELECT * FROM ShopNum1_Member where (MemLoginID=@memLoginID or Mobile=@memLoginID)";
+
+            return DatabaseExcetue.ReturnDataTable(strSql, parms);
+        }
+
+        public DataTable SearchMemberByNECAddress(string NECAddress)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+
+            parms[0].ParameterName = "@NECAddress";
+            parms[0].Value = NECAddress;
+            string strSql = string.Empty;
+            strSql =
+                "SELECT * FROM ShopNum1_Member where (NECAddress=@NECAddress)";
 
             return DatabaseExcetue.ReturnDataTable(strSql, parms);
         }
