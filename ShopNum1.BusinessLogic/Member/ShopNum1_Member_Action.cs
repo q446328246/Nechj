@@ -15,6 +15,34 @@ namespace ShopNum1.BusinessLogic
     public class ShopNum1_Member_Action : IShopNum1_Member_Action
     {
 
+
+        public DataTable TiBiZQList(string MemLoginID, string RenType)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(2);
+            parms[0].ParameterName = "@MemLoginID";
+            parms[0].Value = MemLoginID;
+            parms[1].ParameterName = "@RenType";
+            parms[1].Value = RenType;
+            return DatabaseExcetue.ReturnDataTable("select * from TibiZQ where MemLoginID=@MemLoginID and RenType=@RenType and DateDiff(dd,AddTime,getdate())<=7 ORDER BY AddTime desc;", parms);
+        }
+
+
+        public int Add_TibiZQ(string MemLoginID, decimal NEC, string NECAddress, int Status, string RenType)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(5);
+            parms[0].ParameterName = "@MemLoginID";
+            parms[0].Value = MemLoginID;
+            parms[1].ParameterName = "@NEC";
+            parms[1].Value = NEC;
+            parms[2].ParameterName = "@NECAddress";
+            parms[2].Value = NECAddress;
+            parms[3].ParameterName = "@Status";
+            parms[3].Value = Status;
+            parms[4].ParameterName = "@RenType";
+            parms[4].Value = RenType;
+            return DatabaseExcetue.RunNonQuery(" insert into TibiZQ(MemLoginID,NEC,NECAddress,Status,AddTime,RenType) values(@MemLoginID,@NEC,@NECAddress,@Status,GETDATE(),@RenType)", parms);
+        }
+
         public int Add_Nec_RenRenZZ(string MemLoginID,decimal NEC,string ChongZhiID,int Status,string RenType)
         {
             DbParameter[] parms = DatabaseExcetue.CreateParameter(5);
@@ -39,15 +67,7 @@ namespace ShopNum1.BusinessLogic
         }
 
 
-        public DataTable TiBiZQList(string MemLoginID,string Memo)
-        {
-            DbParameter[] parms = DatabaseExcetue.CreateParameter(2);
-            parms[0].ParameterName = "@MemLoginID";
-            parms[0].Value = MemLoginID;
-            parms[1].ParameterName = "@Memo";
-            parms[1].Value = Memo;
-            return DatabaseExcetue.ReturnDataTable("select * from ShopNum1_AdvancePaymentModifyLog where MemLoginID=@MemLoginID and Memo=@Memo and DateDiff(dd,CreateTime,getdate())<=7 ORDER BY CreateTime desc;", parms);
-        }
+        
 
 
 
