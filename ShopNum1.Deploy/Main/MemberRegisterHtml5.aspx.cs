@@ -77,11 +77,11 @@ namespace ShopNum1.Deploy.Main
                 int mobileInt = Mobile.Value.IndexOf("+");
                 if (Mobile.Value.Length != 11 || mobileInt!=-1)
                 {
-                    fh = mbo.send(Mobile.Value, code, "6015499");
+                    fh = mbo.sendwhj(Mobile.Value, code, "6015499");
                 }
                 else
                 {
-                    fh = mbo.send(Mobile.Value, code, "513065");
+                    fh = mbo.sendwhj(Mobile.Value, code, "513065");
                 }
                 if (fh == "100")
                 {

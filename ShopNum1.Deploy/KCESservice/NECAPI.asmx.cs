@@ -38,9 +38,10 @@ namespace ShopNum1.Deploy.KCESservice
         public void WHJTest(string MemLoginID) {
             GZMessage message = new GZMessage();
             Gz_LogicApi gl = new Gz_LogicApi();
+            Mobile mbo = new Mobile();
             message.Result = 0;
             message.Code = gl.RJiaMi(MemLoginID);
-            message.Message = Gz_LogicApi.GetString("MG000020");
+            message.Message = mbo.sendwhj(MemLoginID, "123456", "5465");
             Context.Response.Write(KceApiHelper.GetJSON<GZMessage>(message));
             Context.Response.End();
         }
@@ -1834,7 +1835,7 @@ namespace ShopNum1.Deploy.KCESservice
                     string fh = "";
                     if (mobi.Rows[0]["mobiletype"] != null && mobi.Rows[0]["mobiletype"].ToString() == "0")
                     {
-                        fh = mbo.send(mobile, code, "513065");
+                        fh = mbo.sendwhj(mobile, code, "513065");
                         if (fh == "100")
                         {
 
@@ -1857,11 +1858,11 @@ namespace ShopNum1.Deploy.KCESservice
 
                         if (mobile.Length != 11 || mobileMjc != -1 || mobi.Rows[0]["mobiletype"].ToString() == "1")
                         {
-                            fh = mbo.send(mobile, code, "6015499");
+                            fh = mbo.sendwhj(mobile, code, "6015499");
                         }
                         else
                         {
-                            fh = mbo.send(mobile, code, "513065");
+                            fh = mbo.sendwhj(mobile, code, "513065");
                         }
                         if (fh == "100")
                         {
@@ -4147,11 +4148,11 @@ namespace ShopNum1.Deploy.KCESservice
 
                         if (mobile.Length != 11 || mobileMjc != -1)
                         {
-                            fh = mbo.send(mobile, code, "6015499");//国际
+                            fh = mbo.sendwhj(mobile, code, "6015499");//国际
                         }
                         else
                         {
-                            fh = mbo.send(mobile, code, "513065");//国内
+                            fh = mbo.sendwhj(mobile, code, "513065");//国内
                         }
 
                         if (fh == "100")
@@ -4808,7 +4809,7 @@ namespace ShopNum1.Deploy.KCESservice
                     string fh = "";
                     if (mobi.Rows[0]["mobiletype"] != null && mobi.Rows[0]["mobiletype"].ToString() == "0")
                     {
-                        fh = mbo.send(mobile, code, "513065");
+                        fh = mbo.sendwhj(mobile, code, "513065");
                         if (fh == "100")
                         {
 
@@ -4831,11 +4832,11 @@ namespace ShopNum1.Deploy.KCESservice
 
                         if (mobile.Length != 11 || mobileMjc != -1 || mobi.Rows[0]["mobiletype"].ToString() == "1")
                         {
-                            fh = mbo.send(mobile, code, "6015499");
+                            fh = mbo.sendwhj(mobile, code, "6015499");
                         }
                         else
                         {
-                            fh = mbo.send(mobile, code, "513065");
+                            fh = mbo.sendwhj(mobile, code, "513065");
                         }
                         if (fh == "100")
                         {
@@ -6092,7 +6093,7 @@ namespace ShopNum1.Deploy.KCESservice
                         string fh = "";
                         if (mobi.Rows[0]["mobiletype"] != null && mobi.Rows[0]["mobiletype"].ToString() == "0")
                         {
-                            fh = mbo.send(mobile, code, "513065");
+                            fh = mbo.sendwhj(mobile, code, "513065");
                             if (fh == "100")
                             {
 
@@ -6115,11 +6116,11 @@ namespace ShopNum1.Deploy.KCESservice
 
                             if (mobile.Length != 11 || mobileMjc != -1 || mobi.Rows[0]["mobiletype"].ToString() == "1")
                             {
-                                fh = mbo.send(mobile, code, "6015499");
+                                fh = mbo.sendwhj(mobile, code, "6015499");
                             }
                             else
                             {
-                                fh = mbo.send(mobile, code, "513065");
+                                fh = mbo.sendwhj(mobile, code, "513065");
                             }
                             if (fh == "100")
                             {
@@ -6228,7 +6229,7 @@ namespace ShopNum1.Deploy.KCESservice
                         string fh = "";
                         if (mobi.Rows[0]["mobiletype"] != null && mobi.Rows[0]["mobiletype"].ToString() == "0")
                         {
-                            fh = mbo.send(mobile, code, "513065");
+                            fh = mbo.sendwhj(mobile, code, "513065");
                             if (fh == "100")
                             {
 
@@ -6251,11 +6252,11 @@ namespace ShopNum1.Deploy.KCESservice
 
                             if (mobile.Length != 11 || mobileMjc != -1 || mobi.Rows[0]["mobiletype"].ToString() == "1")
                             {
-                                fh = mbo.send(mobile, code, "6015499");
+                                fh = mbo.sendwhj(mobile, code, "6015499");
                             }
                             else
                             {
-                                fh = mbo.send(mobile, code, "513065");
+                                fh = mbo.sendwhj(mobile, code, "513065");
                             }
                             if (fh == "100")
                             {
