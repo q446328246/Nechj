@@ -25,7 +25,7 @@ namespace ShopNum1.BusinessLogic
                 parms[0].ParameterName = "@MemLoginID";
                 parms[0].Value = MemLoginID;
                 DataTable dt = DatabaseExcetue.ReturnDataTable("select top 1 count(*) from V_Newyili where MemLoginID=@MemLoginID ;", parms);
-                if (dt.Rows.Count > 0)
+                if (int.Parse(dt.Rows[0][0].ToString())>0)
                 {
                     return true;
                 }

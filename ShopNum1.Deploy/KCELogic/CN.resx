@@ -493,6 +493,6 @@
     <value>没有更多订单</value>
   </data>
   <data name="WH000001" xml:space="preserve">
-    <value>暂未开放权限</value>
+    <value>此账户不符合条件</value>
   </data>
 </root>

@@ -3394,7 +3394,7 @@ namespace ShopNum1.Deploy.KCESservice
         [WebMethod]
         public void CreateOrder(string Token, string MemLoginID, string ProductGuid, int GuiGeType, int BuyNumber, string PayPwd)
         {
-
+            ShopNum1_Member_Action member_Action = (ShopNum1_Member_Action)ShopNum1.Factory.LogicFactory.CreateShopNum1_Member_Action();
             Gz_LogicApi cnfirmOrderAPP = new Gz_LogicApi();
             GZMessage message = new GZMessage();
             string TokenPuzzle = ShopNum1.Encryption.DESEncrypt.M_Decrypt(KceApiHelper.FormatParam(Token));
@@ -3404,23 +3404,31 @@ namespace ShopNum1.Deploy.KCESservice
             {
                 try
                 {
-                    string order = cnfirmOrderAPP.CreateOrder(MemLoginID, ProductGuid, GuiGeType, BuyNumber, PayPwd);
 
-                    if (order == "1")
+                    if (member_Action.SelectInShouYi(MemLoginID))
                     {
-                        message.Code = Gz_LogicApi.GetString("MG000026");
-                        message.Message = Gz_LogicApi.GetString("MG000026");
-                        message.Result = 1;
+                        message.Result = 0;
+                        message.Code = "0o_y20012";
+                        message.Message = Gz_LogicApi.GetString("WH000001");
+
                     }
                     else
                     {
-                        message.Code = order;
-                        message.Message = order;
-                        message.Result = 0;
+                        string order = cnfirmOrderAPP.CreateOrder(MemLoginID, ProductGuid, GuiGeType, BuyNumber, PayPwd);
+
+                        if (order == "1")
+                        {
+                            message.Code = Gz_LogicApi.GetString("MG000026");
+                            message.Message = Gz_LogicApi.GetString("MG000026");
+                            message.Result = 1;
+                        }
+                        else
+                        {
+                            message.Code = order;
+                            message.Message = order;
+                            message.Result = 0;
+                        }
                     }
-
-
-
 
                     Context.Response.Write(KceApiHelper.GetJSON<GZMessage>(message));
 
