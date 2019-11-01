@@ -2661,8 +2661,13 @@ namespace ShopNum1.Deploy.KCESservice
                 //string Mobile = REtable.Rows[0]["Mobile"].ToString();
                 //string LastFour = Mobile.Substring(Mobile.Length - 4, 4);
 
-
-                if (RRmem == MemLoginID)
+                if (member_Action.SelectInShouYi(MemLoginID))
+                {
+                    message.Result = 0;
+                    message.Code = "0o_y20012";
+                    message.Message = Gz_LogicApi.GetString("WH000001");
+                }
+                else if (RRmem == MemLoginID)
                 {
                     message.Result = 0;
                     message.Code = "10001";
@@ -5207,45 +5212,52 @@ namespace ShopNum1.Deploy.KCESservice
                     Random ran = new Random();
                     int RandomNumber = ran.Next(1,101);
                     decimal SignInBonus = Convert.ToDecimal(RandomNumber * 0.01);
-
-                    DataTable member_sercher = member_Action.SignInSearchMemberMjc(MemLoginID);
-                    if (member_sercher != null && member_sercher.Rows.Count > 0)
+                    if (member_Action.SelectInShouYi(MemLoginID))
                     {
                         message.Result = 0;
                         message.Code = "0o_y20012";
-                        message.Message = Gz_LogicApi.GetString("MG000061");
-
+                        message.Message = Gz_LogicApi.GetString("WH000001");
+                        
                     }
-                    else
-                    {
-                        DateTime creat = DateTime.Now;
-                        DataTable SelectMybonus = member_Action.Mjc_GetcdatatimeMyAllBonus(MemLoginID);
-                        decimal mybonus = Convert.ToDecimal(SelectMybonus.Rows[0]["MyAllBonus"].ToString());
-                        if (mybonus > 0)
+                    else {
+                        DataTable member_sercher = member_Action.SignInSearchMemberMjc(MemLoginID);
+                        if (member_sercher != null && member_sercher.Rows.Count > 0)
                         {
-                            int AddSignIn = member_Action.Mjc_GetInformetionBonus(MemLoginID, SignInBonus.ToString(), "签到收益");//SQL里面已经添加默认英文值
-                            if (AddSignIn > 0)
-                            {
+                            message.Result = 0;
+                            message.Code = "0o_y20012";
+                            message.Message = Gz_LogicApi.GetString("MG000061");
 
-                                message.Result = 1;
-                                message.Code = SignInBonus.ToString();
-                                message.Message = Gz_LogicApi.GetString("MG000062");
+                        }
+                        else
+                        {
+                            DateTime creat = DateTime.Now;
+                            DataTable SelectMybonus = member_Action.Mjc_GetcdatatimeMyAllBonus(MemLoginID);
+                            decimal mybonus = Convert.ToDecimal(SelectMybonus.Rows[0]["MyAllBonus"].ToString());
+                            if (mybonus > 0)
+                            {
+                                int AddSignIn = member_Action.Mjc_GetInformetionBonus(MemLoginID, SignInBonus.ToString(), "签到收益");//SQL里面已经添加默认英文值
+                                if (AddSignIn > 0)
+                                {
+
+                                    message.Result = 1;
+                                    message.Code = SignInBonus.ToString();
+                                    message.Message = Gz_LogicApi.GetString("MG000062");
+                                }
+                                else
+                                {
+                                    message.Result = 0;
+                                    message.Code = "0o_x110341";
+                                    message.Message = Gz_LogicApi.GetString("MG000056");
+                                }
                             }
                             else
                             {
                                 message.Result = 0;
-                                message.Code = "0o_x110341";
-                                message.Message = Gz_LogicApi.GetString("MG000056");
+                                message.Code = "0o_x1103432";
+                                message.Message = Gz_LogicApi.GetString("MG000063");
                             }
                         }
-                        else
-                        {
-                            message.Result = 0;
-                            message.Code = "0o_x1103432";
-                            message.Message = Gz_LogicApi.GetString("MG000063");
-                        }
                     }
-
                 }
                 catch (Exception ex)
                 {

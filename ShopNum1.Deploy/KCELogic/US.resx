@@ -537,4 +537,7 @@
   <data name="MG000094" xml:space="preserve">
     <value>No more orders</value>
   </data>
+  <data name="WH000001" xml:space="preserve">
+    <value>Permission is not open yet</value>
+  </data>
 </root>

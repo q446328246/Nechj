@@ -492,4 +492,7 @@
   <data name="MG000094" xml:space="preserve">
     <value>没有更多订单</value>
   </data>
+  <data name="WH000001" xml:space="preserve">
+    <value>暂未开放权限</value>
+  </data>
 </root>

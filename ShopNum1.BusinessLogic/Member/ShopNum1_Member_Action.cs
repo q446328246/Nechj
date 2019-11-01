@@ -16,6 +16,31 @@ namespace ShopNum1.BusinessLogic
     {
 
 
+
+        public bool SelectInShouYi(string MemLoginID)
+        {
+            try
+            {
+                DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+                parms[0].ParameterName = "@MemLoginID";
+                parms[0].Value = MemLoginID;
+                DataTable dt = DatabaseExcetue.ReturnDataTable("select top 1 count(*) from V_Newyili where MemLoginID=@MemLoginID ;", parms);
+                if (dt.Rows.Count > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+
         public DataTable TiBiZQList(string MemLoginID, string RenType)
         {
             DbParameter[] parms = DatabaseExcetue.CreateParameter(2);
