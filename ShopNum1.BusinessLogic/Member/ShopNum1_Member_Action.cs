@@ -1082,6 +1082,18 @@ namespace ShopNum1.BusinessLogic
             paraValue[2] = memo;
             return DatabaseExcetue.RunProcedure("[dbo].shopnum1_XiaoFei_DV", parName, paraValue);
         }
+        public int ZhuanZhangpv_aKou(string MemLoginID, decimal bv, string memo)
+        {
+            var parName = new string[3];
+            var paraValue = new string[3];
+            parName[0] = "@memloginno";
+            paraValue[0] = MemLoginID;
+            parName[1] = "@dv";
+            paraValue[1] = bv.ToString();
+            parName[2] = "@mome";
+            paraValue[2] = memo;
+            return DatabaseExcetue.RunProcedure("[dbo].shopnum1_XiaoFei_pv_a", parName, paraValue);
+        }
         public int ZhuanZhangNECJia(string MemLoginID, decimal bv, string memo)
         {
             var parName = new string[3];

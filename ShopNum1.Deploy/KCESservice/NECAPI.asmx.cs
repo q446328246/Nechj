@@ -34,9 +34,144 @@ namespace ShopNum1.Deploy.KCESservice
     {
 
 
+        [WebMethod]
+        public void SaveTransfer(string MemLoginID, decimal Save, string IIPassWord, string Token)
+        {
+            GZMessage message = new GZMessage();
+            ShopNum1_Member_Action member_Action = (ShopNum1_Member_Action)ShopNum1.Factory.LogicFactory.CreateShopNum1_Member_Action();
+            string TokenPuzzle = ShopNum1.Encryption.DESEncrypt.M_Decrypt(KceApiHelper.FormatParam(Token));
+            string[] tValues = TokenPuzzle.Split('~');
+            string ReturnValue = KceApiHelper.UserAuthenticationTwo(tValues[0], tValues[1], tValues[2]);
+            if (ReturnValue == "1" && tValues[0].ToUpper() == MemLoginID.ToUpper())
+            {
+                DataTable dt = member_Action.GetSaveInfo(MemLoginID);
+                int issave = int.Parse(dt.Rows[0]["issave"].ToString());//是否参与救赎计划
+                decimal savecanuse = decimal.Parse(dt.Rows[0]["savecanuse"].ToString());//用户总可转救赎币
+                decimal savedayuse = decimal.Parse(dt.Rows[0]["savedayuse"].ToString());//用户当天可转救赎币上限
+                decimal Score_pv_a = decimal.Parse(dt.Rows[0]["Score_pv_a"].ToString());//用户冻结nec
+                decimal Score_dv = decimal.Parse(dt.Rows[0]["Score_dv"].ToString());//用户可用nec
+                string MyIIPassWord = dt.Rows[0]["PayPwd"].ToString();
+                string saveid = dt.Rows[0]["saveid"].ToString();
+                string md5SecondHash = Common.Encryption.GetMd5SecondHash(IIPassWord.Trim());
+                if (issave == 0)
+                {
+                    message.Result = 0;
+                    message.Code = "10001";
+                    message.Message = "你不是救赎计划参与者";
+                }
+                else if (Save < 0)
+                {
+                    message.Result = 0;
+                    message.Code = "10001";
+                    message.Message = "转账金额有误";
+                }
+                else if (savecanuse < 0)
+                {
+                    message.Result = 0;
+                    message.Code = "10001";
+                    message.Message = "转账救赎币余额不足";
+                }
+                else if (savedayuse - Save < 0)
+                {
+                    message.Result = 0;
+                    message.Code = "10001";
+                    message.Message = "每日可转救赎币不足";
+                }
+                else if (Score_dv + Score_pv_a - Save < 0)
+                {
+                    message.Result = 0;
+                    message.Code = "10001";
+                    message.Message = "可转救赎币的nec币不足";
+                }
+                else if (IIPassWord == "")
+                {
+                    message.Result = 0;
+                    message.Code = "10023";
+                    message.Message = "交易密码为空!";
+
+                }
+                else if (MyIIPassWord != md5SecondHash)
+                {
+                    message.Result = 0;
+                    message.Code = "10024";
+                    message.Message = "交易密码错误!";
+     
+
+                }
+                else {
+                    Order order = new Order();
+
+                    decimal savepv_a = 0;//需要扣多少冻结nec
+                    decimal savedv = 0;//需要扣多少可用nec
+                    savepv_a = Save;
+                    if (Score_pv_a - Save < 0)
+                    {
+                        savepv_a = Score_pv_a;
+                        savedv = Save - savepv_a;
+                    }
+
+                    #region 请求接口申请
+                    string url = "www.baidu.com";
+
+                    url += "?saveid=" + saveid;
+                    url += "&savesum=" + Save;
+                    url += "&savepv_a=" + savepv_a;
+                    url += "&savedv=" + savedv;
+                    url += "&memloginid=" + MemLoginID;
+                    string ssss = GET(url);
+                    #endregion
+
+                    if (ssss == "1")
+                    {
+                        #region 操作扣账
+                        member_Action.ZhuanZhangpv_aKou(MemLoginID, savepv_a, "救赎币");//审核失败请调用shopnum1_HuoDe_pv_a
+                        member_Action.ZhuanZhangNECKou(MemLoginID, savedv, "救赎币");//审核失败请调用shopnum1_addDV
+                        #endregion
+                        message.Result = 1;
+                        message.Message = "成功!";
+                    }
+                    else {
+                        message.Result = 0;
+                    }
+                }
+            }
+            else if (ReturnValue == "0")
+            {
+                message.Result = 0;
+                message.Code = "10004";
+                message.Message = "请重新登陆哟，您的身份验证已经过期";
+              
+            }
+            else if (ReturnValue == "2")
+            {
+                message.Result = 0;
+                message.Code = "10001";
+                message.Message = "密钥验证失败";
+              
+            }
+            else if (ReturnValue == "3")
+            {
+                message.Result = 0;
+                message.Code = "10008";
+                message.Message = "此账号禁止交易";
+              
+            }
+
+            object whjjson = new
+            {
+                result = message.Result,
+                code = message.Code,
+                data = message.Data,
+                message = message.Message,
+            };
+            Context.Response.Write(StringHelper.Serialize(whjjson));
+            Context.Response.End();
 
 
+        }
 
+
+        [WebMethod]
         /// <summary>
         /// 获取用户信息
         /// </summary>
@@ -81,7 +216,7 @@ namespace ShopNum1.Deploy.KCESservice
             Context.Response.End();
         }
 
-
+        [WebMethod]
         public void ApplySave(string saveid, string Token, string MemLoginID) {
             ShopNum1_Member_Action member_Action = (ShopNum1_Member_Action)ShopNum1.Factory.LogicFactory.CreateShopNum1_Member_Action();
             GZMessage message = new GZMessage();
@@ -143,7 +278,7 @@ namespace ShopNum1.Deploy.KCESservice
             Context.Response.Write(StringHelper.Serialize(whjjson));
             Context.Response.End();
         }
-
+        [WebMethod]
         public void AgreeSave(string savecode) {
             ShopNum1_Member_Action member_Action = (ShopNum1_Member_Action)ShopNum1.Factory.LogicFactory.CreateShopNum1_Member_Action();
             GZMessage message = new GZMessage();
