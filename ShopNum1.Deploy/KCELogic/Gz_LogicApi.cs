@@ -73,8 +73,8 @@ namespace ShopNum1.Deploy.KCELogic
             postCan += "&phone=" + phone;
             postCan += "&keytoken=" + RJiaMi(MemLoginID);
             postCan += "&rentype=" + RenType;
-            //string fhone = GET("http://localhost:45666/app/index.php?i=3&c=entry&m=ewei_shopv2&do=mobile&r=index.renrenchongzhi"+postCan);
-            string fhone = GET("http://wz.batj.club/app/index.php?i=8&c=entry&m=ewei_shopv2&do=mobile&r=index.renrenchongzhi" + postCan);
+            string fhone = GET("http://localhost:45666/app/index.php?i=3&c=entry&m=ewei_shopv2&do=mobile&r=index.renrenchongzhi"+postCan);
+            //string fhone = GET("http://wz.batj.club/app/index.php?i=8&c=entry&m=ewei_shopv2&do=mobile&r=index.renrenchongzhi" + postCan);
             //http://wz.batj.club/app/index.php?i=8&c=entry&m=ewei_shopv2&do=mobile&r=member.rank
             try
             {

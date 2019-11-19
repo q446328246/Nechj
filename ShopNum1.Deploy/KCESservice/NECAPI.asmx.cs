@@ -33,6 +33,133 @@ namespace ShopNum1.Deploy.KCESservice
     public class NECAPI : System.Web.Services.WebService
     {
 
+
+
+
+
+        /// <summary>
+        /// 获取用户信息
+        /// </summary>
+        /// <param name="Token"></param>
+        /// <param name="MemLoginID"></param>
+        public void GetSaveInfo(string Token, string MemLoginID) {
+            ShopNum1_Member_Action member_Action = (ShopNum1_Member_Action)ShopNum1.Factory.LogicFactory.CreateShopNum1_Member_Action();
+            GZMessage message = new GZMessage();
+            string TokenPuzzle = ShopNum1.Encryption.DESEncrypt.M_Decrypt(KceApiHelper.FormatParam(Token));
+            string[] tValues = TokenPuzzle.Split('~');
+            string ReturnValue = KceApiHelper.UserAuthentication(tValues[0], tValues[1], tValues[2]);
+            if (ReturnValue == "1" && tValues[0].ToUpper() == MemLoginID.ToUpper())
+            {
+                DataTable dt = member_Action.GetSaveInfo(MemLoginID);
+                message.Result = 1;
+                message.Code = "10086";
+                message.Message = "成功";
+                message.Data = dt;
+            }
+            else {
+                if (ReturnValue == "0")
+                {
+                    message.Result = 0;
+                    message.Code = "10086";
+                    message.Message = Gz_LogicApi.GetString("MG000012");
+                }
+                else if (ReturnValue == "2")
+                {
+                    message.Result = 0;
+                    message.Code = "10086";
+                    message.Message = Gz_LogicApi.GetString("MG000016");
+                }
+            }
+            object whjjson = new
+            {
+                result = message.Result,
+                code = message.Code,
+                data = message.Data,
+                message = message.Message,
+            };
+            Context.Response.Write(StringHelper.Serialize(whjjson));
+            Context.Response.End();
+        }
+
+
+        public void ApplySave(string saveid, string Token, string MemLoginID) {
+            ShopNum1_Member_Action member_Action = (ShopNum1_Member_Action)ShopNum1.Factory.LogicFactory.CreateShopNum1_Member_Action();
+            GZMessage message = new GZMessage();
+            string TokenPuzzle = ShopNum1.Encryption.DESEncrypt.M_Decrypt(KceApiHelper.FormatParam(Token));
+            string[] tValues = TokenPuzzle.Split('~');
+            string ReturnValue = KceApiHelper.UserAuthentication(tValues[0], tValues[1], tValues[2]);
+            if (ReturnValue == "1" && tValues[0].ToUpper() == MemLoginID.ToUpper())
+            {
+                string savecode = Guid.NewGuid().ToString().ToLower();
+
+
+                #region 请求接口申请
+                string ssss = GET("www.baid.com?savecode=" + savecode + "&saveid=" + saveid);
+                #endregion
+
+
+
+
+                int dt = member_Action.ApplySave(MemLoginID, saveid, savecode);
+                if (dt == 1)
+                {
+                    message.Result = 1;
+                    message.Message = "申请成功,请到交易所审核通过";
+                }
+                else {
+                    message.Result = 0;
+                }
+
+                if (dt == -1)
+                {
+                    message.Message = "该交易id已绑定";
+                }
+                else {
+                    message.Message = "未知错误";
+                }
+            }
+            else
+            {
+                if (ReturnValue == "0")
+                {
+                    message.Result = 0;
+                    message.Code = "10086";
+                    message.Message = Gz_LogicApi.GetString("MG000012");
+                }
+                else if (ReturnValue == "2")
+                {
+                    message.Result = 0;
+                    message.Code = "10086";
+                    message.Message = Gz_LogicApi.GetString("MG000016");
+                }
+            }
+            object whjjson = new
+            {
+                result = message.Result,
+                code = message.Code,
+                data = message.Data,
+                message = message.Message,
+            };
+            Context.Response.Write(StringHelper.Serialize(whjjson));
+            Context.Response.End();
+        }
+
+        public void AgreeSave(string savecode) {
+            ShopNum1_Member_Action member_Action = (ShopNum1_Member_Action)ShopNum1.Factory.LogicFactory.CreateShopNum1_Member_Action();
+            GZMessage message = new GZMessage();
+            message.Result = member_Action.AgreeSave(savecode);
+            object whjjson = new
+            {
+                result = message.Result,
+                code = message.Code,
+                data = message.Data,
+                message = message.Message,
+            };
+            Context.Response.Write(StringHelper.Serialize(whjjson));
+            Context.Response.End();
+        }
+
+
         [WebMethod]
 
         public void WHJTest(string MemLoginID) {
@@ -2666,6 +2793,8 @@ namespace ShopNum1.Deploy.KCESservice
                     message.Result = 0;
                     message.Code = "0o_y20012";
                     message.Message = Gz_LogicApi.GetString("WH000001");
+                    Context.Response.Write(KceApiHelper.GetJSON<GZMessage>(message));
+                    Context.Response.End();
                 }
                 else if (RRmem == MemLoginID)
                 {

@@ -14,10 +14,70 @@ namespace ShopNum1.BusinessLogic
 
     public class ShopNum1_Member_Action : IShopNum1_Member_Action
     {
+        public int AgreeSave(string savecode)
+        {
+            var paraName = new string[1];
+            var paraValue = new string[1];
+            paraName[0] = "@savecode";
+            paraValue[0] = savecode;
+ 
+            return DatabaseExcetue.RunNonQuery("update ShopNum1_Member set issave=1 where savecode=@savecode", paraName, paraValue);
+        }
+        public int ApplySave(string MemLoginID, string saveid, string savecode)
+        {
+            int res = 0;
+            if (AnySave(saveid) == 1)
+            {
+                res = -1;
+            }
+            else {
+                var paraName = new string[3];
+                var paraValue = new string[3];
+                paraName[0] = "@MemLoginID";
+                paraValue[0] = MemLoginID;
+                paraName[1] = "@saveid";
+                paraValue[1] = saveid;
+                paraName[2] = "@savecode";
+                paraValue[2] = savecode;
+                return DatabaseExcetue.RunNonQuery("update ShopNum1_Member set saveid=@saveid,savecode=@savecode where MemLoginId=@MemLoginID", paraName, paraValue);
+            }
+       
+            return res;
+        }
+
+        public int AnySave(string saveid) {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+            parms[0].ParameterName = "@saveid";
+            parms[0].Value = saveid;
+            string strSql = string.Empty;
+            strSql ="SELECT count(1) FROM ShopNum1_Member where (saveid=@saveid)";
+            string res = DatabaseExcetue.ReturnDataTable(strSql, parms).Rows[0][0].ToString();
+            if (res == "1")
+            {
+                return 1;
+            }
+            else {
+                return 0;
+            }
+        }
+
+
+    public DataTable GetSaveInfo(string memLoginID)
+    {
+        DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+
+        parms[0].ParameterName = "@memLoginID";
+        parms[0].Value = memLoginID;
+        string strSql = string.Empty;
+        strSql =
+            "SELECT * FROM ShopNum1_Member where (MemLoginID=@memLoginID or Mobile=@memLoginID)";
+
+        return DatabaseExcetue.ReturnDataTable(strSql, parms);
+    }
 
 
 
-        public bool SelectInShouYi(string MemLoginID)
+    public bool SelectInShouYi(string MemLoginID)
         {
             try
             {
@@ -25,7 +85,7 @@ namespace ShopNum1.BusinessLogic
                 parms[0].ParameterName = "@MemLoginID";
                 parms[0].Value = MemLoginID;
                 DataTable dt = DatabaseExcetue.ReturnDataTable("select top 1 count(*) from V_Newyili where MemLoginID=@MemLoginID ;", parms);
-                if (int.Parse(dt.Rows[0][0].ToString())>0)
+                if (int.Parse(dt.Rows[0][0].ToString()) > 0)
                 {
                     return true;
                 }
@@ -68,7 +128,7 @@ namespace ShopNum1.BusinessLogic
             return DatabaseExcetue.RunNonQuery(" insert into TibiZQ(MemLoginID,NEC,NECAddress,Status,AddTime,RenType) values(@MemLoginID,@NEC,@NECAddress,@Status,GETDATE(),@RenType)", parms);
         }
 
-        public int Add_Nec_RenRenZZ(string MemLoginID,decimal NEC,string ChongZhiID,int Status,string RenType)
+        public int Add_Nec_RenRenZZ(string MemLoginID, decimal NEC, string ChongZhiID, int Status, string RenType)
         {
             DbParameter[] parms = DatabaseExcetue.CreateParameter(5);
             parms[0].ParameterName = "@MemLoginID";
@@ -84,7 +144,8 @@ namespace ShopNum1.BusinessLogic
             return DatabaseExcetue.RunNonQuery(" insert into Nec_RenRenZZ(MemLoginID,NEC,ChongZhiID,Status,AddTime,RenType) values(@MemLoginID,@NEC,@ChongZhiID,@Status,GETDATE(),@RenType)", parms);
         }
 
-        public DataTable RenRenZZList(string MemLoginID) {
+        public DataTable RenRenZZList(string MemLoginID)
+        {
             DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
             parms[0].ParameterName = "@MemLoginID";
             parms[0].Value = MemLoginID;
@@ -92,7 +153,7 @@ namespace ShopNum1.BusinessLogic
         }
 
 
-        
+
 
 
 
@@ -124,16 +185,17 @@ namespace ShopNum1.BusinessLogic
         /// </summary>
         /// <param name="memLoginID"></param>
         /// <returns></returns>
-        public DataTable SelectWHJ_BlackList(string kkkk="")
+        public DataTable SelectWHJ_BlackList(string kkkk = "")
         {
-          
+
             string strSql = string.Empty;
-            if (kkkk == ""||kkkk==null)
+            if (kkkk == "" || kkkk == null)
             {
-                strSql ="select * from WHJ_BlackList";
+                strSql = "select * from WHJ_BlackList";
             }
-            else {
-                strSql = "select * from WHJ_BlackList where BLID like '%"+kkkk+"%'";
+            else
+            {
+                strSql = "select * from WHJ_BlackList where BLID like '%" + kkkk + "%'";
             }
             return DatabaseExcetue.ReturnDataTable(strSql);
         }
@@ -183,7 +245,7 @@ namespace ShopNum1.BusinessLogic
         /// <param name="memLoginID"></param>
         /// <returns></returns>
         public string SelectKGFPrice()
-       
+
         {
 
 
@@ -226,7 +288,7 @@ namespace ShopNum1.BusinessLogic
         /// <param name="CardAndPeopleImage"></param>
         /// <param name="LicenseImage"></param>
         /// <returns></returns>
-        public int AddApplyBusiness(string MemLoginID, string Name, string CardID, string shopName, string CardAndPeopleImage, string LicenseImage,string FanCardImage)
+        public int AddApplyBusiness(string MemLoginID, string Name, string CardID, string shopName, string CardAndPeopleImage, string LicenseImage, string FanCardImage)
         {
             DbParameter[] parms = DatabaseExcetue.CreateParameter(7);
             parms[0].ParameterName = "@MemLoginID";
@@ -315,7 +377,7 @@ namespace ShopNum1.BusinessLogic
             return DatabaseExcetue.RunNonQuery("insert into Nec_TiXianNEC(OrderID,MemloginID,NECAddress,NEC,Status,TxTime,Shop_NECAddress) values(@OrderID,@memloginid,@NECaddress,@NEC,0,@txtime,@shopNECaddress)", parms);
         }
 
-        public int AddETH_Tx(string OrderID, string memloginid,string ETHaddress,decimal ETH,DateTime txtime,string shopETHaddress )
+        public int AddETH_Tx(string OrderID, string memloginid, string ETHaddress, decimal ETH, DateTime txtime, string shopETHaddress)
         {
             DbParameter[] parms = DatabaseExcetue.CreateParameter(6);
             parms[0].ParameterName = "@OrderID";
@@ -333,20 +395,21 @@ namespace ShopNum1.BusinessLogic
 
             return DatabaseExcetue.RunNonQuery("insert into Nec_TiXian(OrderID,MemloginID,ETHAddress,ETH,Status,TxTime,Shop_ETHAddress) values(@OrderID,@memloginid,@ETHaddress,@ETH,0,@txtime,@shopETHaddress)", parms);
         }
-        public DataTable SearchSuperior(string memLoginID,bool isadmin=false)
+        public DataTable SearchSuperior(string memLoginID, bool isadmin = false)
         {
             DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
 
             parms[0].ParameterName = "@memLoginID";
             parms[0].Value = memLoginID;
             string strSql = string.Empty;
-            strSql ="SELECT RecoCode FROM ShopNum1_Member where MemLoginID=@memLoginID";
-            if (!isadmin) {
+            strSql = "SELECT RecoCode FROM ShopNum1_Member where MemLoginID=@memLoginID";
+            if (!isadmin)
+            {
                 strSql = strSql + " and MemLoginID not in(SELECT BLID from WHJ_BlackList) ";
             }
             return DatabaseExcetue.ReturnDataTable(strSql, parms);
         }
-        public DataTable SearchSuperiorMemloginID(string RecoCode,bool isadmin=false)
+        public DataTable SearchSuperiorMemloginID(string RecoCode, bool isadmin = false)
         {
             DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
 
@@ -355,13 +418,14 @@ namespace ShopNum1.BusinessLogic
             string strSql = string.Empty;
             strSql =
                 "SELECT MemLoginID FROM ShopNum1_Member where ID=@RecoCode";
-            if (!isadmin) {
+            if (!isadmin)
+            {
                 strSql = strSql + " and MemLoginID not in(SELECT BLID from WHJ_BlackList) ";
             }
 
             return DatabaseExcetue.ReturnDataTable(strSql, parms);
         }
-        public int AddETHAddress(string memloginid,string ethaddress)
+        public int AddETHAddress(string memloginid, string ethaddress)
         {
             var paraName = new string[2];
             var paraValue = new string[2];
@@ -476,7 +540,7 @@ namespace ShopNum1.BusinessLogic
             paraName[0] = "@memloginid";
             paraValue[0] = memloginid;
             paraName[1] = "@bili";
-            paraValue[1] = bili.ToString(); 
+            paraValue[1] = bili.ToString();
 
 
             return DatabaseExcetue.RunNonQuery("update ShopNum1_Member set ShopBili=@bili where MemLoginId=@memloginid", paraName, paraValue);
@@ -507,7 +571,7 @@ namespace ShopNum1.BusinessLogic
         }
 
 
-              //闲时游接口用
+        //闲时游接口用
         public int PreTransfer_GZ(string OrderNumber, string CNY, string Memo, string MemLoginID, string Type)
         {
 
@@ -533,7 +597,7 @@ namespace ShopNum1.BusinessLogic
             return DatabaseExcetue.RunNonQuery(sqlQuery, parms);
         }
         //KT转账用
-        public int PreTransfer_GZ(string OrderNumber, string CNY, string Memo, string MemLoginID,string ReMemLoginID, string Type)
+        public int PreTransfer_GZ(string OrderNumber, string CNY, string Memo, string MemLoginID, string ReMemLoginID, string Type)
         {
 
             DbParameter[] parms = DatabaseExcetue.CreateParameter(6);
@@ -559,7 +623,7 @@ namespace ShopNum1.BusinessLogic
 
             return DatabaseExcetue.RunNonQuery(sqlQuery, parms);
         }
-        
+
 
 
 
@@ -606,7 +670,7 @@ namespace ShopNum1.BusinessLogic
                 DatabaseExcetue.ReturnDataTable(" SELECT  MemLoginID  FROM ShopNum1_Member  WHERE (MemLoginID=@memLoginIDorMobile or Mobile=@memLoginIDorMobile)", parms);
 
         }
-        
+
 
         //闲时游接口用
         public int AddGZ_XSY_OrderInfo(GZ_XSY_OrderInfo xsyjk)
@@ -660,7 +724,7 @@ namespace ShopNum1.BusinessLogic
             return DatabaseExcetue.RunProcedure("shopnum1_A_zhuan_B_GetDV", paraName, paraValue);
         }
         //验证手机号
-        public DataTable YzMemberMobile(string mobile) 
+        public DataTable YzMemberMobile(string mobile)
         {
             var paraName = new string[1];
             var paraValue = new string[1];
@@ -944,7 +1008,7 @@ namespace ShopNum1.BusinessLogic
 
         public int InsertAdvancePaymentModifyLogRecord22(string MemLoginID, decimal ScorePVB, string orderId)
         {
-            var parName=new string[3];
+            var parName = new string[3];
             var paraValue = new string[3];
             parName[0] = "@memloginno";
             paraValue[0] = MemLoginID;
@@ -955,7 +1019,7 @@ namespace ShopNum1.BusinessLogic
 
             paraValue[2] = orderId;
             return DatabaseExcetue.RunProcedure("[dbo].shopnum1_XiaoFei_pv_b", parName, paraValue);
-         }
+        }
 
         public int InsertAdvancePaymentModifyLog_Gz_XSY_hv(string MemLoginID, decimal hv, string memo)
         {
@@ -1182,10 +1246,10 @@ namespace ShopNum1.BusinessLogic
             parms[0].Value = memLoginID;
 
             return
-                DatabaseExcetue.ReturnDataTable( "select cdatatime FROM [ShopNum1_Member] where MemLoginID=@MemLoginID ", parms);
+                DatabaseExcetue.ReturnDataTable("select cdatatime FROM [ShopNum1_Member] where MemLoginID=@MemLoginID ", parms);
         }
         public DataTable Mjc_GetcdatatimeMyAllBonus(string memLoginID)
-        { 
+        {
             DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
 
             parms[0].ParameterName = "@MemLoginID";
@@ -1205,9 +1269,9 @@ namespace ShopNum1.BusinessLogic
                 DatabaseExcetue.ReturnDataTable("SELECT  [Sid]  ,[MemLoginID] ,[SignInCreate] ,[memo] ,[Bonus] FROM  [QLXSignIn] where MemLoginID=@MemLoginID ", parms);
         }
 
-       
 
-        public int Mjc_GetInformetion(string memloginno) 
+
+        public int Mjc_GetInformetion(string memloginno)
         {
             var paraName = new string[1];
             var paraValue = new string[1];
@@ -1216,7 +1280,7 @@ namespace ShopNum1.BusinessLogic
             return DatabaseExcetue.RunProcedure("[dbo].[shopnum1_SignIn1]", paraName, paraValue);
         }
 
-        public int Mjc_GetInformetionBonus(string memloginno, string bonus, string memo )
+        public int Mjc_GetInformetionBonus(string memloginno, string bonus, string memo)
         {
             var paraName = new string[3];
             var paraValue = new string[3];
@@ -1226,7 +1290,7 @@ namespace ShopNum1.BusinessLogic
             paraValue[1] = bonus;
             paraName[2] = "@mome";
             paraValue[2] = memo;
-            
+
             return DatabaseExcetue.RunProcedure("[dbo].[shopnum1_addDVSign]", paraName, paraValue);
         }
 
@@ -1704,7 +1768,7 @@ namespace ShopNum1.BusinessLogic
 
         }
 
-        
+
         /// <summary>
         /// 修改银行信息
         /// </summary>
@@ -1801,7 +1865,7 @@ namespace ShopNum1.BusinessLogic
 
             parms[0].ParameterName = "@OrderNumber";
             parms[0].Value = OrderNumber;
-          
+
 
 
             string strSql = string.Empty;
@@ -2060,7 +2124,7 @@ namespace ShopNum1.BusinessLogic
         /// <param name="MemLoginID"></param>
         /// <param name="ShopName"></param>
         /// <returns></returns>
-        public int UpdateMemberCarBand(string memLoginID, string shebei,string chepai,string leixing)
+        public int UpdateMemberCarBand(string memLoginID, string shebei, string chepai, string leixing)
         {
             DbParameter[] parms = DatabaseExcetue.CreateParameter(4);
 
@@ -2481,7 +2545,7 @@ namespace ShopNum1.BusinessLogic
             parms[0].ParameterName = "@memLoginID";
             parms[0].Value = memLoginID;
             string strSql = string.Empty;
-            strSql ="SELECT * FROM ShopNum1_Member where MemLoginID=@memLoginID";
+            strSql = "SELECT * FROM ShopNum1_Member where MemLoginID=@memLoginID";
             return DatabaseExcetue.ReturnDataTable(strSql, parms);
         }
         public DataTable SearchMembertwoMJC(string memLoginID)
@@ -2491,8 +2555,8 @@ namespace ShopNum1.BusinessLogic
             parms[0].ParameterName = "@memLoginID";
             parms[0].Value = memLoginID;
             string strSql = string.Empty;
-            strSql ="SELECT * FROM ShopNum1_Member where Superior=@memLoginID";
-         
+            strSql = "SELECT * FROM ShopNum1_Member where Superior=@memLoginID";
+
             return DatabaseExcetue.ReturnDataTable(strSql, parms);
         }
 
@@ -2855,7 +2919,7 @@ namespace ShopNum1.BusinessLogic
             var paraValue = new string[3];
             paraName[0] = "@member_id";
             paraValue[0] = MasterID;
-            
+
             paraName[1] = "@OderNumber";
             paraValue[1] = OderNumber;
             paraName[2] = "@ip";
@@ -4077,7 +4141,7 @@ namespace ShopNum1.BusinessLogic
             }
         }
 
-        public DataTable NewestEarningsSingleSQl(string MemLoginID )
+        public DataTable NewestEarningsSingleSQl(string MemLoginID)
         {
             DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
             parms[0].ParameterName = "@MemLoginID";
@@ -4085,14 +4149,14 @@ namespace ShopNum1.BusinessLogic
             return
                DatabaseExcetue.ReturnDataTable(" select top 1 Bonus1,(bonus2+Bonus3) as Bonus2,Bonus5 as Bonus3,Bonus4,CreateTime from [Bonus] where [MemLoginID]=@MemLoginID   order by [CreateTime] desc", parms);
         }
-        public DataTable QLCNewestEarnings(string MemLoginID )
+        public DataTable QLCNewestEarnings(string MemLoginID)
         {
             DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
             parms[0].ParameterName = "@MemLoginID";
             parms[0].Value = MemLoginID;
 
             return DatabaseExcetue.ReturnDataTable("select Score_pv_a ,Score_dv,Score_hv,(Score_pv_a+Score_dv) as AllNEC , Score_pv_b, AdvancePayment from [ShopNum1_Member]where [MemLoginID]=@MemLoginID ", parms);
-             
+
         }
 
         public DataTable QLCNewestEarningsNCE(string MemLoginID)
@@ -4158,8 +4222,8 @@ namespace ShopNum1.BusinessLogic
 
             return
                 DatabaseExcetue.ReturnDataTable(sql, parms);
-        } 
-        public DataTable MyEarningsDetailsNew(string MemLoginID,string type, string top, string number)
+        }
+        public DataTable MyEarningsDetailsNew(string MemLoginID, string type, string top, string number)
         {
             DbParameter[] parms = DatabaseExcetue.CreateParameter(3);
             parms[0].ParameterName = "@MemLoginID";
@@ -4184,7 +4248,7 @@ namespace ShopNum1.BusinessLogic
             }
 
             if (type == "4")
-            { 
+            {
                 sql = "  select  * from ( select  MemLoginID,Bonus4 as Bonus,CreateTime, ROW_NUMBER() OVER( Order by CreateTime DESC) AS RowNumber from Bonus where MemLoginID=@MemLoginID and Bonus4>0 ) as a where  RowNumber BETWEEN  @top and @number ";
             }
             if (type == "6")
@@ -4206,7 +4270,7 @@ namespace ShopNum1.BusinessLogic
             string sql = "";
 
             sql = "select  * from ( select  MemLoginID,Bonus3,Bonus2,'分享收益' as fenxiang, '链接收益' as lianjie ,CreateTime, ROW_NUMBER() OVER( Order by CreateTime DESC) AS RowNumber from Bonus where MemLoginID=@MemLoginID and (Bonus3+Bonus2)>0 ) as a where  RowNumber BETWEEN  @top and @number ";
-            
+
             return
                 DatabaseExcetue.ReturnDataTable(sql, parms);
         }
@@ -4228,19 +4292,19 @@ namespace ShopNum1.BusinessLogic
                 DatabaseExcetue.ReturnDataTable(sql, parms);
         }
 
-        public DataTable AccountEarningsSingleSQL(string MemLoginID )
+        public DataTable AccountEarningsSingleSQL(string MemLoginID)
         {
             DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
             parms[0].ParameterName = "@MemLoginID";
             parms[0].Value = MemLoginID;
 
             return DatabaseExcetue.ReturnDataTable(" select  sum(Bonus1) as Bonus1,sum(Bonus2+Bonus3) as Bonus2,sum(Bonus5) as Bonus3,sum(Bonus1+Bonus2+Bonus3+Bonus5) as Bonus4 from bonus where [MemLoginID]=@MemLoginID  ", parms);
- 
-         }
+
+        }
 
 
         public DataTable AccountEarnings(string MemLoginID, string earningsType)
-        { 
+        {
             DbParameter[] parms = DatabaseExcetue.CreateParameter(2);
             parms[0].ParameterName = "@MemLoginID";
             parms[0].Value = MemLoginID;
@@ -4264,19 +4328,19 @@ namespace ShopNum1.BusinessLogic
             }
             else if (earningsType == "11")
             {
-                 return
-                    DatabaseExcetue.ReturnDataTable("  select MyAllBonus,(select  sum(Bonus1) as SingleEarnings   from bonus where [MemLoginID]=@MemLoginID) as SingleEarnings from [ShopNum1_Member] where [MemLoginID]=@MemLoginID", parms);
+                return
+                   DatabaseExcetue.ReturnDataTable("  select MyAllBonus,(select  sum(Bonus1) as SingleEarnings   from bonus where [MemLoginID]=@MemLoginID) as SingleEarnings from [ShopNum1_Member] where [MemLoginID]=@MemLoginID", parms);
             }
 
             else if (earningsType == "22")
             {
-                 return
-                    DatabaseExcetue.ReturnDataTable("select SUM(ShouldPayPrice) as MyAllBonus, SUM(ShouldPayPrice*SuanLiUnitPrice) as SingleEarnings FROM [ShopNum1_OrderInfo] where shop_category_id=4 and OderStatus!=0 and  MemLoginID=@MemLoginID", parms);
-                  
+                return
+                   DatabaseExcetue.ReturnDataTable("select SUM(ShouldPayPrice) as MyAllBonus, SUM(ShouldPayPrice*SuanLiUnitPrice) as SingleEarnings FROM [ShopNum1_OrderInfo] where shop_category_id=4 and OderStatus!=0 and  MemLoginID=@MemLoginID", parms);
+
             }
 
-               
-  
+
+
             else//赠送收益
             {
                 return
@@ -4302,7 +4366,7 @@ namespace ShopNum1.BusinessLogic
             DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
             parms[0].ParameterName = "@MemLoginID";
             parms[0].Value = MemLoginID;
- 
+
 
             return
                 DatabaseExcetue.ReturnDataTable("      select [Bonus],(SELECT DATEDIFF(S,'1970-01-01 00:00:00', [QLXtime]) - 8 * 3600) as Createtime  from [QLXSignIn] where MemLoginID=@MemLoginID and QLXtime >=(SELECT   CONVERT(nvarchar(10), DATEADD(wk, DATEDIFF(wk,0,DATEADD(dd, -1, getdate()) ), -1),121) ) and QLXtime <=(SELECT   CONVERT(nvarchar(10), DATEADD(wk, DATEDIFF(wk,0,DATEADD(dd, -1, getdate()) ), 5),121)) order by QLXtime desc ", parms);
@@ -4334,13 +4398,13 @@ namespace ShopNum1.BusinessLogic
             if (Type == "4")
             {
                 sql = " select * from ( select MemLoginID, Allnum*0.1 as Allnum,CreateTime, ROW_NUMBER() OVER( Order by CreateTime DESC ) AS RowNumber from [KCEBonusRecord] where  [MemLoginID]=@MemLoginID )as a where RowNumber BETWEEN @top and @number";
-            } 
+            }
             return
                 DatabaseExcetue.ReturnDataTable(sql, parms);
 
         }
 
-        public DataTable QueryReference1(string MemLoginID,int top, int number)
+        public DataTable QueryReference1(string MemLoginID, int top, int number)
         {
 
             DbParameter[] parms = DatabaseExcetue.CreateParameter(3);
@@ -4369,7 +4433,7 @@ namespace ShopNum1.BusinessLogic
 
         }
 
-        public DataTable Select_NEC_TiXian(string MemLoginID,string type, string top, string number)
+        public DataTable Select_NEC_TiXian(string MemLoginID, string type, string top, string number)
         {
 
             DbParameter[] parms = DatabaseExcetue.CreateParameter(3);
@@ -4416,7 +4480,7 @@ namespace ShopNum1.BusinessLogic
 
         }
 
-        public DataTable Select_NEC_TiXian_Count(string MemLoginID,string type)
+        public DataTable Select_NEC_TiXian_Count(string MemLoginID, string type)
         {
 
             DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
@@ -4451,14 +4515,14 @@ namespace ShopNum1.BusinessLogic
         {
 
             DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
- 
+
             parms[0].ParameterName = "@MemLoginID";
             parms[0].Value = MemLoginID;
             return
                 DatabaseExcetue.ReturnDataTable("select isnull(sum(YesterdayAllBonus) ,0) as YesterdayAllBonus from [ShopNum1_Member] where Superior =@MemLoginID ", parms);
 
         }
- 
+
 
         public DataTable Accountrecords(string MemLoginID)
         {
@@ -4502,7 +4566,7 @@ namespace ShopNum1.BusinessLogic
             parms[0].ParameterName = "@Guid";
             parms[0].Value = Guid;
 
-            return   DatabaseExcetue.ReturnDataTable("select [Title],[Remark],[CreateUser],[CreateTime] from ShopNum1_Announcement where Guid=@Guid  and IsDeleted=0", parms);
+            return DatabaseExcetue.ReturnDataTable("select [Title],[Remark],[CreateUser],[CreateTime] from ShopNum1_Announcement where Guid=@Guid  and IsDeleted=0", parms);
 
         }
 
@@ -4524,7 +4588,7 @@ namespace ShopNum1.BusinessLogic
 
             string sqlQuery = string.Concat(new object[]{ "INSERT INTO ShopNum1_MemberShip( MemLoginNO,RealName,\tShopNames, \tBelongs, \tMemLoginID, \tLastRankID, \tNewRankID, \tShipStatus, \tBirthdayTime, \tOrganizationImage, \tREAddTime) VALUES (  '','','" , CarNumber, "','" ,shebeihao, "','" ,MemLoginID , "','" ,CarType, "','" , CarTypeName , "'," , 1, ",'" ,DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), "','" ,photo , "','",DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") , "')"
                 });
-            return  DatabaseExcetue.RunNonQuery(sqlQuery);
+            return DatabaseExcetue.RunNonQuery(sqlQuery);
 
         }
 
@@ -4625,9 +4689,9 @@ namespace ShopNum1.BusinessLogic
             parms[1].Value = top;
             parms[2].ParameterName = "@number";
             parms[2].Value = number;
-           return
-                    DatabaseExcetue.ReturnDataTable("select * from ( select [OperateMoney],[Date],[Memo],[MemLoginID],[RMemberID], ROW_NUMBER() OVER( Order by [Date] DESC ) AS RowNumber from ShopNum1_PreTransfer where   MemLoginID=@MemLoginID )as a where RowNumber BETWEEN @top and @number ", parms);
-            
+            return
+                     DatabaseExcetue.ReturnDataTable("select * from ( select [OperateMoney],[Date],[Memo],[MemLoginID],[RMemberID], ROW_NUMBER() OVER( Order by [Date] DESC ) AS RowNumber from ShopNum1_PreTransfer where   MemLoginID=@MemLoginID )as a where RowNumber BETWEEN @top and @number ", parms);
+
         }
         public DataTable QueryCNY(string MemLoginID, int top, int number)
         {
@@ -4643,7 +4707,7 @@ namespace ShopNum1.BusinessLogic
                      DatabaseExcetue.ReturnDataTable("select * from ( select [OperateMoney],[Date],[Memo],[MemLoginID],[RMemberID], ROW_NUMBER() OVER( Order by [Date] DESC ) AS RowNumber from ShopNum1_PreTransfer where   MemLoginID=@MemLoginID )as a where RowNumber BETWEEN @top and @number ", parms);
 
         }
-        public DataTable Query_hv_dv_cny(string MemLoginID, int top,string type, int number)
+        public DataTable Query_hv_dv_cny(string MemLoginID, int top, string type, int number)
         {
             DbParameter[] parms = DatabaseExcetue.CreateParameter(3);
 
@@ -4665,21 +4729,21 @@ namespace ShopNum1.BusinessLogic
                          DatabaseExcetue.ReturnDataTable("select * from ( select [OperateMoney],[Date],[Memo],[MemLoginID],[RMemberID], ROW_NUMBER() OVER( Order by [Date] DESC ) AS RowNumber from ShopNum1_PreTransfer where   MemLoginID=@MemLoginID )as a where RowNumber BETWEEN @top and @number ", parms);
 
             }
-            else 
+            else
             {
                 return
                          DatabaseExcetue.ReturnDataTable("select * from ( select [OperateMoney],[Date],[Memo],[MemLoginID],[RMemberID], ROW_NUMBER() OVER( Order by [Date] DESC ) AS RowNumber from ShopNum1_PreTransfer where   MemLoginID=@MemLoginID )as a where RowNumber BETWEEN @top and @number ", parms);
 
             }
-            
+
         }
 
 
         public int UpdatePassword(string MemLoginID, string pwd)
         {
 
-                return
-                    DatabaseExcetue.RunNonQuery("update ShopNum1_Member set Pwd='" + pwd + "' where MemLoginID ='" + MemLoginID + "'");
+            return
+                DatabaseExcetue.RunNonQuery("update ShopNum1_Member set Pwd='" + pwd + "' where MemLoginID ='" + MemLoginID + "'");
         }
         public int UpdateMemLoginIDPassword(string mobile, string pwd)
         {
@@ -4704,16 +4768,16 @@ namespace ShopNum1.BusinessLogic
         {
 
             return
-               DatabaseExcetue.RunNonQuery("update ShopNum1_Member set RecoMember='" + MemLoginID + "' where RecoCode!= '"+ RecoCode +"' and  RecoCode LIKE '%" + RecoCode + "%'");
+               DatabaseExcetue.RunNonQuery("update ShopNum1_Member set RecoMember='" + MemLoginID + "' where RecoCode!= '" + RecoCode + "' and  RecoCode LIKE '%" + RecoCode + "%'");
         }
 
         public int UpdateNick(string MemLoginID, string name)
         {
-                return
-                    DatabaseExcetue.RunNonQuery("update ShopNum1_Member set Name='" + name + "' where MemLoginID ='" + MemLoginID + "'");
-         }
+            return
+                DatabaseExcetue.RunNonQuery("update ShopNum1_Member set Name='" + name + "' where MemLoginID ='" + MemLoginID + "'");
+        }
 
-        public int UpdateOldPwd(string MemLoginID, string  OldPwd, string NewPwd)
+        public int UpdateOldPwd(string MemLoginID, string OldPwd, string NewPwd)
         {
             return
                 DatabaseExcetue.RunNonQuery("update ShopNum1_Member set Pwd='" + NewPwd + "' where Pwd ='" + OldPwd + "' and  MemLoginID ='" + MemLoginID + "'");
@@ -4746,13 +4810,13 @@ namespace ShopNum1.BusinessLogic
             return
                 DatabaseExcetue.ReturnDataTable("select * from ShopNum1_Member  where Pwd =@OldPwd and  MemLoginID =@MemLoginID", parms);
         }
-        public DataTable SelectOldPwdTwoNCE(string MemLoginID )
+        public DataTable SelectOldPwdTwoNCE(string MemLoginID)
         {
             DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
 
             parms[0].ParameterName = "@MemLoginID";
             parms[0].Value = MemLoginID;
- 
+
             return
                 DatabaseExcetue.ReturnDataTable("select Mobile from ShopNum1_Member  where MemLoginID =@MemLoginID", parms);
         }
@@ -4796,10 +4860,10 @@ namespace ShopNum1.BusinessLogic
 
         }
 
-        public DataTable QueryCTCOrderInfo(string MemLoginID, string type,string type1, int top, int number)
+        public DataTable QueryCTCOrderInfo(string MemLoginID, string type, string type1, int top, int number)
         {
             DbParameter[] parms = DatabaseExcetue.CreateParameter(4);
-            
+
             parms[0].ParameterName = "@MemLoginID";
             parms[0].Value = MemLoginID;
             parms[1].ParameterName = "@type";
@@ -4808,10 +4872,10 @@ namespace ShopNum1.BusinessLogic
             parms[2].Value = top;
             parms[3].ParameterName = "@number";
             parms[3].Value = number;
-            
+
             if (type1 == "1")//本人去买
             {
-                if (Convert.ToInt32(type) == 1  )
+                if (Convert.ToInt32(type) == 1)
                 {
                     return
                     DatabaseExcetue.ReturnDataTable("select * from ( select  [Guid],[MemLoginID] ,[OrderNumber] ,[OderStatus] ,[ShipmentStatus] ,[ShouldPayPrice] ,[CreateTime]  ,[ConfirmTime]  ,[PayTime],[Score_pv_b] , ROW_NUMBER() OVER( Order by [PayTime] DESC )AS RowNumber from ShopNum1_OrderInfoTwo where   MemLoginID =@MemLoginID and OderStatus=@type and ShipmentStatus=1 and TradeID is  null)as a where RowNumber BETWEEN @top and @number ", parms);
@@ -4835,7 +4899,7 @@ namespace ShopNum1.BusinessLogic
             }
             else//本人去卖
             {
-                if (Convert.ToInt32(type) == 1 )
+                if (Convert.ToInt32(type) == 1)
                 {
                     return
                    DatabaseExcetue.ReturnDataTable("select * from ( select  [Guid],[MemLoginID] ,[OrderNumber] ,[OderStatus] ,[ShipmentStatus] ,[ShouldPayPrice] ,[CreateTime]  ,[ConfirmTime]  ,[PayTime],[Score_pv_b] , ROW_NUMBER() OVER( Order by [CreateTime] DESC )AS RowNumber from ShopNum1_OrderInfoTwo where   MemLoginID =@MemLoginID and OderStatus=@type and ShipmentStatus=2 and TradeID is  null)as a where RowNumber BETWEEN @top and @number ", parms);
@@ -4856,7 +4920,7 @@ namespace ShopNum1.BusinessLogic
                    DatabaseExcetue.ReturnDataTable("select * from ( select  [Guid],[MemLoginID] ,[OrderNumber] ,[OderStatus] ,[ShipmentStatus] ,[ShouldPayPrice] ,[CreateTime]  ,[ConfirmTime]  ,[PayTime],[Score_pv_b] , ROW_NUMBER() OVER( Order by [PayTime] DESC )AS RowNumber from ShopNum1_OrderInfoTwo where   MemLoginID=@MemLoginID and ShipmentStatus=2 and TradeID is  null)as a where RowNumber BETWEEN @top and @number ", parms);
                 }
             }
-            
+
         }
 
         public DataTable QueryCTCOrderInfo1(string MemLoginID, string type, int top, int number)
@@ -4999,7 +5063,7 @@ namespace ShopNum1.BusinessLogic
                 DatabaseExcetue.ReturnDataTable(" select * from  ShopNum1_ShopCategory ");
         }
 
-        public DataTable SelectProductByNameAndShop_category_id(string Shop_category_id, string Name,int satar,int end)
+        public DataTable SelectProductByNameAndShop_category_id(string Shop_category_id, string Name, int satar, int end)
         {
             DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
 
@@ -5038,7 +5102,7 @@ namespace ShopNum1.BusinessLogic
         /// <param name="top"></param>
         /// <param name="number"></param>
         /// <returns></returns>
-        public DataTable SelectFinancialProdct( int top, int number)
+        public DataTable SelectFinancialProdct(int top, int number)
         {
 
 
@@ -5047,14 +5111,14 @@ namespace ShopNum1.BusinessLogic
 
 
 
-           
+
         }
-        public DataTable SelectFinancialProdctFromTable(int top, int number,string tablename)
+        public DataTable SelectFinancialProdctFromTable(int top, int number, string tablename)
         {
 
 
             return
-               DatabaseExcetue.ReturnDataTable("select * from ( select*,((Total-SurplusTotal)/Total) as BFB, ROW_NUMBER() OVER(Order by ProductId asc ) AS RowNumber from "+ tablename + " ) as b  where RowNumber BETWEEN " + top + " and " + number + "");
+               DatabaseExcetue.ReturnDataTable("select * from ( select*,((Total-SurplusTotal)/Total) as BFB, ROW_NUMBER() OVER(Order by ProductId asc ) AS RowNumber from " + tablename + " ) as b  where RowNumber BETWEEN " + top + " and " + number + "");
 
 
 
@@ -5085,12 +5149,12 @@ namespace ShopNum1.BusinessLogic
         /// <param name="top"></param>
         /// <param name="number"></param>
         /// <returns></returns>
-        public DataTable SelectFinancialProdctDetailFromTable(string id,string tablename)
+        public DataTable SelectFinancialProdctDetailFromTable(string id, string tablename)
         {
 
 
             return
-               DatabaseExcetue.ReturnDataTable("select *,((Total-SurplusTotal)/Total) as BFB from "+ tablename + " where ProductId=" + id);
+               DatabaseExcetue.ReturnDataTable("select *,((Total-SurplusTotal)/Total) as BFB from " + tablename + " where ProductId=" + id);
 
 
 
@@ -5108,7 +5172,7 @@ namespace ShopNum1.BusinessLogic
         }
 
 
-        public DataTable SelectProdctShop_category_id_and_Code(string Code,string shop_category_id, int StartNumber, int EndNumber)
+        public DataTable SelectProdctShop_category_id_and_Code(string Code, string shop_category_id, int StartNumber, int EndNumber)
         {
 
             return
@@ -5519,7 +5583,7 @@ namespace ShopNum1.BusinessLogic
                 DatabaseExcetue.ReturnDataTable(
                     string.Concat(new object[]
                     {
-                        "SELECT \tGuid\t, \tMemLoginID\t,    MemberType,\tEmail\t, \tPwd\t, \tPayPwd\t, \tSex\t, \tAge\t, \tBirthday\t, \tCreditMoney\t, \tPhoto\t, \tRealName\t, \tArea\t, \tVocation\t, \tAddress\t, \tPostalcode\t, \tOfficeTel\t, \tHomeTel\t, \tMobile\t, \tFax\t, \tQQ\t, \tMsn\t, \tCardType\t, \tCardNum\t, \tWebSite\t, \tQuestion\t, \tAnswer\t, \tRegDate\t, \tLastLoginDate\t, \tLastLoginIP\t, \tLoginTime\t, \tIsForbid\t, \tCreateTime\t, \tModifyUser, \tModifyTime\t, \tIsDeleted IsAudit  FROM ShopNum1_Member   WHERE IsDeleted =@isDeleted AND Guid =@guid" 
+                        "SELECT \tGuid\t, \tMemLoginID\t,    MemberType,\tEmail\t, \tPwd\t, \tPayPwd\t, \tSex\t, \tAge\t, \tBirthday\t, \tCreditMoney\t, \tPhoto\t, \tRealName\t, \tArea\t, \tVocation\t, \tAddress\t, \tPostalcode\t, \tOfficeTel\t, \tHomeTel\t, \tMobile\t, \tFax\t, \tQQ\t, \tMsn\t, \tCardType\t, \tCardNum\t, \tWebSite\t, \tQuestion\t, \tAnswer\t, \tRegDate\t, \tLastLoginDate\t, \tLastLoginIP\t, \tLoginTime\t, \tIsForbid\t, \tCreateTime\t, \tModifyUser, \tModifyTime\t, \tIsDeleted IsAudit  FROM ShopNum1_Member   WHERE IsDeleted =@isDeleted AND Guid =@guid"
                     }), parms);
         }
 
@@ -5562,7 +5626,7 @@ namespace ShopNum1.BusinessLogic
 
         public DataTable Search1(string memLoginID, string name, string MyAllBonus, string regDate1, string regDate2,
             int int_0, int isForbid, string AreaCode, string MemberType, string MemberRank, string MemberRankGuid,
-            string CreditMoney, string Mobile,string isadmin)
+            string CreditMoney, string Mobile, string isadmin)
         {
             string str = string.Empty;
             str =
@@ -5576,7 +5640,7 @@ namespace ShopNum1.BusinessLogic
             {
                 str = str + " AND Name LIKE '%" + Operator.FilterString(name) + "%'";
             }
- 
+
             if ((isForbid == 0) || (isForbid == 1))
             {
                 str = string.Concat(new object[] { str, " AND IsForbid=", isForbid, " " });
@@ -5620,7 +5684,8 @@ namespace ShopNum1.BusinessLogic
             }
 
 
-            if (isadmin != "1") {
+            if (isadmin != "1")
+            {
                 str = str + " AND MemLoginID not in(SELECT BLID from WHJ_BlackList) ";
             }
 
@@ -6504,7 +6569,7 @@ namespace ShopNum1.BusinessLogic
             return DatabaseExcetue.RunNonQuery(builder.ToString(), parms);
         }
 
-        public int UpdatePhotoGZ(string MemLoginID, string Photo,string Name)
+        public int UpdatePhotoGZ(string MemLoginID, string Photo, string Name)
         {
             DbParameter[] parms = DatabaseExcetue.CreateParameter(3);
 
@@ -7147,16 +7212,16 @@ namespace ShopNum1.BusinessLogic
                     bool flag;
                     int num2 = 0;
                     goto Label_0094;
-                Label_007C:
+                    Label_007C:
                     num2 = random.Next(0, 9);
                     if (num2 != 4)
                     {
                         goto Label_0099;
                     }
-                Label_0094:
+                    Label_0094:
                     flag = true;
                     goto Label_007C;
-                Label_0099:
+                    Label_0099:
                     builder.Append(num2);
                 }
 
@@ -7176,9 +7241,9 @@ namespace ShopNum1.BusinessLogic
             Random random = new Random();
             for (int i = 0; i < 4; i++)
             {
-                random.Next(Convert.ToInt32(DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Day.ToString()));   
+                random.Next(Convert.ToInt32(DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Day.ToString()));
             }
-           
+
             while (true)
             {
                 StringBuilder builder = new StringBuilder();
@@ -7188,22 +7253,22 @@ namespace ShopNum1.BusinessLogic
                     bool flag;
                     int num2 = 0;
                     goto Label_0094;
-                Label_007C:
+                    Label_007C:
                     num2 = random.Next(0, 9);
                     if (num2 != 4)
                     {
                         goto Label_0099;
                     }
-                Label_0094:
+                    Label_0094:
                     flag = true;
                     goto Label_007C;
-                Label_0099:
+                    Label_0099:
                     builder.Append(num2);
                 }
 
                 if ((builder.ToString().IndexOf("0") != 0) && (getNumber(builder.ToString()) == 0))
                 {
-                    return  builder.ToString();
+                    return builder.ToString();
                 }
             }
         }
@@ -7229,16 +7294,16 @@ namespace ShopNum1.BusinessLogic
                     bool flag;
                     int num2 = 0;
                     goto Label_0094;
-                Label_007C:
+                    Label_007C:
                     num2 = random.Next(0, 9);
                     if (num2 != 4)
                     {
                         goto Label_0099;
                     }
-                Label_0094:
+                    Label_0094:
                     flag = true;
                     goto Label_007C;
-                Label_0099:
+                    Label_0099:
                     builder.Append(num2);
                 }
 
@@ -7292,5 +7357,10 @@ namespace ShopNum1.BusinessLogic
             int i = Convert.ToInt32(DatabaseExcetue.ReturnObject(cmdText, paraName, paraValue));
             return i;
         }
+
+
     }
+ 
+
+
 }
