@@ -14,14 +14,28 @@ namespace ShopNum1.BusinessLogic
 
     public class ShopNum1_Member_Action : IShopNum1_Member_Action
     {
-        public int AgreeSave(string savecode)
+        public int AgreeSave(string savecode,string saveurl="")
         {
-            var paraName = new string[1];
-            var paraValue = new string[1];
-            paraName[0] = "@savecode";
-            paraValue[0] = savecode;
- 
-            return DatabaseExcetue.RunNonQuery("update ShopNum1_Member set issave=1 where savecode=@savecode", paraName, paraValue);
+            if (saveurl == "")
+            {
+                var paraName = new string[1];
+                var paraValue = new string[1];
+                paraName[0] = "@savecode";
+                paraValue[0] = savecode;
+
+                return DatabaseExcetue.RunNonQuery("update ShopNum1_Member set issave=1 where savecode=@savecode", paraName, paraValue);
+            }
+            else {
+                var paraName = new string[2];
+                var paraValue = new string[2];
+                paraName[0] = "@savecode";
+                paraValue[0] = savecode;
+                paraName[1] = "@saveurl";
+                paraValue[1] = saveurl;
+                return DatabaseExcetue.RunNonQuery("update ShopNum1_Member set issave=1,saveurl=@saveurl where savecode=@savecode", paraName, paraValue);
+            }
+
+           
         }
         public int ApplySave(string MemLoginID, string saveid, string savecode)
         {

@@ -57,6 +57,65 @@ namespace ShopNum1.Deploy.KCESservice
     {
 
 
+        public string WHJPostdata(string strpost, string url)
+        {
+            //表示空字符串，字段为只读
+            string json = string.Empty;
+
+            //创建restful请求
+            HttpWebRequest request = WebRequest.Create(url) as HttpWebRequest;
+            //请求的方法是post
+            request.Method = "post";
+            //请求的内容类型
+            request.ContentType = "application/json";
+
+            //得到参数
+            string data = strpost;
+            //将字节序列存储到数组中，编码方式为UTF-8
+            byte[] byteData = UTF8Encoding.UTF8.GetBytes(data.ToString());
+            //将数组的元素总和给请求的标头
+            request.ContentLength = byteData.Length;
+
+            //以流的形式附加参数
+            using (Stream postStream = request.GetRequestStream())
+            {
+                postStream.Write(byteData, 0, byteData.Length);
+            }
+
+            //执行请求，达到json
+            using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
+            {
+                //以流的形式读取，返回的就是字符串的json格式
+                StreamReader reader = new StreamReader(response.GetResponseStream());
+                json = reader.ReadToEnd();
+            }
+            return json;
+        }
+
+
+
+        public string WHJGet(string url)
+        {
+            //创建请求
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+
+            //GET请求
+            request.Method = "GET";
+            request.ReadWriteTimeout = 5000;
+            request.ContentType = "application/json;charset=UTF-8";
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();//执行get请求
+            Stream myResponseStream = response.GetResponseStream();
+            StreamReader myStreamReader = new StreamReader(myResponseStream, Encoding.GetEncoding("utf-8"));
+
+            //返回内容JSON
+            string retString = myStreamReader.ReadToEnd();
+            return retString;
+        }
+
+
+
+
+
         [WebMethod]
         public void SaveTransfer(string MemLoginID, decimal Save, string IIPassWord, string Token)
         {
@@ -291,8 +350,20 @@ namespace ShopNum1.Deploy.KCESservice
                 string savecode = Guid.NewGuid().ToString().ToLower();
 
 
-                #region 请求接口申请
-                //string ssss = GET("www.baid.com?savecode=" + savecode + "&saveid=" + saveid);
+
+                #region 查询交易所id相关
+
+                bool isjys = false;//是否是交易所id
+                string saveurl = "";
+                string ssss = WHJGet("www.baid.com?savecode=" + savecode + "&saveid=" + saveid+"&MemLoginID");
+                try
+                {
+
+                }
+                catch (Exception)
+                {
+                }
+
                 #endregion
 
 
@@ -302,7 +373,8 @@ namespace ShopNum1.Deploy.KCESservice
                 if (dt == 1)
                 {
                     message.Result = 1;
-                    message.Message = "申请成功,请到交易所审核通过";
+                    member_Action.AgreeSave(savecode,saveurl);
+                    message.Message = "申请成功";
                 }
                 else {
                     message.Result = 0;
@@ -341,7 +413,10 @@ namespace ShopNum1.Deploy.KCESservice
             Context.Response.Write(StringHelper.Serialize(whjjson));
             Context.Response.End();
         }
-        [WebMethod]
+        /// <summary>
+        /// 同意绑定交易所id （已弃用）
+        /// </summary>
+        /// <param name="savecode"></param>
         public void AgreeSave(string savecode) {
             ShopNum1_Member_Action member_Action = (ShopNum1_Member_Action)ShopNum1.Factory.LogicFactory.CreateShopNum1_Member_Action();
             GZMessage message = new GZMessage();

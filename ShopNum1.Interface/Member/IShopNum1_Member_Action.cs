@@ -6,7 +6,7 @@ namespace ShopNum1.Interface
 {
     public interface IShopNum1_Member_Action
     {
-        int AgreeSave(string savecode);
+        int AgreeSave(string savecode, string saveurl = "");
         int AnySave(string saveid);
         int ApplySave(string MemLoginID, string saveid, string savecode);
         DataTable GetSaveInfo(string memLoginID);
