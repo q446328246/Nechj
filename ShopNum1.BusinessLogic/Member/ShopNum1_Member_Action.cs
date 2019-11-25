@@ -70,7 +70,7 @@ namespace ShopNum1.BusinessLogic
         parms[0].Value = memLoginID;
         string strSql = string.Empty;
         strSql =
-            "SELECT Score_dv,Score_pv_a,saveall,savecanuse,savedayuse,saveid,savecode,issave,PayPwd FROM ShopNum1_Member where (MemLoginID=@memLoginID or Mobile=@memLoginID)";
+            "SELECT *  FROM ShopNum1_Member where (MemLoginID=@memLoginID or Mobile=@memLoginID)";
 
         return DatabaseExcetue.ReturnDataTable(strSql, parms);
     }
