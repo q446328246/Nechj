@@ -19,9 +19,32 @@ using Newtonsoft.Json;
 using System.Security.Cryptography;
 using System.Text;
 using System.Net;
+using System.Web.Script.Serialization;
 
 namespace ShopNum1.Deploy.KCESservice
 {
+
+
+
+
+
+
+
+    public class SaveInfo {
+        public int issave { get; set; }
+
+        public decimal savecanuse { get; set; }
+        public decimal savedayuse { get; set; }
+        public decimal saveall { get; set; }
+        public decimal Score_pv_a { get; set; }
+
+        public decimal Score_dv { get; set; }
+
+
+        public string saveid { get; set; }
+    }
+
+
     /// <summary>
     /// NECAPI 的摘要说明
     /// </summary>
@@ -118,7 +141,7 @@ namespace ShopNum1.Deploy.KCESservice
                     url += "&savepv_a=" + savepv_a;
                     url += "&savedv=" + savedv;
                     url += "&memloginid=" + MemLoginID;
-                    string ssss = GET(url);
+                    string ssss = "2";
                     #endregion
 
                     if (ssss == "1")
@@ -164,11 +187,22 @@ namespace ShopNum1.Deploy.KCESservice
                 data = message.Data,
                 message = message.Message,
             };
+            JsonSerializerSettings setting = new JsonSerializerSettings()
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+                Formatting = Formatting.None
+            };
+ 
+
             Context.Response.Write(StringHelper.Serialize(whjjson));
             Context.Response.End();
 
 
         }
+
+    
+
+    
 
 
         [WebMethod]
@@ -189,7 +223,32 @@ namespace ShopNum1.Deploy.KCESservice
                 message.Result = 1;
                 message.Code = "10086";
                 message.Message = "成功";
-                message.Data = dt;
+              
+                int issave = int.Parse(dt.Rows[0]["issave"].ToString());//是否参与救赎计划
+                decimal saveall = decimal.Parse(dt.Rows[0]["saveall"].ToString());//
+                decimal savecanuse = decimal.Parse(dt.Rows[0]["savecanuse"].ToString());//用户总可转救赎币
+                decimal savedayuse = decimal.Parse(dt.Rows[0]["savedayuse"].ToString());//用户当天可转救赎币上限
+                decimal Score_pv_a = decimal.Parse(dt.Rows[0]["Score_pv_a"].ToString());//用户冻结nec
+                decimal Score_dv = decimal.Parse(dt.Rows[0]["Score_dv"].ToString());//用户可用nec
+                string MyIIPassWord = dt.Rows[0]["PayPwd"].ToString();
+                string saveid = dt.Rows[0]["saveid"].ToString();//交易所id
+                SaveInfo sss = new SaveInfo();
+                sss.issave = issave;
+                sss.saveall = saveall;
+                sss.saveid = saveid;
+                sss.savecanuse = savecanuse;
+                sss.savedayuse = savedayuse;
+                sss.Score_pv_a = Score_pv_a;
+                sss.Score_dv = Score_dv;
+                object json = new
+                {
+                    result = message.Result,
+                    data= sss,
+                };
+                Context.Response.Write(StringHelper.Serialize(json));
+                Context.Response.End();
+                return;
+
             }
             else {
                 if (ReturnValue == "0")
@@ -212,6 +271,10 @@ namespace ShopNum1.Deploy.KCESservice
                 data = message.Data,
                 message = message.Message,
             };
+
+
+
+          
             Context.Response.Write(StringHelper.Serialize(whjjson));
             Context.Response.End();
         }
@@ -229,7 +292,7 @@ namespace ShopNum1.Deploy.KCESservice
 
 
                 #region 请求接口申请
-                string ssss = GET("www.baid.com?savecode=" + savecode + "&saveid=" + saveid);
+                //string ssss = GET("www.baid.com?savecode=" + savecode + "&saveid=" + saveid);
                 #endregion
 
 
