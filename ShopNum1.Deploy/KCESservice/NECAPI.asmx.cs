@@ -114,7 +114,7 @@ namespace ShopNum1.Deploy.KCESservice
 
 
         [WebMethod]
-        public void WHJTes() {
+        public string WHJTes() {
 
             string api = "http://api.gmsq.vip";
             string secret = "LVAcff-gyZN-5CzD5h_aSijNOBaRAlet2q_TwLufjRpa2H4bp1u-QnOI3ef5bxav";
@@ -134,7 +134,7 @@ namespace ShopNum1.Deploy.KCESservice
      
             api += "&sign=" + sign;
             string ssss = WHJGet(api);
-
+            return ssss;
         }
 
 
