@@ -113,6 +113,81 @@ namespace ShopNum1.Deploy.KCESservice
         }
 
 
+        [WebMethod]
+        public void WHJTes() {
+
+            string api = "http://api.gmsq.vip";
+            string secret = "LVAcff-gyZN-5CzD5h_aSijNOBaRAlet2q_TwLufjRpa2H4bp1u-QnOI3ef5bxav";
+            IDictionary<string, string> parameters = new Dictionary<string, string>();
+
+            api += "?appid=1";
+            api += "&symbol=zqex.redemption.check_bind";
+            api += "&mobile=15523599052";
+           
+
+            parameters.Add("appid", "1");
+            parameters.Add("symbol", "zqex.redemption.check_bind");
+            parameters.Add("mobile", "15523599052");
+         
+
+            string sgin = GetSignature(parameters, secret);
+            api += "&sgin=" + sgin;
+            string ssss = WHJGet(api);
+
+        }
+
+
+
+        public string GetSignature(IDictionary<string, string> parameters, string secret)
+        {
+            // 先将参数以其参数名的字典序升序进行排序
+            IDictionary<string, string> sortedParams = new SortedDictionary<string, string>(parameters);
+            IEnumerator<KeyValuePair<string, string>> iterator = sortedParams.GetEnumerator();
+
+            // 遍历排序后的字典，将所有参数按"key=value"格式拼接在一起
+            StringBuilder basestring = new StringBuilder();
+            while (iterator.MoveNext())
+            {
+                string key = iterator.Current.Key;
+                string value = iterator.Current.Value;
+                if (!string.IsNullOrEmpty(key) && !string.IsNullOrEmpty(value))
+                {
+                    basestring.Append(key).Append("=").Append(value);
+                    basestring.Append("&");
+                }
+            }
+            string ddaa= basestring.Remove(basestring.Length - 1, 1).ToString();
+            secret = secret ?? "";
+            var encoding = new System.Text.UTF8Encoding();
+            byte[] keyByte = encoding.GetBytes(secret);
+            byte[] messageBytes = encoding.GetBytes(ddaa);
+            using (var hmacsha256 = new HMACSHA256(keyByte))
+            {
+                byte[] hashmessage = hmacsha256.ComputeHash(messageBytes);
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < hashmessage.Length; i++)
+                {
+                    /*string hex = hashmessage[i].ToString("x");
+                    if (hex.Length == 1)
+                    {
+                        builder.Append("0");
+                    }
+                    builder.Append(hex);*/
+                    builder.Append(hashmessage[i].ToString("x2"));
+                }
+                return builder.ToString();
+
+            }
+        }
+
+
+
+
+
+
+
+
+
 
 
 
@@ -339,7 +414,7 @@ namespace ShopNum1.Deploy.KCESservice
         }
 
         [WebMethod]
-        public void ApplySave(string saveid, string Token, string MemLoginID) {
+        public void ApplySave(string saveid, string savepwd, string Token, string MemLoginID) {
             ShopNum1_Member_Action member_Action = (ShopNum1_Member_Action)ShopNum1.Factory.LogicFactory.CreateShopNum1_Member_Action();
             GZMessage message = new GZMessage();
             string TokenPuzzle = ShopNum1.Encryption.DESEncrypt.M_Decrypt(KceApiHelper.FormatParam(Token));
@@ -347,7 +422,7 @@ namespace ShopNum1.Deploy.KCESservice
             string ReturnValue = KceApiHelper.UserAuthentication(tValues[0], tValues[1], tValues[2]);
             if (ReturnValue == "1" && tValues[0].ToUpper() == MemLoginID.ToUpper())
             {
-                string savecode = Guid.NewGuid().ToString().ToLower();
+                //string savecode = Guid.NewGuid().ToString().ToLower();
 
 
 
@@ -355,6 +430,7 @@ namespace ShopNum1.Deploy.KCESservice
 
                 bool isjys = false;//是否是交易所id
                 string saveurl = "";
+                string savecode = "";
                 string ssss = WHJGet("www.baid.com?savecode=" + savecode + "&saveid=" + saveid+"&MemLoginID");
                 try
                 {
@@ -362,6 +438,7 @@ namespace ShopNum1.Deploy.KCESservice
                 }
                 catch (Exception)
                 {
+
                 }
 
                 #endregion
