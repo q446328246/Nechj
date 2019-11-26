@@ -130,8 +130,9 @@ namespace ShopNum1.Deploy.KCESservice
             parameters.Add("mobile", "15523599052");
          
 
-            string sgin = GetSignature(parameters, secret);
-            api += "&sgin=" + sgin;
+            string sign = GetSignature(parameters, secret);
+     
+            api += "&sign=" + sign;
             string ssss = WHJGet(api);
 
         }
