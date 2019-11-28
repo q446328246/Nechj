@@ -23,6 +23,7 @@ using ShopNum1.Standard;
 using ShopNum1.Email;
 using System.Resources;
 using System.Security.Cryptography;
+using System.Configuration;
 
 namespace ShopNum1.Deploy.KCELogic
 {
@@ -73,7 +74,22 @@ namespace ShopNum1.Deploy.KCELogic
             postCan += "&phone=" + phone;
             postCan += "&keytoken=" + RJiaMi(MemLoginID);
             postCan += "&rentype=" + RenType;
-            string fhone = GET("http://localhost:45666/app/index.php?i=3&c=entry&m=ewei_shopv2&do=mobile&r=index.renrenchongzhi"+postCan);
+
+
+            bool IsWHJDebug = false;
+            try
+            {
+                IsWHJDebug = ConfigurationManager.AppSettings["IsWHJDebug"] == "1" ? true : false;
+            }
+            catch (Exception)
+            {
+
+            }
+
+            string apiiiii = IsWHJDebug ? "http://wz.batj.club/app/index.php?i=8&c=entry&m=ewei_shopv2&do=mobile&r=index.renrenchongzhi" : "http://localhost:45666/app/index.php?i=3&c=entry&m=ewei_shopv2&do=mobile&r=index.renrenchongzhi";
+
+
+            string fhone = GET(apiiiii + postCan);
             //string fhone = GET("http://wz.batj.club/app/index.php?i=8&c=entry&m=ewei_shopv2&do=mobile&r=index.renrenchongzhi" + postCan);
             //http://wz.batj.club/app/index.php?i=8&c=entry&m=ewei_shopv2&do=mobile&r=member.rank
             try

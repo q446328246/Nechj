@@ -24,11 +24,29 @@ using System.Web.Script.Serialization;
 namespace ShopNum1.Deploy.KCESservice
 {
 
+   
 
 
 
-
-
+    public class WHJRoot
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        public int code { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string msg { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public int time { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public object data { get; set; }
+    }
 
     public class SaveInfo {
         public int issave { get; set; }
@@ -42,6 +60,11 @@ namespace ShopNum1.Deploy.KCESservice
 
 
         public string saveid { get; set; }
+
+        public string saveurl { get; set; }
+
+
+        
     }
 
 
@@ -115,26 +138,47 @@ namespace ShopNum1.Deploy.KCESservice
 
         [WebMethod]
         public string WHJTes() {
+            bool IsWHJDebug = false;
+            try
+            {
+                IsWHJDebug = ConfigurationManager.AppSettings["IsWHJDebug"] == "1" ? true : false;
+            }
+            catch (Exception)
+            {
 
-            string api = "http://api.gmsq.vip";
+            }
+            string api = IsWHJDebug? "http://baidu.com" : "http://api.gmsq.vip";
+
             string secret = "LVAcff-gyZN-5CzD5h_aSijNOBaRAlet2q_TwLufjRpa2H4bp1u-QnOI3ef5bxav";
             IDictionary<string, string> parameters = new Dictionary<string, string>();
-
             api += "?appid=1";
             api += "&symbol=zqex.redemption.check_bind";
             api += "&mobile=15523599052";
-           
-
+            api += "&password=123456";
             parameters.Add("appid", "1");
             parameters.Add("symbol", "zqex.redemption.check_bind");
             parameters.Add("mobile", "15523599052");
-         
-
+            parameters.Add("password", "123456");
             string sign = GetSignature(parameters, secret);
-     
             api += "&sign=" + sign;
-            string ssss = WHJGet(api);
-            return ssss;
+            string res =string.Empty;
+            try
+            {
+                string ssss = WHJGet(api);
+                WHJRoot wr = StringHelper.Deserialize<WHJRoot>(ssss);
+                if (wr.code == 0) {
+                    string data=wr.data.Serialize();
+                    //成功
+                    res = wr.msg;
+                }
+            }
+            catch (Exception)
+            {
+
+               
+            }
+
+            return res;
         }
 
 
@@ -177,7 +221,6 @@ namespace ShopNum1.Deploy.KCESservice
                     builder.Append(hashmessage[i].ToString("x2"));
                 }
                 return builder.ToString();
-
             }
         }
 
@@ -366,6 +409,7 @@ namespace ShopNum1.Deploy.KCESservice
                 decimal Score_pv_a = decimal.Parse(dt.Rows[0]["Score_pv_a"].ToString());//用户冻结nec
                 decimal Score_dv = decimal.Parse(dt.Rows[0]["Score_dv"].ToString());//用户可用nec
                 string MyIIPassWord = dt.Rows[0]["PayPwd"].ToString();
+                string saveurl = dt.Rows[0]["saveurl"].ToString();
                 string saveid = dt.Rows[0]["saveid"].ToString();//交易所id
                 SaveInfo sss = new SaveInfo();
                 sss.issave = issave;
@@ -375,6 +419,7 @@ namespace ShopNum1.Deploy.KCESservice
                 sss.savedayuse = savedayuse;
                 sss.Score_pv_a = Score_pv_a;
                 sss.Score_dv = Score_dv;
+                sss.saveurl = saveurl;
                 object json = new
                 {
                     result = message.Result,
@@ -420,7 +465,7 @@ namespace ShopNum1.Deploy.KCESservice
             GZMessage message = new GZMessage();
             string TokenPuzzle = ShopNum1.Encryption.DESEncrypt.M_Decrypt(KceApiHelper.FormatParam(Token));
             string[] tValues = TokenPuzzle.Split('~');
-            string ReturnValue = KceApiHelper.UserAuthentication(tValues[0], tValues[1], tValues[2]);
+             string ReturnValue = KceApiHelper.UserAuthentication(tValues[0], tValues[1], tValues[2]);
             if (ReturnValue == "1" && tValues[0].ToUpper() == MemLoginID.ToUpper())
             {
                 //string savecode = Guid.NewGuid().ToString().ToLower();
@@ -432,39 +477,93 @@ namespace ShopNum1.Deploy.KCESservice
                 bool isjys = false;//是否是交易所id
                 string saveurl = "";
                 string savecode = "";
-                string ssss = WHJGet("www.baid.com?savecode=" + savecode + "&saveid=" + saveid+"&MemLoginID");
+
+
+
+
+                bool IsWHJDebug = false;
                 try
                 {
-
+                    IsWHJDebug = ConfigurationManager.AppSettings["IsWHJDebug"] == "1" ? true : false;
                 }
                 catch (Exception)
                 {
 
                 }
+                string api = IsWHJDebug ? "http://baidu.com" : "http://api.gmsq.vip";
+
+                string secret = "LVAcff-gyZN-5CzD5h_aSijNOBaRAlet2q_TwLufjRpa2H4bp1u-QnOI3ef5bxav";
+                IDictionary<string, string> parameters = new Dictionary<string, string>();
+                api += "?appid=1";
+                api += "&symbol=zqex.redemption.binguser";
+                api += "&mobile=15523599052";
+                api += "&password=123456";
+                parameters.Add("appid", "1");
+                parameters.Add("symbol", "zqex.redemption.binguser");
+                parameters.Add("mobile", "15523599052");
+                parameters.Add("password", "123456");
+                string sign = GetSignature(parameters, secret);
+                api += "&sign=" + sign;
+                string res = string.Empty;
+                try
+                {
+                    string ssss = WHJGet(api);
+                    WHJRoot wr = StringHelper.Deserialize<WHJRoot>(ssss);
+                    if (wr.code == 0)
+                    {
+                        string data = wr.data.Serialize();
+                        //成功
+                        res = wr.msg;
+                    }
+                }
+                catch (Exception)
+                {
+
+
+                }
+
+
+
+
+
+                if (isjys)
+                {
+                    int dt = member_Action.ApplySave(MemLoginID, saveid, savecode);
+                    if (dt == 1)
+                    {
+                        message.Result = 1;
+                        member_Action.AgreeSave(savecode, saveurl);
+                        message.Message = "申请成功";
+                    }
+                    else
+                    {
+                        message.Result = 0;
+                    }
+
+                    if (dt == -1)
+                    {
+                        message.Message = "该交易账户已绑定";
+                    }
+                    else
+                    {
+                        message.Message = "未知错误";
+                    }
+                }
+                else {
+                    message.Result = 0;
+                    message.Message = "不是交易所账户请检查后重新绑定";
+                }
+
+
+
+
 
                 #endregion
 
 
 
 
-                int dt = member_Action.ApplySave(MemLoginID, saveid, savecode);
-                if (dt == 1)
-                {
-                    message.Result = 1;
-                    member_Action.AgreeSave(savecode,saveurl);
-                    message.Message = "申请成功";
-                }
-                else {
-                    message.Result = 0;
-                }
-
-                if (dt == -1)
-                {
-                    message.Message = "该交易id已绑定";
-                }
-                else {
-                    message.Message = "未知错误";
-                }
+                
             }
             else
             {
@@ -756,7 +855,7 @@ namespace ShopNum1.Deploy.KCESservice
             return Message;
         }
 
-        //[WebMethod]
+      
         public void ChongzhiByZQ(string NECAddress, decimal NEC, string KeyToken)
         {
             string Message = string.Empty;
@@ -835,7 +934,7 @@ namespace ShopNum1.Deploy.KCESservice
             }
         }
 
-        [WebMethod]
+    
         public void TiBiZQList(string MemLoginID, string RenType = "1") {
             string Message = string.Empty;
             string Code = string.Empty;
@@ -3214,18 +3313,54 @@ namespace ShopNum1.Deploy.KCESservice
                             if (REtable.Rows.Count > 0)
                             {
                                 ShopNum1_Member_Action ShopNum1_Member_Action = (ShopNum1_Member_Action)LogicFactory.CreateShopNum1_Member_Action();
-
-                                DataTable ZJtable = ShopNum1_Member_Action.SearchMembertwo(MemLoginID);
-                                string code = ZJtable.Rows[0]["RecoCode"].ToString();
-                                DataTable Retable = ShopNum1_Member_Action.SearchMembertwo(ReMemLoginID);
-                                string Recode = Retable.Rows[0]["RecoCode"].ToString();
-
-
-                                DataTable TableRecode = ShopNum1_Member_Action.SearchMemverCountByRecod(ReMemLoginID, code);
-                                DataTable ReTableRecode = ShopNum1_Member_Action.SearchMemverCountByRecod(MemLoginID, Recode);
-
-                                if ((TableRecode != null && TableRecode.Rows.Count > 0) || (ReTableRecode != null && ReTableRecode.Rows.Count > 0))
+                                string IsOpenTransfer = ConfigurationManager.AppSettings["IsOpenTransfer"].ToString();//0关闭1链接2自由
+                                if (IsOpenTransfer == "0")
                                 {
+                                    message.Result = 0;
+                                    message.Code = "10001";
+                                    message.Message = "NEC转账暂时关闭";
+                                    Context.Response.Write(KceApiHelper.GetJSON<GZMessage>(message));
+                                    Context.Response.End();
+                                }
+                                else if (IsOpenTransfer == "1")
+                                {
+                                    DataTable ZJtable = ShopNum1_Member_Action.SearchMembertwo(MemLoginID);//用户自身
+
+                                    DataTable Retable = ShopNum1_Member_Action.SearchMembertwo(ReMemLoginID);//转账对方
+                                    string code = ZJtable.Rows[0]["RecoCode"].ToString();
+                                    string Recode = Retable.Rows[0]["RecoCode"].ToString();
+                                    DataTable TableRecode = ShopNum1_Member_Action.SearchMemverCountByRecod(ReMemLoginID, code);//链关系查询
+                                    DataTable ReTableRecode = ShopNum1_Member_Action.SearchMemverCountByRecod(MemLoginID, Recode);//链关系查询
+                                    #region 带链关系
+                                    if ((TableRecode != null && TableRecode.Rows.Count > 0) || (ReTableRecode != null && ReTableRecode.Rows.Count > 0))
+                                    {
+                                        Order order = new Order();
+                                        string OrderNumber = "NEC" + order.CreateOrderNumber();
+                                        member_Action.ZhuanZhangNECKou(MemLoginID, NEC, "转出" + RRmem);
+                                        member_Action.ZhuanZhangNECJia(RRmem, NEC, "转入" + MemLoginID);
+                                        member_Action.PreTransfer_GZ(OrderNumber, NEC.ToString(), "转出" + RRmem, MemLoginID, RRmem, "12");
+
+
+                                        message.Result = 1;
+                                        message.Code = "10000";
+                                        message.Message = Gz_LogicApi.GetString("MG000011");
+                                        Context.Response.Write(KceApiHelper.GetJSON<GZMessage>(message));
+
+                                        Context.Response.End();
+
+                                    }
+                                    else
+                                    {
+                                        message.Result = 0;
+                                        message.Code = "10001";
+                                        message.Message = Gz_LogicApi.GetString("MG000022");
+                                        Context.Response.Write(KceApiHelper.GetJSON<GZMessage>(message));
+
+                                        Context.Response.End();
+                                    }
+                                    #endregion
+                                }
+                                else if (IsOpenTransfer == "2") {
                                     Order order = new Order();
                                     string OrderNumber = "NEC" + order.CreateOrderNumber();
                                     member_Action.ZhuanZhangNECKou(MemLoginID, NEC, "转出" + RRmem);
@@ -3239,19 +3374,7 @@ namespace ShopNum1.Deploy.KCESservice
                                     Context.Response.Write(KceApiHelper.GetJSON<GZMessage>(message));
 
                                     Context.Response.End();
-
                                 }
-                                else
-                                {
-                                    message.Result = 0;
-                                    message.Code = "10001";
-                                    message.Message = Gz_LogicApi.GetString("MG000022");
-                                    Context.Response.Write(KceApiHelper.GetJSON<GZMessage>(message));
-
-                                    Context.Response.End();
-                                }
-
-
                             }
                             else
                             {
@@ -5015,7 +5138,7 @@ namespace ShopNum1.Deploy.KCESservice
                         }
 
                         DateTime dt = DateTime.Now.AddHours(24);
-                        string md5 = MemLoginID + "~" + PWD + "~" + dt;
+                        string md5 = MemLoginID + "~" + PWD + "~" + dt.ToString("yyyy-MM-dd HH:mm:ss");
 
                         //string test1 = ShopNum1.Encryption.DESEncrypt.M_Encrypt(md5);
                         //string test2 = ShopNum1.Encryption.DESEncrypt.M_Decrypt(test1);
@@ -5056,7 +5179,8 @@ namespace ShopNum1.Deploy.KCESservice
                     }
 
                     DateTime dt = DateTime.Now.AddHours(720);
-                    string md5 = MemLoginID + "~" + PWD + "~" + dt;
+
+                    string md5 = MemLoginID + "~" + PWD + "~" + dt.ToString("yyyy-MM-dd HH:mm:ss");
                     member_Action.UpdateMemberErrorNumGetNull(MemLoginID);
                     //string test1 = ShopNum1.Encryption.DESEncrypt.M_Encrypt(md5);
                     //string test2 = ShopNum1.Encryption.DESEncrypt.M_Decrypt(test1);
