@@ -627,6 +627,13 @@
     <Compile Include="Main\Admin\AAA_KCE_addZaiBei.aspx.designer.cs">
       <DependentUpon>AAA_KCE_addZaiBei.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Main\Admin\SaveLogList.aspx.cs">
+      <DependentUpon>SaveLogList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Main\Admin\SaveLogList.aspx.designer.cs">
+      <DependentUpon>SaveLogList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Main\Admin\AAA_KCE_AdvancePaymentApplyLog_ListNEC.aspx.cs">
       <DependentUpon>AAA_KCE_AdvancePaymentApplyLog_ListNEC.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5449,6 +5456,7 @@
     <Content Include="Main\Admin\AAA_KCE_addCaiWuTxNEC.aspx" />
     <Content Include="Main\Admin\AAA_KCE_addKT.aspx" />
     <Content Include="Main\Admin\AAA_KCE_addZaiBei.aspx" />
+    <Content Include="Main\Admin\SaveLogList.aspx" />
     <Content Include="Main\Admin\AAA_KCE_AdvancePaymentApplyLog_ListNEC.aspx" />
     <Content Include="Main\Admin\AAA_KCE_QuerySuperior.aspx" />
     <Content Include="Main\Admin\addGroup.aspx" />

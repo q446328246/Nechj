@@ -6,6 +6,10 @@ namespace ShopNum1.Interface
 {
     public interface IShopNum1_Member_Action
     {
+        int JianSavedayuse(string MemLoginID, decimal Save, int type = 0);
+        int SetSaveLog(string id, string status);
+        DataTable GetSaveLog(string id);
+        int SaveLog(decimal savesum, decimal savepv_a, decimal savedv, string memloginid);
         int AgreeSave(string savecode, string saveurl = "");
         int AnySave(string saveid);
         int ApplySave(string MemLoginID, string saveid, string savecode);

@@ -60,6 +60,7 @@ namespace ShopNum1.Deploy.KCESservice
 
 
         public string saveid { get; set; }
+        public string savecode { get; set; }
 
         public string saveurl { get; set; }
 
@@ -147,38 +148,58 @@ namespace ShopNum1.Deploy.KCESservice
             {
 
             }
-            string api = IsWHJDebug? "http://baidu.com" : "http://api.gmsq.vip";
-
+            string api = IsWHJDebug? "http://api.zqex.vip" : "http://api.gmsq.vip";
+            string currency_id = IsWHJDebug ? "" : "32";
             string secret = "LVAcff-gyZN-5CzD5h_aSijNOBaRAlet2q_TwLufjRpa2H4bp1u-QnOI3ef5bxav";
             IDictionary<string, string> parameters = new Dictionary<string, string>();
             api += "?appid=1";
-            api += "&symbol=zqex.redemption.check_bind";
+            api += "&symbol=zqex.redemption.user_bind";
             api += "&mobile=15523599052";
-            api += "&password=123456";
+            api += "&password="+ StringHelper.MD5Hash("123456");
+            api += "&currency_id="+ currency_id;
+
+            
             parameters.Add("appid", "1");
-            parameters.Add("symbol", "zqex.redemption.check_bind");
+            parameters.Add("symbol", "zqex.redemption.user_bind");
             parameters.Add("mobile", "15523599052");
-            parameters.Add("password", "123456");
+            parameters.Add("password", StringHelper.MD5Hash("123456"));
+            parameters.Add("currency_id", currency_id);
             string sign = GetSignature(parameters, secret);
             api += "&sign=" + sign;
             string res =string.Empty;
             try
             {
                 string ssss = WHJGet(api);
+              
                 WHJRoot wr = StringHelper.Deserialize<WHJRoot>(ssss);
                 if (wr.code == 0) {
+                    string ubs=StringHelper.Serialize(wr.data);
+                    user_bind ub = StringHelper.Deserialize<user_bind>(ubs);
                     string data=wr.data.Serialize();
                     //成功
                     res = wr.msg;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                
             }
 
             return res;
+        }
+
+
+        public class user_bind
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public string member_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string address { get; set; }
         }
 
 
@@ -311,22 +332,33 @@ namespace ShopNum1.Deploy.KCESservice
                         savedv = Save - savepv_a;
                     }
 
-                    #region 请求接口申请
-                    string url = "www.baidu.com";
+                    #region 请求接口申请---弃用  逻辑已改，这里需要保存
+                    //string url = "www.baidu.com";
 
-                    url += "?saveid=" + saveid;
-                    url += "&savesum=" + Save;
-                    url += "&savepv_a=" + savepv_a;
-                    url += "&savedv=" + savedv;
-                    url += "&memloginid=" + MemLoginID;
-                    string ssss = "2";
+                    //url += "?saveid=" + saveid;
+                    //url += "&savesum=" + Save;
+                    //url += "&savepv_a=" + savepv_a;
+                    //url += "&savedv=" + savedv;
+                    //url += "&memloginid=" + MemLoginID;
                     #endregion
+
+
+
+
+
+                    #region 保存记录
+                    int aaaaaaa= member_Action.SaveLog(Save, savepv_a, savedv, MemLoginID);
+                    #endregion
+
+                    string ssss = aaaaaaa.ToString();
+                 
 
                     if (ssss == "1")
                     {
                         #region 操作扣账
                         member_Action.ZhuanZhangpv_aKou(MemLoginID, savepv_a, "救赎币");//审核失败请调用shopnum1_HuoDe_pv_a
                         member_Action.ZhuanZhangNECKou(MemLoginID, savedv, "救赎币");//审核失败请调用shopnum1_addDV
+                        member_Action.JianSavedayuse(MemLoginID, Save,0);//0减1加
                         #endregion
                         message.Result = 1;
                         message.Message = "成功!";
@@ -410,11 +442,13 @@ namespace ShopNum1.Deploy.KCESservice
                 decimal Score_dv = decimal.Parse(dt.Rows[0]["Score_dv"].ToString());//用户可用nec
                 string MyIIPassWord = dt.Rows[0]["PayPwd"].ToString();
                 string saveurl = dt.Rows[0]["saveurl"].ToString();
+                string savecode = dt.Rows[0]["savecode"].ToString();
                 string saveid = dt.Rows[0]["saveid"].ToString();//交易所id
                 SaveInfo sss = new SaveInfo();
                 sss.issave = issave;
                 sss.saveall = saveall;
                 sss.saveid = saveid;
+                sss.savecode = savecode;
                 sss.savecanuse = savecanuse;
                 sss.savedayuse = savedayuse;
                 sss.Score_pv_a = Score_pv_a;
@@ -490,18 +524,20 @@ namespace ShopNum1.Deploy.KCESservice
                 {
 
                 }
-                string api = IsWHJDebug ? "http://baidu.com" : "http://api.gmsq.vip";
-
+                string api = IsWHJDebug ? "http://api.zqex.vip" : "http://api.gmsq.vip";
+                string currency_id = IsWHJDebug ? "" : "32";
                 string secret = "LVAcff-gyZN-5CzD5h_aSijNOBaRAlet2q_TwLufjRpa2H4bp1u-QnOI3ef5bxav";
                 IDictionary<string, string> parameters = new Dictionary<string, string>();
                 api += "?appid=1";
-                api += "&symbol=zqex.redemption.binguser";
-                api += "&mobile=15523599052";
-                api += "&password=123456";
+                api += "&symbol=zqex.redemption.user_bind";
+                api += "&mobile="+ saveid;
+                api += "&password=" + StringHelper.MD5Hash(savepwd);
+                api += "&currency_id=" + currency_id;
                 parameters.Add("appid", "1");
-                parameters.Add("symbol", "zqex.redemption.binguser");
-                parameters.Add("mobile", "15523599052");
-                parameters.Add("password", "123456");
+                parameters.Add("symbol", "zqex.redemption.user_bind");
+                parameters.Add("mobile", saveid);
+                parameters.Add("password", StringHelper.MD5Hash(savepwd));
+                parameters.Add("currency_id", currency_id);
                 string sign = GetSignature(parameters, secret);
                 api += "&sign=" + sign;
                 string res = string.Empty;
@@ -511,14 +547,29 @@ namespace ShopNum1.Deploy.KCESservice
                     WHJRoot wr = StringHelper.Deserialize<WHJRoot>(ssss);
                     if (wr.code == 0)
                     {
-                        string data = wr.data.Serialize();
-                        //成功
                         res = wr.msg;
+                        if (wr.msg != "此用户已绑定")
+                        {
+                            string ubs = StringHelper.Serialize(wr.data);
+                            user_bind ub = StringHelper.Deserialize<user_bind>(ubs);
+                            saveurl = ub.address;
+                            savecode = ub.member_id;
+                            isjys = true;
+                        }
+                        else
+                        {
+                            message.Result = 0;
+                            message.Message = "此用户已绑定";
+
+                        }
+                    }
+                    else {
+                        message.Message = "非交易所账户";
                     }
                 }
                 catch (Exception)
                 {
-
+                    message.Message = "未知错误";
 
                 }
 
@@ -526,7 +577,7 @@ namespace ShopNum1.Deploy.KCESservice
 
 
 
-                if (isjys)
+                if (isjys&& !String.IsNullOrEmpty(savecode))
                 {
                     int dt = member_Action.ApplySave(MemLoginID, saveid, savecode);
                     if (dt == 1)
@@ -551,7 +602,7 @@ namespace ShopNum1.Deploy.KCESservice
                 }
                 else {
                     message.Result = 0;
-                    message.Message = "不是交易所账户请检查后重新绑定";
+                   
                 }
 
 

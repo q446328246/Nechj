@@ -11,6 +11,15 @@ namespace ShopNum1.BusinessLogic
 {
     public class ShopNum1_AdvancePaymentApplyLog_Action : IShopNum1_AdvancePaymentApplyLog_Action
     {
+
+
+
+
+       
+
+
+
+
         public int ApplyOperateMoneyDecrease(ShopNum1_AdvancePaymentApplyLog advancePaymentApplyLog, ShopNum1_AdvancePaymentModifyLog advancePaymentModifyLog, int IsDecrease)
         {
             var paraName = new string[13];
@@ -317,6 +326,54 @@ namespace ShopNum1.BusinessLogic
             }
             return DatabaseExcetue.ReturnDataTable(str + "ORDER BY  sa.Date Desc");
         }
+
+
+
+
+        public DataTable SearchSaveLog(string memLoginID, string date1, string date2, int operateStatus)
+        {
+            string str = string.Empty;
+            str = "select * from savelog where 1=1";
+
+
+          
+            if (operateStatus != -1)
+            {
+                str = str + " AND status=" + operateStatus;
+            }
+            if (Operator.FormatToEmpty(date1) != string.Empty)
+            {
+                str = str + " AND (time>='" + Operator.FilterString(date1) + "' ";
+                if (Operator.FormatToEmpty(date2) != string.Empty)
+                {
+                    str = str + " or time<='" + Operator.FilterString(date2) + "' ";
+                }
+                str += ")";
+            }
+            if (Operator.FormatToEmpty(date2) != string.Empty)
+            {
+                str = str + " AND time<='" + Operator.FilterString(date2) + "' ";
+            }
+            DataTable dt = DatabaseExcetue.ReturnDataTable(str + "ORDER BY  time Desc");
+            return dt;
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         /// <summary>
         /// 查询金币（BV）操作日志（导出）
@@ -1157,5 +1214,7 @@ int operateStatus, int isDeleted)
             return DatabaseExcetue.RunProcedure("Pro_Identification_Push_Member", paraName, paraValue);
 
         }
+
+       
     }
 }

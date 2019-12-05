@@ -15,6 +15,12 @@ namespace ShopNum1.Interface
         DataTable Search(string memLoginID, string date1, string date2, int operateType, int operateStatus,
             int isDeleted);
 
+
+        DataTable SearchSaveLog(string memLoginID, string date1, string date2, int operateStatus);
+
+
+
+
         DataTable SelectAdvPayment_List(CommonPageModel commonModel);
 
         DataTable SelectOperateMoney(string memberid, string operatetype, string datetime1, string datetime2,

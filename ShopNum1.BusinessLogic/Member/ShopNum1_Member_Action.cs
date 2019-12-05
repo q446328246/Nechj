@@ -14,6 +14,75 @@ namespace ShopNum1.BusinessLogic
 
     public class ShopNum1_Member_Action : IShopNum1_Member_Action
     {
+        public int JianSavedayuse(string MemLoginID, decimal Save,int type=0) {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(2);
+
+            parms[0].ParameterName = "@MemLoginID";
+            parms[0].Value = MemLoginID;
+            parms[1].ParameterName = "@savedayuse";
+            parms[1].Value = Save;
+
+            if (type == 0) {
+                string sql = "update ShopNum1_Member set savedayuse=savedayuse-@savedayuse where MemLoginID=@MemLoginID";
+                return DatabaseExcetue.RunNonQuery(sql, parms);
+            }
+            else{
+                string sql = "update ShopNum1_Member set savedayuse=savedayuse+@savedayuse where MemLoginID=@MemLoginID";
+                return DatabaseExcetue.RunNonQuery(sql, parms);
+            }
+           
+        }
+        public int SetSaveLog(string id, string status) {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(2);
+
+            parms[0].ParameterName = "@id";
+            parms[0].Value = int.Parse(id);
+            parms[1].ParameterName = "@status";
+            parms[1].Value = int.Parse(status);
+
+            string sql = "update savelog set status=@status,time=(getdate()) where id=@id";
+            return DatabaseExcetue.RunNonQuery(sql, parms);
+        }
+
+
+        public int SaveLog(decimal savesum, decimal savepv_a, decimal savedv, string memloginid) {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(4);
+
+            parms[0].ParameterName = "@memloginid";
+            parms[0].Value = memloginid;
+            parms[1].ParameterName = "@savesum";
+            parms[1].Value = savesum;
+            parms[2].ParameterName = "@savepv_a";
+            parms[2].Value = savepv_a;
+            parms[3].ParameterName = "@savedv";
+            parms[3].Value = savedv;
+            string sql = "INSERT INTO savelog (memloginid,savesum,savepv_a,savedv) VALUES (@memloginid,@savesum,@savepv_a,@savedv)";
+            return DatabaseExcetue.RunNonQuery(sql, parms);
+
+        }
+        public DataTable GetSaveLog(string id)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+
+            parms[0].ParameterName = "@id";
+            parms[0].Value = int.Parse(id);
+
+            string sql = "select a.*,m.saveurl,m.savecode from savelog a left join ShopNum1_Member m on a.memloginid=m.MemLoginID where a.id=@id";
+            return DatabaseExcetue.ReturnDataTable(sql, parms);
+        }
+
+
+        
+
+
+        //url += "?saveid=" + saveid;
+        //url += "&savesum=" + Save;
+        //url += "&savepv_a=" + savepv_a;
+        //url += "&savedv=" + savedv;
+        //url += "&memloginid=" + MemLoginID;
+
+
+
         public int AgreeSave(string savecode,string saveurl="")
         {
             if (saveurl == "")
@@ -1224,7 +1293,7 @@ namespace ShopNum1.BusinessLogic
             parms[1].ParameterName = "@pwd";
             parms[1].Value = pwd;
             return
-                DatabaseExcetue.ReturnDataTable("SELECT  a.IsNoSell,IsBusiness,IsBusiness,a.MemberCate,b.Name as RankName,a.[Guid],[MemLoginID],[MemLoginNO],[Email],[Score],[RegeDate],[LastLoginIP],[LoginTime],PayPwd,[AdvancePayment],[LockAdvancePayment],ETHAddress,case PersonCate when 0 then '普通社区'  when 1 then '节点社区'  when 2 then '集群社区' when 3 then '超级社区' when 4 then '特级社区' else '错误' end as PersonCate,[LockSocre],[CostMoney],a.[IsDeleted],[LastLoginDate],[IdentityCard],[RealName],[AlipayNumber],[IdentityCardBackImg],[IdentityCardImg],[IdentificationIsAudit],[IdentificationTime],[AuditFailedReason],[IsMailActivation],[IsMobileActivation],[Sex],a.[CreateUser],[Status],[TradeCount],[RankScore],[CreditMoney],[PromotionMemLoginID],YesterdayAllBonus,[WebSite],[Msn],[QQ],[Fax],[Postalcode],[Address],[Vocation],[Area],[Photo],[Birthday],[RegDate],[Answer],[Question],[Mobile],a.[Name],[MemberType],[IsForbid],[LoginDate],[Tel],[AddressCode],[AddressValue],[MemberRank],a.[CreateTime],a.[ModifyUser],a.[ModifyTime],[TActiveTime],[MActiveTime],[IsEmailActivation],[MemberRankGuid],[DistributorId],[Score_bv],[Score_dv],[Score_pv_b],ZaiBi,[Score_pv_a],[Score_hv],[Score_sv],[Score_rv],[Score_cv],[Score_max_hv],[Score_pv_cv],[Score_record _pv_a],ShopBili,RecoMember,[ShopNames],[ETHAddress],[NECAddress],membership_Level,IsMobileRegister,ErrorNum,ErrorTime,IsProtecion,Is520Member,Superior FROM ShopNum1_Member as a left join ShopNum1_MemberRank as b on a.MemberRankGuid=b.Guid WHERE ( MemLoginID=@memloginID or  Mobile=@memloginID) and Pwd=@pwd", parms);
+                DatabaseExcetue.ReturnDataTable("SELECT  a.IsNoSell,IsBusiness,a.MemberCate,b.Name as RankName,a.[Guid],[MemLoginID],[MemLoginNO],[Email],[Score],[RegeDate],[LastLoginIP],[LoginTime],PayPwd,[AdvancePayment],[LockAdvancePayment],ETHAddress,case PersonCate when 0 then '普通社区'  when 1 then '节点社区'  when 2 then '集群社区' when 3 then '超级社区' when 4 then '特级社区' else '错误' end as PersonCate,[LockSocre],[CostMoney],a.[IsDeleted],[LastLoginDate],[IdentityCard],[RealName],[AlipayNumber],[IdentityCardBackImg],[IdentityCardImg],[IdentificationIsAudit],[IdentificationTime],[AuditFailedReason],[IsMailActivation],[IsMobileActivation],[Sex],a.[CreateUser],[Status],[TradeCount],[RankScore],[CreditMoney],[PromotionMemLoginID],YesterdayAllBonus,[WebSite],[Msn],[QQ],[Fax],[Postalcode],[Address],[Vocation],[Area],[Photo],[Birthday],[RegDate],[Answer],[Question],[Mobile],a.[Name],[MemberType],[IsForbid],[LoginDate],[Tel],[AddressCode],[AddressValue],[MemberRank],a.[CreateTime],a.[ModifyUser],a.[ModifyTime],[TActiveTime],[MActiveTime],[IsEmailActivation],[MemberRankGuid],[DistributorId],[Score_bv],[Score_dv],[Score_pv_b],ZaiBi,[Score_pv_a],[Score_hv],[Score_sv],[Score_rv],[Score_cv],[Score_max_hv],[Score_pv_cv],[Score_record _pv_a],ShopBili,RecoMember,[ShopNames],[ETHAddress],[NECAddress],membership_Level,IsMobileRegister,ErrorNum,ErrorTime,IsProtecion,Is520Member,Superior FROM ShopNum1_Member as a left join ShopNum1_MemberRank as b on a.MemberRankGuid=b.Guid WHERE ( MemLoginID=@memloginID or  Mobile=@memloginID) and Pwd=@pwd", parms);
         }
 
         public DataTable GetALLMemberAllEnglish(string memloginID, string pwd)
@@ -1236,7 +1305,7 @@ namespace ShopNum1.BusinessLogic
             parms[1].ParameterName = "@pwd";
             parms[1].Value = pwd;
             return
-                DatabaseExcetue.ReturnDataTable("SELECT  a.IsNoSell,IsBusiness,IsBusiness,a.MemberCate,b.Name as RankName,a.[Guid],[MemLoginID],[MemLoginNO],[Email],[Score],[RegeDate],[LastLoginIP],[LoginTime],PayPwd,[AdvancePayment],[LockAdvancePayment],ETHAddress,case PersonCate when 0 then 'Ordinary community'  when 1 then 'Nodes in the community'  when 2 then 'Cluster community' when 3 then 'Super community' when 4 then 'Super community' else 'error ' end as PersonCate,[LockSocre],[CostMoney],a.[IsDeleted],[LastLoginDate],[IdentityCard],[RealName],[AlipayNumber],[IdentityCardBackImg],[IdentityCardImg],[IdentificationIsAudit],[IdentificationTime],[AuditFailedReason],[IsMailActivation],[IsMobileActivation],[Sex],a.[CreateUser],[Status],[TradeCount],[RankScore],[CreditMoney],[PromotionMemLoginID],YesterdayAllBonus,[WebSite],[Msn],[QQ],[Fax],[Postalcode],[Address],[Vocation],[Area],[Photo],[Birthday],[RegDate],[Answer],[Question],[Mobile],a.[Name],[MemberType],[IsForbid],[LoginDate],[Tel],[AddressCode],[AddressValue],[MemberRank],a.[CreateTime],a.[ModifyUser],a.[ModifyTime],[TActiveTime],[MActiveTime],[IsEmailActivation],[MemberRankGuid],[DistributorId],[Score_bv],[Score_dv],[Score_pv_b],ZaiBi,[Score_pv_a],[Score_hv],[Score_sv],[Score_rv],[Score_cv],[Score_max_hv],[Score_pv_cv],[Score_record _pv_a],ShopBili,RecoMember,[ShopNames],[ETHAddress],[NECAddress],membership_Level,IsMobileRegister,ErrorNum,ErrorTime,IsProtecion,Is520Member,Superior FROM ShopNum1_Member as a left join ShopNum1_MemberRank as b on a.MemberRankGuid=b.Guid WHERE ( MemLoginID=@memloginID or  Mobile=@memloginID) and Pwd=@pwd", parms);
+                DatabaseExcetue.ReturnDataTable("SELECT  a.IsNoSell,IsBusiness,a.MemberCate,b.Name as RankName,a.[Guid],[MemLoginID],[MemLoginNO],[Email],[Score],[RegeDate],[LastLoginIP],[LoginTime],PayPwd,[AdvancePayment],[LockAdvancePayment],ETHAddress,case PersonCate when 0 then 'Ordinary community'  when 1 then 'Nodes in the community'  when 2 then 'Cluster community' when 3 then 'Super community' when 4 then 'Super community' else 'error ' end as PersonCate,[LockSocre],[CostMoney],a.[IsDeleted],[LastLoginDate],[IdentityCard],[RealName],[AlipayNumber],[IdentityCardBackImg],[IdentityCardImg],[IdentificationIsAudit],[IdentificationTime],[AuditFailedReason],[IsMailActivation],[IsMobileActivation],[Sex],a.[CreateUser],[Status],[TradeCount],[RankScore],[CreditMoney],[PromotionMemLoginID],YesterdayAllBonus,[WebSite],[Msn],[QQ],[Fax],[Postalcode],[Address],[Vocation],[Area],[Photo],[Birthday],[RegDate],[Answer],[Question],[Mobile],a.[Name],[MemberType],[IsForbid],[LoginDate],[Tel],[AddressCode],[AddressValue],[MemberRank],a.[CreateTime],a.[ModifyUser],a.[ModifyTime],[TActiveTime],[MActiveTime],[IsEmailActivation],[MemberRankGuid],[DistributorId],[Score_bv],[Score_dv],[Score_pv_b],ZaiBi,[Score_pv_a],[Score_hv],[Score_sv],[Score_rv],[Score_cv],[Score_max_hv],[Score_pv_cv],[Score_record _pv_a],ShopBili,RecoMember,[ShopNames],[ETHAddress],[NECAddress],membership_Level,IsMobileRegister,ErrorNum,ErrorTime,IsProtecion,Is520Member,Superior FROM ShopNum1_Member as a left join ShopNum1_MemberRank as b on a.MemberRankGuid=b.Guid WHERE ( MemLoginID=@memloginID or  Mobile=@memloginID) and Pwd=@pwd", parms);
         }
 
 
@@ -1248,7 +1317,7 @@ namespace ShopNum1.BusinessLogic
             parms[0].Value = memloginID;
 
             return
-                DatabaseExcetue.ReturnDataTable("SELECT case device_no when ''  then 0 when null then 0 else 1 end isdevice_no, a.MemberCate,b.Name as RankName,a.[Guid],[MemLoginID],[MemLoginNO],[Email],[Score],[RegeDate],[LastLoginIP],[LoginTime],PayPwd,[AdvancePayment],[LockAdvancePayment],[LockSocre],[CostMoney],a.[IsDeleted],[LastLoginDate],[IdentityCard],[RealName],[AlipayNumber],[IdentityCardBackImg],[IdentityCardImg],case PersonCate  when 0 then '普通社区'    when 1 then '节点社区'  when 2 then '集群社区' when 3 then '超级社区' when 4 then '特级社区' else '错误' end as PersonCate,YesterdayAllBonus,[IdentificationIsAudit],[IdentificationTime],[AuditFailedReason],[IsMailActivation],[IsMobileActivation],[Sex],a.[CreateUser],[Status],[TradeCount],[RankScore],[CreditMoney],ETHAddress,[PromotionMemLoginID],[WebSite],[Msn],[QQ],[Fax],[Postalcode],[Address],[Vocation],[Area],[Photo],[Birthday],[RegDate],[Answer],[Question],[Mobile] ,[ETHAddress],[NECAddress],a.[Name],[MemberType],[IsForbid],[LoginDate],[Tel],[AddressCode],[AddressValue],[MemberRank],a.[CreateTime],a.[ModifyUser],a.[ModifyTime],[TActiveTime],[MActiveTime],[IsEmailActivation],[MemberRankGuid],[DistributorId],[Score_bv],[Score_dv],[Score_pv_b],ZaiBi,[Score_pv_a],[Score_hv],[Score_sv],[Score_rv],[Score_cv],[Score_max_hv],[Score_pv_cv],[Score_record _pv_a],ShopBili,RecoMember,[ShopNames],membership_Level,IsMobileRegister,ErrorNum,ErrorTime,IsProtecion,Is520Member,Superior FROM ShopNum1_Member as a left join ShopNum1_MemberRank as b on a.MemberRankGuid=b.Guid WHERE ( MemLoginID=@memloginID or  Mobile=@memloginID)", parms);
+                DatabaseExcetue.ReturnDataTable("SELECT case device_no when ''  then 0 when null then 0 else 1 end isdevice_no,IsBusiness, a.MemberCate,b.Name as RankName,a.[Guid],[MemLoginID],[MemLoginNO],[Email],[Score],[RegeDate],[LastLoginIP],[LoginTime],PayPwd,[AdvancePayment],[LockAdvancePayment],[LockSocre],[CostMoney],a.[IsDeleted],[LastLoginDate],[IdentityCard],[RealName],[AlipayNumber],[IdentityCardBackImg],[IdentityCardImg],case PersonCate  when 0 then '普通社区'    when 1 then '节点社区'  when 2 then '集群社区' when 3 then '超级社区' when 4 then '特级社区' else '错误' end as PersonCate,YesterdayAllBonus,[IdentificationIsAudit],[IdentificationTime],[AuditFailedReason],[IsMailActivation],[IsMobileActivation],[Sex],a.[CreateUser],[Status],[TradeCount],[RankScore],[CreditMoney],ETHAddress,[PromotionMemLoginID],[WebSite],[Msn],[QQ],[Fax],[Postalcode],[Address],[Vocation],[Area],[Photo],[Birthday],[RegDate],[Answer],[Question],[Mobile] ,[ETHAddress],[NECAddress],a.[Name],[MemberType],[IsForbid],[LoginDate],[Tel],[AddressCode],[AddressValue],[MemberRank],a.[CreateTime],a.[ModifyUser],a.[ModifyTime],[TActiveTime],[MActiveTime],[IsEmailActivation],[MemberRankGuid],[DistributorId],[Score_bv],[Score_dv],[Score_pv_b],ZaiBi,[Score_pv_a],[Score_hv],[Score_sv],[Score_rv],[Score_cv],[Score_max_hv],[Score_pv_cv],[Score_record _pv_a],ShopBili,RecoMember,[ShopNames],membership_Level,IsMobileRegister,ErrorNum,ErrorTime,IsProtecion,Is520Member,Superior FROM ShopNum1_Member as a left join ShopNum1_MemberRank as b on a.MemberRankGuid=b.Guid WHERE ( MemLoginID=@memloginID or  Mobile=@memloginID)", parms);
         }
 
 

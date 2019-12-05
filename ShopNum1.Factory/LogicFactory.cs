@@ -53,6 +53,7 @@ namespace ShopNum1.Factory
             return (IShopNum1_Address_Action) Assembly.Load("ShopNum1.BusinessLogic").CreateInstance(typeName);
         }
 
+
         public static IShopNum1_AdvancePaymentApplyLog_Action CreateShopNum1_AdvancePaymentApplyLog_Action()
         {
             string typeName = BusinessLogic + ".ShopNum1_AdvancePaymentApplyLog_Action";
