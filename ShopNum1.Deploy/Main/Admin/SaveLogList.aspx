@@ -169,6 +169,12 @@
                           <asp:BoundField DataField="savedv" HeaderText="消耗可用nec币">
                             <ItemStyle HorizontalAlign="Center" />
                         </asp:BoundField>
+                           <asp:TemplateField HeaderText="状态" SortExpression="status">
+                            <ItemTemplate>
+                                <asp:Label ID="Label2" runat="server" Text='<%# NECChangeOperateStatus(DataBinder.Eval(Container, "DataItem(status)", "{0}")) %>'></asp:Label>
+                            </ItemTemplate>
+                            <ItemStyle HorizontalAlign="Center" />
+                        </asp:TemplateField>
 
                      <%--   <asp:BoundField DataField="NECAddress" HeaderText="提现地址" SortExpression="NECAddress">
                             <ItemStyle HorizontalAlign="Center" />

@@ -70,9 +70,19 @@ namespace ShopNum1.BusinessLogic
             string sql = "select a.*,m.saveurl,m.savecode from savelog a left join ShopNum1_Member m on a.memloginid=m.MemLoginID where a.id=@id";
             return DatabaseExcetue.ReturnDataTable(sql, parms);
         }
+        public DataTable GetSaveLogList(string memloginid)
+        {
+            DbParameter[] parms = DatabaseExcetue.CreateParameter(1);
+
+            parms[0].ParameterName = "@memloginid";
+            parms[0].Value = memloginid;
+
+            string sql = "select a.*,m.saveurl,m.savecode from savelog a left join ShopNum1_Member m on a.memloginid=m.MemLoginID where a.memloginid=@memloginid order by a.time desc";
+            return DatabaseExcetue.ReturnDataTable(sql, parms);
+        }
 
 
-        
+
 
 
         //url += "?saveid=" + saveid;

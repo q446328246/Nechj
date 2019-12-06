@@ -6,6 +6,7 @@ namespace ShopNum1.Interface
 {
     public interface IShopNum1_Member_Action
     {
+        DataTable GetSaveLogList(string memloginid);
         int JianSavedayuse(string MemLoginID, decimal Save, int type = 0);
         int SetSaveLog(string id, string status);
         DataTable GetSaveLog(string id);

@@ -393,7 +393,7 @@ namespace ShopNum1.Deploy.KCESservice
             object whjjson = new
             {
                 result = message.Result,
-                code = message.Code,
+                //code = message.Code,
                 data = message.Data,
                 message = message.Message,
             };
@@ -410,9 +410,63 @@ namespace ShopNum1.Deploy.KCESservice
 
         }
 
-    
+        [WebMethod]
+        public void GetSaveLogList(string Token, string MemLoginID)
+        {
+            ShopNum1_Member_Action member_Action = (ShopNum1_Member_Action)ShopNum1.Factory.LogicFactory.CreateShopNum1_Member_Action();
+            GZMessage message = new GZMessage();
+            string TokenPuzzle = ShopNum1.Encryption.DESEncrypt.M_Decrypt(KceApiHelper.FormatParam(Token));
+            string[] tValues = TokenPuzzle.Split('~');
+            string ReturnValue = KceApiHelper.UserAuthentication(tValues[0], tValues[1], tValues[2]);
+            if (ReturnValue == "1" && tValues[0].ToUpper() == MemLoginID.ToUpper())
+            {
+                DataTable dt = member_Action.GetSaveLogList(MemLoginID);
+                message.Data = dt;
+                message.Result = 1;
+                message.Code = "10086";
+                message.Message = "成功";
 
-    
+             
+                object json = new
+                {
+                    result = message.Result,
+                    data = dt,
+                };
+                Context.Response.Write(StringHelper.Serialize(json));
+                Context.Response.End();
+                return;
+
+            }
+            else
+            {
+                if (ReturnValue == "0")
+                {
+                    message.Result = 0;
+                    message.Code = "10086";
+                    message.Message = Gz_LogicApi.GetString("MG000012");
+                }
+                else if (ReturnValue == "2")
+                {
+                    message.Result = 0;
+                    message.Code = "10086";
+                    message.Message = Gz_LogicApi.GetString("MG000016");
+                }
+            }
+            object whjjson = new
+            {
+                result = message.Result,
+                code = message.Code,
+                data = message.Data,
+                message = message.Message,
+            };
+
+
+
+
+            Context.Response.Write(StringHelper.Serialize(whjjson));
+            Context.Response.End();
+        }
+
 
 
         [WebMethod]

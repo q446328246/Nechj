@@ -335,6 +335,9 @@ namespace ShopNum1.BusinessLogic
             string str = string.Empty;
             str = "select * from savelog where 1=1";
 
+            if (!string.IsNullOrEmpty(memLoginID)) {
+                str = str + " AND memloginid like '%" + memLoginID + "%'";
+            }
 
           
             if (operateStatus != -1)

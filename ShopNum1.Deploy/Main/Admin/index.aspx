@@ -829,6 +829,7 @@
                                     <li><a class="current" onclick=" changeIfam('AAA_KCE_addCaiWuTx.aspx', this); LeftSubExpansion(378, 1, this);javascript:shopnum1.Tool.LoadMask.show(); ">财务ETH币提现</a></li>
                                     <li><a class="current" onclick=" changeIfam('AAA_KCE_AdvancePaymentApplyLog_ListNEC.aspx', this); LeftSubExpansion(379, 1, this);javascript:shopnum1.Tool.LoadMask.show(); ">提现NEC币管理</a></li>
                                     <li><a class="current" onclick=" changeIfam('AAA_KCE_addCaiWuTxNEC.aspx', this); LeftSubExpansion(380, 1, this);javascript:shopnum1.Tool.LoadMask.show(); ">财务NEC币提现</a></li>
+                                     <li><a class="current" onclick=" changeIfam('SaveLogList.aspx', this); LeftSubExpansion(381, 1, this);javascript:shopnum1.Tool.LoadMask.show(); ">提现救赎币管理</a></li>
                                 </ul>
                             </div>
                         </div>
