@@ -599,6 +599,7 @@ namespace ShopNum1.Deploy.KCESservice
                 {
                     string ssss = WHJGet(api);
                     WHJRoot wr = StringHelper.Deserialize<WHJRoot>(ssss);
+                  
                     if (wr.code == 0)
                     {
                         res = wr.msg;
@@ -627,34 +628,15 @@ namespace ShopNum1.Deploy.KCESservice
                         }
                     }
                     else {
-                        message.Message = "非交易所账户或账户密码不正确";
-                        object whjjsons = new
-                        {
-                            result = message.Result,
-                            code = message.Code,
-                            data = message.Data,
-                            message = message.Message,
-                        };
-                        Context.Response.Write(StringHelper.Serialize(whjjsons));
-                        Context.Response.End();
-                        return;
+                        message.Result = 1;
+                        res = wr.msg;
+                        message.Message = res;
                     }
                 }
                 catch (Exception)
                 {
                     message.Result = 0;
                     message.Message = "未知错误";
-                    object whjjsonsa = new
-                    {
-                        result = message.Result,
-                        code = message.Code,
-                        data = message.Data,
-                        message = message.Message,
-                    };
-                    Context.Response.Write(StringHelper.Serialize(whjjsonsa));
-                    Context.Response.End();
-                    return;
-
                 }
 
 
@@ -680,15 +662,6 @@ namespace ShopNum1.Deploy.KCESservice
                         message.Message = "未知错误";
                     }
                 }
-                else {
-                    message.Result = 0;
-                    message.Message = "未知错误";
-
-                }
-
-
-
-
 
                 #endregion
 
