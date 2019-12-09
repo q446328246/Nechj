@@ -614,16 +614,46 @@ namespace ShopNum1.Deploy.KCESservice
                         {
                             message.Result = 0;
                             message.Message = "此用户已绑定";
-
+                            object whjjsons = new
+                            {
+                                result = message.Result,
+                                code = message.Code,
+                                data = message.Data,
+                                message = message.Message,
+                            };
+                            Context.Response.Write(StringHelper.Serialize(whjjsons));
+                            Context.Response.End();
+                            return;
                         }
                     }
                     else {
-                        message.Message = "非交易所账户";
+                        message.Message = "非交易所账户或账户密码不正确";
+                        object whjjsons = new
+                        {
+                            result = message.Result,
+                            code = message.Code,
+                            data = message.Data,
+                            message = message.Message,
+                        };
+                        Context.Response.Write(StringHelper.Serialize(whjjsons));
+                        Context.Response.End();
+                        return;
                     }
                 }
                 catch (Exception)
                 {
+                    message.Result = 0;
                     message.Message = "未知错误";
+                    object whjjsonsa = new
+                    {
+                        result = message.Result,
+                        code = message.Code,
+                        data = message.Data,
+                        message = message.Message,
+                    };
+                    Context.Response.Write(StringHelper.Serialize(whjjsonsa));
+                    Context.Response.End();
+                    return;
 
                 }
 
@@ -640,23 +670,20 @@ namespace ShopNum1.Deploy.KCESservice
                         member_Action.AgreeSave(savecode, saveurl);
                         message.Message = "申请成功";
                     }
-                    else
+                    else if (dt == -1)
                     {
                         message.Result = 0;
-                    }
-
-                    if (dt == -1)
-                    {
                         message.Message = "该交易账户已绑定";
                     }
-                    else
-                    {
+                    else {
+                        message.Result = 0;
                         message.Message = "未知错误";
                     }
                 }
                 else {
                     message.Result = 0;
-                   
+                    message.Message = "未知错误";
+
                 }
 
 
