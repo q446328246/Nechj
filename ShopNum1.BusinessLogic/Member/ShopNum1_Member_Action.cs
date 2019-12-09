@@ -169,8 +169,18 @@ namespace ShopNum1.BusinessLogic
     }
 
 
+        public DataTable GetSaveSet()
+        {
+            string strSql = string.Empty;
+            strSql =
+                "SELECT *  FROM saveset";
 
-    public bool SelectInShouYi(string MemLoginID)
+            return DatabaseExcetue.ReturnDataTable(strSql);
+        }
+
+
+
+        public bool SelectInShouYi(string MemLoginID)
         {
             try
             {

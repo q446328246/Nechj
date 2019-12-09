@@ -49,6 +49,11 @@ namespace ShopNum1.Deploy.KCESservice
     }
 
     public class SaveInfo {
+
+        public string saveset2 { get; set; }
+        public string saveset1 { get; set; }
+
+
         public int issave { get; set; }
 
         public decimal savecanuse { get; set; }
@@ -498,6 +503,18 @@ namespace ShopNum1.Deploy.KCESservice
                 string saveurl = dt.Rows[0]["saveurl"].ToString();
                 string savecode = dt.Rows[0]["savecode"].ToString();
                 string saveid = dt.Rows[0]["saveid"].ToString();//交易所id
+
+
+                DataTable dtt = member_Action.GetSaveSet();
+
+
+                string saveset1= decimal.Parse(dtt.Rows[0]["savevalue"].ToString())*100+"%";
+                string saveset2 = dtt.Rows[1]["savevalue"].ToString();
+             
+
+
+
+
                 SaveInfo sss = new SaveInfo();
                 sss.issave = issave;
                 sss.saveall = saveall;
@@ -508,6 +525,8 @@ namespace ShopNum1.Deploy.KCESservice
                 sss.Score_pv_a = Score_pv_a;
                 sss.Score_dv = Score_dv;
                 sss.saveurl = saveurl;
+                sss.saveset1 = saveset1;
+                sss.saveset2 = saveset2;
                 object json = new
                 {
                     result = message.Result,

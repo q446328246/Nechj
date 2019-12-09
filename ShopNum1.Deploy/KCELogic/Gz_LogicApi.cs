@@ -86,7 +86,7 @@ namespace ShopNum1.Deploy.KCELogic
 
             }
 
-            string apiiiii = IsWHJDebug ? "http://wz.batj.club/app/index.php?i=8&c=entry&m=ewei_shopv2&do=mobile&r=index.renrenchongzhi" : "http://localhost:45666/app/index.php?i=3&c=entry&m=ewei_shopv2&do=mobile&r=index.renrenchongzhi";
+            string apiiiii = IsWHJDebug ? "http://wz.batj.club/app/index.php?i=8&c=entry&m=ewei_shopv2&do=mobile&r=index.renrenchongzhi" : "http://localhost:45566/app/index.php?i=3&c=entry&m=ewei_shopv2&do=mobile&r=index.renrenchongzhi";
 
 
             string fhone = GET(apiiiii + postCan);
