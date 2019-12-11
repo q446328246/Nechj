@@ -51,7 +51,7 @@ namespace ShopNum1.Deploy.KCESservice
     public class SaveInfo {
 
         public string saveset2 { get; set; }
-        public string saveset1 { get; set; }
+        public decimal saveset1 { get; set; }
 
 
         public int issave { get; set; }
@@ -286,7 +286,7 @@ namespace ShopNum1.Deploy.KCESservice
                     message.Code = "10001";
                     message.Message = "你不是救赎计划参与者";
                 }
-                else if (Save < 0)
+                else if (Save < 1)
                 {
                     message.Result = 0;
                     message.Code = "10001";
@@ -507,8 +507,8 @@ namespace ShopNum1.Deploy.KCESservice
 
                 DataTable dtt = member_Action.GetSaveSet();
 
-
-                string saveset1= decimal.Parse(dtt.Rows[0]["savevalue"].ToString())*100+"%";
+                decimal saveset1 = decimal.Parse(dtt.Rows[0]["savevalue"].ToString());//
+                //string saveset1= decimal.Parse(dtt.Rows[0]["savevalue"].ToString())*100+"%";
                 string saveset2 = dtt.Rows[1]["savevalue"].ToString();
              
 

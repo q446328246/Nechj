@@ -2162,6 +2162,13 @@
                                     <td align="left" valign="top" class="lmf_txt1">
                                         财务NEC币提现
                                     </td>
+                                       <td align="left" valign="top" class="lmf_xzk1">
+                                        <asp:CheckBox ID="CheckBox12" Checked="false" runat="server" ToolTip="9DB416F8-4E80-42C2-810A-F6B987230E90"
+                                            class="checksub" onclick="cancelcheck('35',this.checked,'131-1900')" />
+                                    </td>
+                                    <td align="left" valign="top" class="lmf_txt1">
+                                        救赎币提现管理
+                                    </td>
                                 </tr>
                             </table>
                         </td>
